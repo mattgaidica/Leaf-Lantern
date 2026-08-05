@@ -1,0 +1,1069 @@
+---
+import Base from '../layouts/Base.astro';
+import BrandImage from '../components/BrandImage.astro';
+import { url } from '../lib/site';
+
+const toc = [
+  { id: 'summary', label: 'Executive Summary' },
+  { id: 'concept', label: 'Concept & Mission' },
+  { id: 'market', label: 'Market Analysis' },
+  { id: 'operations', label: 'Offerings & Operations' },
+  { id: 'financials', label: 'Financial Plan' },
+  { id: 'brand', label: 'Brand & Marketing' },
+  { id: 'roadmap', label: 'Roadmap & Milestones' },
+  { id: 'risks', label: 'Risks & Mitigations' },
+];
+
+const metrics = [
+  { value: '$3.95M', label: 'Startup requirement, excluding land' },
+  { value: '$1.80M', label: 'First-year revenue' },
+  { value: '$2.65M', label: 'Third-year revenue' },
+  { value: '$610K', label: 'Third-year EBITDA' },
+  { value: '$1.6–1.8M', label: 'Operating cash break-even (annual revenue)' },
+  { value: '2027–28', label: 'Preferred permanent-site autumn launch' },
+];
+
+const pnl = [
+  { item: 'Admissions', y1: '$480', y2: '$575', y3: '$675' },
+  { item: 'Food and beverage', y1: '610', y2: '760', y3: '900' },
+  { item: 'Retail', y1: '190', y2: '235', y3: '285' },
+  { item: 'Vendor and market fees', y1: '120', y2: '150', y3: '180' },
+  { item: 'Events and rentals', y1: '190', y2: '245', y3: '300' },
+  { item: 'Camps and workshops', y1: '210', y2: '260', y3: '310' },
+];
+
+const pnlCosts = [
+  { item: 'Food, retail, and program cost of goods', y1: '(400)', y2: '(485)', y3: '(570)' },
+  { item: 'Payroll, taxes, and benefits', y1: '(660)', y2: '(770)', y3: '(865)' },
+  { item: 'Occupancy, utilities, repairs, and grounds', y1: '(210)', y2: '(230)', y3: '(250)' },
+  { item: 'Marketing and sales', y1: '(135)', y2: '(145)', y3: '(155)' },
+  { item: 'Insurance, technology, professional fees, admin', y1: '(175)', y2: '(185)', y3: '(200)' },
+];
+
+const startup = [
+  { item: 'Due diligence, architecture, engineering, permits', amt: '$225,000' },
+  { item: 'Building shell or renovation, mechanical, electrical, plumbing', amt: '1,350,000' },
+  { item: 'Sitework, drainage, parking, and utilities', amt: '650,000' },
+  { item: 'Kitchen, bakery, coffee, and refrigeration equipment', amt: '300,000' },
+  { item: 'Market, event furniture, fixtures, and storage', amt: '180,000' },
+  { item: 'Landscape, courtyard, lighting, and arrival signage', amt: '190,000' },
+  { item: 'POS, Wi-Fi, security, ticketing, and website', amt: '85,000' },
+  { item: 'Pre-opening hiring, training, inventory, and launch', amt: '170,000' },
+  { item: 'Construction and startup contingency', amt: '450,000' },
+  { item: 'Opening working-capital reserve', amt: '350,000' },
+];
+
+const seasonalRevenue = [
+  { season: 'Spring', share: 12, revenue: '$216,000', color: 'var(--season-spring)' },
+  { season: 'Summer', share: 21, revenue: '$378,000', color: 'var(--season-summer)' },
+  { season: 'Autumn', share: 45, revenue: '$810,000', color: 'var(--season-autumn)' },
+  { season: 'Holiday', share: 22, revenue: '$396,000', color: 'var(--season-holiday)' },
+];
+
+const pricing = [
+  { stream: 'Ordinary market and café access', price: 'Free' },
+  { stream: 'Spring or summer discovery day', price: '$8–$12 per guest' },
+  { stream: 'Autumn weekday programmed admission', price: '$8–$11' },
+  { stream: 'Autumn weekend programmed admission', price: '$12–$16' },
+  { stream: 'Halloween costume party or lantern evening', price: '$14–$20' },
+  { stream: 'School field trip', price: '$12–$16 per student' },
+  { stream: 'Summer science camp', price: '$285–$425 per child/week' },
+  { stream: 'Adult or family workshop', price: '$35–$85' },
+  { stream: 'Maker market booth', price: '$85–$550' },
+  { stream: 'Main-space rental', price: '$1,500–$4,500' },
+  { stream: 'Corporate retreat package', price: '$70–$140 per attendee' },
+  { stream: 'Donut six-pack / cider / coffee', price: '$10–$14 / $4–$7 / $4–$6.50' },
+];
+
+const competitors = [
+  {
+    name: 'Blake Farms',
+    model: 'Large multi-season destination: festivals, Funland, U-pick, classes, wellness, artisan markets. Festival admission $12–$14 with 100–200+ artisans.',
+    lesson: 'Confirms demand for markets, workshops, wellness, and food. Borrow the revenue diversity — not the attraction density or crowd scale.',
+  },
+  {
+    name: 'Wiard’s Orchards',
+    model: 'Fall-centered orchard and Country Fair: $18 weekday, $27.50 weekend, $46 season pass, plus a free-access Country Store.',
+    lesson: 'Demonstrates strong willingness to pay in peak autumn. Charge for programmed weekends while preserving free market-and-café access.',
+  },
+  {
+    name: 'Westview Orchards & Winery',
+    model: 'Farm market and bakery spring into winter: U-pick, summer farm fun, porch winery, fall activities, private rentals.',
+    lesson: 'Shows the value of a steady market-and-food base underneath seasonal programming. Make the kitchen useful even with no event underway.',
+  },
+];
+
+const roadmapPhases = [
+  {
+    phase: 'Validation',
+    window: 'Sep 2026 – Feb 2027',
+    items: ['Brand and demand landing page', 'Maker, school, and customer interviews', 'Autumn and holiday pilot events', 'Pilot review and concept revision'],
+  },
+  {
+    phase: 'Site & Design',
+    window: 'Sep 2026 – Oct 2027',
+    items: ['Property search and due diligence', 'Municipal pre-application meetings', 'Schematic design and cost model', 'Entitlements, construction documents, bidding'],
+  },
+  {
+    phase: 'Programming & Sales',
+    window: 'Jan – Dec 2027',
+    items: ['School-program development', 'Vendor and maker recruitment', 'Camp and rental presales', 'Operating manuals and training plan'],
+  },
+  {
+    phase: 'Build',
+    window: 'Sep 2027 – Jul 2028',
+    items: ['Sitework and building construction', 'Kitchen installation and licensing', 'Furniture, signage, and landscape'],
+  },
+  {
+    phase: 'Launch',
+    window: 'Apr – Sep 2028',
+    items: ['Staff hiring and training', 'Invitation-only operating tests', 'Summer soft opening (Aug 2028)', 'Full autumn launch (Sep 2028)'],
+  },
+];
+
+const risks = [
+  { risk: 'Site or zoning incompatibility', mitigation: 'Municipal pre-application review before purchase; entitlement contingencies; written use interpretations.' },
+  { risk: 'Capital-cost escalation', mitigation: 'Civil and utility due diligence early; contractor pricing at schematic design; 12–15% construction contingency.' },
+  { risk: 'Autumn dependence', mitigation: 'Presold timed tickets; indoor rain capacity; camps, schools, rentals, and gift markets in the base model.' },
+  { risk: 'Brand dilution', mitigation: 'Every program must fit one seasonal signature; maximum visual and attendance density; formal experience review.' },
+  { risk: 'Food bottlenecks', mitigation: 'Separate order and pickup; preorder bundles; batch planning; throughput testing before opening.' },
+  { risk: 'Seasonal labor shortage', mitigation: 'Early recruiting of students, retirees, returners; above-minimum pay ($16–$18/hr); simplified roles and short training modules.' },
+  { risk: 'Weather and grounds failure', mitigation: 'Drainage, all-weather paths, covered thresholds, indoor backup layouts, clear closure communication.' },
+  { risk: 'Cash-flow shortfall', mitigation: '$350K opening reserve; deposits for camps and rentals; weekly thirteen-week cash-flow forecasting.' },
+];
+---
+<Base
+  title="Business Plan"
+  description="The Leaf & Lantern business plan: concept, market analysis, operations, financial model, brand system, and development roadmap."
+>
+  <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progress"></div></div>
+
+  <header class="plan-hero">
+    <div class="container plan-hero-inner">
+      <span class="plan-kicker">Investor Overview · Prepared 2026</span>
+      <h1>Leaf <em>&</em> Lantern</h1>
+      <p class="plan-subtitle">Business Plan for a Four-Season Gathering Place in Southeast Michigan</p>
+      <p class="plan-thesis">
+        More intentional than a traditional cider mill, more intimate than a festival farm, and
+        warmer than a conventional event venue.
+      </p>
+    </div>
+  </header>
+
+  <div class="container plan-layout">
+    <nav class="plan-toc" aria-label="Plan sections">
+      <span class="toc-title">Contents</span>
+      <ol>
+        {toc.map((t) => (
+          <li><a href={`#${t.id}`} data-toc={t.id}>{t.label}</a></li>
+        ))}
+      </ol>
+      <a class="btn btn-primary toc-cta" href={url('/')}>See the Concept Site</a>
+    </nav>
+
+    <article class="plan-body">
+      <!-- ============ Executive Summary ============ -->
+      <section id="summary" class="plan-section">
+        <span class="eyebrow">01 · Executive Summary</span>
+        <h2>A small-scale, seasonally defined Michigan gathering place.</h2>
+        <p class="lede">
+          Leaf & Lantern is built around food, local makers, education, and shared traditions. It
+          does not compete with large cider mills on attraction count, crowds, rides, or acreage.
+          Its competitive advantage is a more thoughtful experience: warm architecture, a flexible
+          main event space, a comfortable courtyard, excellent cider and donuts, curated retail,
+          and programming with a clear purpose in every season.
+        </p>
+
+        <div class="metric-grid">
+          {metrics.map((m) => (
+            <div class="metric-card">
+              <span class="metric-value">{m.value}</span>
+              <span class="metric-label">{m.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <blockquote class="pull-quote">Autumn is our heart, not our entire calendar.</blockquote>
+
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead>
+              <tr><th>Season</th><th>Signature experience</th><th>Primary promise</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Spring</strong></td><td>Discovery</td><td>Nature, schools, gardens, and hands-on learning</td></tr>
+              <tr><td><strong>Summer</strong></td><td>Gathering</td><td>Camps, markets, music, wellness, and long evenings</td></tr>
+              <tr><td><strong>Autumn</strong></td><td>Tradition</td><td>Cider, donuts, coffee, pumpkins, and Halloween</td></tr>
+              <tr><td><strong>Holiday</strong></td><td>Celebration</td><td>Gift markets, lights, workshops, and warm hospitality</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          The recommended opening model is a modest permanent campus centered on one adaptable
+          main building — approximately 4,500–6,500 square feet of conditioned public space, a
+          courtyard, a commercial bakery and beverage counter, a curated market, outdoor teaching
+          areas, and parking sized for timed peaks without making the property feel crowded.
+        </p>
+        <p>
+          The plan proceeds only after four gates are passed: parcel-level zoning and utility
+          feasibility; a bottom-up construction estimate; demand validation through pop-ups and
+          advance bookings; and confirmation that food-service throughput, parking, restrooms, and
+          accessibility support autumn peaks without compromising the brand experience.
+        </p>
+      </section>
+
+      <!-- ============ Concept & Mission ============ -->
+      <section id="concept" class="plan-section">
+        <span class="eyebrow">02 · Concept & Mission</span>
+        <h2>A real place with year-round purpose.</h2>
+        <p>
+          Leaf & Lantern is a four-season hospitality and agritourism-inspired venue focused on
+          family traditions, local food, creative learning, community gatherings, and
+          Michigan-made products. It does not need to operate as a large production farm, but its
+          offerings remain materially connected to seasons, food, growing, making, and the
+          landscape — never a generic rental hall temporarily decorated for different holidays.
+        </p>
+        <blockquote class="pull-quote">
+          Leaf & Lantern creates welcoming, seasonally defined experiences that help people slow
+          down, spend time together, and enjoy the traditions, food, creativity, and natural
+          character of Michigan.
+        </blockquote>
+
+        <BrandImage
+          src="/images/entrance-autumn.jpg"
+          alt="The Leaf & Lantern arrival experience: cream hanging sign, stone bases, warm lanterns"
+          ratio="21 / 9"
+          class="plan-figure"
+        />
+
+        <h3>Operating principles</h3>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>Principle</th><th>Business implication</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Seasonally defined</strong></td><td>Every event fits Discovery, Gathering, Tradition, or Celebration.</td></tr>
+              <tr><td><strong>Intimate rather than crowded</strong></td><td>Timed capacity and comfortable circulation take precedence over maximum attendance.</td></tr>
+              <tr><td><strong>Food is central</strong></td><td>Cider, donuts, coffee, and bakery items are core products, not incidental concessions.</td></tr>
+              <tr><td><strong>Flexible rather than sprawling</strong></td><td>One excellent adaptable building serves camps, yoga, markets, food service, workshops, and rentals.</td></tr>
+              <tr><td><strong>Local but edited</strong></td><td>Makers and products are selected for quality, utility, and fit.</td></tr>
+              <tr><td><strong>Warm, not kitschy</strong></td><td>Natural materials, light, landscape, and real products rather than excessive props.</td></tr>
+              <tr><td><strong>Professional, not corporate</strong></td><td>Operations, booking, food safety, and service stay disciplined even when the atmosphere is relaxed.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          The recommended structure is a for-profit operating company with the option of a
+          separate property-holding entity. Educational partnerships may later justify a nonprofit
+          partner, but the core venue does not depend on grants to sustain ordinary operations.
+        </p>
+      </section>
+
+      <!-- ============ Market ============ -->
+      <section id="market" class="plan-section">
+        <span class="eyebrow">03 · Market Analysis</span>
+        <h2>A validated but crowded market — with clear whitespace.</h2>
+        <p class="lede">
+          Wayne, Oakland, and Macomb counties held approximately 3.94 million residents in 2025.
+          Oakland County’s median household income was $97,760; Livingston County’s was $103,039.
+          Michigan recorded 131.2 million visitors and $30.7 billion in direct visitor spending
+          in 2024.
+        </p>
+        <p>
+          The year-one plan assumes approximately 40,000 paid general-admission visits plus camp,
+          workshop, rental, café, and market visitors — roughly one percent of the three-county
+          population. That modest penetration requirement supports feasibility; a parcel-level
+          drive-time analysis will establish the defensible serviceable market before any
+          commitment.
+        </p>
+
+        <h3>Competitive landscape</h3>
+        <div class="competitor-grid">
+          {competitors.map((c) => (
+            <div class="competitor-card">
+              <h4>{c.name}</h4>
+              <p>{c.model}</p>
+              <p class="competitor-lesson"><strong>Lesson:</strong> {c.lesson}</p>
+            </div>
+          ))}
+        </div>
+
+        <blockquote class="pull-quote">
+          The competitive opening is not “another cider mill.” It is a smaller, more curated
+          seasonal institution with stronger architecture, better indoor flexibility, restrained
+          attendance, and clearer programming identities.
+        </blockquote>
+        <p>
+          The strongest defensible advantages are difficult-to-copy operating assets rather than
+          novelty attractions: consistent hospitality, a recognizable visual environment, reliable
+          food quality, relationships with schools and makers, a strong email audience, and a
+          calendar customers learn to anticipate.
+        </p>
+      </section>
+
+      <!-- ============ Operations ============ -->
+      <section id="operations" class="plan-section">
+        <span class="eyebrow">04 · Offerings & Operations</span>
+        <h2>Two layers: a recurring base, and signature seasonal programs.</h2>
+        <p>
+          The base business — market, bakery, coffee, grounds, private bookings, and workshops —
+          runs underneath a limited number of signature seasonal programs that create urgency
+          without turning every weekend into a festival.
+        </p>
+
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>Season</th><th>Anchor offerings</th><th>Principal revenue</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Spring · Discovery</strong></td><td>School field trips, homeschool days, garden and pollinator workshops, nature walks, Earth Day market</td><td>Field-trip fees, workshops, café, retail kits, vendor fees</td></tr>
+              <tr><td><strong>Summer · Gathering</strong></td><td>Science camps, morning yoga, acoustic evenings, small markets, local-food nights, private events</td><td>Camps, class passes, F&B, markets, rentals</td></tr>
+              <tr><td><strong>Autumn · Tradition</strong></td><td>Cider, donuts, coffee, pumpkins, harvest market, Halloween party, lantern evenings</td><td>Admission, F&B, pumpkins, retail, vendor fees</td></tr>
+              <tr><td><strong>Holiday · Celebration</strong></td><td>Indoor gift market, wreath and ornament workshops, bakery boxes, shopping evenings</td><td>Vendor fees, retail, F&B, workshops, rentals</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <BrandImage
+          src="/images/learning-hall.jpg"
+          alt="The main hall in two configurations: hands-on learning and warm market hospitality"
+          ratio="21 / 9"
+          class="plan-figure"
+        />
+        <p class="figure-note">
+          One adaptable hall is the operating thesis: the same timber room serves camps, yoga,
+          markets, food service, workshops, and rentals across the calendar.
+        </p>
+
+        <h3>Staffing</h3>
+        <p>
+          The permanent operation begins with eight to ten full-time-equivalent leadership and
+          skilled positions — general manager, operations and facilities, culinary manager, lead
+          baker, market buyer, education and programming, events and rentals, marketing and guest
+          relations, plus administrative and maintenance support. Peak autumn adds thirty-five to
+          fifty-five part-time employees. With Michigan’s minimum wage reaching $15 in 2027, the
+          model assumes frontline hiring at $16–$18 per hour rather than the statutory floor.
+        </p>
+      </section>
+
+      <!-- ============ Financials ============ -->
+      <section id="financials" class="plan-section">
+        <span class="eyebrow">05 · Revenue Streams & Financial Plan</span>
+        <h2>A mixed-access model with food at the center.</h2>
+        <p class="lede">
+          Ordinary café and market days are free; high-demand programmed periods use admission or
+          timed tickets. This avoids a paywall in front of every coffee while preserving the
+          ability to manage autumn capacity and monetize major experiences.
+        </p>
+
+        <h3>Opening price architecture <small>(2027 dollars, to be validated in pilots)</small></h3>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>Revenue stream</th><th class="num">Suggested pricing</th></tr></thead>
+            <tbody>
+              {pricing.map((p) => (
+                <tr><td>{p.stream}</td><td class="num">{p.price}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          The admission band sits intentionally below Wiard’s $27.50 weekend price and near or
+          moderately above Blake’s $12–$14 festival pricing — a smaller attraction set, a more
+          curated environment.
+        </p>
+
+        <h3>Three-year illustrative P&L <small>(thousands of dollars)</small></h3>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead>
+              <tr><th>Item</th><th class="num">Year One</th><th class="num">Year Two</th><th class="num">Year Three</th></tr>
+            </thead>
+            <tbody>
+              {pnl.map((row) => (
+                <tr><td>{row.item}</td><td class="num">{row.y1}</td><td class="num">{row.y2}</td><td class="num">{row.y3}</td></tr>
+              ))}
+              <tr class="total"><td>Total revenue</td><td class="num">$1,800</td><td class="num">$2,225</td><td class="num">$2,650</td></tr>
+              {pnlCosts.map((row) => (
+                <tr><td>{row.item}</td><td class="num">{row.y1}</td><td class="num">{row.y2}</td><td class="num">{row.y3}</td></tr>
+              ))}
+              <tr class="total"><td>EBITDA</td><td class="num">$220</td><td class="num">$410</td><td class="num">$610</td></tr>
+              <tr><td>Depreciation</td><td class="num">(175)</td><td class="num">(175)</td><td class="num">(175)</td></tr>
+              <tr><td>Illustrative interest expense</td><td class="num">(220)</td><td class="num">(205)</td><td class="num">(185)</td></tr>
+              <tr class="total"><td>Pre-tax profit / (loss)</td><td class="num">($175)</td><td class="num">$30</td><td class="num">$250</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          The model assumes roughly 40,000 paid admissions in year one, 48,000 in year two, and
+          56,000 in year three — and that management resists adding low-margin attractions simply
+          to increase attendance.
+        </p>
+
+        <h3>Seasonal revenue mix <small>(year one)</small></h3>
+        <div class="chart">
+          {seasonalRevenue.map((s) => (
+            <div class="chart-row">
+              <span class="chart-label">{s.season}</span>
+              <div class="chart-track">
+                <div class="chart-fill" style={`width: ${s.share * 2}%; background: ${s.color};`}></div>
+              </div>
+              <span class="chart-value">{s.share}% · {s.revenue}</span>
+            </div>
+          ))}
+        </div>
+        <p>
+          January and February still incur payroll, insurance, utilities, debt service, and
+          planning costs. The $350,000 working-capital reserve is not optional contingency; it is
+          part of the operating model.
+        </p>
+
+        <h3>Startup-cost planning allowance</h3>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>Category</th><th class="num">Base allowance</th></tr></thead>
+            <tbody>
+              {startup.map((row) => (
+                <tr><td>{row.item}</td><td class="num">{row.amt}</td></tr>
+              ))}
+              <tr class="total"><td>Total, excluding land</td><td class="num">$3,950,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          A low-capital adaptive-reuse opportunity may reduce the total; a ground-up building with
+          septic, well, or major road improvements may exceed it materially. No financing
+          commitment is made until a contractor-led estimate and site-specific utility study
+          replace these allowances.
+        </p>
+      </section>
+
+      <!-- ============ Brand ============ -->
+      <section id="brand" class="plan-section">
+        <span class="eyebrow">06 · Brand & Marketing</span>
+        <h2>“A welcoming place for every season.”</h2>
+        <p>
+          The voice is warm, plainspoken, observant, and confident — no amusement-park
+          superlatives, no luxury language. Typography pairs <strong>Fraunces</strong> display
+          serif with <strong>Source Sans 3</strong> for interface and operational text. The
+          palette anchors on Lantern Black, Deep Pine, and Parchment with Cider, Cranberry, and
+          Wheat accents. The site targets WCAG 2.2 AA conformance.
+        </p>
+
+        <BrandImage
+          src="/images/brand-board.jpg"
+          alt="The Leaf & Lantern identity system: wordmark, palette, seasonal icons, packaging, and signage"
+          ratio="3 / 2"
+          class="plan-figure"
+        />
+
+        <div class="swatch-row" aria-label="Brand color palette">
+          <div class="swatch" style="background:#1F241E"><span>Lantern Black</span></div>
+          <div class="swatch" style="background:#2F4636"><span>Deep Pine</span></div>
+          <div class="swatch" style="background:#243C34"><span>Winter Evergreen</span></div>
+          <div class="swatch" style="background:#A8652A"><span>Cider</span></div>
+          <div class="swatch" style="background:#7A3432"><span>Cranberry</span></div>
+          <div class="swatch swatch-light" style="background:#D8C39B"><span>Wheat</span></div>
+          <div class="swatch swatch-light" style="background:#F4EFE5"><span>Parchment</span></div>
+        </div>
+
+        <p>
+          Email is the primary owned channel: the calendar naturally creates repeat announcements —
+          camp registration, autumn ticket release, Halloween, gift-market applications, and
+          holiday preorder deadlines. Priority channels include local search, Instagram, Facebook,
+          school and homeschool outreach, community calendars, regional tourism partners, and
+          maker cross-promotion.
+        </p>
+        <p>
+          Photography shows comfortable occupancy and natural behavior — guests talking, browsing,
+          choosing, learning, drinking, or making. Never aerial campus shots, dense crowds,
+          carnival rides, or overly staged compositions.
+        </p>
+      </section>
+
+      <!-- ============ Roadmap ============ -->
+      <section id="roadmap" class="plan-section">
+        <span class="eyebrow">07 · Roadmap & Milestones</span>
+        <h2>Validate first. Build second.</h2>
+        <p class="lede">
+          The lowest-risk path validates the concept through temporary programming — pop-up
+          markets, a Halloween event, mobile cider-and-donut service, school pilots, and
+          rented-space holiday markets — before committing to the full permanent build.
+        </p>
+
+        <div class="roadmap">
+          {roadmapPhases.map((phase, i) => (
+            <div class="roadmap-phase">
+              <div class="roadmap-marker">{i + 1}</div>
+              <div class="roadmap-content">
+                <div class="roadmap-head">
+                  <h3>{phase.phase}</h3>
+                  <span class="roadmap-window">{phase.window}</span>
+                </div>
+                <ul>
+                  {phase.items.map((item) => <li>{item}</li>)}
+                </ul>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p>
+          An existing code-compliant building with adequate utilities could compress the schedule
+          and permit an autumn 2027 launch; a raw site or contested land-use approval makes 2028
+          more credible.
+        </p>
+
+        <h3>Pilot-stage targets</h3>
+        <ul class="target-list">
+          <li>Email waitlist of at least <strong>5,000</strong> qualified regional subscribers</li>
+          <li><strong>20</strong> school or homeschool-group expressions of interest</li>
+          <li><strong>40</strong> credible maker applicants</li>
+          <li><strong>10</strong> private-event leads</li>
+          <li>At least <strong>half</strong> of pilot guests purchasing food or beverage</li>
+        </ul>
+      </section>
+
+      <!-- ============ Risks ============ -->
+      <section id="risks" class="plan-section">
+        <span class="eyebrow">08 · Risks & Mitigations</span>
+        <h2>Known risks, managed deliberately.</h2>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>Risk</th><th>Mitigation</th></tr></thead>
+            <tbody>
+              {risks.map((r) => (
+                <tr><td><strong>{r.risk}</strong></td><td>{r.mitigation}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Before financing or construction, this plan converts into three operating documents: a
+          parcel-specific feasibility model, a contractor-priced development budget, and a
+          month-by-month operating forecast. The next-stage documents must establish whether a
+          particular property can deliver the concept without forcing Leaf & Lantern to become
+          larger, noisier, or more capital-intensive than the brand is meant to be.
+        </p>
+
+        <div class="plan-cta">
+          <h3>Interested in the concept?</h3>
+          <p>
+            Explore the consumer-facing preview site to see how the brand shows up for guests, or
+            reach out to start a conversation.
+          </p>
+          <div class="plan-cta-row">
+            <a class="btn btn-primary" href={url('/')}>View the Concept Site</a>
+            <a class="btn btn-secondary" href="mailto:hello@leafandlantern.com">Contact the Founders</a>
+          </div>
+        </div>
+      </section>
+    </article>
+  </div>
+
+  <script>
+    // Reading progress bar
+    const bar = document.getElementById('progress');
+    const updateProgress = () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - window.innerHeight;
+      if (bar) bar.style.width = `${Math.min(100, (window.scrollY / max) * 100)}%`;
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    // TOC active-section highlighting
+    const links = document.querySelectorAll<HTMLAnchorElement>('[data-toc]');
+    const sections = document.querySelectorAll<HTMLElement>('.plan-section');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            links.forEach((link) =>
+              link.classList.toggle('active', link.dataset.toc === entry.target.id)
+            );
+          }
+        });
+      },
+      { rootMargin: '-20% 0px -70% 0px' }
+    );
+    sections.forEach((s) => observer.observe(s));
+  </script>
+</Base>
+
+<style>
+  /* ---------- Progress bar ---------- */
+  .progress-track {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    z-index: 200;
+    background: transparent;
+    pointer-events: none;
+  }
+
+  .progress-bar {
+    height: 100%;
+    width: 0;
+    background: var(--cider);
+    transition: width 80ms linear;
+  }
+
+  /* ---------- Hero ---------- */
+  .plan-hero {
+    background:
+      radial-gradient(ellipse at 25% 0%, rgba(216, 195, 155, 0.14), transparent 55%),
+      linear-gradient(165deg, var(--deep-pine), var(--winter-evergreen) 70%, var(--lantern-black));
+    color: var(--parchment);
+    text-align: center;
+  }
+
+  .plan-hero-inner {
+    padding-block: clamp(4rem, 9vw, 7rem);
+  }
+
+  .plan-kicker {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--wheat);
+    border: 1px solid rgba(216, 195, 155, 0.45);
+    border-radius: 999px;
+    padding: 0.4rem 1.2rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .plan-hero h1 {
+    color: var(--white);
+    font-size: clamp(3rem, 7vw, 5rem);
+    margin-bottom: 0.2em;
+  }
+
+  .plan-hero h1 em {
+    font-style: normal;
+    color: var(--wheat);
+  }
+
+  .plan-subtitle {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+    opacity: 0.9;
+    margin-bottom: 1.4rem;
+  }
+
+  .plan-thesis {
+    max-width: 42em;
+    margin-inline: auto;
+    font-size: 1.05rem;
+    color: var(--wheat);
+    font-style: italic;
+  }
+
+  /* ---------- Layout ---------- */
+  .plan-layout {
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: start;
+    padding-block: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .plan-toc {
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  .toc-title {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cider);
+    margin-bottom: 0.8rem;
+  }
+
+  .plan-toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.1rem;
+    border-left: 2px solid var(--line);
+  }
+
+  .plan-toc a {
+    display: block;
+    padding: 0.42rem 0 0.42rem 1rem;
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--lantern-black);
+    opacity: 0.72;
+    border-left: 2px solid transparent;
+    margin-left: -2px;
+  }
+
+  .plan-toc a:hover {
+    opacity: 1;
+    color: var(--cider);
+  }
+
+  .plan-toc a.active {
+    opacity: 1;
+    color: var(--deep-pine);
+    border-left-color: var(--cider);
+  }
+
+  .toc-cta {
+    margin-top: 1.6rem;
+    display: block;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  /* ---------- Body ---------- */
+  .plan-body {
+    max-width: 76ch;
+  }
+
+  .plan-section {
+    padding-block: clamp(1.8rem, 4vw, 3rem);
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: 5.5rem;
+  }
+
+  .plan-section:last-child {
+    border-bottom: none;
+  }
+
+  .plan-section h2 {
+    margin-bottom: 0.6em;
+  }
+
+  .plan-section h3 {
+    margin-top: 2.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .plan-section h3 small {
+    font-family: var(--font-body);
+    font-size: 0.75em;
+    font-weight: 400;
+    opacity: 0.7;
+  }
+
+  .plan-section .table-wrap {
+    margin-block: 1.2rem 1.6rem;
+  }
+
+  .plan-figure {
+    margin-block: 1.8rem 0.6rem;
+  }
+
+  .figure-note {
+    font-size: 0.88rem;
+    opacity: 0.7;
+    margin-bottom: 1.6rem;
+  }
+
+  .pull-quote {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--deep-pine);
+    border-left: 4px solid var(--cider);
+    margin: 2rem 0;
+    padding: 0.4rem 0 0.4rem 1.5rem;
+  }
+
+  /* ---------- Metric cards ---------- */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-block: 1.8rem;
+  }
+
+  .metric-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 1.3rem 1.2rem;
+    border-top: 3px solid var(--cider);
+  }
+
+  .metric-value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--deep-pine);
+    line-height: 1.1;
+    margin-bottom: 0.3rem;
+  }
+
+  .metric-label {
+    font-size: 0.82rem;
+    opacity: 0.75;
+    line-height: 1.35;
+    display: block;
+  }
+
+  /* ---------- Competitors ---------- */
+  .competitor-grid {
+    display: grid;
+    gap: 1rem;
+    margin-block: 1.2rem 1.8rem;
+  }
+
+  .competitor-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 1.4rem 1.5rem;
+  }
+
+  .competitor-card h4 {
+    margin-bottom: 0.4rem;
+    font-size: 1.15rem;
+  }
+
+  .competitor-card p {
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .competitor-lesson {
+    margin: 0 !important;
+    padding: 0.7rem 0.9rem;
+    background: var(--cider-soft);
+    border-radius: var(--radius);
+  }
+
+  /* ---------- Chart ---------- */
+  .chart {
+    display: grid;
+    gap: 0.7rem;
+    margin-block: 1.4rem 1.6rem;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 1.5rem 1.5rem;
+  }
+
+  .chart-row {
+    display: grid;
+    grid-template-columns: 70px 1fr auto;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .chart-label {
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  .chart-track {
+    background: var(--parchment-deep);
+    border-radius: 999px;
+    height: 18px;
+    overflow: hidden;
+  }
+
+  .chart-fill {
+    height: 100%;
+    border-radius: 999px;
+    min-width: 8px;
+  }
+
+  .chart-value {
+    font-size: 0.88rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    opacity: 0.85;
+  }
+
+  /* ---------- Swatches ---------- */
+  .swatch-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-block: 1.4rem 1.8rem;
+  }
+
+  .swatch {
+    aspect-ratio: 1 / 1.4;
+    border-radius: var(--radius);
+    display: flex;
+    align-items: flex-end;
+    padding: 0.5rem;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .swatch span {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(244, 239, 229, 0.9);
+    line-height: 1.2;
+  }
+
+  .swatch-light span {
+    color: rgba(31, 36, 30, 0.75);
+  }
+
+  /* ---------- Roadmap ---------- */
+  .roadmap {
+    display: grid;
+    gap: 0;
+    margin-block: 1.8rem;
+  }
+
+  .roadmap-phase {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 1.2rem;
+    position: relative;
+    padding-bottom: 1.8rem;
+  }
+
+  .roadmap-phase:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 21px;
+    top: 44px;
+    bottom: 0;
+    width: 2px;
+    background: var(--line);
+  }
+
+  .roadmap-marker {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--deep-pine);
+    color: var(--parchment);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .roadmap-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.3rem;
+  }
+
+  .roadmap-head h3 {
+    margin: 0;
+  }
+
+  .roadmap-window {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cider);
+  }
+
+  .roadmap-content ul {
+    margin: 0.3rem 0 0;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: 0.25rem;
+    font-size: 0.96rem;
+  }
+
+  .target-list {
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  /* ---------- Closing CTA ---------- */
+  .plan-cta {
+    margin-top: 2.5rem;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border-top: 4px solid var(--cider);
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .plan-cta p {
+    max-width: 38em;
+    margin-inline: auto;
+  }
+
+  .plan-cta-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    margin-top: 1.2rem;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .plan-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .plan-toc {
+      position: static;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 1.4rem;
+    }
+
+    .plan-toc ol {
+      grid-template-columns: repeat(2, 1fr);
+      border-left: none;
+      gap: 0.2rem 1.2rem;
+    }
+
+    .plan-toc a {
+      border-left: none;
+      margin-left: 0;
+      padding-left: 0;
+    }
+
+    .toc-cta {
+      display: none;
+    }
+
+    .metric-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .swatch-row {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .metric-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .chart-row {
+      grid-template-columns: 60px 1fr;
+    }
+
+    .chart-value {
+      grid-column: 2;
+    }
+  }
+</style>

@@ -1,0 +1,116 @@
+---
+import Base from '../../layouts/Base.astro';
+import EventCard from '../../components/EventCard.astro';
+import { EVENTS } from '../../data/events';
+---
+<Base title="Events" description="Markets, workshops, seasonal celebrations, camps, and classes on the Leaf & Lantern calendar.">
+  <section class="section-tight events-head">
+    <div class="container">
+      <span class="eyebrow">What’s Happening</span>
+      <h1>Events at Leaf & Lantern</h1>
+      <p class="lede">
+        Ordinary market and café days are always free. Signature seasonal programs use timed
+        tickets so the grounds stay comfortable — never crowded.
+      </p>
+
+      <div class="filters" role="group" aria-label="Filter events by season">
+        <button class="filter active" data-season="all">All Seasons</button>
+        <button class="filter" data-season="spring">Spring · Discovery</button>
+        <button class="filter" data-season="summer">Summer · Gathering</button>
+        <button class="filter" data-season="autumn">Autumn · Tradition</button>
+        <button class="filter" data-season="holiday">Holiday · Celebration</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="event-grid" id="event-grid">
+        {EVENTS.map((event) => <EventCard event={event} />)}
+      </div>
+      <p class="no-events" id="no-events" hidden>No events in this season yet — check back soon.</p>
+    </div>
+  </section>
+
+  <script>
+    const buttons = document.querySelectorAll<HTMLButtonElement>('.filter');
+    const cards = document.querySelectorAll<HTMLElement>('.event-card');
+    const empty = document.getElementById('no-events');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        buttons.forEach((b) => b.classList.toggle('active', b === btn));
+        const season = btn.dataset.season;
+        let visible = 0;
+        cards.forEach((card) => {
+          const show = season === 'all' || card.dataset.season === season;
+          card.style.display = show ? '' : 'none';
+          if (show) visible++;
+        });
+        if (empty) empty.hidden = visible > 0;
+      });
+    });
+  </script>
+</Base>
+
+<style>
+  .events-head {
+    padding-top: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.6rem;
+  }
+
+  .filter {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    border: 1.5px solid var(--line);
+    background: var(--white);
+    color: var(--lantern-black);
+    cursor: pointer;
+    transition: all 150ms ease;
+  }
+
+  .filter:hover {
+    border-color: var(--deep-pine);
+  }
+
+  .filter.active {
+    background: var(--deep-pine);
+    border-color: var(--deep-pine);
+    color: var(--parchment);
+  }
+
+  .event-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+    padding-bottom: 2rem;
+  }
+
+  .no-events {
+    text-align: center;
+    padding: 3rem 0;
+    font-size: 1.1rem;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 980px) {
+    .event-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .event-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,449 @@
+---
+import '../styles/global.css';
+import { url, NAV_LINKS } from '../lib/site';
+import LanternIcon from '../components/LanternIcon.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Leaf & Lantern is a seasonal gathering place in Michigan — cider and donuts in autumn, discovery in spring, gathering in summer, and celebration through the holidays.',
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) => currentPath.startsWith(url(href).replace(/\/$/, ''));
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · Leaf & Lantern</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <span class="topbar-tag">A Seasonal Gathering Place in Michigan</span>
+        <a class="topbar-investor" href={url('/plan/')}>
+          <LanternIcon size={15} />
+          <span>For Investors</span>
+        </a>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="wordmark" href={url('/')} aria-label="Leaf & Lantern home">
+          <span class="wordmark-main">Leaf <em>&</em> Lantern</span>
+          <span class="wordmark-descriptor">More Than Great Cider and Donuts</span>
+        </a>
+
+        <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <ul>
+            {NAV_LINKS.map((link) => (
+              <li>
+                <a href={url(link.href)} class:list={{ active: isActive(link.href) }}>{link.label}</a>
+              </li>
+            ))}
+          </ul>
+          <a class="btn btn-primary nav-cta" href={url('/visit/')}>Plan Your Visit</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <span class="footer-wordmark">Leaf <em>&</em> Lantern</span>
+          <p>
+            A warm, seasonally defined gathering place for food, local makers, learning, and shared
+            traditions in Southeast Michigan.
+          </p>
+          <form class="footer-signup" action="#" method="post" aria-label="Email signup">
+            <label for="footer-email">Join our email list</label>
+            <div class="footer-signup-row">
+              <input id="footer-email" type="email" name="email" placeholder="you@example.com" required />
+              <button class="btn btn-primary" type="submit">Join</button>
+            </div>
+            <small>Seasonal announcements, ticket releases, and market dates. No noise.</small>
+          </form>
+        </div>
+
+        <nav class="footer-col" aria-label="Explore">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href={url('/seasons/')}>The Seasons</a></li>
+            <li><a href={url('/events/')}>Events</a></li>
+            <li><a href={url('/market/')}>The Market</a></li>
+            <li><a href={url('/visit/')}>Plan Your Visit</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-label="Programs">
+          <h4>Programs</h4>
+          <ul>
+            <li><a href={url('/schools-camps/')}>Schools & Camps</a></li>
+            <li><a href={url('/groups-rentals/')}>Groups & Rentals</a></li>
+            <li><a href={url('/makers/')}>For Makers</a></li>
+            <li><a href={url('/about/')}>Our Story</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-col">
+          <h4>Find Us</h4>
+          <ul>
+            <li>Southeast Michigan</li>
+            <li>Site announcement coming soon</li>
+            <li><a href="mailto:hello@leafandlantern.com">hello@leafandlantern.com</a></li>
+          </ul>
+          <a class="btn btn-outline-light investor-btn" href={url('/plan/')}>
+            <LanternIcon size={17} class="investor-lantern" />
+            Read the Business Plan
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container footer-bottom-inner">
+          <span>© 2026 Leaf & Lantern. A concept in development — this website is a preview.</span>
+          <span>Autumn is our heart, not our entire calendar.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('site-nav');
+      toggle?.addEventListener('click', () => {
+        const open = nav?.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(Boolean(open)));
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  /* ---------- Top utility bar ---------- */
+  .topbar {
+    background: var(--winter-evergreen);
+    color: var(--parchment);
+    font-size: 0.8rem;
+  }
+
+  .topbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 0.4rem;
+    gap: 1rem;
+  }
+
+  .topbar-tag {
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
+  .topbar-investor {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--wheat);
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .topbar-investor:hover {
+    color: var(--white);
+  }
+
+  /* ---------- Header ---------- */
+  .site-header {
+    background: var(--parchment);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-block: 0.85rem;
+  }
+
+  .wordmark {
+    text-decoration: none;
+    line-height: 1.1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .wordmark-main {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--deep-pine);
+    letter-spacing: 0.01em;
+  }
+
+  .wordmark-main em {
+    font-style: normal;
+    color: var(--cider);
+  }
+
+  .wordmark-descriptor {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--lantern-black);
+    opacity: 0.7;
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+  }
+
+  .site-nav ul {
+    display: flex;
+    gap: 1.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .site-nav a:not(.nav-cta) {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--lantern-black);
+    padding-block: 0.3rem;
+    border-bottom: 2px solid transparent;
+  }
+
+  .site-nav a:not(.nav-cta):hover,
+  .site-nav a.active {
+    color: var(--deep-pine);
+    border-bottom-color: var(--cider);
+  }
+
+  .nav-cta {
+    padding: 0.55rem 1.3rem;
+    font-size: 0.95rem;
+  }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  .nav-toggle span {
+    width: 24px;
+    height: 2.5px;
+    background: var(--deep-pine);
+    border-radius: 2px;
+  }
+
+  @media (max-width: 860px) {
+    .nav-toggle {
+      display: flex;
+    }
+
+    .site-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--parchment);
+      border-bottom: 1px solid var(--line);
+      flex-direction: column;
+      align-items: stretch;
+      padding: 1rem clamp(1.1rem, 4vw, 2rem) 1.4rem;
+      gap: 1rem;
+      box-shadow: var(--shadow-lift);
+    }
+
+    .site-nav.open {
+      display: flex;
+    }
+
+    .site-nav ul {
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .site-nav a:not(.nav-cta) {
+      display: block;
+      padding: 0.55rem 0;
+      font-size: 1.1rem;
+    }
+
+    .nav-cta {
+      text-align: center;
+    }
+  }
+
+  /* ---------- Footer ---------- */
+  .site-footer {
+    background: var(--deep-pine);
+    color: var(--parchment);
+    margin-top: 0;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+    gap: 2.5rem;
+    padding-block: 3.5rem 2.5rem;
+  }
+
+  .footer-wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+
+  .footer-wordmark em {
+    font-style: normal;
+    color: var(--wheat);
+  }
+
+  .footer-brand p {
+    opacity: 0.85;
+    max-width: 34em;
+  }
+
+  .footer-signup {
+    margin-top: 1.2rem;
+  }
+
+  .footer-signup label {
+    color: var(--wheat);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .footer-signup-row {
+    display: flex;
+    gap: 0.6rem;
+    margin-block: 0.4rem;
+  }
+
+  .footer-signup input {
+    border: none;
+    max-width: 280px;
+  }
+
+  .footer-signup small {
+    opacity: 0.65;
+    font-size: 0.8rem;
+  }
+
+  .footer-col h4 {
+    color: var(--wheat);
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .footer-col a {
+    color: var(--parchment);
+    text-decoration: none;
+    opacity: 0.9;
+  }
+
+  .footer-col a:hover {
+    color: var(--wheat);
+    opacity: 1;
+  }
+
+  .investor-btn {
+    margin-top: 1.3rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.92rem;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(244, 239, 229, 0.18);
+    font-size: 0.85rem;
+  }
+
+  .footer-bottom-inner {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-block: 1.1rem;
+    opacity: 0.75;
+  }
+
+  @media (max-width: 900px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .topbar-tag {
+      display: none;
+    }
+
+    .topbar-inner {
+      justify-content: flex-end;
+    }
+  }
+</style>

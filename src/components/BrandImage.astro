@@ -1,0 +1,41 @@
+---
+/**
+ * Renders a brand image from /public/images. If the file does not exist yet
+ * (a planned asset awaiting generation — see assets/image-prompts.md), the
+ * frame gracefully falls back to a styled placeholder that names the scene
+ * and the exact file that will replace it.
+ */
+import { url } from '../lib/site';
+
+interface Props {
+  src: string; // e.g. "/images/spring-discovery.png"
+  alt: string;
+  label?: string;
+  ratio?: string; // CSS aspect-ratio value, e.g. "3 / 2"
+  class?: string;
+  eager?: boolean;
+}
+
+const { src, alt, label, ratio = '3 / 2', class: className = '', eager = false } = Astro.props;
+const filename = src.split('/').pop();
+---
+<figure class={`img-frame ${className}`} style={`aspect-ratio: ${ratio};`}>
+  <img
+    src={url(src)}
+    alt={alt}
+    loading={eager ? 'eager' : 'lazy'}
+    onerror="this.closest('.img-frame').classList.add('img-missing'); this.remove();"
+  />
+  <figcaption class="img-fallback" aria-hidden="true">
+    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 20h24M20 46h24" />
+      <path d="M22 20l-3 26M42 20l3 26" />
+      <path d="M27 12h10v8H27z" />
+      <path d="M24 46c0 4 3.5 8 8 8s8-4 8-8" />
+      <path d="M32 27c2.6 3 2.6 9 0 12-2.6-3-2.6-9 0-12z" fill="currentColor" stroke="none" />
+    </svg>
+    <span class="img-label">{label ?? alt}</span>
+    <code>{filename}</code>
+    <small>Concept image coming soon</small>
+  </figcaption>
+</figure>

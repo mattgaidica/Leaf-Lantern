@@ -1,0 +1,211 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import BrandImage from '../components/BrandImage.astro';
+
+const packages = [
+  {
+    name: 'Small Private Room',
+    price: '$750 – $1,500',
+    copy: 'Showers, birthdays, and small celebrations for up to 40 guests, with food and drink from our kitchen.',
+  },
+  {
+    name: 'The Main Hall',
+    price: '$1,500 – $4,500',
+    copy: 'Our flexible timber hall for receptions, reunions, and community gatherings — before food, staffing, and equipment.',
+  },
+  {
+    name: 'Corporate Retreats',
+    price: '$70 – $140 per attendee',
+    copy: 'A distinctive alternative to the conference room: workshops, appreciation events, and offsites with catering and coffee all day.',
+  },
+];
+---
+<Base title="Groups & Rentals" description="Host retreats, showers, birthdays, reunions, and small receptions in the warm, flexible spaces at Leaf & Lantern.">
+  <Hero
+    compact
+    image="/images/courtyard-summer.png"
+    imageAlt="Guests gathered at wood tables in the courtyard beside the main hall"
+    imageLabel="The Courtyard"
+    eyebrow="Groups & Rentals"
+    title="A warm alternative to a banquet hall."
+    copy="One excellent, adaptable building — and a courtyard made for long evenings."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Host a Gathering</span>
+        <h2>Spaces and packages</h2>
+        <p class="lede">
+          Rentals primarily fill weekdays, evenings, and quieter months — which means your event
+          gets the whole place at its calmest and most personal.
+        </p>
+      </div>
+      <div class="pkg-grid">
+        {packages.map((p) => (
+          <div class="pkg-card">
+            <h3>{p.name}</h3>
+            <p class="pkg-price">{p.price}</p>
+            <p>{p.copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container split">
+      <BrandImage
+        src="/images/yoga-morning.jpg"
+        alt="The main hall in an open, flexible configuration with morning light"
+        ratio="4 / 3"
+      />
+      <div>
+        <span class="eyebrow">The Space</span>
+        <h2>One hall, many configurations.</h2>
+        <p>
+          The main hall converts between dining, workshop, presentation, and celebration layouts.
+          Timber structure, natural light, a visible bakery, and a protected courtyard — with
+          catering from our own kitchen and coffee from our own counter.
+        </p>
+        <ul class="amenities">
+          <li>Seats up to 120 for dinner; 150 for receptions</li>
+          <li>Full catering from the Leaf & Lantern kitchen</li>
+          <li>Audio for speeches and acoustic music</li>
+          <li>Accessible route throughout; free parking</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-narrow">
+      <span class="eyebrow">Start the Conversation</span>
+      <h2>Tell us about your event</h2>
+      <form class="inquiry-form" action="#" method="post">
+        <div class="form-row">
+          <div>
+            <label for="gr-name">Your name</label>
+            <input id="gr-name" type="text" name="name" required />
+          </div>
+          <div>
+            <label for="gr-email">Email</label>
+            <input id="gr-email" type="email" name="email" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="gr-type">Event type</label>
+            <select id="gr-type" name="type">
+              <option>Private celebration</option>
+              <option>Corporate retreat</option>
+              <option>Community gathering</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label for="gr-size">Estimated guests</label>
+            <input id="gr-size" type="text" name="size" placeholder="e.g. 60" />
+          </div>
+        </div>
+        <label for="gr-notes">Anything else?</label>
+        <textarea id="gr-notes" name="notes" rows="4" placeholder="Season, date range, and what you're imagining…"></textarea>
+        <button class="btn btn-primary" type="submit">Submit Inquiry</button>
+        <small>Bookings open with our pilot season — this form is a preview.</small>
+      </form>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .section-head {
+    max-width: 52em;
+    margin-bottom: 2.2rem;
+  }
+
+  .pkg-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+  }
+
+  .pkg-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 1.8rem 1.7rem;
+  }
+
+  .pkg-price {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--cider);
+    margin-bottom: 0.6rem;
+  }
+
+  .pkg-card p:last-child {
+    margin: 0;
+    font-size: 0.96rem;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .amenities {
+    list-style: none;
+    padding: 0;
+    margin: 1.2rem 0 0;
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .amenities li {
+    padding-left: 1.4rem;
+    position: relative;
+  }
+
+  .amenities li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cider);
+  }
+
+  .inquiry-form {
+    margin-top: 1.4rem;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .inquiry-form .btn {
+    justify-self: start;
+  }
+
+  .inquiry-form small {
+    opacity: 0.65;
+  }
+
+  @media (max-width: 900px) {
+    .pkg-grid,
+    .split,
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

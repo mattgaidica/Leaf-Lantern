@@ -1,0 +1,177 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import BrandImage from '../components/BrandImage.astro';
+import { url } from '../lib/site';
+
+const menu = [
+  { item: 'Fresh cider (hot or cold)', price: '$4 – $7' },
+  { item: 'Locally roasted coffee & espresso drinks', price: '$4 – $6.50' },
+  { item: 'Cinnamon donuts, six-pack', price: '$10 – $14' },
+  { item: 'Family cider-and-donut bundle', price: '$16 – $24' },
+  { item: 'Seasonal specialty drinks', price: '$5 – $7' },
+  { item: 'Leaf & Lantern seasonal gift box', price: '$35 – $85' },
+];
+
+const categories = [
+  { name: 'Ceramics & Tableware', copy: 'Mugs, serving pieces, and everyday tableware from Michigan potters.' },
+  { name: 'Textiles & Wool', copy: 'Blankets, mittens, hats, and woven goods made for real winters.' },
+  { name: 'Pantry & Preserves', copy: 'Honey, jams, syrups, and Leaf & Lantern pantry products.' },
+  { name: 'Wood & Home', copy: 'Cutting boards, utensils, and small furniture from local woodworkers.' },
+  { name: 'Candles & Botanicals', copy: 'Hand-poured candles, dried florals, and seasonal greenery.' },
+  { name: 'Paper & Children’s Gifts', copy: 'Cards, prints, ornaments, and thoughtfully made toys.' },
+];
+---
+<Base title="The Market" description="The Market at Leaf & Lantern: an open bakery, locally roasted coffee, fresh cider, and curated goods from Michigan makers.">
+  <Hero
+    compact
+    image="/images/gift-market.jpg"
+    imageAlt="Curated maker displays under warm lantern light in the market hall"
+    eyebrow="The Market & Bakery"
+    title="Made nearby. Chosen with care."
+    copy="Useful, beautiful, and delicious goods from Michigan makers and producers — alongside the best cider, donuts, and coffee around."
+  />
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <span class="eyebrow">Bakery & Café</span>
+        <h2>Worth coming early for.</h2>
+        <p class="lede">
+          Follow the smell of warm cinnamon donuts to our open bakery, then stay for fresh cider,
+          locally roasted coffee, and a changing menu of simple seasonal favorites.
+        </p>
+        <p>
+          Donut production is fully visible from the counter — watching them made is half the
+          tradition. Separate order and pickup lines keep things moving even on peak weekends.
+        </p>
+        <div class="table-wrap menu-table">
+          <table class="ll-table">
+            <thead>
+              <tr><th>From the counter</th><th class="num">Price</th></tr>
+            </thead>
+            <tbody>
+              {menu.map((row) => (
+                <tr>
+                  <td>{row.item}</td>
+                  <td class="num">{row.price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <BrandImage
+        src="/images/cider-donuts-closeup.png"
+        alt="Cinnamon donuts, cider, and coffee on a wood table by the bakery counter"
+        label="Cider & Donuts"
+        ratio="3 / 4"
+      />
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Curated, Not Crowded</span>
+        <h2>What you’ll find in the Market</h2>
+        <p class="lede">
+          Makers and products are selected for quality, utility, and fit — a small general store
+          and artisan hall, not a souvenir shop. The mix changes with the seasons.
+        </p>
+      </div>
+      <div class="cat-grid">
+        {categories.map((cat) => (
+          <div class="cat-card">
+            <h3>{cat.name}</h3>
+            <p>{cat.copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split split-reverse">
+      <BrandImage
+        src="/images/learning-hall.jpg"
+        alt="The main hall configured as a warm market space with maker displays"
+        ratio="4 / 3"
+      />
+      <div>
+        <span class="eyebrow">For Makers</span>
+        <h2>Sell where your work is understood.</h2>
+        <p class="lede">
+          Our juried spring, autumn, and holiday markets pair fair booth fees with an audience
+          that values handmade work — and booth counts limited by visual quality, not maximized
+          for volume.
+        </p>
+        <a class="btn btn-secondary" href={url('/makers/')}>Vendor Standards & Applications</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .split {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .split-reverse {
+    grid-template-columns: 1fr 1.15fr;
+    align-items: center;
+  }
+
+  .menu-table {
+    margin-top: 1.4rem;
+  }
+
+  .section-head {
+    max-width: 52em;
+    margin-bottom: 2.2rem;
+  }
+
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.3rem;
+  }
+
+  .cat-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 1.6rem 1.5rem;
+  }
+
+  .cat-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .cat-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+
+  @media (max-width: 900px) {
+    .split,
+    .split-reverse {
+      grid-template-columns: 1fr;
+    }
+
+    .cat-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .cat-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

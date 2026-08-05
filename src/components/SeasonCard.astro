@@ -1,0 +1,58 @@
+---
+import BrandImage from './BrandImage.astro';
+import { url } from '../lib/site';
+
+interface Props {
+  season: 'spring' | 'summer' | 'autumn' | 'holiday';
+  name: string;
+  signature: string;
+  blurb: string;
+  image: string;
+  imageAlt: string;
+  href?: string;
+  headline?: string;
+}
+
+const { season, name, signature, blurb, image, imageAlt, href, headline } = Astro.props;
+const link = href ?? `/seasons/#${season}`;
+const heading = headline ?? `${name} is for ${signature}.`;
+---
+<a class="season-card card" href={url(link)}>
+  <BrandImage src={image} alt={imageAlt} label={`${name}: ${signature}`} ratio="4 / 3" />
+  <div class="season-card-body">
+    <span class={`badge badge-${season}`}>{name}</span>
+    <h3>{heading}</h3>
+    <p>{blurb}</p>
+    <span class="season-card-more">Explore {name.toLowerCase()} →</span>
+  </div>
+</a>
+
+<style>
+  .season-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .season-card-body {
+    padding: 1.3rem 1.4rem 1.5rem;
+  }
+
+  .season-card h3 {
+    margin: 0.7rem 0 0.4rem;
+    font-size: 1.3rem;
+  }
+
+  .season-card p {
+    margin: 0 0 0.8rem;
+    font-size: 0.95rem;
+    color: var(--lantern-black);
+    opacity: 0.85;
+  }
+
+  .season-card-more {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--cider);
+  }
+</style>

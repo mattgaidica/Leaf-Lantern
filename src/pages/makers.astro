@@ -1,0 +1,195 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import BrandImage from '../components/BrandImage.astro';
+
+const markets = [
+  { name: 'Spring Market', dates: 'Late April – May weekends', fee: '$85 – $150 per day' },
+  { name: 'Summer Evening Markets', dates: 'Thursdays, June – August', fee: '$85 – $150 per evening' },
+  { name: 'Harvest Market', dates: 'September – October weekends', fee: '$250 – $550 per curated weekend' },
+  { name: 'Winter Gift Market', dates: 'Weekends, late Nov – Dec 20', fee: '$250 – $550 per curated weekend' },
+];
+
+const standards = [
+  'Handmade, designed, or produced by you — no resale or drop-shipped goods',
+  'Quality, utility, and fit come before quantity; duplicate product types are capped',
+  'Clean, considered booth presentation — we provide guidelines and help',
+  'Michigan makers prioritized; regional makers considered case by case',
+];
+---
+<Base title="For Makers" description="Juried maker markets at Leaf & Lantern: standards, dates, booth fees, and applications.">
+  <Hero
+    compact
+    image="/images/gift-market.jpg"
+    imageAlt="Beautifully edited maker displays inside the Leaf & Lantern gift market"
+    eyebrow="For Makers"
+    title="Sell where your work is understood."
+    copy="Well-run markets, fair fees, and an audience that values handmade products."
+  />
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <span class="eyebrow">Why Vend Here</span>
+        <h2>Curated, not crowded.</h2>
+        <p class="lede">
+          Booth count is limited by visual quality and circulation — never maximized. Every
+          application is juried, duplicate categories are capped, and your neighbors will be
+          makers you respect.
+        </p>
+        <p>
+          Markets are staffed, promoted, and organized professionally: clear load-in windows,
+          reliable foot traffic from timed seasonal programming, and an email audience that shows
+          up ready to buy.
+        </p>
+        <h3>Vendor standards</h3>
+        <ul class="standards">
+          {standards.map((s) => <li>{s}</li>)}
+        </ul>
+      </div>
+      <BrandImage
+        src="/images/summer-market-evening.png"
+        alt="Makers and guests at a golden-hour evening market in the courtyard"
+        label="Summer Evening Market"
+        ratio="3 / 4"
+      />
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Market Calendar</span>
+        <h2>Dates and booth fees</h2>
+      </div>
+      <div class="table-wrap">
+        <table class="ll-table">
+          <thead>
+            <tr>
+              <th>Market</th>
+              <th>Dates</th>
+              <th class="num">Booth fee</th>
+            </tr>
+          </thead>
+          <tbody>
+            {markets.map((m) => (
+              <tr>
+                <td><strong>{m.name}</strong></td>
+                <td>{m.dates}</td>
+                <td class="num">{m.fee}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-narrow">
+      <span class="eyebrow">Apply to Vend</span>
+      <h2>Introduce yourself</h2>
+      <form class="inquiry-form" action="#" method="post">
+        <div class="form-row">
+          <div>
+            <label for="mk-name">Your name</label>
+            <input id="mk-name" type="text" name="name" required />
+          </div>
+          <div>
+            <label for="mk-email">Email</label>
+            <input id="mk-email" type="email" name="email" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="mk-brand">Brand or studio name</label>
+            <input id="mk-brand" type="text" name="brand" />
+          </div>
+          <div>
+            <label for="mk-cat">Product category</label>
+            <select id="mk-cat" name="category">
+              <option>Ceramics & tableware</option>
+              <option>Textiles & wool</option>
+              <option>Pantry & preserves</option>
+              <option>Wood & home</option>
+              <option>Candles & botanicals</option>
+              <option>Paper & children’s gifts</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <label for="mk-links">Website or social links</label>
+        <input id="mk-links" type="text" name="links" placeholder="Where can we see your work?" />
+        <label for="mk-notes">Tell us about your work</label>
+        <textarea id="mk-notes" name="notes" rows="4"></textarea>
+        <button class="btn btn-primary" type="submit">Submit Application</button>
+        <small>Applications open ahead of each season — this form is a preview.</small>
+      </form>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .split {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .standards {
+    list-style: none;
+    padding: 0;
+    margin: 0.8rem 0 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .standards li {
+    padding-left: 1.4rem;
+    position: relative;
+  }
+
+  .standards li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cider);
+  }
+
+  .section-head {
+    max-width: 52em;
+    margin-bottom: 2rem;
+  }
+
+  .inquiry-form {
+    margin-top: 1.4rem;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .inquiry-form .btn {
+    justify-self: start;
+  }
+
+  .inquiry-form small {
+    opacity: 0.65;
+  }
+
+  @media (max-width: 900px) {
+    .split,
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

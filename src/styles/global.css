@@ -1,0 +1,430 @@
+/* ============================================================
+   Leaf & Lantern — Design tokens and base styles
+   Palette, typography, and tone per the brand design contract.
+   ============================================================ */
+
+:root {
+  /* Brand palette */
+  --lantern-black: #1f241e;
+  --deep-pine: #2f4636;
+  --winter-evergreen: #243c34;
+  --cider: #a8652a;
+  --cranberry: #7a3432;
+  --wheat: #d8c39b;
+  --parchment: #f4efe5;
+  --white: #ffffff;
+
+  /* Derived tints */
+  --parchment-deep: #ece4d3;
+  --pine-soft: #e3e8e2;
+  --cider-soft: #f3e6d6;
+  --line: #ddd3bf;
+
+  /* Typography */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Source Sans 3", Arial, Helvetica, sans-serif;
+
+  /* Layout */
+  --container: 1160px;
+  --container-narrow: 760px;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --shadow-soft: 0 2px 18px rgba(31, 36, 30, 0.08);
+  --shadow-lift: 0 10px 34px rgba(31, 36, 30, 0.14);
+
+  /* Season accents */
+  --season-spring: var(--deep-pine);
+  --season-summer: #8a6d2f;
+  --season-autumn: var(--cider);
+  --season-holiday: var(--cranberry);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--lantern-black);
+  background: var(--parchment);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--deep-pine);
+  margin: 0 0 0.5em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5.5vw, 3.9rem);
+}
+
+h2 {
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+}
+
+h3 {
+  font-size: clamp(1.3rem, 2.4vw, 1.65rem);
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--deep-pine);
+  text-decoration-color: color-mix(in srgb, var(--cider) 55%, transparent);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--cider);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ---------- Layout utilities ---------- */
+
+.container {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: clamp(1.1rem, 4vw, 2rem);
+}
+
+.container-narrow {
+  max-width: var(--container-narrow);
+  margin-inline: auto;
+  padding-inline: clamp(1.1rem, 4vw, 2rem);
+}
+
+.section {
+  padding-block: clamp(3rem, 7vw, 5.5rem);
+}
+
+.section-tight {
+  padding-block: clamp(2rem, 5vw, 3.5rem);
+}
+
+.section-pine {
+  background: var(--deep-pine);
+  color: var(--parchment);
+}
+
+.section-pine h2,
+.section-pine h3 {
+  color: var(--parchment);
+}
+
+.section-alt {
+  background: var(--parchment-deep);
+}
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cider);
+  margin-bottom: 0.9rem;
+}
+
+.section-pine .eyebrow {
+  color: var(--wheat);
+}
+
+.lede {
+  font-size: 1.2rem;
+  max-width: 46em;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  padding: 0.75rem 1.6rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--cider);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: #925522;
+  color: var(--white);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--deep-pine);
+  border-color: var(--deep-pine);
+}
+
+.btn-secondary:hover {
+  background: var(--deep-pine);
+  color: var(--parchment);
+}
+
+.btn-light {
+  background: var(--parchment);
+  color: var(--deep-pine);
+}
+
+.btn-light:hover {
+  background: var(--white);
+  color: var(--deep-pine);
+}
+
+.btn-outline-light {
+  background: transparent;
+  color: var(--parchment);
+  border-color: color-mix(in srgb, var(--parchment) 65%, transparent);
+}
+
+.btn-outline-light:hover {
+  background: rgba(244, 239, 229, 0.12);
+  color: var(--white);
+  border-color: var(--parchment);
+}
+
+/* ---------- Badges ---------- */
+
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  color: var(--white);
+  background: var(--deep-pine);
+}
+
+.badge-spring { background: var(--season-spring); }
+.badge-summer { background: var(--season-summer); }
+.badge-autumn { background: var(--season-autumn); }
+.badge-holiday { background: var(--season-holiday); }
+
+/* ---------- Image frames and placeholders ---------- */
+
+.img-frame {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--parchment-deep);
+  box-shadow: var(--shadow-soft);
+}
+
+.img-frame > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-fallback {
+  display: none;
+}
+
+.img-frame.img-missing {
+  background:
+    radial-gradient(circle at 30% 20%, rgba(216, 195, 155, 0.35), transparent 60%),
+    linear-gradient(160deg, var(--deep-pine), var(--winter-evergreen));
+}
+
+.img-frame.img-missing .img-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--parchment);
+}
+
+.img-fallback .img-label {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.img-fallback code {
+  font-size: 0.78rem;
+  background: rgba(244, 239, 229, 0.14);
+  padding: 0.15rem 0.55rem;
+  border-radius: 6px;
+  color: var(--wheat);
+}
+
+.img-fallback small {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.img-fallback svg {
+  width: 34px;
+  height: 34px;
+  opacity: 0.9;
+}
+
+/* ---------- Cards ---------- */
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
+}
+
+/* ---------- Tables ---------- */
+
+.table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+table.ll-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  font-size: 0.98rem;
+}
+
+.ll-table th {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--parchment);
+  background: var(--deep-pine);
+  padding: 0.8rem 1rem;
+}
+
+.ll-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.ll-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.ll-table tbody tr:nth-child(even) {
+  background: #faf7f0;
+}
+
+.ll-table td.num,
+.ll-table th.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.ll-table tr.total td {
+  font-weight: 700;
+  background: var(--cider-soft);
+  border-top: 2px solid var(--cider);
+}
+
+/* ---------- Forms ---------- */
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--lantern-black);
+  background: var(--white);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.9rem;
+  width: 100%;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.btn:focus-visible,
+a:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--cider) 60%, transparent);
+  outline-offset: 2px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.92rem;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+/* ---------- Misc ---------- */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--deep-pine);
+  color: var(--parchment);
+  padding: 0.6rem 1rem;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+::selection {
+  background: var(--wheat);
+  color: var(--lantern-black);
+}

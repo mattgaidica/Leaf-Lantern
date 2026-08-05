@@ -1,0 +1,327 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import SeasonCard from '../components/SeasonCard.astro';
+import EventCard from '../components/EventCard.astro';
+import BrandImage from '../components/BrandImage.astro';
+import { url } from '../lib/site';
+import { EVENTS } from '../data/events';
+
+const featuredEvents = EVENTS.filter((e) =>
+  ['harvest-weekend', 'winter-gift-market', 'summer-evening-market'].includes(e.slug)
+);
+---
+<Base title="More Than Great Cider and Donuts">
+  <Hero
+    image="/images/pumpkin-family.jpg"
+    imageAlt="A family choosing a pumpkin beside the Leaf & Lantern cider and donut counter"
+    title="A welcoming place for every season."
+    copy="The autumn traditions you wait all year for — fresh cider, hot donuts, beautiful pumpkins, and time well spent together — in a warm Michigan gathering place with a reason to return every season."
+    primaryCta={{ label: 'Explore the Seasons', href: '/seasons/' }}
+    secondaryCta={{ label: 'Plan Your Visit', href: '/visit/' }}
+  />
+
+  <section class="section">
+    <div class="container-narrow intro">
+      <span class="eyebrow">At Leaf & Lantern</span>
+      <h2>The traditions that make autumn worth looking forward to.</h2>
+      <p class="lede">
+        We’ve brought together the best parts of the season — fresh cider, hot donuts, beautiful
+        pumpkins, local makers, and simple experiences worth sharing — in one welcoming place.
+      </p>
+      <p>
+        Whether you’re picking out the perfect pumpkin, enjoying a warm cup of locally roasted
+        coffee, or spending an afternoon with family and friends, our goal is to create an autumn
+        tradition you’ll look forward to returning to every year.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">The Seasons at Leaf & Lantern</span>
+        <h2>Autumn is our heart, not our entire calendar.</h2>
+        <p class="lede">
+          Throughout the year, Leaf & Lantern changes with the landscape — inviting discovery,
+          gathering, tradition, and celebration in their own time.
+        </p>
+      </div>
+      <div class="season-grid">
+        <SeasonCard
+          season="spring"
+          name="Spring"
+          signature="Discovery"
+          blurb="School field trips, garden workshops, nature walks, and hands-on programs invite children and adults to notice what is growing, changing, and returning."
+          image="/images/spring-discovery.png"
+          imageAlt="Children exploring garden beds with educators on a spring morning"
+        />
+        <SeasonCard
+          season="summer"
+          name="Summer"
+          signature="Gathering"
+          blurb="Morning yoga, children’s camps, local markets, music, workshops, and long evenings create room to slow down and spend time together."
+          image="/images/yoga-morning.jpg"
+          imageAlt="A morning yoga class in the sunlit timber hall"
+        />
+        <SeasonCard
+          season="autumn"
+          name="Autumn"
+          signature="Tradition"
+          blurb="Fresh cider, hot donuts, locally roasted coffee, pumpkins, harvest markets, and Halloween gatherings bring together the season we wait for all year."
+          image="/images/entrance-autumn.jpg"
+          imageAlt="The Leaf & Lantern entrance sign framed by autumn color"
+        />
+        <SeasonCard
+          season="holiday"
+          name="The Holidays"
+          signature="Celebration"
+          headline="The Holidays are for Celebration."
+          blurb="Warm drinks, artisan gifts, seasonal workshops, evergreen, lantern light, and festive gatherings make Leaf & Lantern a welcoming place to close the year."
+          image="/images/winter-cozy.png"
+          imageAlt="A couple sharing warm drinks and donuts outside the lantern-lit winter market"
+          href="/seasons/#holiday"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <BrandImage
+        src="/images/cider-donuts-closeup.png"
+        alt="Fresh cinnamon donuts, warm cider, and locally roasted coffee on a wood table"
+        label="Cider & Donuts"
+        ratio="4 / 3"
+      />
+      <div class="split-copy">
+        <span class="eyebrow">Food & Bakery</span>
+        <h2>Worth coming early for.</h2>
+        <p class="lede">
+          Follow the smell of warm cinnamon donuts to our open bakery, then stay for fresh cider,
+          locally roasted coffee, and a changing menu of simple seasonal favorites.
+        </p>
+        <a class="btn btn-secondary" href={url('/market/')}>See the Bakery & Café</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container split split-reverse">
+      <BrandImage
+        src="/images/gift-market.jpg"
+        alt="Curated maker displays inside the Leaf & Lantern gift market"
+        ratio="4 / 3"
+      />
+      <div class="split-copy">
+        <span class="eyebrow">The Market</span>
+        <h2>Made nearby. Chosen with care.</h2>
+        <p class="lede">
+          The Market at Leaf & Lantern brings together useful, beautiful, and delicious goods from
+          Michigan makers and producers — ceramics, textiles, pantry favorites, seasonal greenery,
+          and gifts selected to be enjoyed long after your visit.
+        </p>
+        <a class="btn btn-secondary" href={url('/market/')}>Explore the Market</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head row-head">
+        <div>
+          <span class="eyebrow">What’s Happening</span>
+          <h2>Upcoming at Leaf & Lantern</h2>
+        </div>
+        <a class="btn btn-secondary" href={url('/events/')}>View All Events</a>
+      </div>
+      <div class="event-grid">
+        {featuredEvents.map((event) => <EventCard event={event} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-pine">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">One Place, Many Reasons</span>
+        <h2>Programs beyond the visit.</h2>
+      </div>
+      <div class="program-grid">
+        <a class="program-card" href={url('/schools-camps/')}>
+          <h3>Schools & Camps</h3>
+          <p>
+            Curriculum-mapped field trips, homeschool days, and small summer science camps in our
+            flexible teaching hall and gardens.
+          </p>
+          <span class="program-more">Field trips & camps →</span>
+        </a>
+        <a class="program-card" href={url('/groups-rentals/')}>
+          <h3>Groups & Rentals</h3>
+          <p>
+            A warm alternative to a banquet hall for retreats, showers, birthdays, reunions, and
+            small receptions — with food from our own kitchen.
+          </p>
+          <span class="program-more">Host a gathering →</span>
+        </a>
+        <a class="program-card" href={url('/makers/')}>
+          <h3>For Makers</h3>
+          <p>
+            Curated spring, autumn, and holiday markets with juried applications, fair booth fees,
+            and an audience that values handmade work.
+          </p>
+          <span class="program-more">Apply to vend →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section signup-band">
+    <div class="container-narrow signup-inner">
+      <span class="eyebrow">Come for the season. Return for the feeling.</span>
+      <h2>Be first to know when each season opens.</h2>
+      <p>
+        Camp registration, autumn ticket releases, market dates, and workshop announcements —
+        a handful of thoughtful emails a year.
+      </p>
+      <form class="signup-form" action="#" method="post" aria-label="Email signup">
+        <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address" />
+        <button class="btn btn-primary" type="submit">Join Our Email List</button>
+      </form>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .intro h2 {
+    margin-bottom: 0.6em;
+  }
+
+  .section-head {
+    max-width: 52em;
+    margin-bottom: 2.4rem;
+  }
+
+  .row-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
+    max-width: none;
+    flex-wrap: wrap;
+  }
+
+  .season-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.4rem;
+  }
+
+  .event-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .split-reverse {
+    grid-template-columns: 1fr 1.05fr;
+  }
+
+  .split-reverse > :global(.img-frame) {
+    order: 2;
+  }
+
+  .program-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+  }
+
+  .program-card {
+    display: block;
+    background: rgba(244, 239, 229, 0.06);
+    border: 1px solid rgba(244, 239, 229, 0.22);
+    border-radius: var(--radius-lg);
+    padding: 1.7rem 1.6rem;
+    text-decoration: none;
+    color: var(--parchment);
+    transition: background-color 180ms ease, transform 180ms ease;
+  }
+
+  .program-card:hover {
+    background: rgba(244, 239, 229, 0.12);
+    transform: translateY(-3px);
+    color: var(--parchment);
+  }
+
+  .program-card h3 {
+    color: var(--wheat);
+    margin-bottom: 0.5rem;
+  }
+
+  .program-card p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+  }
+
+  .program-more {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--wheat);
+  }
+
+  .signup-band {
+    background: var(--parchment-deep);
+  }
+
+  .signup-inner {
+    text-align: center;
+  }
+
+  .signup-form {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-top: 1.6rem;
+    flex-wrap: wrap;
+  }
+
+  .signup-form input {
+    max-width: 320px;
+  }
+
+  @media (max-width: 1020px) {
+    .season-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .event-grid,
+    .program-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .split,
+    .split-reverse {
+      grid-template-columns: 1fr;
+    }
+
+    .split-reverse > :global(.img-frame) {
+      order: 0;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .season-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

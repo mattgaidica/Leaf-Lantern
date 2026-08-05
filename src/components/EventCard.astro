@@ -1,0 +1,85 @@
+---
+import BrandImage from './BrandImage.astro';
+import { url, SEASONS } from '../lib/site';
+import type { LLEvent } from '../data/events';
+
+interface Props {
+  event: LLEvent;
+}
+
+const { event } = Astro.props;
+const season = SEASONS[event.season];
+const statusLabel =
+  event.status === 'nearly-full' ? 'Nearly full' : event.status === 'free' ? 'Free' : 'On sale';
+---
+<article class="event-card card" data-season={event.season}>
+  <a class="event-card-link" href={url(`/events/${event.slug}/`)}>
+    <BrandImage src={event.image} alt={event.imageAlt} label={event.title} ratio="16 / 10" />
+    <div class="event-card-body">
+      <div class="event-card-meta">
+        <span class={`badge badge-${event.season}`}>{season.name} · {season.signature}</span>
+        <span class:list={['event-status', event.status]}>{statusLabel}</span>
+      </div>
+      <h3>{event.title}</h3>
+      <p class="event-when">{event.dateLabel} · {event.timeLabel}</p>
+      <p class="event-blurb">{event.blurb}</p>
+      <p class="event-price">{event.price}</p>
+    </div>
+  </a>
+</article>
+
+<style>
+  .event-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .event-card-body {
+    padding: 1.2rem 1.35rem 1.4rem;
+  }
+
+  .event-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .event-status {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--deep-pine);
+  }
+
+  .event-status.nearly-full {
+    color: var(--cranberry);
+  }
+
+  .event-card h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1.25rem;
+  }
+
+  .event-when {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--cider);
+    margin: 0 0 0.6rem;
+  }
+
+  .event-blurb {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    margin: 0 0 0.7rem;
+  }
+
+  .event-price {
+    font-weight: 700;
+    font-size: 0.92rem;
+    margin: 0;
+  }
+</style>

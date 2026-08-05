@@ -1,0 +1,244 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import BrandImage from '../components/BrandImage.astro';
+import { url } from '../lib/site';
+
+const hours = [
+  { period: 'January – February', hours: 'Limited public openings; rentals & planning by appointment', focus: 'Retreats, private events, annual planning' },
+  { period: 'March – May', hours: 'Thu–Sun, 9 a.m. – 5 p.m. · school visits on select weekdays', focus: 'Field trips, gardens, workshops, spring market' },
+  { period: 'June – August', hours: 'Tue–Sun, mornings through early evening · select later nights', focus: 'Camps, yoga, markets, music, rentals' },
+  { period: 'September – October', hours: 'Daily, 9 a.m. – 7 p.m. · later Halloween evenings', focus: 'Cider, donuts, pumpkins, harvest, Halloween' },
+  { period: 'November – December', hours: 'Thu–Sun, 10 a.m. – 7 p.m. · select evening markets', focus: 'Gift market, workshops, holiday gatherings' },
+];
+
+const faqs = [
+  {
+    q: 'Do I need a ticket to visit?',
+    a: 'Ordinary market and café days are free. High-demand programmed periods — autumn weekends, Halloween, lantern evenings — use timed tickets so the grounds stay comfortable.',
+  },
+  {
+    q: 'Is Leaf & Lantern accessible?',
+    a: 'Yes. A continuous accessible route connects parking to the entrance, courtyard, restrooms, food service, market, and program areas. Accessible parking is closest to the main entrance.',
+  },
+  {
+    q: 'What happens if the weather turns?',
+    a: 'The main hall is our rain plan — most programming moves indoors. If we must cancel a ticketed event, tickets roll forward or are refunded in full.',
+  },
+  {
+    q: 'Can I bring my dog?',
+    a: 'Service animals are always welcome. Because of food service and children’s programming, pets are best left at home.',
+  },
+  {
+    q: 'Where exactly are you located?',
+    a: 'Leaf & Lantern is in development at a Southeast Michigan location to be announced. Join the email list and you’ll be the first to know.',
+  },
+];
+---
+<Base title="Plan Your Visit" description="Hours, directions, parking, accessibility, and everything you need to plan a visit to Leaf & Lantern.">
+  <Hero
+    compact
+    image="/images/courtyard-summer.png"
+    imageAlt="The Leaf & Lantern courtyard on a relaxed summer afternoon"
+    imageLabel="The Courtyard"
+    eyebrow="Plan Your Visit"
+    title="Come as you are. Stay a while."
+    copy="Everything you need to plan a comfortable visit — hours, parking, accessibility, and what to expect."
+  />
+
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Hours by Season</span>
+      <h2>When we’re open</h2>
+      <p class="lede">
+        Our hours follow the landscape. Check the events calendar for the current week before you
+        head out — seasonal openings are always announced by email first.
+      </p>
+      <div class="table-wrap">
+        <table class="ll-table">
+          <thead>
+            <tr>
+              <th>Period</th>
+              <th>Base hours</th>
+              <th>What’s happening</th>
+            </tr>
+          </thead>
+          <tbody>
+            {hours.map((row) => (
+              <tr>
+                <td><strong>{row.period}</strong></td>
+                <td>{row.hours}</td>
+                <td>{row.focus}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container info-grid">
+      <div class="info-card">
+        <h3>Getting here</h3>
+        <p>
+          Leaf & Lantern will be located on a suburban-rural edge within an easy drive of Metro
+          Detroit — the exact site is being finalized now. A legible entrance, safe turn-in, and
+          clear parking direction are part of the plan from day one.
+        </p>
+        <a class="btn btn-secondary" href="#">Get Directions</a>
+      </div>
+      <div class="info-card">
+        <h3>Parking</h3>
+        <p>
+          Free parking in a right-sized improved lot with planned overflow for peak autumn
+          weekends. Accessible parking sits closest to the main entrance, connected by a
+          continuous accessible route.
+        </p>
+      </div>
+      <div class="info-card">
+        <h3>Accessibility</h3>
+        <p>
+          A continuous accessible route runs from parking to the entrance, courtyard, restrooms,
+          food service, market, and program areas. Questions about a specific visit? Write to
+          <a href="mailto:hello@leafandlantern.com">hello@leafandlantern.com</a>.
+        </p>
+      </div>
+      <div class="info-card">
+        <h3>Food & drink</h3>
+        <p>
+          Fresh cider, hot donuts, locally roasted coffee, and a changing menu of simple seasonal
+          favorites — made in our open bakery and kitchen, every day we’re open.
+        </p>
+        <a class="btn btn-secondary" href={url('/market/')}>Bakery & Café</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <span class="eyebrow">Good to Know</span>
+        <h2>Common questions</h2>
+        <div class="faq-list">
+          {faqs.map((faq) => (
+            <details class="faq">
+              <summary>{faq.q}</summary>
+              <p>{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+      <div class="visit-media">
+        <BrandImage
+          src="/images/entrance-autumn.jpg"
+          alt="The Leaf & Lantern arrival sign on an autumn afternoon"
+          ratio="3 / 4"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-pine">
+    <div class="container-narrow" style="text-align: center;">
+      <h2>Ready to plan a day?</h2>
+      <p class="lede" style="margin-inline: auto;">
+        See what’s on the calendar, or join the email list to hear when each season opens.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href={url('/events/')}>View Events</a>
+        <a class="btn btn-outline-light" href={url('/seasons/')}>Explore the Seasons</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.4rem;
+  }
+
+  .info-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 1.8rem 1.7rem;
+  }
+
+  .info-card h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .info-card .btn {
+    margin-top: 0.4rem;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .faq-list {
+    display: grid;
+    gap: 0.7rem;
+    margin-top: 1.4rem;
+  }
+
+  .faq {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .faq summary {
+    cursor: pointer;
+    font-weight: 700;
+    padding: 1rem 1.2rem;
+    list-style: none;
+    position: relative;
+  }
+
+  .faq summary::after {
+    content: '+';
+    position: absolute;
+    right: 1.2rem;
+    color: var(--cider);
+    font-size: 1.3rem;
+    line-height: 1;
+  }
+
+  .faq[open] summary::after {
+    content: '–';
+  }
+
+  .faq p {
+    padding: 0 1.2rem 1.1rem;
+    margin: 0;
+    opacity: 0.9;
+  }
+
+  .cta-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .info-grid,
+    .split {
+      grid-template-columns: 1fr;
+    }
+
+    .visit-media {
+      display: none;
+    }
+  }
+</style>

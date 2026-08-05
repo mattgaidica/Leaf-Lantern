@@ -1,0 +1,184 @@
+---
+import Base from '../../layouts/Base.astro';
+import BrandImage from '../../components/BrandImage.astro';
+import EventCard from '../../components/EventCard.astro';
+import { url, SEASONS } from '../../lib/site';
+import { EVENTS } from '../../data/events';
+
+export function getStaticPaths() {
+  return EVENTS.map((event) => ({ params: { slug: event.slug }, props: { event } }));
+}
+
+const { event } = Astro.props;
+const season = SEASONS[event.season];
+const related = EVENTS.filter((e) => e.season === event.season && e.slug !== event.slug).slice(0, 2);
+---
+<Base title={event.title} description={event.blurb}>
+  <section class="section-tight">
+    <div class="container event-layout">
+      <div class="event-main">
+        <a class="back-link" href={url('/events/')}>← All events</a>
+        <span class={`badge badge-${event.season}`}>{season.name} · {season.signature}</span>
+        <h1>{event.title}</h1>
+        <p class="lede">{event.blurb}</p>
+        <BrandImage src={event.image} alt={event.imageAlt} label={event.title} ratio="16 / 9" />
+
+        <div class="event-body">
+          <h2>What to expect</h2>
+          <p>
+            Like everything at Leaf & Lantern, this event is intentionally scaled: timed capacity,
+            comfortable circulation, and food and drink from our own kitchen. Arrive when your
+            ticket window opens and stay as long as you like.
+          </p>
+          <ul>
+            <li>Fresh cider, hot donuts, and locally roasted coffee available all day</li>
+            <li>The Market open throughout, featuring Michigan makers</li>
+            <li>Free parking with a continuous accessible route to the entrance</li>
+            <li>Indoor rain plan — the main hall opens if the weather turns</li>
+          </ul>
+
+          <h2>Good to know</h2>
+          <ul>
+            <li>Children under two are always free.</li>
+            <li>Strollers and wagons welcome; service animals welcome.</li>
+            <li>If we must cancel for weather, tickets roll forward or are refunded in full.</li>
+          </ul>
+        </div>
+      </div>
+
+      <aside class="event-aside">
+        <div class="ticket-card">
+          <h3>Details</h3>
+          <dl>
+            <dt>Date</dt>
+            <dd>{event.dateLabel}</dd>
+            <dt>Time</dt>
+            <dd>{event.timeLabel}</dd>
+            <dt>Price</dt>
+            <dd>{event.price}</dd>
+            <dt>Season</dt>
+            <dd>{season.name} · {season.signature}</dd>
+          </dl>
+          <a class="btn btn-primary ticket-btn" href="#">
+            {event.status === 'free' ? 'No Ticket Needed' : 'Get Tickets'}
+          </a>
+          <small>Ticketing opens with our pilot season. Join the email list to be first.</small>
+        </div>
+
+        {related.length > 0 && (
+          <div class="related">
+            <h3>Also this season</h3>
+            {related.map((e) => <EventCard event={e} />)}
+          </div>
+        )}
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .event-layout {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    padding-block: clamp(2rem, 4vw, 3rem);
+    align-items: start;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    margin-bottom: 1.2rem;
+  }
+
+  .event-main .badge {
+    margin-bottom: 0.9rem;
+  }
+
+  .event-main h1 {
+    margin-bottom: 0.3em;
+  }
+
+  .event-main :global(.img-frame) {
+    margin-block: 1.8rem;
+  }
+
+  .event-body h2 {
+    font-size: 1.45rem;
+    margin-top: 1.8rem;
+  }
+
+  .event-body ul {
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .ticket-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 1.6rem;
+    position: sticky;
+    top: 5.5rem;
+  }
+
+  .ticket-card h3 {
+    margin-bottom: 1rem;
+  }
+
+  .ticket-card dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.45rem 1rem;
+    margin: 0 0 1.4rem;
+  }
+
+  .ticket-card dt {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cider);
+    padding-top: 0.15rem;
+  }
+
+  .ticket-card dd {
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .ticket-btn {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.7rem;
+  }
+
+  .ticket-card small {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.7;
+  }
+
+  .related {
+    margin-top: 2rem;
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  .related h3 {
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .event-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .ticket-card {
+      position: static;
+    }
+  }
+</style>

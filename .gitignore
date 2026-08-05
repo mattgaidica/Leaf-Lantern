@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+npm-debug.log*
+
+# Source ChatGPT dumps — site uses public/images/ instead
+assets/*
+!assets/*.md

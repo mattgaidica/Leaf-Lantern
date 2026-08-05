@@ -1,0 +1,155 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import BrandImage from '../components/BrandImage.astro';
+import { url } from '../lib/site';
+
+const principles = [
+  { name: 'Seasonally defined', copy: 'Every event fits Discovery, Gathering, Tradition, or Celebration.' },
+  { name: 'Intimate rather than crowded', copy: 'Timed capacity and comfortable circulation come before maximum attendance.' },
+  { name: 'Food is central', copy: 'Cider, donuts, coffee, and bakery items are core products, not concessions.' },
+  { name: 'Local but edited', copy: 'Makers and products are selected for quality and fit — not merely because they are local.' },
+  { name: 'Family-friendly, not child-exclusive', copy: 'Adults without children still enjoy the architecture, coffee, markets, and atmosphere.' },
+  { name: 'Warm, not kitschy', copy: 'Natural materials, light, landscape, and real products — never excessive props.' },
+];
+---
+<Base title="Our Story" description="The mission and story behind Leaf & Lantern, a seasonal gathering place in development for Southeast Michigan.">
+  <Hero
+    compact
+    image="/images/winter-cozy.png"
+    imageAlt="Guests enjoying warm drinks outside Leaf & Lantern on a snowy evening"
+    eyebrow="Our Story"
+    title="A welcoming place worth returning to."
+    copy="Thoughtful hospitality, memorable experiences, and the natural character of Michigan."
+  />
+
+  <section class="section">
+    <div class="container-narrow">
+      <span class="eyebrow">Our Mission</span>
+      <blockquote class="mission">
+        Leaf & Lantern creates welcoming, seasonally defined experiences that help people slow
+        down, spend time together, and enjoy the traditions, food, creativity, and natural
+        character of Michigan.
+      </blockquote>
+      <p>
+        At Leaf & Lantern, we celebrate the traditions that make autumn worth looking forward to.
+        We’ve brought together the best parts of the season — fresh cider, hot donuts, beautiful
+        pumpkins, local makers, and simple experiences worth sharing — in one welcoming place.
+      </p>
+      <p>
+        Autumn may be where our story begins, but every season has something meaningful to offer.
+        Spring invites discovery. Summer brings people together. Autumn keeps traditions alive.
+        The holidays give us reasons to celebrate. Every season has its own rhythm, but they all
+        share the same purpose: thoughtful hospitality, memorable experiences, and a welcoming
+        place worth returning to.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">How We Work</span>
+        <h2>Operating principles</h2>
+      </div>
+      <div class="principle-grid">
+        {principles.map((p) => (
+          <div class="principle">
+            <h3>{p.name}</h3>
+            <p>{p.copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <BrandImage
+        src="/images/brand-board.jpg"
+        alt="The Leaf & Lantern brand identity board: wordmark, palette, seasonal icons, and packaging"
+        ratio="3 / 2"
+      />
+      <div>
+        <span class="eyebrow">The Brand</span>
+        <h2>Modern heritage, honestly made.</h2>
+        <p>
+          Cream-painted signs, dark timber, warm shielded lanterns, and a scale closer to a lodge
+          than an event complex. Our identity carries through everything — from the entrance sign
+          to the bakery bag to this website.
+        </p>
+        <p>
+          Leaf & Lantern is currently in its validation phase, with pilot events and a permanent
+          Southeast Michigan campus planned. If you’d like to follow along — or be part of it —
+          join the email list below.
+        </p>
+        <a class="btn btn-secondary" href={url('/plan/')}>Read the Business Plan</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .mission {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.8vw, 1.9rem);
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--deep-pine);
+    border-left: 4px solid var(--cider);
+    margin: 0 0 1.8rem;
+    padding: 0.3rem 0 0.3rem 1.5rem;
+  }
+
+  .section-head {
+    max-width: 52em;
+    margin-bottom: 2.2rem;
+  }
+
+  .principle-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.3rem;
+  }
+
+  .principle {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 1.6rem 1.5rem;
+  }
+
+  .principle h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .principle p {
+    margin: 0;
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  @media (max-width: 900px) {
+    .principle-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .split {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .principle-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,227 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import BrandImage from '../components/BrandImage.astro';
+import { url } from '../lib/site';
+
+const seasons = [
+  {
+    id: 'spring',
+    name: 'Spring',
+    signature: 'Discovery',
+    tagline: 'Nature, schools, gardens, and hands-on learning.',
+    copy: 'Programs are active rather than theatrical. Children test soil, observe insects, map a garden, compare seeds, and study what is growing, changing, and returning. School field trips are mapped to Michigan learning standards, and family discovery weekends open the gardens to everyone.',
+    highlights: ['School field trips & homeschool days', 'Seed-starting & garden workshops', 'Pollinator programs & nature walks', 'Earth Day market'],
+    image: '/images/spring-discovery.png',
+    imageAlt: 'Children examining seedlings with educators in the spring gardens',
+    link: { label: 'Schools & Camps', href: '/schools-camps/' },
+  },
+  {
+    id: 'summer',
+    name: 'Summer',
+    signature: 'Gathering',
+    tagline: 'Camps, markets, music, wellness, and long evenings.',
+    copy: 'The main hall converts between camp, yoga, community dining, workshop, and event configurations. Small science camps keep cohorts attentive at sixteen to twenty-four children, morning yoga fills the timber hall with light, and Thursday evening markets stretch into golden hours in the courtyard.',
+    highlights: ['Kids’ science & nature camps', 'Morning yoga in the hall', 'Evening acoustic music & markets', 'Local-food nights & private events'],
+    image: '/images/yoga-morning.jpg',
+    imageAlt: 'Morning yoga in the sunlit main hall with doors open to the gardens',
+    link: { label: 'View Summer Events', href: '/events/' },
+  },
+  {
+    id: 'autumn',
+    name: 'Autumn',
+    signature: 'Tradition',
+    tagline: 'Cider, donuts, coffee, pumpkins, and Halloween.',
+    copy: 'The emotional center of autumn is simple: a family choosing a pumpkin, carrying cider and donuts to a table, watching donuts being made, and browsing useful local goods in a comfortable outdoor space. Halloween is substantial without becoming a haunted attraction — costumes, face painting, lanterns, and a family parade.',
+    highlights: ['Fresh cider, hot donuts & roasted coffee', 'Pumpkin selection & harvest market', 'Halloween costume party & lantern evenings', 'Family photo areas'],
+    image: '/images/halloween-courtyard.jpg',
+    imageAlt: 'The courtyard at dusk with lanterns, hay bales, and children in costumes',
+    link: { label: 'Plan an Autumn Visit', href: '/visit/' },
+  },
+  {
+    id: 'holiday',
+    name: 'The Holidays',
+    signature: 'Celebration',
+    headline: 'The Holidays are for Celebration.',
+    tagline: 'Gift markets, lights, workshops, and warm hospitality.',
+    copy: 'The winter gift market is our strongest indoor retail season — ceramics, textiles, wood goods, candles, pantry products, ornaments, and wreaths from juried Michigan makers, alongside wreath and ornament workshops, warm drinks, bakery boxes, and small-business shopping evenings.',
+    highlights: ['Indoor winter gift market', 'Wreath & ornament workshops', 'Warm drinks & bakery boxes', 'Private holiday gatherings'],
+    image: '/images/gift-market.jpg',
+    imageAlt: 'Warmly lit maker displays inside the winter gift market',
+    link: { label: 'See Holiday Events', href: '/events/' },
+  },
+];
+---
+<Base title="The Seasons" description="Discovery in spring, gathering in summer, tradition in autumn, celebration through the holidays — the four seasons at Leaf & Lantern.">
+  <Hero
+    compact
+    image="/images/entrance-autumn.jpg"
+    imageAlt="The Leaf & Lantern entrance framed by autumn maples"
+    eyebrow="The Seasons at Leaf & Lantern"
+    title="Every season has its own rhythm."
+    copy="Autumn may be where our story begins, but every season has something meaningful to offer."
+  />
+
+  <nav class="season-jump" aria-label="Seasons">
+    <div class="container season-jump-inner">
+      {seasons.map((s) => (
+        <a href={`#${s.id}`} class={`jump jump-${s.id}`}>
+          <strong>{s.name}</strong>
+          <span>{s.signature}</span>
+        </a>
+      ))}
+    </div>
+  </nav>
+
+  {seasons.map((s, i) => (
+    <section id={s.id} class:list={['section season-section', { 'section-alt': i % 2 === 1 }]}>
+      <div class:list={['container split', { 'split-reverse': i % 2 === 1 }]}>
+        <BrandImage src={s.image} alt={s.imageAlt} label={`${s.name}: ${s.signature}`} ratio="4 / 3" />
+        <div class="season-copy">
+          <span class={`badge badge-${s.id}`}>{s.name} · {s.signature}</span>
+          <h2>{s.headline ?? `${s.name} is for ${s.signature}.`}</h2>
+          <p class="season-tagline">{s.tagline}</p>
+          <p>{s.copy}</p>
+          <ul class="highlights">
+            {s.highlights.map((h) => <li>{h}</li>)}
+          </ul>
+          <a class="btn btn-secondary" href={url(s.link.href)}>{s.link.label}</a>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="section section-pine">
+    <div class="container-narrow" style="text-align: center;">
+      <span class="eyebrow">Plan Ahead</span>
+      <h2>Come for the season. Return for the feeling.</h2>
+      <p class="lede" style="margin-inline: auto;">
+        See what’s on the calendar right now, or plan your first visit.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href={url('/events/')}>View Events</a>
+        <a class="btn btn-outline-light" href={url('/visit/')}>Plan Your Visit</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .season-jump {
+    background: var(--parchment);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .season-jump-inner {
+    display: flex;
+    gap: 0.4rem;
+    padding-block: 0.65rem;
+    overflow-x: auto;
+  }
+
+  .jump {
+    display: flex;
+    flex-direction: column;
+    gap: 0.05rem;
+    text-decoration: none;
+    padding: 0.45rem 1.1rem;
+    border-radius: var(--radius);
+    line-height: 1.25;
+    white-space: nowrap;
+    color: var(--lantern-black);
+    border-left: 3px solid transparent;
+  }
+
+  .jump strong {
+    font-family: var(--font-display);
+    font-size: 1rem;
+  }
+
+  .jump span {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  .jump:hover {
+    background: var(--parchment-deep);
+  }
+
+  .jump-spring { border-left-color: var(--season-spring); }
+  .jump-summer { border-left-color: var(--season-summer); }
+  .jump-autumn { border-left-color: var(--season-autumn); }
+  .jump-holiday { border-left-color: var(--season-holiday); }
+
+  .season-section {
+    scroll-margin-top: 4.5rem;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .split-reverse > :global(.img-frame) {
+    order: 2;
+  }
+
+  .season-copy .badge {
+    margin-bottom: 1rem;
+  }
+
+  .season-tagline {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--cider);
+    font-weight: 600;
+  }
+
+  .highlights {
+    list-style: none;
+    padding: 0;
+    margin: 1.2rem 0 1.6rem;
+    display: grid;
+    gap: 0.45rem;
+  }
+
+  .highlights li {
+    padding-left: 1.4rem;
+    position: relative;
+  }
+
+  .highlights li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cider);
+  }
+
+  .cta-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .split,
+    .split-reverse {
+      grid-template-columns: 1fr;
+    }
+
+    .split-reverse > :global(.img-frame) {
+      order: 0;
+    }
+  }
+</style>

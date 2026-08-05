@@ -1,0 +1,115 @@
+---
+import BrandImage from './BrandImage.astro';
+import { url } from '../lib/site';
+
+interface Props {
+  image: string;
+  imageAlt: string;
+  imageLabel?: string;
+  eyebrow?: string;
+  title: string;
+  copy?: string;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+  compact?: boolean;
+}
+
+const { image, imageAlt, imageLabel, eyebrow, title, copy, primaryCta, secondaryCta, compact = false } =
+  Astro.props;
+---
+<section class:list={['hero', { compact }]}>
+  <div class="hero-media">
+    <BrandImage src={image} alt={imageAlt} label={imageLabel} ratio="auto" class="hero-img" eager />
+    <div class="hero-scrim" aria-hidden="true"></div>
+  </div>
+  <div class="container hero-content">
+    {eyebrow && <span class="hero-eyebrow">{eyebrow}</span>}
+    <h1>{title}</h1>
+    {copy && <p class="hero-copy">{copy}</p>}
+    {(primaryCta || secondaryCta) && (
+      <div class="hero-ctas">
+        {primaryCta && <a class="btn btn-primary" href={url(primaryCta.href)}>{primaryCta.label}</a>}
+        {secondaryCta && (
+          <a class="btn btn-outline-light" href={url(secondaryCta.href)}>{secondaryCta.label}</a>
+        )}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: min(78vh, 680px);
+    display: flex;
+    align-items: flex-end;
+    color: var(--parchment);
+  }
+
+  .hero.compact {
+    min-height: min(48vh, 420px);
+  }
+
+  .hero-media {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .hero-media :global(.hero-img) {
+    position: absolute;
+    inset: 0;
+    border-radius: 0;
+    box-shadow: none;
+    aspect-ratio: auto !important;
+    height: 100%;
+  }
+
+  .hero-media :global(.hero-img img) {
+    height: 100%;
+  }
+
+  .hero-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to top, rgba(31, 36, 30, 0.82) 0%, rgba(31, 36, 30, 0.25) 55%, rgba(31, 36, 30, 0.15) 100%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    padding-block: clamp(2.5rem, 6vw, 4.5rem);
+    max-width: var(--container);
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--wheat);
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 {
+    color: var(--white);
+    max-width: 15em;
+    margin-bottom: 0.4em;
+  }
+
+  .hero-copy {
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    max-width: 38em;
+    opacity: 0.95;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 1.6rem;
+  }
+</style>
