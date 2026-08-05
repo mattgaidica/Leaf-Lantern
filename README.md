@@ -1,5 +1,9 @@
 # Leaf & Lantern — Website
 
+<p align="center">
+  <a href="https://mattgaidica.github.io/Leaf-Lantern/"><strong>Visit the site →</strong></a>
+</p>
+
 A GitHub Pages–deployable website for **Leaf & Lantern**, a seasonal gathering place concept for
 Southeast Michigan. It has two faces:
 
