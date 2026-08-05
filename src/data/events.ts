@@ -20,12 +20,12 @@ export const EVENTS: LLEvent[] = [
     season: 'autumn',
     dateLabel: 'Sat–Sun, Oct 3–4',
     timeLabel: '9 a.m. – 7 p.m.',
-    price: '$14 adults · under 2 free',
+    price: 'Free admission · reserve a free arrival window on peak weekends',
     blurb:
       'The season we wait for all year: fresh cider, hot donuts, pumpkin selection, the harvest market, and family photo areas.',
     image: '/images/pumpkin-family.jpg',
     imageAlt: 'A family choosing a pumpkin beside the cider and donut counter',
-    status: 'on-sale',
+    status: 'free',
   },
   {
     slug: 'lantern-evening',

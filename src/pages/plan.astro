@@ -24,11 +24,11 @@ const metrics = [
 ];
 
 const pnl = [
-  { item: 'Admissions', y1: '$480', y2: '$575', y3: '$675' },
-  { item: 'Food and beverage', y1: '610', y2: '760', y3: '900' },
-  { item: 'Retail', y1: '190', y2: '235', y3: '285' },
+  { item: 'Food and beverage', y1: '$780', y2: '$975', y3: '$1,170' },
+  { item: 'Retail and pumpkins', y1: '280', y2: '345', y3: '415' },
+  { item: 'Ticketed events and experiences', y1: '180', y2: '220', y3: '260' },
   { item: 'Vendor and market fees', y1: '120', y2: '150', y3: '180' },
-  { item: 'Events and rentals', y1: '190', y2: '245', y3: '300' },
+  { item: 'Rentals and retreats', y1: '230', y2: '275', y3: '315' },
   { item: 'Camps and workshops', y1: '210', y2: '260', y3: '310' },
 ];
 
@@ -61,10 +61,9 @@ const seasonalRevenue = [
 ];
 
 const pricing = [
-  { stream: 'Ordinary market and café access', price: 'Free' },
+  { stream: 'General admission, every day — grounds, market, café, pumpkins', price: 'Free' },
+  { stream: 'Peak-weekend arrival reservation', price: 'Free' },
   { stream: 'Spring or summer discovery day', price: '$8–$12 per guest' },
-  { stream: 'Autumn weekday programmed admission', price: '$8–$11' },
-  { stream: 'Autumn weekend programmed admission', price: '$12–$16' },
   { stream: 'Halloween costume party or lantern evening', price: '$14–$20' },
   { stream: 'School field trip', price: '$12–$16 per student' },
   { stream: 'Summer science camp', price: '$285–$425 per child/week' },
@@ -73,6 +72,7 @@ const pricing = [
   { stream: 'Main-space rental', price: '$1,500–$4,500' },
   { stream: 'Corporate retreat package', price: '$70–$140 per attendee' },
   { stream: 'Donut six-pack / cider / coffee', price: '$10–$14 / $4–$7 / $4–$6.50' },
+  { stream: 'Mini coffee or kids’ cider', price: '$2' },
 ];
 
 const competitors = [
@@ -124,7 +124,7 @@ const roadmapPhases = [
 const risks = [
   { risk: 'Site or zoning incompatibility', mitigation: 'Municipal pre-application review before purchase; entitlement contingencies; written use interpretations.' },
   { risk: 'Capital-cost escalation', mitigation: 'Civil and utility due diligence early; contractor pricing at schematic design; 12–15% construction contingency.' },
-  { risk: 'Autumn dependence', mitigation: 'Presold timed tickets; indoor rain capacity; camps, schools, rentals, and gift markets in the base model.' },
+  { risk: 'Autumn dependence', mitigation: 'Preorder food and pumpkin bundles; indoor rain capacity; camps, schools, rentals, and gift markets in the base model.' },
   { risk: 'Brand dilution', mitigation: 'Every program must fit one seasonal signature; maximum visual and attendance density; formal experience review.' },
   { risk: 'Food bottlenecks', mitigation: 'Separate order and pickup; preorder bundles; batch planning; throughput testing before opening.' },
   { risk: 'Seasonal labor shortage', mitigation: 'Early recruiting of students, retirees, returners; above-minimum pay ($16–$18/hr); simplified roles and short training modules.' },
@@ -270,11 +270,11 @@ const risks = [
           in 2024.
         </p>
         <p>
-          The year-one plan assumes approximately 40,000 paid general-admission visits plus camp,
-          workshop, rental, café, and market visitors — roughly one percent of the three-county
-          population. That modest penetration requirement supports feasibility; a parcel-level
-          drive-time analysis will establish the defensible serviceable market before any
-          commitment.
+          The year-one plan assumes approximately 55,000 free-admission visits plus camp,
+          workshop, rental, and program participants — under two percent of the three-county
+          population. Free entry lowers the barrier to a first visit and to casual repeat visits;
+          a parcel-level drive-time analysis will establish the defensible serviceable market
+          before any commitment.
         </p>
 
         <h3>Competitive landscape</h3>
@@ -317,7 +317,7 @@ const risks = [
             <tbody>
               <tr><td><strong>Spring · Discovery</strong></td><td>School field trips, homeschool days, garden and pollinator workshops, nature walks, Earth Day market</td><td>Field-trip fees, workshops, café, retail kits, vendor fees</td></tr>
               <tr><td><strong>Summer · Gathering</strong></td><td>Science camps, morning yoga, acoustic evenings, small markets, local-food nights, private events</td><td>Camps, class passes, F&B, markets, rentals</td></tr>
-              <tr><td><strong>Autumn · Tradition</strong></td><td>Cider, donuts, coffee, pumpkins, harvest market, Halloween party, lantern evenings</td><td>Admission, F&B, pumpkins, retail, vendor fees</td></tr>
+              <tr><td><strong>Autumn · Tradition</strong></td><td>Cider, donuts, coffee, pumpkins, harvest market, Halloween party, lantern evenings</td><td>F&B, pumpkins, retail, ticketed evenings, vendor fees</td></tr>
               <tr><td><strong>Holiday · Celebration</strong></td><td>Indoor gift market, wreath and ornament workshops, bakery boxes, shopping evenings</td><td>Vendor fees, retail, F&B, workshops, rentals</td></tr>
             </tbody>
           </table>
@@ -348,11 +348,19 @@ const risks = [
       <!-- ============ Financials ============ -->
       <section id="financials" class="plan-section">
         <span class="eyebrow">05 · Revenue Streams & Financial Plan</span>
-        <h2>A mixed-access model with food at the center.</h2>
+        <h2>Free to enter. Worth paying for.</h2>
         <p class="lede">
-          Ordinary café and market days are free; high-demand programmed periods use admission or
-          timed tickets. This avoids a paywall in front of every coffee while preserving the
-          ability to manage autumn capacity and monetize major experiences.
+          Admission is always free — grounds, market, café, and pumpkin selection, every day,
+          including peak autumn weekends. There is no gate fee and no upsell ladder. Margin lives
+          in food, retail, and genuinely bounded experiences: ticketed evenings, workshops, camps,
+          field trips, and rentals.
+        </p>
+        <p>
+          Peak autumn capacity is managed with free timed arrival reservations rather than a
+          paywall, preserving the calm, intimate atmosphere that differentiates the brand. A $2
+          mini coffee and a bag of donuts is a complete, welcome visit — the model treats that
+          family as the beginning of a relationship that later books a camp, a field trip, or a
+          corporate retreat, not as a missed ticket sale.
         </p>
 
         <h3>Opening price architecture <small>(2030 dollars, to be validated in pilots)</small></h3>
@@ -367,9 +375,10 @@ const risks = [
           </table>
         </div>
         <p>
-          The admission band sits intentionally below Wiard’s $27.50 weekend price and near or
-          moderately above Blake’s $12–$14 festival pricing — a smaller attraction set, a more
-          curated environment.
+          Free admission is a deliberate contrast with Wiard’s $27.50 weekend gate and Blake’s
+          $12–$14 festival pricing. The most common criticism of established venues — pay at the
+          door, then pay again for everything inside — becomes Leaf & Lantern’s clearest
+          differentiator.
         </p>
 
         <h3>Three-year illustrative P&L <small>(thousands of dollars)</small></h3>
@@ -394,9 +403,11 @@ const risks = [
           </table>
         </div>
         <p>
-          The model assumes roughly 40,000 paid admissions in year one, 48,000 in year two, and
-          56,000 in year three — and that management resists adding low-margin attractions simply
-          to increase attendance.
+          The model assumes roughly 55,000 free-admission visits in year one, 65,000 in year two,
+          and 75,000 in year three, with food-and-beverage or retail purchases on well over half
+          of visits — and that management resists adding low-margin attractions simply to
+          increase attendance. Preorder bundles (family cider-and-donut packs, pumpkin
+          reservations, holiday boxes) replace presold tickets as the weather hedge.
         </p>
 
         <h3>Seasonal revenue mix <small>(year one)</small></h3>
