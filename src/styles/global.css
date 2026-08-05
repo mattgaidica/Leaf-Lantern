@@ -428,3 +428,21 @@ label {
   background: var(--wheat);
   color: var(--lantern-black);
 }
+
+/* ---------- Print ---------- */
+
+@page {
+  margin: 14mm;
+}
+
+@media print {
+  .site-header,
+  .site-footer,
+  .skip-link {
+    display: none;
+  }
+
+  body {
+    background: #fff;
+  }
+}

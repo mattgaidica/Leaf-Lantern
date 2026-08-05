@@ -12,6 +12,7 @@ const toc = [
   { id: 'brand', label: 'Brand & Marketing' },
   { id: 'roadmap', label: 'Roadmap & Milestones' },
   { id: 'risks', label: 'Risks & Mitigations' },
+  { id: 'sources', label: 'Sources & Notes' },
 ];
 
 const metrics = [
@@ -84,13 +85,66 @@ const competitors = [
   {
     name: 'Wiard’s Orchards',
     model: 'Fall-centered orchard and Country Fair: $18 weekday, $27.50 weekend, $46 season pass, plus a free-access Country Store.',
-    lesson: 'Demonstrates strong willingness to pay in peak autumn. Charge for programmed weekends while preserving free market-and-café access.',
+    lesson: 'Demonstrates strong autumn willingness to pay for bounded experiences. Leaf & Lantern keeps entry free and monetizes food, retail, and ticketed evenings instead of the gate.',
   },
   {
     name: 'Westview Orchards & Winery',
     model: 'Farm market and bakery spring into winter: U-pick, summer farm fun, porch winery, fall activities, private rentals.',
     lesson: 'Shows the value of a steady market-and-food base underneath seasonal programming. Make the kitchen useful even with no event underway.',
   },
+];
+
+const revChart = {
+  scaleMax: 2800,
+  breakEven: { low: 1600, high: 1800 },
+  gridlines: [
+    { v: 500, label: '$0.5M' },
+    { v: 1000, label: '$1.0M' },
+    { v: 1500, label: '$1.5M' },
+    { v: 2000, label: '$2.0M' },
+    { v: 2500, label: '$2.5M' },
+  ],
+  streams: [
+    { key: 'fnb', label: 'Food and beverage', color: 'var(--cider)' },
+    { key: 'retail', label: 'Retail and pumpkins', color: 'var(--cranberry)' },
+    { key: 'rentals', label: 'Rentals and retreats', color: 'var(--deep-pine)' },
+    { key: 'camps', label: 'Camps and workshops', color: '#8a6d2f' },
+    { key: 'ticketed', label: 'Ticketed events and experiences', color: 'var(--winter-evergreen)' },
+    { key: 'vendor', label: 'Vendor and market fees', color: 'var(--wheat)' },
+  ],
+  years: [
+    { label: 'Year One', total: 1800, totalLabel: '$1.80M', values: { fnb: 780, retail: 280, rentals: 230, camps: 210, ticketed: 180, vendor: 120 } as Record<string, number> },
+    { label: 'Year Two', total: 2225, totalLabel: '$2.23M', values: { fnb: 975, retail: 345, rentals: 275, camps: 260, ticketed: 220, vendor: 150 } as Record<string, number> },
+    { label: 'Year Three', total: 2650, totalLabel: '$2.65M', values: { fnb: 1170, retail: 415, rentals: 315, camps: 310, ticketed: 260, vendor: 180 } as Record<string, number> },
+  ],
+};
+
+const nearbyMills = [
+  { venue: 'Franklin Cider Mill', location: 'Bloomfield Twp', model: 'Historic autumn-only cider mill; cider, donuts, farm goods; famous peak-weekend lines', entry: 'Free entry' },
+  { venue: 'Parmenter’s Northville Cider Mill', location: 'Northville', model: 'Autumn-only cider mill with walk-up counter service', entry: 'Free entry' },
+  { venue: 'Three Cedars Farm', location: 'South Lyon', model: 'Autumn farm destination: shops, donuts, children’s activities', entry: 'Free entry; paid activities' },
+  { venue: 'Plymouth Orchards & Cider Mill', location: 'Plymouth', model: 'Family farm: hayrides, animals, school tours, cider and donuts', entry: 'Free entry; paid rides and tours' },
+  { venue: 'Long Family Orchard & Cider Mill', location: 'Commerce Twp', model: 'U-pick orchard and weekend cider mill', entry: 'Free entry; pay per activity' },
+  { venue: 'Obstbaum Orchards', location: 'Salem Twp', model: 'Small orchard cider mill and bakery', entry: 'Free entry' },
+];
+
+const bridge = [
+  { line: 'Food and beverage — $780K', drivers: '55,000 visits ≈ 19,600 parties; ~85% of parties purchase at a ~$40 average check (≈ $670K), plus ~$110K of catering and F&B inside camps, ticketed events, and rentals.' },
+  { line: 'Retail and pumpkins — $280K', drivers: '~22% of parties purchase retail at a ~$50 average basket (≈ $216K), plus ~8,000 pumpkins at ~$8 average (≈ $64K).' },
+  { line: 'Ticketed events and experiences — $180K', drivers: '≈ 4,800 evening-event tickets at ~$17 average ($82K), 5,200 field-trip students at ~$14 ($73K), and 2,500 discovery-day guests at ~$10 ($25K).' },
+  { line: 'Vendor and market fees — $120K', drivers: '≈ 30 market dates averaging 20 booths at a ~$200 average fee.' },
+  { line: 'Rentals and retreats — $230K', drivers: '≈ 50 private rentals at ~$2,900 average ($145K), plus ~14 corporate retreats at ~$6,000 average ($84K).' },
+  { line: 'Camps and workshops — $210K', drivers: '10 summer camp weeks averaging 40 children at ~$355 ($142K), plus ~1,250 workshop seats at ~$55 average ($69K).' },
+];
+
+const sources = [
+  'County population: U.S. Census Bureau population estimates for Wayne, Oakland, and Macomb counties (2025 vintage).',
+  'Household income: U.S. Census Bureau American Community Survey, median household income for Oakland and Livingston counties.',
+  'Visitor economy: Michigan Economic Development Corporation / Tourism Economics annual visitor-economy report, 2024 calendar year.',
+  'Competitor pricing and models: published venue websites and listings for the 2025 operating season (Blake’s, Wiard’s, Westview) and public listings and customer reviews for nearby cider mills. All figures to be re-verified in a formal pilot-stage competitive audit.',
+  'Construction allowances: regional cost-per-square-foot benchmarks for hospitality and agritourism construction; superseded by a contractor-led estimate before any financing commitment.',
+  'Minimum wage: Michigan Improved Workforce Opportunity Wage Act schedule ($15.00 effective 2027).',
+  'All P&L, pricing, and volume figures are founder planning estimates, not audited projections.',
 ];
 
 const roadmapPhases = [
@@ -140,9 +194,9 @@ const risks = [
 
   <header class="plan-hero">
     <div class="container plan-hero-inner">
-      <span class="plan-kicker">Investor Overview · Prepared 2026</span>
+      <span class="plan-kicker">Concept & Feasibility Plan · Prepared 2026</span>
       <h1>Leaf <em>&</em> Lantern</h1>
-      <p class="plan-subtitle">Business Plan for a Four-Season Gathering Place in Southeast Michigan</p>
+      <p class="plan-subtitle">An April-to-December Seasonal Gathering Place in Southeast Michigan</p>
       <p class="plan-thesis">
         More intentional than a traditional cider mill, more intimate than a festival farm, and
         warmer than a conventional event venue.
@@ -185,6 +239,13 @@ const risks = [
 
         <blockquote class="pull-quote">Autumn is our heart, not our entire calendar.</blockquote>
 
+        <p>
+          The campus operates <strong>April through December</strong> in four seasonal chapters —
+          Discovery, Gathering, Tradition, and Celebration. January through March, the property
+          closes to the public for maintenance, planning, hiring, and limited private bookings;
+          the financial model carries those months as cost, not revenue.
+        </p>
+
         <div class="table-wrap">
           <table class="ll-table">
             <thead>
@@ -211,14 +272,21 @@ const risks = [
           advance bookings; and confirmation that food-service throughput, parking, restrooms, and
           accessibility support autumn peaks without compromising the brand experience.
         </p>
+        <p class="scope-note">
+          This document is a concept and feasibility plan. A subsequent investment memorandum —
+          prepared after the pilot seasons — will add founder and team biographies, ownership
+          structure, capital sought, debt and equity assumptions, use of proceeds, investor terms,
+          and the expected return pathway.
+        </p>
       </section>
 
       <!-- ============ Concept & Mission ============ -->
       <section id="concept" class="plan-section">
         <span class="eyebrow">02 · Concept & Mission</span>
-        <h2>A real place with year-round purpose.</h2>
+        <h2>A real place with a purpose in every operating season.</h2>
         <p>
-          Leaf & Lantern is a four-season hospitality and agritourism-inspired venue focused on
+          Leaf & Lantern is an April-to-December seasonal hospitality and agritourism-inspired
+          venue focused on
           family traditions, local food, creative learning, community gatherings, and
           Michigan-made products. It does not need to operate as a large production farm, but its
           offerings remain materially connected to seasons, food, growing, making, and the
@@ -236,6 +304,9 @@ const risks = [
           ratio="21 / 9"
           class="plan-figure"
         />
+        <p class="figure-note">
+          Representative concept imagery; final architecture, signage, and branding may differ.
+        </p>
 
         <h3>Operating principles</h3>
         <div class="table-wrap">
@@ -264,17 +335,20 @@ const risks = [
         <span class="eyebrow">03 · Market Analysis</span>
         <h2>A validated but crowded market — with clear whitespace.</h2>
         <p class="lede">
-          Wayne, Oakland, and Macomb counties held approximately 3.94 million residents in 2025.
-          Oakland County’s median household income was $97,760; Livingston County’s was $103,039.
-          Michigan recorded 131.2 million visitors and $30.7 billion in direct visitor spending
-          in 2024.
+          The primary market is defined by drive time, not county lines: 30-, 45-, and 60-minute
+          bands centered on the eventual parcel in the Northville–South Lyon–Farmington corridor,
+          weighted toward western Wayne County, southern and western Oakland County, and eastern
+          Livingston County.
         </p>
         <p>
-          The year-one plan assumes approximately 55,000 free-admission visits plus camp,
-          workshop, rental, and program participants — under two percent of the three-county
-          population. Free entry lowers the barrier to a first visit and to casual repeat visits;
-          a parcel-level drive-time analysis will establish the defensible serviceable market
-          before any commitment.
+          For context, the broader tri-county region (Wayne, Oakland, Macomb) held approximately
+          3.94 million residents in 2025, with median household incomes of $97,760 in Oakland
+          County and $103,039 in Livingston County. Michigan recorded 131.2 million visitors and
+          $30.7 billion in direct visitor spending in 2024. The year-one plan assumes
+          approximately 55,000 free-admission visits plus camp, workshop, rental, and program
+          participants — a low single-digit share of households within the 45-minute band. The
+          precise serviceable market comes from the parcel-level drive-time analysis before any
+          commitment.
         </p>
 
         <h3>Competitive landscape</h3>
@@ -287,6 +361,29 @@ const risks = [
             </div>
           ))}
         </div>
+
+        <h3>Nearby cider mills <small>(closest conceptual and geographic comparisons)</small></h3>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>Venue</th><th>Location</th><th>Core model</th><th>Entry</th></tr></thead>
+            <tbody>
+              {nearbyMills.map((m) => (
+                <tr><td><strong>{m.venue}</strong></td><td>{m.location}</td><td>{m.model}</td><td>{m.entry}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Nearly every close competitor is autumn-only and free-entry — which validates Leaf &
+          Lantern’s free-admission posture while exposing the whitespace: none offers quality
+          indoor space, curated retail, or school and camp programming across an April-to-December
+          calendar. Recurring themes in public customer reviews of these venues shaped the concept
+          directly: praise concentrates on tradition, donuts, and atmosphere, while complaints
+          concentrate on long waits, parking congestion, payment friction, and peak-weekend
+          crowding. Those four complaints map to Leaf & Lantern’s throughput design, parking
+          sizing, modern payments, and free timed arrival reservations. Competitor profiles are
+          summarized from public listings and reviews; a formal audit is part of pilot-stage work.
+        </p>
 
         <blockquote class="pull-quote">
           The competitive opening is not “another cider mill.” It is a smaller, more curated
@@ -331,17 +428,37 @@ const risks = [
         />
         <p class="figure-note">
           One adaptable hall is the operating thesis: the same timber room serves camps, yoga,
-          markets, food service, workshops, and rentals across the calendar.
+          markets, food service, workshops, and rentals across the calendar. Representative
+          concept imagery; final architecture, signage, and branding may differ.
+        </p>
+
+        <h3>Hall scheduling policy</h3>
+        <p>
+          One room serving many uses works only with a firm booking hierarchy. Public hours are
+          protected: private rentals book after the public close, on scheduled closed days
+          (Monday–Tuesday in spring and early summer), or in designated shoulder-season weeks —
+          never during autumn public hours. Camps and yoga hold fixed morning blocks before the
+          midday public peak, and market layouts are designed to reset overnight. The rental
+          revenue in this plan assumes that constrained calendar, not an open one.
         </p>
 
         <h3>Staffing</h3>
         <p>
-          The permanent operation begins with eight to ten full-time-equivalent leadership and
-          skilled positions — general manager, operations and facilities, culinary manager, lead
-          baker, market buyer, education and programming, events and rentals, marketing and guest
-          relations, plus administrative and maintenance support. Peak autumn adds thirty-five to
-          fifty-five part-time employees. With Michigan’s minimum wage reaching $15 in 2027, the
-          model assumes frontline hiring at $16–$18 per hour rather than the statutory floor.
+          The permanent team opens deliberately small: five to seven full-time equivalents holding
+          combined portfolios — a general manager who also owns events and rentals, a culinary
+          manager who is also the lead baker, a market buyer who also manages marketing and guest
+          relations, an education and programming lead, and operations and facilities. A
+          part-time café and market crew covers daily service across the operating season, and peak autumn adds
+          thirty-five to fifty-five seasonal employees. With Michigan’s minimum wage reaching $15
+          in 2027, frontline hiring is modeled at $16–$18 per hour rather than the statutory
+          floor.
+        </p>
+        <p>
+          That structure — roughly $320–350K in salaried payroll, $110–130K in season-long
+          part-time wages, and $120–140K in peak seasonal wages, plus employer taxes and benefits — is
+          what the $660,000 first-year payroll line supports. A fuller eight-to-ten-FTE leadership
+          team is a year-three outcome funded by revenue growth (payroll rises to $865,000 by year
+          three in the P&L), not an opening assumption.
         </p>
       </section>
 
@@ -402,12 +519,82 @@ const risks = [
             </tbody>
           </table>
         </div>
+
+        <h3>Revenue build vs. cash break-even</h3>
+        <div class="be-chart" id="be-chart">
+          <div
+            class="be-plot"
+            role="img"
+            aria-label="Stacked revenue by stream for years one through three. Year one totals 1.80 million dollars, at the top edge of the 1.6 to 1.8 million dollar cash break-even zone. Year two totals 2.23 million and year three 2.65 million, both above break-even."
+          >
+            {revChart.gridlines.map((g) => (
+              <div class="be-grid" style={`bottom: ${(g.v / revChart.scaleMax) * 100}%;`}>
+                <span>{g.label}</span>
+              </div>
+            ))}
+            <div
+              class="be-band"
+              style={`bottom: ${(revChart.breakEven.low / revChart.scaleMax) * 100}%; height: ${((revChart.breakEven.high - revChart.breakEven.low) / revChart.scaleMax) * 100}%;`}
+            >
+              <span>Cash break-even · $1.6–1.8M</span>
+            </div>
+            <div class="be-cols">
+              {revChart.years.map((y) => (
+                <div class="be-col">
+                  <span class="be-total" style={`bottom: ${(y.total / revChart.scaleMax) * 100}%;`}>{y.totalLabel}</span>
+                  <div class="be-stack">
+                    {revChart.streams.map((s) => (
+                      <div
+                        class="be-seg"
+                        style={`height: ${(y.values[s.key] / revChart.scaleMax) * 100}%; background: ${s.color};`}
+                        data-label={s.label}
+                        data-amount={`$${y.values[s.key]}K`}
+                        data-share={`${Math.round((y.values[s.key] / y.total) * 100)}% of ${y.label.toLowerCase()}`}
+                        aria-label={`${s.label}, ${y.label}: $${y.values[s.key]} thousand, ${Math.round((y.values[s.key] / y.total) * 100)} percent of the year`}
+                      ></div>
+                    ))}
+                  </div>
+                  <span class="be-year">{y.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="be-legend">
+            {revChart.streams.map((s) => (
+              <span class="be-key"><i style={`background: ${s.color};`}></i>{s.label}</span>
+            ))}
+          </div>
+          <div class="be-tooltip" id="be-tooltip" hidden></div>
+        </div>
+        <p class="figure-note">
+          Hover or tap a segment for its value and share. Year one lands at the top edge of the
+          break-even zone — the P&L tells the same story, with year-one EBITDA of $220K roughly
+          equal to year-one interest expense — while years two and three clear it comfortably.
+        </p>
+
         <p>
           The model assumes roughly 55,000 free-admission visits in year one, 65,000 in year two,
-          and 75,000 in year three, with food-and-beverage or retail purchases on well over half
-          of visits — and that management resists adding low-margin attractions simply to
-          increase attendance. Preorder bundles (family cider-and-donut packs, pumpkin
+          and 75,000 in year three — and that management resists adding low-margin attractions
+          simply to increase attendance. Preorder bundles (family cider-and-donut packs, pumpkin
           reservations, holiday boxes) replace presold tickets as the weather hedge.
+        </p>
+
+        <h3>Bottom-up bridge to the year-one P&L <small>(illustrative unit assumptions)</small></h3>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>P&L line</th><th>Year-one drivers</th></tr></thead>
+            <tbody>
+              {bridge.map((b) => (
+                <tr><td><strong>{b.line}</strong></td><td>{b.drivers}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Roughly fifteen percent of parties buy nothing at all — the café-only browsers and
+          walkers the free-admission model deliberately welcomes. These unit assumptions are
+          planning estimates; the two pilot seasons exist to replace every one of them with
+          observed capture rates, checks, and enrollment before financing.
         </p>
 
         <h3>Seasonal revenue mix <small>(year one)</small></h3>
@@ -446,6 +633,21 @@ const risks = [
           commitment is made until a contractor-led estimate and site-specific utility study
           replace these allowances.
         </p>
+
+        <h3>Break-even definition and land</h3>
+        <p>
+          The stated <strong>$1.6–1.8M cash break-even</strong> is the annual revenue at which
+          operating cash flow covers all operating expenses — including market-rate owner-manager
+          compensation within payroll — plus interest and scheduled principal repayment. Income
+          taxes apply only above that level; depreciation is excluded as a non-cash item.
+        </p>
+        <p>
+          The $3.95M startup allowance excludes land. A purchase scenario adds parcel acquisition
+          to the capital requirement and its debt service to the break-even; a long-term
+          ground-lease scenario adds an annual occupancy payment to the P&L instead. Both
+          scenarios will be modeled with real numbers at site selection, and the financing
+          structure will not be fixed before then.
+        </p>
       </section>
 
       <!-- ============ Brand ============ -->
@@ -466,6 +668,20 @@ const risks = [
           ratio="3 / 2"
           class="plan-figure"
         />
+        <p class="figure-note">
+          Representative concept imagery; final architecture, signage, and branding may differ.
+          Where board typography and renderings vary from the written standard below, the written
+          standard governs.
+        </p>
+
+        <h3>Written identity standard</h3>
+        <ul>
+          <li><strong>Wordmark:</strong> “Leaf & Lantern” set in Fraunces, title case, semibold (600), normal tracking — never all-uppercase.</li>
+          <li><strong>Ampersand:</strong> the copper ampersand (Cider, #A8652A) is the identity’s distinctive mark.</li>
+          <li><strong>No icon:</strong> no leaf, lantern, or other logo symbol accompanies the wordmark.</li>
+          <li><strong>Supporting copy:</strong> Source Sans 3 — regular (400) for body, semibold (600) for interface labels, bold (700) with 0.08–0.22em tracking for uppercase eyebrows.</li>
+          <li><strong>Color:</strong> wordmark in Lantern Black (#1F241E) or Parchment (#F4EFE5) on dark grounds; palette values as swatched below.</li>
+        </ul>
 
         <div class="swatch-row" aria-label="Brand color palette">
           <div class="swatch" style="background:#1F241E"><span>Lantern Black</span></div>
@@ -569,6 +785,15 @@ const risks = [
           </div>
         </div>
       </section>
+
+      <!-- ============ Sources ============ -->
+      <section id="sources" class="plan-section">
+        <span class="eyebrow">09 · Sources & Notes</span>
+        <h2>Where the numbers come from.</h2>
+        <ol class="source-list">
+          {sources.map((s) => <li>{s}</li>)}
+        </ol>
+      </section>
     </article>
   </div>
 
@@ -599,6 +824,30 @@ const risks = [
       { rootMargin: '-20% 0px -70% 0px' }
     );
     sections.forEach((s) => observer.observe(s));
+
+    // Break-even chart tooltip
+    const chart = document.getElementById('be-chart');
+    const tooltip = document.getElementById('be-tooltip');
+    if (chart && tooltip) {
+      const show = (seg: HTMLElement, x: number, y: number) => {
+        tooltip.innerHTML = `<strong>${seg.dataset.label}</strong>${seg.dataset.amount} · ${seg.dataset.share}`;
+        tooltip.hidden = false;
+        const rect = chart.getBoundingClientRect();
+        const tip = tooltip.getBoundingClientRect();
+        const left = Math.min(Math.max(x - rect.left + 14, 4), rect.width - tip.width - 4);
+        const top = Math.max(y - rect.top - tip.height - 12, 4);
+        tooltip.style.left = `${left}px`;
+        tooltip.style.top = `${top}px`;
+      };
+      chart.addEventListener('pointermove', (e) => {
+        const seg = (e.target as HTMLElement).closest<HTMLElement>('.be-seg');
+        if (seg) show(seg, e.clientX, e.clientY);
+        else tooltip.hidden = true;
+      });
+      chart.addEventListener('pointerleave', () => {
+        tooltip.hidden = true;
+      });
+    }
   </script>
 </Base>
 
@@ -900,6 +1149,170 @@ const risks = [
     opacity: 0.85;
   }
 
+  /* ---------- Break-even chart ---------- */
+  .be-chart {
+    position: relative;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 1.6rem 1.5rem 1.3rem;
+    margin-block: 1.4rem 0.6rem;
+  }
+
+  .be-plot {
+    position: relative;
+    height: 320px;
+    margin: 1.6rem 0.5rem 2.2rem 3.2rem;
+  }
+
+  .be-grid {
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 1px dashed var(--line);
+  }
+
+  .be-grid span {
+    position: absolute;
+    left: -3.2rem;
+    top: -0.6em;
+    font-size: 0.72rem;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.6;
+  }
+
+  .be-band {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: color-mix(in srgb, var(--cider) 14%, transparent);
+    border-top: 2px dashed var(--cider);
+    border-bottom: 2px dashed var(--cider);
+  }
+
+  .be-band span {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    background: var(--parchment);
+    border: 1px solid color-mix(in srgb, var(--cider) 45%, transparent);
+    border-radius: 999px;
+    padding: 0.18rem 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cider);
+    white-space: nowrap;
+  }
+
+  .be-cols {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.5rem, 6vw, 4rem);
+    padding-inline: clamp(0.5rem, 4vw, 2.5rem);
+  }
+
+  .be-col {
+    position: relative;
+    height: 100%;
+  }
+
+  .be-stack {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .be-seg {
+    width: 100%;
+    transition: opacity 120ms ease;
+    cursor: default;
+  }
+
+  .be-stack:hover .be-seg {
+    opacity: 0.45;
+  }
+
+  .be-stack .be-seg:hover {
+    opacity: 1;
+  }
+
+  .be-seg:first-child {
+    border-radius: 0 0 4px 4px;
+  }
+
+  .be-seg:last-child {
+    border-radius: 4px 4px 0 0;
+  }
+
+  .be-total {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -0.4rem);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--deep-pine);
+    white-space: nowrap;
+  }
+
+  .be-year {
+    position: absolute;
+    left: 50%;
+    bottom: -1.9rem;
+    transform: translateX(-50%);
+    font-size: 0.85rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .be-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.1rem;
+    margin-top: 0.6rem;
+  }
+
+  .be-key {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    opacity: 0.85;
+  }
+
+  .be-key i {
+    width: 11px;
+    height: 11px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  .be-tooltip {
+    position: absolute;
+    z-index: 5;
+    pointer-events: none;
+    background: var(--lantern-black);
+    color: var(--parchment);
+    border-radius: var(--radius);
+    padding: 0.5rem 0.7rem;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    box-shadow: var(--shadow-soft);
+    max-width: 240px;
+  }
+
+  .be-tooltip :global(strong) {
+    display: block;
+    color: var(--wheat);
+  }
+
   /* ---------- Swatches ---------- */
   .swatch-row {
     display: grid;
@@ -1004,6 +1417,23 @@ const risks = [
     gap: 0.4rem;
   }
 
+  .scope-note {
+    margin-top: 1.6rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.92rem;
+    font-style: italic;
+    opacity: 0.8;
+  }
+
+  .source-list {
+    padding-left: 1.3rem;
+    display: grid;
+    gap: 0.55rem;
+    font-size: 0.92rem;
+    opacity: 0.85;
+  }
+
   /* ---------- Closing CTA ---------- */
   .plan-cta {
     margin-top: 2.5rem;
@@ -1076,6 +1506,67 @@ const risks = [
 
     .chart-value {
       grid-column: 2;
+    }
+
+    .be-plot {
+      height: 250px;
+      margin-left: 2.9rem;
+    }
+
+    .be-band span {
+      font-size: 0.62rem;
+    }
+
+    .be-total {
+      font-size: 0.8rem;
+    }
+
+    .be-year {
+      font-size: 0.75rem;
+    }
+  }
+
+  /* ---------- Print ---------- */
+  @media print {
+    .progress-track,
+    .plan-toc,
+    .plan-cta {
+      display: none;
+    }
+
+    .plan-layout {
+      display: block;
+      padding-block: 0;
+    }
+
+    .plan-body {
+      max-width: none;
+    }
+
+    .plan-hero {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .ll-table,
+    .metric-card,
+    .competitor-card,
+    .chart,
+    .be-chart,
+    .pull-quote,
+    .roadmap-phase {
+      break-inside: avoid;
+    }
+
+    .be-seg,
+    .be-band,
+    .be-key i {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .plan-section {
+      border-bottom: none;
     }
   }
 </style>
