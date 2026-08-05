@@ -106,6 +106,7 @@ in ChatGPT, then save to the exact path listed.
 | `public/images/courtyard-summer.png` | Summer courtyard gathering |
 | `public/images/entrance-autumn.jpg` | Autumn entrance sign |
 | `public/images/winter-cozy.png` | Cozy winter evening at the market (holiday scene) |
+| `public/images/lantern-evening.png` | Guests at courtyard tables outside the main hall |
 | `public/images/pumpkin-family.jpg` | Family choosing a pumpkin (primary hero) |
 | `public/images/halloween-courtyard.jpg` | Halloween courtyard at dusk |
 | `public/images/gift-market.jpg` | Winter gift market interior |

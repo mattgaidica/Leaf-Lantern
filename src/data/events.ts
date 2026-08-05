@@ -36,8 +36,8 @@ export const EVENTS: LLEvent[] = [
     price: '$18 · timed entry',
     blurb:
       'A quiet, glowing evening in the courtyard — warm drinks, music, lantern light, and the grounds after dark.',
-    image: '/images/halloween-courtyard.jpg',
-    imageAlt: 'The courtyard at dusk lit by warm lanterns and string lights',
+    image: '/images/lantern-evening.png',
+    imageAlt: 'Guests at wood tables in the courtyard outside the Leaf & Lantern main hall',
     status: 'nearly-full',
   },
   {
