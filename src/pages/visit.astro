@@ -5,9 +5,9 @@ import BrandImage from '../components/BrandImage.astro';
 import { url } from '../lib/site';
 
 const hours = [
-  { period: 'January – February', hours: 'Limited public openings; rentals & planning by appointment', focus: 'Retreats, private events, annual planning' },
+  { period: 'January – February', hours: 'Closed to the public; planning and maintenance', focus: 'Annual planning, hiring, select daytime retreats' },
   { period: 'March – May', hours: 'Thu–Sun, 9 a.m. – 5 p.m. · school visits on select weekdays', focus: 'Field trips, gardens, workshops, spring market' },
-  { period: 'June – August', hours: 'Tue–Sun, mornings through early evening · select later nights', focus: 'Camps, yoga, markets, music, rentals' },
+  { period: 'June – August', hours: 'Tue–Sun, mornings through early evening · select later nights', focus: 'Camps, yoga, markets, music, daytime retreats' },
   { period: 'September – October', hours: 'Daily, 9 a.m. – 7 p.m. · later Halloween evenings', focus: 'Cider, donuts, pumpkins, harvest, Halloween' },
   { period: 'November – December', hours: 'Thu–Sun, 10 a.m. – 7 p.m. · select evening markets', focus: 'Gift market, workshops, holiday gatherings' },
 ];
@@ -16,6 +16,10 @@ const faqs = [
   {
     q: 'Do I need a ticket to visit?',
     a: 'No — admission is always free, every day of the year. On the busiest autumn weekends we ask you to reserve a free arrival window so the grounds stay comfortable. Only special experiences — Halloween evenings, workshops, camps — are ticketed.',
+  },
+  {
+    q: 'Can I order food ahead of my visit?',
+    a: 'Yes — that’s the plan. Order donuts, cider, and coffee before you arrive, choose a fifteen-minute pickup window, and collect your order from a person at the pickup counter. Online ordering opens with our pilot season; see the Order Ahead page for a preview.',
   },
   {
     q: 'Is Leaf & Lantern accessible?',
@@ -107,10 +111,11 @@ const faqs = [
       <div class="info-card">
         <h3>Food & drink</h3>
         <p>
-          Fresh cider, hot donuts, locally roasted coffee, and a changing menu of simple seasonal
-          favorites — made in our open bakery and kitchen, every day we’re open.
+          Fresh cider, hot donuts, a $2 batch coffee, and a short list of warm drinks — a few
+          hero products made consistently at a visible counter, every day we’re open. Order
+          ahead and skip the line, or walk up the old-fashioned way.
         </p>
-        <a class="btn btn-secondary" href={url('/market/')}>Bakery & Café</a>
+        <a class="btn btn-secondary" href={url('/order/')}>Order Ahead</a>
       </div>
     </div>
   </section>

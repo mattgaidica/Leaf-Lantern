@@ -3,47 +3,47 @@ import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import BrandImage from '../components/BrandImage.astro';
 
-const packages = [
+const programs = [
   {
-    name: 'Small Private Room',
-    price: '$750 – $1,500',
-    copy: 'Showers, birthdays, and small celebrations for up to 40 guests, with food and drink from our kitchen.',
-  },
-  {
-    name: 'The Main Hall',
-    price: '$1,500 – $4,500',
-    copy: 'Our flexible timber hall for receptions, reunions, and community gatherings — before food, staffing, and equipment.',
-  },
-  {
-    name: 'Corporate Retreats',
+    name: 'Corporate Retreats & Seminars',
     price: '$70 – $140 per attendee',
-    copy: 'A distinctive alternative to the conference room: workshops, appreciation events, and offsites with catering and coffee all day.',
+    copy: 'Weekday, daytime offsites that actually feel different: workshops, planning days, and team mornings with coffee, cider, and donuts from our own counter.',
+  },
+  {
+    name: 'Team Workshops',
+    price: '$35 – $85 per person',
+    copy: 'Guided wreath building, garden sessions, and craft workshops led by our instructors — a working activity, not a party package.',
+  },
+  {
+    name: 'School & Scout Groups',
+    price: '$12 – $16 per student',
+    copy: 'Curriculum-mapped field trips and badge-friendly programs in the hall and gardens, with structured activities and real learning outcomes.',
   },
 ];
 ---
-<Base title="Groups & Rentals" description="Host retreats, showers, birthdays, reunions, and small receptions in the warm, flexible spaces at Leaf & Lantern.">
+<Base title="Retreats & Programs" description="Daytime corporate retreats, seminars, team workshops, and school programs in the functional program hall at Leaf & Lantern.">
   <Hero
     compact
     image="/images/courtyard-summer.png"
     imageAlt="Guests gathered at wood tables in the courtyard beside the main hall"
     imageLabel="The Courtyard"
-    eyebrow="Groups & Rentals"
-    title="A warm alternative to a banquet hall."
-    copy="One excellent, adaptable building — and a courtyard made for long evenings."
+    eyebrow="Retreats & Programs"
+    title="A working space that happens to be beautiful."
+    copy="One functional hall for retreats, seminars, workshops, and school programs — daytime, purposeful, and catered by our own counter."
   />
 
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Host a Gathering</span>
-        <h2>Spaces and packages</h2>
+        <span class="eyebrow">Purposeful Programs</span>
+        <h2>What the hall is for</h2>
         <p class="lede">
-          Rentals primarily fill weekdays, evenings, and quieter months — which means your event
-          gets the whole place at its calmest and most personal.
+          Programs book weekday daytime blocks and scheduled closed days, so public hours are
+          never displaced — and your group gets the place at its calmest.
         </p>
       </div>
       <div class="pkg-grid">
-        {packages.map((p) => (
+        {programs.map((p) => (
           <div class="pkg-card">
             <h3>{p.name}</h3>
             <p class="pkg-price">{p.price}</p>
@@ -51,6 +51,10 @@ const packages = [
           </div>
         ))}
       </div>
+      <p class="no-events-note">
+        One thing we don’t do: weddings, showers, or receptions. The hall is a program space, not
+        an event venue — that focus is what keeps it available, affordable, and calm.
+      </p>
     </div>
   </section>
 
@@ -65,14 +69,14 @@ const packages = [
         <span class="eyebrow">The Space</span>
         <h2>One hall, many configurations.</h2>
         <p>
-          The main hall converts between dining, workshop, presentation, and celebration layouts.
-          Timber structure, natural light, a visible bakery, and a protected courtyard — with
-          catering from our own kitchen and coffee from our own counter.
+          The hall converts between workshop, classroom, presentation, and long-table layouts.
+          Timber structure, natural light, a visible donut line, and a protected courtyard — with
+          coffee, cider, and donuts from our own counter all day.
         </p>
         <ul class="amenities">
-          <li>Seats up to 120 for dinner; 150 for receptions</li>
-          <li>Full catering from the Leaf & Lantern kitchen</li>
-          <li>Audio for speeches and acoustic music</li>
+          <li>Workshop and classroom seating for up to 80</li>
+          <li>Coffee, cider, and donut service from our counter</li>
+          <li>Audio for presentations and acoustic music</li>
           <li>Accessible route throughout; free parking</li>
         </ul>
       </div>
@@ -82,35 +86,35 @@ const packages = [
   <section class="section">
     <div class="container-narrow">
       <span class="eyebrow">Start the Conversation</span>
-      <h2>Tell us about your event</h2>
+      <h2>Tell us about your group</h2>
       <form class="inquiry-form" action="#" method="post">
         <div class="form-row">
           <div>
-            <label for="gr-name">Your name</label>
-            <input id="gr-name" type="text" name="name" required />
+            <label for="rp-name">Your name</label>
+            <input id="rp-name" type="text" name="name" required />
           </div>
           <div>
-            <label for="gr-email">Email</label>
-            <input id="gr-email" type="email" name="email" required />
+            <label for="rp-email">Email</label>
+            <input id="rp-email" type="email" name="email" required />
           </div>
         </div>
         <div class="form-row">
           <div>
-            <label for="gr-type">Event type</label>
-            <select id="gr-type" name="type">
-              <option>Private celebration</option>
-              <option>Corporate retreat</option>
-              <option>Community gathering</option>
+            <label for="rp-type">Program type</label>
+            <select id="rp-type" name="type">
+              <option>Corporate retreat or seminar</option>
+              <option>Team workshop</option>
+              <option>School or scout group</option>
               <option>Other</option>
             </select>
           </div>
           <div>
-            <label for="gr-size">Estimated guests</label>
-            <input id="gr-size" type="text" name="size" placeholder="e.g. 60" />
+            <label for="rp-size">Estimated attendees</label>
+            <input id="rp-size" type="text" name="size" placeholder="e.g. 30" />
           </div>
         </div>
-        <label for="gr-notes">Anything else?</label>
-        <textarea id="gr-notes" name="notes" rows="4" placeholder="Season, date range, and what you're imagining…"></textarea>
+        <label for="rp-notes">Anything else?</label>
+        <textarea id="rp-notes" name="notes" rows="4" placeholder="Season, weekday preference, and what your group needs…"></textarea>
         <button class="btn btn-primary" type="submit">Submit Inquiry</button>
         <small>Bookings open with our pilot season — this form is a preview.</small>
       </form>
@@ -148,6 +152,15 @@ const packages = [
   .pkg-card p:last-child {
     margin: 0;
     font-size: 0.96rem;
+  }
+
+  .no-events-note {
+    margin-top: 1.6rem;
+    padding: 1rem 1.2rem;
+    background: var(--cider-soft);
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    max-width: 52em;
   }
 
   .split {

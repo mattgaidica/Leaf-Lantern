@@ -16,64 +16,65 @@ const toc = [
 ];
 
 const metrics = [
-  { value: '$3.95M', label: 'Startup requirement, excluding land' },
-  { value: '$1.80M', label: 'First-year revenue' },
-  { value: '$2.65M', label: 'Third-year revenue' },
-  { value: '$610K', label: 'Third-year EBITDA' },
-  { value: '$1.6–1.8M', label: 'Operating cash break-even (annual revenue)' },
+  { value: '$2.5–3.0M', label: 'Startup target, excluding land' },
+  { value: '$1.78M', label: 'First-year revenue (55,000 food transactions)' },
+  { value: '$2.30M', label: 'Third-year revenue (85,000 food transactions)' },
+  { value: '$373K', label: 'Third-year EBITDA' },
+  { value: '≈70,000', label: 'Transactions at cash break-even (≈$2.0M revenue)' },
   { value: '2030', label: 'Permanent-site autumn launch' },
 ];
 
 const pnl = [
-  { item: 'Food and beverage', y1: '$780', y2: '$975', y3: '$1,170' },
-  { item: 'Retail and pumpkins', y1: '280', y2: '345', y3: '415' },
-  { item: 'Ticketed events and experiences', y1: '180', y2: '220', y3: '260' },
-  { item: 'Vendor and market fees', y1: '120', y2: '150', y3: '180' },
-  { item: 'Rentals and retreats', y1: '230', y2: '275', y3: '315' },
-  { item: 'Camps and workshops', y1: '210', y2: '260', y3: '310' },
+  { item: 'Food and beverage (transactions × $17.50)', y1: '$963', y2: '$1,225', y3: '$1,488' },
+  { item: 'Retail and pumpkins', y1: '280', y2: '280', y3: '280' },
+  { item: 'Camps and education', y1: '330', y2: '330', y3: '330' },
+  { item: 'Programs, retreats, and vendor fees', y1: '205', y2: '205', y3: '205' },
 ];
 
 const pnlCosts = [
-  { item: 'Food, retail, and program cost of goods', y1: '(400)', y2: '(485)', y3: '(570)' },
-  { item: 'Payroll, taxes, and benefits', y1: '(660)', y2: '(770)', y3: '(865)' },
-  { item: 'Occupancy, utilities, repairs, and grounds', y1: '(210)', y2: '(230)', y3: '(250)' },
-  { item: 'Marketing and sales', y1: '(135)', y2: '(145)', y3: '(155)' },
-  { item: 'Insurance, technology, professional fees, admin', y1: '(175)', y2: '(185)', y3: '(200)' },
+  { item: 'Food-and-beverage cost of goods (32.4%)', y1: '(312)', y2: '(397)', y3: '(482)' },
+  { item: 'Direct costs of retail, education, and programs', y1: '(298)', y2: '(298)', y3: '(298)' },
+  { item: 'Payroll, taxes, and benefits', y1: '(650)', y2: '(650)', y3: '(650)' },
+  { item: 'Occupancy, utilities, repairs, and grounds', y1: '(200)', y2: '(200)', y3: '(200)' },
+  { item: 'Marketing and sales', y1: '(120)', y2: '(120)', y3: '(120)' },
+  { item: 'Insurance, technology, professional fees, admin', y1: '(180)', y2: '(180)', y3: '(180)' },
 ];
 
 const startup = [
-  { item: 'Due diligence, architecture, engineering, permits', amt: '$225,000' },
-  { item: 'Building shell or renovation, mechanical, electrical, plumbing', amt: '1,350,000' },
-  { item: 'Sitework, drainage, parking, and utilities', amt: '650,000' },
-  { item: 'Kitchen, bakery, coffee, and refrigeration equipment', amt: '300,000' },
-  { item: 'Market, event furniture, fixtures, and storage', amt: '180,000' },
-  { item: 'Landscape, courtyard, lighting, and arrival signage', amt: '190,000' },
-  { item: 'POS, Wi-Fi, security, ticketing, and website', amt: '85,000' },
-  { item: 'Pre-opening hiring, training, inventory, and launch', amt: '170,000' },
-  { item: 'Construction and startup contingency', amt: '450,000' },
-  { item: 'Opening working-capital reserve', amt: '350,000' },
+  { item: 'Due diligence, architecture, engineering, permits', amt: '$180,000' },
+  { item: 'Building shell or renovation, mechanical, electrical, plumbing', amt: '925,000' },
+  { item: 'Sitework, drainage, parking, and utilities', amt: '525,000' },
+  { item: 'Kitchen, donut line, cider handling, coffee, and refrigeration', amt: '260,000' },
+  { item: 'Market and program furniture, fixtures, and storage', amt: '100,000' },
+  { item: 'Landscape, courtyard, lighting, and arrival signage', amt: '125,000' },
+  { item: 'POS, online ordering, Wi-Fi, security, and website', amt: '95,000' },
+  { item: 'Pre-opening hiring, training, inventory, and launch', amt: '140,000' },
+  { item: 'Construction and startup contingency', amt: '300,000' },
+  { item: 'Opening working-capital reserve', amt: '300,000' },
 ];
 
 const seasonalRevenue = [
-  { season: 'Spring', share: 12, revenue: '$216,000', color: 'var(--season-spring)' },
-  { season: 'Summer', share: 21, revenue: '$378,000', color: 'var(--season-summer)' },
-  { season: 'Autumn', share: 45, revenue: '$810,000', color: 'var(--season-autumn)' },
-  { season: 'Holiday', share: 22, revenue: '$396,000', color: 'var(--season-holiday)' },
+  { season: 'Spring', share: 12, revenue: '$213,000', color: 'var(--season-spring)' },
+  { season: 'Summer', share: 21, revenue: '$373,000', color: 'var(--season-summer)' },
+  { season: 'Autumn', share: 45, revenue: '$800,000', color: 'var(--season-autumn)' },
+  { season: 'Holiday', share: 22, revenue: '$392,000', color: 'var(--season-holiday)' },
 ];
 
 const pricing = [
   { stream: 'General admission, every day — grounds, market, café, pumpkins', price: 'Free' },
   { stream: 'Peak-weekend arrival reservation', price: 'Free' },
+  { stream: 'Donut — single / half-dozen / dozen', price: '$2 / $7–$8 / $12–$14' },
+  { stream: 'Cider — cup (hot or cold) / half-gallon / gallon', price: '$4–$5 / $9–$11 / $15–$18' },
+  { stream: 'Small batch coffee or kids’ mini cider', price: '$2' },
+  { stream: 'Double espresso / Americano / hot chocolate', price: '$3.50–$4' },
+  { stream: 'Family bundle — half-dozen + two drinks, or dozen + half-gallon', price: '$14–$24' },
   { stream: 'Spring or summer discovery day', price: '$8–$12 per guest' },
   { stream: 'Halloween costume party or lantern evening', price: '$14–$20' },
   { stream: 'School field trip', price: '$12–$16 per student' },
   { stream: 'Summer science camp', price: '$285–$425 per child/week' },
-  { stream: 'Adult or family workshop', price: '$35–$85' },
+  { stream: 'Adult or family workshop (wreath building, garden, craft)', price: '$35–$85' },
   { stream: 'Maker market booth', price: '$85–$550' },
-  { stream: 'Main-space rental', price: '$1,500–$4,500' },
-  { stream: 'Corporate retreat package', price: '$70–$140 per attendee' },
-  { stream: 'Donut six-pack / cider / coffee', price: '$10–$14 / $4–$7 / $4–$6.50' },
-  { stream: 'Mini coffee or kids’ cider', price: '$2' },
+  { stream: 'Daytime retreat or seminar package', price: '$70–$140 per attendee' },
 ];
 
 const competitors = [
@@ -92,30 +93,32 @@ const competitors = [
     model: 'Farm market and bakery spring into winter: U-pick, summer farm fun, porch winery, fall activities, private rentals.',
     lesson: 'Shows the value of a steady market-and-food base underneath seasonal programming. Make the kitchen useful even with no event underway.',
   },
+  {
+    name: 'Zingerman’s Cornman Farms',
+    model: 'Premium farm event venue in Dexter (~20 minutes from the target corridor): restored 1834 farmhouse and barn on 27 acres, backed by one of Michigan’s most sophisticated hospitality groups. Open since 2014; closing after October 2026 as revenue fell from a ~$2.7–3M peak to ~$1.4M in 2025 against a ~$2.2M break-even, citing fewer leads, higher costs, operational complexity, and a shift to smaller gatherings.',
+    lesson: 'The region’s best-run farm-event operator could not sustain the venue model even with a powerful brand. Leaf & Lantern excludes weddings, showers, and banquet rentals by design — the hall is a program space, not an event business.',
+  },
 ];
 
 const revChart = {
-  scaleMax: 2800,
-  breakEven: { low: 1600, high: 1800 },
+  scaleMax: 2500,
+  breakEven: { low: 1950, high: 2100 },
   gridlines: [
     { v: 500, label: '$0.5M' },
     { v: 1000, label: '$1.0M' },
     { v: 1500, label: '$1.5M' },
     { v: 2000, label: '$2.0M' },
-    { v: 2500, label: '$2.5M' },
   ],
   streams: [
     { key: 'fnb', label: 'Food and beverage', color: 'var(--cider)' },
     { key: 'retail', label: 'Retail and pumpkins', color: 'var(--cranberry)' },
-    { key: 'rentals', label: 'Rentals and retreats', color: 'var(--deep-pine)' },
-    { key: 'camps', label: 'Camps and workshops', color: '#8a6d2f' },
-    { key: 'ticketed', label: 'Ticketed events and experiences', color: 'var(--winter-evergreen)' },
-    { key: 'vendor', label: 'Vendor and market fees', color: 'var(--wheat)' },
+    { key: 'camps', label: 'Camps and education', color: 'var(--deep-pine)' },
+    { key: 'programs', label: 'Programs, retreats, and vendor fees', color: '#8a6d2f' },
   ],
   years: [
-    { label: 'Year One', total: 1800, totalLabel: '$1.80M', values: { fnb: 780, retail: 280, rentals: 230, camps: 210, ticketed: 180, vendor: 120 } as Record<string, number> },
-    { label: 'Year Two', total: 2225, totalLabel: '$2.23M', values: { fnb: 975, retail: 345, rentals: 275, camps: 260, ticketed: 220, vendor: 150 } as Record<string, number> },
-    { label: 'Year Three', total: 2650, totalLabel: '$2.65M', values: { fnb: 1170, retail: 415, rentals: 315, camps: 310, ticketed: 260, vendor: 180 } as Record<string, number> },
+    { label: 'Year One', sub: '55,000 transactions', total: 1778, totalLabel: '$1.78M', values: { fnb: 963, retail: 280, camps: 330, programs: 205 } as Record<string, number> },
+    { label: 'Year Two', sub: '70,000 transactions', total: 2040, totalLabel: '$2.04M', values: { fnb: 1225, retail: 280, camps: 330, programs: 205 } as Record<string, number> },
+    { label: 'Year Three', sub: '85,000 transactions', total: 2303, totalLabel: '$2.30M', values: { fnb: 1488, retail: 280, camps: 330, programs: 205 } as Record<string, number> },
   ],
 };
 
@@ -129,12 +132,29 @@ const nearbyMills = [
 ];
 
 const bridge = [
-  { line: 'Food and beverage — $780K', drivers: '55,000 visits ≈ 19,600 parties; ~85% of parties purchase at a ~$40 average check (≈ $670K), plus ~$110K of catering and F&B inside camps, ticketed events, and rentals.' },
-  { line: 'Retail and pumpkins — $280K', drivers: '~22% of parties purchase retail at a ~$50 average basket (≈ $216K), plus ~8,000 pumpkins at ~$8 average (≈ $64K).' },
-  { line: 'Ticketed events and experiences — $180K', drivers: '≈ 4,800 evening-event tickets at ~$17 average ($82K), 5,200 field-trip students at ~$14 ($73K), and 2,500 discovery-day guests at ~$10 ($25K).' },
-  { line: 'Vendor and market fees — $120K', drivers: '≈ 30 market dates averaging 20 booths at a ~$200 average fee.' },
-  { line: 'Rentals and retreats — $230K', drivers: '≈ 50 private rentals at ~$2,900 average ($145K), plus ~14 corporate retreats at ~$6,000 average ($84K).' },
-  { line: 'Camps and workshops — $210K', drivers: '10 summer camp weeks averaging 40 children at ~$355 ($142K), plus ~1,250 workshop seats at ~$55 average ($69K).' },
+  { line: 'Food and beverage — $963K', drivers: '55,000 food transactions at a $17.50 average. A transaction is one order, not one visitor: a family’s dozen-and-half-gallon and a solo $2 batch coffee each count once. Walk-up, mobile preorder, and express drive-up lanes all feed the same count.' },
+  { line: 'Retail and pumpkins — $280K', drivers: '~22% of visiting parties add retail at a ~$50 average basket (≈ $216K), plus ~8,000 pumpkins at ~$8 average (≈ $64K).' },
+  { line: 'Camps and education — $330K', drivers: '10 summer camp weeks averaging 40 children at ~$355 ($142K), ~8,500 field-trip students at ~$14 ($120K), and ~1,250 workshop seats at ~$55 average ($68K).' },
+  { line: 'Programs, retreats, and vendor fees — $205K', drivers: '≈ 30 market dates averaging 20 booths at a ~$200 average fee ($120K), ~3,500 ticketed evening and discovery-day guests ($55K), and ~10 daytime corporate retreats or seminars ($30K).' },
+];
+
+const lanes = [
+  { lane: 'Staffed walk-up counter', use: 'First-time visitors, questions, allergies, and ordinary purchases — the default, fully human lane.' },
+  { lane: 'Mobile order-ahead with pickup windows', use: 'Skip the line: families reserving food before arrival and guests ordering from the grounds, collected at a staffed pickup counter.' },
+  { lane: 'Express drive-up collection', use: 'Dozens, cider half-gallons and gallons, office and school orders, and prepaid bundles — revenue without a long parking stay.' },
+];
+
+const gates = [
+  { gate: 'Hero-product demand', evidence: 'Customers intentionally travel for the donuts and cider, not solely for a one-time event.' },
+  { gate: 'Average food transaction', evidence: 'Sustained $16–$18 average without forced admission or aggressive upselling.' },
+  { gate: 'Conversion', evidence: 'At least 60% of visiting parties purchase food or drink on ordinary free-access days.' },
+  { gate: 'Throughput', evidence: 'Core orders handed off reliably in under eight to ten minutes during peak periods.' },
+  { gate: 'Peak capacity', evidence: 'At least 100 simple transactions per active service line per hour after warmup.' },
+  { gate: 'Preorder adoption', evidence: '15–25% of peak food sales placed before arrival or through bulk ordering.' },
+  { gate: 'Repeat behavior', evidence: 'Meaningful same-season return visits and repeat dozen-and-cider purchases.' },
+  { gate: 'Non-autumn contribution', evidence: 'Education, camps, holiday orders, retail, and limited programs generate $450–550K of annual gross contribution collectively.' },
+  { gate: 'Capital discipline', evidence: 'Site and building deliverable within debt service supported by the base — not optimistic — transaction case.' },
+  { gate: 'Weather resilience', evidence: 'A poor weekend reduces revenue without unsafe crowding, stranded inventory, or a cash crisis.' },
 ];
 
 const sources = [
@@ -143,7 +163,10 @@ const sources = [
   'Visitor economy: Michigan Economic Development Corporation / Tourism Economics annual visitor-economy report, 2024 calendar year.',
   'Competitor pricing and models: published venue websites and listings for the 2025 operating season (Blake’s, Wiard’s, Westview) and public listings and customer reviews for nearby cider mills. All figures to be re-verified in a formal pilot-stage competitive audit.',
   'Construction allowances: regional cost-per-square-foot benchmarks for hospitality and agritourism construction; superseded by a contractor-led estimate before any financing commitment.',
-  'Minimum wage: Michigan Improved Workforce Opportunity Wage Act schedule ($15.00 effective 2027).',
+  'Minimum wage: Michigan Improved Workforce Opportunity Wage Act schedule ($15.00 effective 2027); U.S. Bureau of Labor Statistics Detroit-area mean wage for food-preparation and serving occupations (~$18.06, May 2025).',
+  'Cornman Farms: Zingerman’s public closure announcement and regional reporting (2026) — revenue decline from a ~$2.7–3M peak to ~$1.4M in 2025 against a ~$2.2M break-even.',
+  'Food-business benchmarks: National Restaurant Association restaurant operations report (2024) — limited-service medians of 31.7% labor, 32.4% food-and-beverage cost, and 4.0% pretax income as a share of sales.',
+  'Cider regulation: Michigan commercial cider licensing requirements and federal juice-processing rules (21 CFR Part 120, juice HACCP).',
   'All P&L, pricing, and volume figures are founder planning estimates, not audited projections.',
 ];
 
@@ -161,7 +184,7 @@ const roadmapPhases = [
   {
     phase: 'Programming & Sales',
     window: 'Jan 2029 – Jun 2030',
-    items: ['School-program development', 'Vendor and maker recruitment', 'Camp and rental presales', 'Operating manuals and training plan'],
+    items: ['School-program development', 'Vendor and maker recruitment', 'Camp and retreat presales', 'Order-ahead platform selection and testing', 'Operating manuals and training plan'],
   },
   {
     phase: 'Build',
@@ -178,12 +201,14 @@ const roadmapPhases = [
 const risks = [
   { risk: 'Site or zoning incompatibility', mitigation: 'Municipal pre-application review before purchase; entitlement contingencies; written use interpretations.' },
   { risk: 'Capital-cost escalation', mitigation: 'Civil and utility due diligence early; contractor pricing at schematic design; 12–15% construction contingency.' },
-  { risk: 'Autumn dependence', mitigation: 'Preorder food and pumpkin bundles; indoor rain capacity; camps, schools, rentals, and gift markets in the base model.' },
+  { risk: 'Autumn dependence', mitigation: 'Preorder food and pumpkin bundles; indoor rain capacity; camps, schools, retreats, and gift markets in the base model.' },
+  { risk: 'Event-venue drift', mitigation: 'Weddings, showers, and receptions excluded by policy (the Cornman Farms lesson); no banquet kitchen, event-sales role, or turnover crew; retreats stay daytime and functional.' },
   { risk: 'Brand dilution', mitigation: 'Every program must fit one seasonal signature; maximum visual and attendance density; formal experience review.' },
-  { risk: 'Food bottlenecks', mitigation: 'Separate order and pickup; preorder bundles; batch planning; throughput testing before opening.' },
-  { risk: 'Seasonal labor shortage', mitigation: 'Early recruiting of students, retirees, returners; above-minimum pay ($16–$18/hr); simplified roles and short training modules.' },
+  { risk: 'Food bottlenecks', mitigation: 'Separate order and pickup; three ordering lanes; preorder bundles; batch planning; throughput testing before opening.' },
+  { risk: 'Cider production compliance', mitigation: 'Open with partner-pressed private-label cider from a licensed regional presser; transparent sourcing story; onsite pressing deferred until volume and sanitation systems justify a regulated juice operation.' },
+  { risk: 'Seasonal labor shortage', mitigation: 'Early recruiting of students, retirees, returners; competitive pay ($16–$18/hr, tracked against Detroit-area food-service wages); simplified roles and short training modules.' },
   { risk: 'Weather and grounds failure', mitigation: 'Drainage, all-weather paths, covered thresholds, indoor backup layouts, clear closure communication.' },
-  { risk: 'Cash-flow shortfall', mitigation: '$350K opening reserve; deposits for camps and rentals; weekly thirteen-week cash-flow forecasting.' },
+  { risk: 'Cash-flow shortfall', mitigation: '$300K opening reserve; deposits for camps and retreats; weekly thirteen-week cash-flow forecasting.' },
 ];
 ---
 <Base
@@ -221,11 +246,13 @@ const risks = [
         <span class="eyebrow">01 · Executive Summary</span>
         <h2>A small-scale, seasonally defined Michigan gathering place.</h2>
         <p class="lede">
-          Leaf & Lantern is built around food, local makers, education, and shared traditions. It
-          does not compete with large cider mills on attraction count, crowds, rides, or acreage.
-          Its competitive advantage is a more thoughtful experience: warm architecture, a flexible
-          main event space, a comfortable courtyard, excellent cider and donuts, curated retail,
-          and programming with a clear purpose in every season.
+          Leaf & Lantern is a cider mill and seasonal market built around exceptional service,
+          fast hero products, beautiful grounds, and a small number of purposeful programs. It is
+          not a bakery, a banquet hall, or an event-planning company. It does not compete with
+          large cider mills on attraction count, crowds, rides, or acreage. Its competitive
+          advantage is a more thoughtful experience: warm architecture, excellent cider and
+          donuts, a short coffee menu done well, a comfortable courtyard, one functional program
+          hall, and curated retail.
         </p>
 
         <div class="metric-grid">
@@ -261,10 +288,12 @@ const risks = [
         </div>
 
         <p>
-          The recommended opening model is a modest permanent campus centered on one adaptable
-          main building — approximately 4,500–6,500 square feet of conditioned public space, a
-          courtyard, a commercial bakery and beverage counter, a curated market, outdoor teaching
-          areas, and parking sized for timed peaks without making the property feel crowded.
+          The recommended opening model is deliberately leaner than the original campus concept:
+          one right-sized, adaptable main building — approximately 3,500–5,500 square feet of
+          conditioned public and production space, sized for food production, market, and
+          programs rather than banquets — plus a courtyard, a donut line and beverage counter, a
+          curated market, outdoor teaching areas, and parking sized for timed peaks without
+          making the property feel crowded.
         </p>
         <p>
           The plan proceeds only after four gates are passed: parcel-level zoning and utility
@@ -315,8 +344,8 @@ const risks = [
             <tbody>
               <tr><td><strong>Seasonally defined</strong></td><td>Every event fits Discovery, Gathering, Tradition, or Celebration.</td></tr>
               <tr><td><strong>Intimate rather than crowded</strong></td><td>Timed capacity and comfortable circulation take precedence over maximum attendance.</td></tr>
-              <tr><td><strong>Food is central</strong></td><td>Cider, donuts, coffee, and bakery items are core products, not incidental concessions.</td></tr>
-              <tr><td><strong>Flexible rather than sprawling</strong></td><td>One excellent adaptable building serves camps, yoga, markets, food service, workshops, and rentals.</td></tr>
+              <tr><td><strong>Food is central</strong></td><td>Cider, donuts, and a short coffee menu are hero products — the core business, not incidental concessions.</td></tr>
+              <tr><td><strong>Flexible rather than sprawling</strong></td><td>One excellent adaptable building serves camps, yoga, markets, food service, workshops, seminars, and daytime retreats — never weddings or banquets.</td></tr>
               <tr><td><strong>Local but edited</strong></td><td>Makers and products are selected for quality, utility, and fit.</td></tr>
               <tr><td><strong>Warm, not kitschy</strong></td><td>Natural materials, light, landscape, and real products rather than excessive props.</td></tr>
               <tr><td><strong>Professional, not corporate</strong></td><td>Operations, booking, food safety, and service stay disciplined even when the atmosphere is relaxed.</td></tr>
@@ -345,7 +374,7 @@ const risks = [
           3.94 million residents in 2025, with median household incomes of $97,760 in Oakland
           County and $103,039 in Livingston County. Michigan recorded 131.2 million visitors and
           $30.7 billion in direct visitor spending in 2024. The year-one plan assumes
-          approximately 55,000 free-admission visits plus camp, workshop, rental, and program
+          approximately 55,000 food transactions plus camp, workshop, retreat, and program
           participants — a low single-digit share of households within the 45-minute band. The
           precise serviceable market comes from the parcel-level drive-time analysis before any
           commitment.
@@ -403,9 +432,9 @@ const risks = [
         <span class="eyebrow">04 · Offerings & Operations</span>
         <h2>Two layers: a recurring base, and signature seasonal programs.</h2>
         <p>
-          The base business — market, bakery, coffee, grounds, private bookings, and workshops —
-          runs underneath a limited number of signature seasonal programs that create urgency
-          without turning every weekend into a festival.
+          The base business — hero products, market, grounds, education, and workshops — runs
+          underneath a limited number of signature seasonal programs that create urgency without
+          turning every weekend into a festival.
         </p>
 
         <div class="table-wrap">
@@ -413,9 +442,9 @@ const risks = [
             <thead><tr><th>Season</th><th>Anchor offerings</th><th>Principal revenue</th></tr></thead>
             <tbody>
               <tr><td><strong>Spring · Discovery</strong></td><td>School field trips, homeschool days, garden and pollinator workshops, nature walks, Earth Day market</td><td>Field-trip fees, workshops, café, retail kits, vendor fees</td></tr>
-              <tr><td><strong>Summer · Gathering</strong></td><td>Science camps, morning yoga, acoustic evenings, small markets, local-food nights, private events</td><td>Camps, class passes, F&B, markets, rentals</td></tr>
+              <tr><td><strong>Summer · Gathering</strong></td><td>Science camps, morning yoga, acoustic evenings, small markets, local-food nights, daytime retreats</td><td>Camps, class passes, F&B, markets, retreat packages</td></tr>
               <tr><td><strong>Autumn · Tradition</strong></td><td>Cider, donuts, coffee, pumpkins, harvest market, Halloween party, lantern evenings</td><td>F&B, pumpkins, retail, ticketed evenings, vendor fees</td></tr>
-              <tr><td><strong>Holiday · Celebration</strong></td><td>Indoor gift market, wreath and ornament workshops, bakery boxes, shopping evenings</td><td>Vendor fees, retail, F&B, workshops, rentals</td></tr>
+              <tr><td><strong>Holiday · Celebration</strong></td><td>Indoor gift market, wreath and ornament workshops, bakery boxes, holiday preorders, shopping evenings</td><td>Vendor fees, retail, F&B, preorders, workshops</td></tr>
             </tbody>
           </table>
         </div>
@@ -428,37 +457,52 @@ const risks = [
         />
         <p class="figure-note">
           One adaptable hall is the operating thesis: the same timber room serves camps, yoga,
-          markets, food service, workshops, and rentals across the calendar. Representative
-          concept imagery; final architecture, signage, and branding may differ.
+          markets, food service, workshops, seminars, and daytime retreats across the calendar.
+          Representative concept imagery; final architecture, signage, and branding may differ.
         </p>
 
-        <h3>Hall scheduling policy</h3>
+        <h3>A program space, not an event venue</h3>
         <p>
-          One room serving many uses works only with a firm booking hierarchy. Public hours are
-          protected: private rentals book after the public close, on scheduled closed days
-          (Monday–Tuesday in spring and early summer), or in designated shoulder-season weeks —
-          never during autumn public hours. Camps and yoga hold fixed morning blocks before the
-          midday public peak, and market layouts are designed to reset overnight. The rental
-          revenue in this plan assumes that constrained calendar, not an open one.
+          The hall hosts camps, school programs, seminars, corporate retreats, wreath and craft
+          workshops, and maker markets — functional, daytime, repeatable programming. Leaf &
+          Lantern does not host weddings, showers, or receptions, and carries no banquet kitchen,
+          event-sales staff, or turnover crew. Zingerman’s Cornman Farms is the reason stated
+          plainly: even the region’s most sophisticated hospitality operator could not make the
+          private-event model carry a premium farm property. Retreats and seminars book weekday
+          daytime blocks or scheduled closed days; camps and yoga hold fixed morning blocks;
+          public hours are never displaced.
         </p>
 
         <h3>Staffing</h3>
         <p>
-          The permanent team opens deliberately small: five to seven full-time equivalents holding
-          combined portfolios — a general manager who also owns events and rentals, a culinary
-          manager who is also the lead baker, a market buyer who also manages marketing and guest
-          relations, an education and programming lead, and operations and facilities. A
-          part-time café and market crew covers daily service across the operating season, and peak autumn adds
-          thirty-five to fifty-five seasonal employees. With Michigan’s minimum wage reaching $15
-          in 2027, frontline hiring is modeled at $16–$18 per hour rather than the statutory
-          floor.
+          The permanent team is organized around six functions, not ten job titles — several
+          owner-led or combined in the early years: general and financial management;
+          food-production leadership (a donut and food-production manager, not a broad-menu
+          executive baker — secondary pastries come from approved partners); guest operations
+          (counter, pickup, parking, service training); education and programs; market and
+          merchandising; and facilities and grounds. There is deliberately no event-sales or
+          banquet role. A part-time café and market crew covers daily service across the
+          operating season, and peak autumn adds thirty-five to fifty-five seasonal employees.
         </p>
         <p>
-          That structure — roughly $320–350K in salaried payroll, $110–130K in season-long
-          part-time wages, and $120–140K in peak seasonal wages, plus employer taxes and benefits — is
-          what the $660,000 first-year payroll line supports. A fuller eight-to-ten-FTE leadership
-          team is a year-three outcome funded by revenue growth (payroll rises to $865,000 by year
-          three in the P&L), not an opening assumption.
+          That structure — roughly $300–330K in salaried payroll, $110–130K in season-long
+          part-time wages, and $120–140K in peak seasonal wages, plus employer taxes and
+          benefits — is what the $650,000 payroll line supports. Wage assumptions stay
+          conservative: Michigan’s minimum wage reaches $15 in 2027 and the Detroit-area mean
+          for food-preparation occupations was already ~$18 in 2025, so the modeled $16–$18
+          hiring range is treated as market rate, not a premium.
+        </p>
+
+        <h3>Cider without building a juice plant</h3>
+        <p>
+          Pressing cider commercially is a regulated production competency: Michigan licensing,
+          federal juice-processing (HACCP) compliance, trained safe-cider staff, and approved
+          treatment. The plan phases it. Opening cider is an exclusive private label pressed by a
+          licensed regional partner to Leaf & Lantern’s specification, with the orchard source,
+          apple blend, pressing schedule, and treatment publicly transparent. An onsite press is
+          added only when gallon volume, staffing, and sanitation systems justify the investment.
+          Franklin and Plymouth show that guests care about seeing where cider comes from — the
+          sourcing story must be exceptionally visible until pressing moves onsite.
         </p>
       </section>
 
@@ -469,8 +513,9 @@ const risks = [
         <p class="lede">
           Admission is always free — grounds, market, café, and pumpkin selection, every day,
           including peak autumn weekends. There is no gate fee and no upsell ladder. Margin lives
-          in food, retail, and genuinely bounded experiences: ticketed evenings, workshops, camps,
-          field trips, and rentals.
+          in hero products bought many ways — cider, donuts, a short coffee menu, bundles, and
+          preorders — plus retail and genuinely bounded programs: ticketed evenings, workshops,
+          camps, field trips, and daytime retreats.
         </p>
         <p>
           Peak autumn capacity is managed with free timed arrival reservations rather than a
@@ -478,6 +523,36 @@ const risks = [
           mini coffee and a bag of donuts is a complete, welcome visit — the model treats that
           family as the beginning of a relationship that later books a camp, a field trip, or a
           corporate retreat, not as a missed ticket sale.
+        </p>
+
+        <h3>Hero products, sold many ways</h3>
+        <p>
+          The autumn menu is a production system of roughly twelve purchase buttons: donuts
+          (single, half-dozen, dozen), cider (cup, half-gallon, gallon), a $2 small batch coffee,
+          a double espresso, an Americano, hot chocolate, two family bundles, and one rotating
+          item — no milk-steaming matrix, syrup ladder, or size tree. A staff-operated
+          superautomatic espresso machine keeps the coffee automated behind the counter while the
+          hospitality stays human in front of it. This is not competing with bakeries: a few
+          singular products, made consistently, with secondary pastries curated from partners.
+        </p>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>Ordering lane</th><th>Best use</th></tr></thead>
+            <tbody>
+              {lanes.map((l) => (
+                <tr><td><strong>{l.lane}</strong></td><td>{l.use}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Order-ahead runs on a managed commerce platform (Square, Toast, or Lightspeed class)
+          rather than custom software, and every order — including online — is handed over at a
+          staffed pickup counter. No lockers, no customer-facing kiosks: the handoff is the
+          hospitality touchpoint, and preorder volume (target 15–25% of peak sales) doubles as a
+          production-planning tool. Office and school bulk orders follow the Yates mechanic —
+          minimum quantities, 48-hour lead time, volume pricing — making large orders a
+          demand-smoothing channel instead of an afterthought.
         </p>
 
         <h3>Opening price architecture <small>(2030 dollars, to be validated in pilots)</small></h3>
@@ -508,14 +583,14 @@ const risks = [
               {pnl.map((row) => (
                 <tr><td>{row.item}</td><td class="num">{row.y1}</td><td class="num">{row.y2}</td><td class="num">{row.y3}</td></tr>
               ))}
-              <tr class="total"><td>Total revenue</td><td class="num">$1,800</td><td class="num">$2,225</td><td class="num">$2,650</td></tr>
+              <tr class="total"><td>Total revenue</td><td class="num">$1,778</td><td class="num">$2,040</td><td class="num">$2,303</td></tr>
               {pnlCosts.map((row) => (
                 <tr><td>{row.item}</td><td class="num">{row.y1}</td><td class="num">{row.y2}</td><td class="num">{row.y3}</td></tr>
               ))}
-              <tr class="total"><td>EBITDA</td><td class="num">$220</td><td class="num">$410</td><td class="num">$610</td></tr>
-              <tr><td>Depreciation</td><td class="num">(175)</td><td class="num">(175)</td><td class="num">(175)</td></tr>
-              <tr><td>Illustrative interest expense</td><td class="num">(220)</td><td class="num">(205)</td><td class="num">(185)</td></tr>
-              <tr class="total"><td>Pre-tax profit / (loss)</td><td class="num">($175)</td><td class="num">$30</td><td class="num">$250</td></tr>
+              <tr class="total"><td>EBITDA</td><td class="num">$18</td><td class="num">$195</td><td class="num">$373</td></tr>
+              <tr><td>Depreciation</td><td class="num">(150)</td><td class="num">(150)</td><td class="num">(150)</td></tr>
+              <tr><td>Illustrative interest expense</td><td class="num">(130)</td><td class="num">(125)</td><td class="num">(120)</td></tr>
+              <tr class="total"><td>Pre-tax profit / (loss)</td><td class="num">($262)</td><td class="num">($80)</td><td class="num">$103</td></tr>
             </tbody>
           </table>
         </div>
@@ -525,7 +600,7 @@ const risks = [
           <div
             class="be-plot"
             role="img"
-            aria-label="Stacked revenue by stream for years one through three. Year one totals 1.80 million dollars, at the top edge of the 1.6 to 1.8 million dollar cash break-even zone. Year two totals 2.23 million and year three 2.65 million, both above break-even."
+            aria-label="Stacked revenue by stream for years one through three. Year one totals 1.78 million dollars at 55,000 food transactions, below the roughly 2 million dollar cash break-even zone. Year two totals 2.04 million at 70,000 transactions, inside the zone. Year three totals 2.30 million at 85,000 transactions, above break-even."
           >
             {revChart.gridlines.map((g) => (
               <div class="be-grid" style={`bottom: ${(g.v / revChart.scaleMax) * 100}%;`}>
@@ -536,7 +611,7 @@ const risks = [
               class="be-band"
               style={`bottom: ${(revChart.breakEven.low / revChart.scaleMax) * 100}%; height: ${((revChart.breakEven.high - revChart.breakEven.low) / revChart.scaleMax) * 100}%;`}
             >
-              <span>Cash break-even · $1.6–1.8M</span>
+              <span>Cash break-even incl. debt service · ≈$2.0M</span>
             </div>
             <div class="be-cols">
               {revChart.years.map((y) => (
@@ -554,7 +629,7 @@ const risks = [
                       ></div>
                     ))}
                   </div>
-                  <span class="be-year">{y.label}</span>
+                  <span class="be-year">{y.label}<small>{y.sub}</small></span>
                 </div>
               ))}
             </div>
@@ -567,16 +642,20 @@ const risks = [
           <div class="be-tooltip" id="be-tooltip" hidden></div>
         </div>
         <p class="figure-note">
-          Hover or tap a segment for its value and share. Year one lands at the top edge of the
-          break-even zone — the P&L tells the same story, with year-one EBITDA of $220K roughly
-          equal to year-one interest expense — while years two and three clear it comfortably.
+          Hover or tap a segment for its value and share. The lean model is honest about the
+          ramp: year one sits below the break-even zone and year two lands inside it — the first
+          two years lean on the working-capital reserve — while year three clears it with roughly
+          $373K of EBITDA against approximately $175K of illustrative debt service.
         </p>
 
         <p>
-          The model assumes roughly 55,000 free-admission visits in year one, 65,000 in year two,
-          and 75,000 in year three — and that management resists adding low-margin attractions
-          simply to increase attendance. Preorder bundles (family cider-and-donut packs, pumpkin
-          reservations, holiday boxes) replace presold tickets as the weather hedge.
+          The model is transaction-driven, not attendance-driven: 55,000 food-and-beverage
+          transactions in year one growing to 85,000 by year three, at a $17.50 average. That
+          volume is the credible target — a picturesque low-volume cider mill producing
+          $800K–$1M of food revenue cannot carry a destination property. Preorder bundles
+          (family cider-and-donut packs, pumpkin reservations, office orders, holiday boxes)
+          smooth demand and hedge weather, and management resists adding low-margin attractions
+          simply to increase attendance.
         </p>
 
         <h3>Bottom-up bridge to the year-one P&L <small>(illustrative unit assumptions)</small></h3>
@@ -591,10 +670,11 @@ const risks = [
           </table>
         </div>
         <p>
-          Roughly fifteen percent of parties buy nothing at all — the café-only browsers and
-          walkers the free-admission model deliberately welcomes. These unit assumptions are
+          Not every party buys, and that is by design: the validation gate assumes at least 60%
+          of visiting parties purchase food or drink on ordinary free-access days, and the
+          browsers and walkers who buy nothing are still welcome. These unit assumptions are
           planning estimates; the two pilot seasons exist to replace every one of them with
-          observed capture rates, checks, and enrollment before financing.
+          observed transaction counts, checks, and enrollment before financing.
         </p>
 
         <h3>Seasonal revenue mix <small>(year one)</small></h3>
@@ -611,7 +691,7 @@ const risks = [
         </div>
         <p>
           January and February still incur payroll, insurance, utilities, debt service, and
-          planning costs. The $350,000 working-capital reserve is not optional contingency; it is
+          planning costs. The $300,000 working-capital reserve is not optional contingency; it is
           part of the operating model.
         </p>
 
@@ -623,26 +703,31 @@ const risks = [
               {startup.map((row) => (
                 <tr><td>{row.item}</td><td class="num">{row.amt}</td></tr>
               ))}
-              <tr class="total"><td>Total, excluding land</td><td class="num">$3,950,000</td></tr>
+              <tr class="total"><td>Total, excluding land</td><td class="num">$2,950,000</td></tr>
             </tbody>
           </table>
         </div>
         <p>
-          A low-capital adaptive-reuse opportunity may reduce the total; a ground-up building with
-          septic, well, or major road improvements may exceed it materially. No financing
+          The earlier campus-scale allowance approached $4M; removing banquet capability — the
+          smaller shell, simpler mechanical systems, no catering-kitchen scope, no event furniture
+          and turnover equipment — brings the target to $2.5–3.0M excluding land. Adaptive reuse
+          of an existing building targets the low end. A project that creeps back toward $4M
+          recreates exactly the fixed-cost fragility this pivot is designed to solve. No financing
           commitment is made until a contractor-led estimate and site-specific utility study
           replace these allowances.
         </p>
 
         <h3>Break-even definition and land</h3>
         <p>
-          The stated <strong>$1.6–1.8M cash break-even</strong> is the annual revenue at which
-          operating cash flow covers all operating expenses — including market-rate owner-manager
-          compensation within payroll — plus interest and scheduled principal repayment. Income
+          The stated cash break-even of <strong>≈70,000 annual food transactions (≈$2.0M
+          revenue)</strong> is the level at which operating cash flow covers all operating
+          expenses — including market-rate owner-manager compensation within payroll — plus
+          interest and scheduled principal repayment. Illustratively, financing 65% of a $2.95M
+          project at 7% over twenty years requires roughly $175K of annual debt service. Income
           taxes apply only above that level; depreciation is excluded as a non-cash item.
         </p>
         <p>
-          The $3.95M startup allowance excludes land. A purchase scenario adds parcel acquisition
+          The $2.95M startup allowance excludes land. A purchase scenario adds parcel acquisition
           to the capital requirement and its debt service to the break-even; a long-term
           ground-lease scenario adds an annual occupancy payment to the P&L instead. Both
           scenarios will be modeled with real numbers at site selection, and the financing
@@ -741,14 +826,26 @@ const risks = [
           the opening to 2031. The base plan holds autumn 2030 as the target.
         </p>
 
-        <h3>Pilot-stage targets</h3>
-        <ul class="target-list">
-          <li>Email waitlist of at least <strong>5,000</strong> qualified regional subscribers</li>
-          <li><strong>20</strong> school or homeschool-group expressions of interest</li>
-          <li><strong>40</strong> credible maker applicants</li>
-          <li><strong>10</strong> private-event leads</li>
-          <li>At least <strong>half</strong> of pilot guests purchasing food or beverage</li>
-        </ul>
+        <h3>Validation gates before permanent construction</h3>
+        <p>
+          The concept is not approved on attendance, email subscribers, or positive comments. It
+          is validated as a high-throughput seasonal food business, against these gates:
+        </p>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>Gate</th><th>Minimum evidence</th></tr></thead>
+            <tbody>
+              {gates.map((g) => (
+                <tr><td><strong>{g.gate}</strong></td><td>{g.evidence}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          If the pilots cannot clear these gates — particularly transaction volume, conversion,
+          and capital discipline — the honest answer is to pause and rethink the approach before
+          any land or construction commitment, not to soften the gates.
+        </p>
       </section>
 
       <!-- ============ Risks ============ -->
@@ -1162,7 +1259,7 @@ const risks = [
   .be-plot {
     position: relative;
     height: 320px;
-    margin: 1.6rem 0.5rem 2.2rem 3.2rem;
+    margin: 1.6rem 0.5rem 3.1rem 3.2rem;
   }
 
   .be-grid {
@@ -1260,16 +1357,28 @@ const risks = [
     font-size: 0.95rem;
     color: var(--deep-pine);
     white-space: nowrap;
+    z-index: 2;
+    background: var(--white);
+    border-radius: 999px;
+    padding: 0 0.4rem;
   }
 
   .be-year {
     position: absolute;
     left: 50%;
-    bottom: -1.9rem;
+    bottom: -2.9rem;
     transform: translateX(-50%);
     font-size: 0.85rem;
     font-weight: 700;
     white-space: nowrap;
+    text-align: center;
+  }
+
+  .be-year small {
+    display: block;
+    font-weight: 400;
+    font-size: 0.72rem;
+    opacity: 0.65;
   }
 
   .be-legend {

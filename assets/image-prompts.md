@@ -83,7 +83,7 @@ in ChatGPT, then save to the exact path listed.
 ## 5. Summer courtyard gathering
 
 - **Save as:** `public/images/courtyard-summer.png`
-- **Used on:** Visit page, Groups & Rentals
+- **Used on:** Visit page, Retreats & Programs
 
 **Prompt:**
 
@@ -92,6 +92,23 @@ in ChatGPT, then save to the exact path listed.
 > hall — talking, eating, and reading. Stone pavers, planted borders, understated festoon
 > lights off in daylight, warm building-mounted lanterns. Comfortable occupancy with plenty of
 > open space to imagine yourself there. No event stage, no tents, no crowd, no autumn styling.
+
+## 6. Autumn order-ahead pickup counter
+
+- **Save as:** `public/images/pickup-counter-autumn.png`
+- **Used on:** Order Ahead page hero, The Market page
+
+**Prompt:**
+
+> The order-ahead pickup counter at Leaf & Lantern on a busy but comfortable autumn morning. A
+> cream-painted wood sign above the counter reads "ORDER AHEAD PICKUP" in the painted-sign
+> concept aesthetic. A warm, smiling staff member in a deep-green apron hands a paper tray of a
+> dozen cinnamon donuts and a half-gallon jug of amber cider across the counter to a parent
+> with a child. Beside the pickup counter, a short relaxed walk-up line of four to six guests
+> waits at the main counter, where donut production is visible behind glass. Dark timber
+> building, warm shielded lantern lighting, a few pumpkins and autumn leaves used sparingly.
+> The handoff is clearly person-to-person. No self-service lockers, no customer-facing screens
+> or kiosks, no long frustrated queue, no cash registers facing the viewer.
 
 ---
 

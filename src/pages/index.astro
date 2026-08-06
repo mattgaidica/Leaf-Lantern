@@ -17,7 +17,7 @@ const featuredEvents = EVENTS.filter((e) =>
     imageAlt="A family choosing a pumpkin beside the Leaf & Lantern cider and donut counter"
     title="A welcoming place for every season."
     copy="The autumn traditions you wait all year for — fresh cider, hot donuts, beautiful pumpkins, and time well spent together — in a warm Michigan gathering place with a reason to return every season."
-    primaryCta={{ label: 'Explore the Seasons', href: '/seasons/' }}
+    primaryCta={{ label: 'Order Ahead', href: '/order/' }}
     secondaryCta={{ label: 'Plan Your Visit', href: '/visit/' }}
   />
 
@@ -95,13 +95,17 @@ const featuredEvents = EVENTS.filter((e) =>
         ratio="4 / 3"
       />
       <div class="split-copy">
-        <span class="eyebrow">Food & Bakery</span>
-        <h2>Worth coming early for.</h2>
+        <span class="eyebrow">Cider, Donuts & Coffee</span>
+        <h2>Worth coming early for. Or ordering ahead.</h2>
         <p class="lede">
-          Follow the smell of warm cinnamon donuts to our open bakery, then stay for fresh cider,
-          locally roasted coffee, and a changing menu of simple seasonal favorites.
+          Follow the smell of warm cinnamon donuts to the counter — or order before you arrive,
+          pick a pickup window, and skip the line. Either way, your order is handed to you by a
+          person, fresh.
         </p>
-        <a class="btn btn-secondary" href={url('/market/')}>See the Bakery & Café</a>
+        <div class="split-ctas">
+          <a class="btn btn-primary" href={url('/order/')}>Order Ahead</a>
+          <a class="btn btn-secondary" href={url('/market/')}>See the Counter & Market</a>
+        </div>
       </div>
     </div>
   </section>
@@ -156,13 +160,13 @@ const featuredEvents = EVENTS.filter((e) =>
           </p>
           <span class="program-more">Field trips & camps →</span>
         </a>
-        <a class="program-card" href={url('/groups-rentals/')}>
-          <h3>Groups & Rentals</h3>
+        <a class="program-card" href={url('/retreats/')}>
+          <h3>Retreats & Programs</h3>
           <p>
-            A warm alternative to a banquet hall for retreats, showers, birthdays, reunions, and
-            small receptions — with food from our own kitchen.
+            Daytime corporate retreats, seminars, and team workshops in one functional,
+            beautiful hall — with coffee, cider, and donuts from our own counter.
           </p>
-          <span class="program-more">Host a gathering →</span>
+          <span class="program-more">Plan a program →</span>
         </a>
         <a class="program-card" href={url('/makers/')}>
           <h3>For Makers</h3>
@@ -236,6 +240,12 @@ const featuredEvents = EVENTS.filter((e) =>
 
   .split-reverse > :global(.img-frame) {
     order: 2;
+  }
+
+  .split-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
   }
 
   .program-grid {

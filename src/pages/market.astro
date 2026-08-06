@@ -5,12 +5,16 @@ import BrandImage from '../components/BrandImage.astro';
 import { url } from '../lib/site';
 
 const menu = [
-  { item: 'Mini coffee or kids’ cider', price: '$2' },
-  { item: 'Fresh cider (hot or cold)', price: '$4 – $7' },
-  { item: 'Locally roasted coffee & espresso drinks', price: '$4 – $6.50' },
-  { item: 'Cinnamon donuts, six-pack', price: '$10 – $14' },
-  { item: 'Family cider-and-donut bundle', price: '$16 – $24' },
-  { item: 'Seasonal specialty drinks', price: '$5 – $7' },
+  { item: 'Cinnamon donut — single', price: '$2' },
+  { item: 'Donuts — half-dozen / dozen', price: '$7.50 / $13' },
+  { item: 'Cider — cup, hot or cold', price: '$4.50' },
+  { item: 'Cider — half-gallon / gallon', price: '$10 / $16' },
+  { item: 'Small batch coffee or kids’ mini cider', price: '$2' },
+  { item: 'Double espresso / Americano', price: '$3.75 / $3.50' },
+  { item: 'Hot chocolate', price: '$4' },
+  { item: 'Bundle — half-dozen + two drinks', price: '$15' },
+  { item: 'Bundle — dozen + half-gallon', price: '$22' },
+  { item: 'One rotating item at a time', price: 'Ask at the counter' },
   { item: 'Leaf & Lantern seasonal gift box', price: '$35 – $85' },
 ];
 
@@ -23,12 +27,12 @@ const categories = [
   { name: 'Paper & Children’s Gifts', copy: 'Cards, prints, ornaments, and thoughtfully made toys.' },
 ];
 ---
-<Base title="The Market" description="The Market at Leaf & Lantern: an open bakery, locally roasted coffee, fresh cider, and curated goods from Michigan makers.">
+<Base title="The Market" description="The Market at Leaf & Lantern: a visible donut line, fresh cider, a short coffee menu, and curated goods from Michigan makers.">
   <Hero
     compact
     image="/images/gift-market.jpg"
     imageAlt="Curated maker displays under warm lantern light in the market hall"
-    eyebrow="The Market & Bakery"
+    eyebrow="The Market & Counter"
     title="Made nearby. Chosen with care."
     copy="Useful, beautiful, and delicious goods from Michigan makers and producers — alongside the best cider, donuts, and coffee around."
   />
@@ -36,15 +40,16 @@ const categories = [
   <section class="section">
     <div class="container split">
       <div>
-        <span class="eyebrow">Bakery & Café</span>
-        <h2>Worth coming early for.</h2>
+        <span class="eyebrow">The Counter</span>
+        <h2>A short menu, done exceptionally well.</h2>
         <p class="lede">
-          Follow the smell of warm cinnamon donuts to our open bakery, then stay for fresh cider,
-          locally roasted coffee, and a changing menu of simple seasonal favorites.
+          We’re not a bakery with seventeen pastries — we make a few hero products consistently:
+          hot donuts, fresh cider, a $2 batch coffee, and a handful of warm drinks. Follow the
+          smell of cinnamon to the counter and watch the donuts made.
         </p>
         <p>
-          Donut production is fully visible from the counter — watching them made is half the
-          tradition. Separate order and pickup lines keep things moving even on peak weekends.
+          Separate order and pickup lines keep things moving even on peak weekends — or order
+          before you arrive, choose a pickup window, and skip the line entirely.
         </p>
         <div class="table-wrap menu-table">
           <table class="ll-table">
@@ -61,10 +66,11 @@ const categories = [
             </tbody>
           </table>
         </div>
+        <a class="btn btn-primary" href={url('/order/')}>Order Ahead & Skip the Line</a>
       </div>
       <BrandImage
         src="/images/cider-donuts-closeup.png"
-        alt="Cinnamon donuts, cider, and coffee on a wood table by the bakery counter"
+        alt="Cinnamon donuts, cider, and coffee on a wood table by the counter"
         label="Cider & Donuts"
         ratio="3 / 4"
       />

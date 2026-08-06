@@ -1,0 +1,318 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+
+const menu = [
+  { item: 'Cinnamon donut', detail: 'Single, warm from the line', price: '$2' },
+  { item: 'Donuts · half-dozen', detail: 'Plain or cinnamon sugar', price: '$7.50' },
+  { item: 'Donuts · dozen', detail: 'Plain, cinnamon, or mixed', price: '$13' },
+  { item: 'Cider · cup', detail: 'Hot or cold', price: '$4.50' },
+  { item: 'Cider · half-gallon', detail: 'The take-home favorite', price: '$10' },
+  { item: 'Cider · gallon', detail: 'For the whole table', price: '$16' },
+  { item: 'Small batch coffee', detail: 'Simple, hot, honest', price: '$2' },
+  { item: 'Double espresso', detail: 'Pulled behind the counter', price: '$3.75' },
+  { item: 'Americano', detail: 'No size ladder, no syrup matrix', price: '$3.50' },
+  { item: 'Hot chocolate', detail: 'One size, made properly', price: '$4' },
+  { item: 'Bundle · half-dozen + two drinks', detail: 'The courtyard visit', price: '$15' },
+  { item: 'Bundle · dozen + half-gallon', detail: 'The fifteen-minute stop', price: '$22' },
+];
+
+const windows = [
+  { time: '9:15', state: 'open' },
+  { time: '9:30', state: 'open' },
+  { time: '9:45', state: 'selected' },
+  { time: '10:00', state: 'open' },
+  { time: '10:15', state: 'full' },
+  { time: '10:30', state: 'open' },
+];
+
+const lanes = [
+  {
+    name: 'Walk up',
+    copy: 'The counter is always staffed. Ask questions, watch the donuts made, order the ordinary way — no phone required.',
+  },
+  {
+    name: 'Order ahead',
+    copy: 'Order from home or from the grounds, pick a fifteen-minute window, and skip the line. Your order is handed to you by a person at the pickup counter.',
+  },
+  {
+    name: 'Express drive-up',
+    copy: 'Dozens, half-gallons, gallons, and prepaid bundles — collected curbside without a long parking stay. Built for office runs and busy Saturdays.',
+  },
+];
+---
+<Base
+  title="Order Ahead"
+  description="Order fresh donuts, cider, and coffee ahead of your visit to Leaf & Lantern — pick a pickup window and skip the line."
+>
+  <Hero
+    compact
+    image="/images/pickup-counter-autumn.png"
+    imageAlt="A staff member handing a tray of donuts and a half-gallon of cider across the order-ahead pickup counter"
+    imageLabel="The Pickup Counter"
+    eyebrow="Order Ahead · Autumn"
+    title="Skip the line. Keep the warmth."
+    copy="Order donuts, cider, and coffee before you arrive, choose a pickup window, and collect it from a real person at the pickup counter."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="order-head">
+        <span class="eyebrow">The Autumn Counter</span>
+        <h2>Twelve buttons. No decision tree.</h2>
+        <p class="lede">
+          A short menu done exceptionally well: donuts in three sizes, cider in three formats, a
+          $2 batch coffee, three warm drinks, and two bundles. One rotating item keeps things
+          interesting — never a page of options.
+        </p>
+      </div>
+
+      <div class="menu-grid" role="list" aria-label="Autumn menu preview">
+        {menu.map((m) => (
+          <div class="menu-btn" role="listitem">
+            <span class="menu-item">{m.item}</span>
+            <span class="menu-detail">{m.detail}</span>
+            <span class="menu-price">{m.price}</span>
+          </div>
+        ))}
+        <div class="menu-btn menu-rotating" role="listitem">
+          <span class="menu-badge">This week only</span>
+          <span class="menu-item">Apple-cider slush</span>
+          <span class="menu-detail">One rotating item at a time</span>
+          <span class="menu-price">$5</span>
+        </div>
+      </div>
+      <p class="menu-note">
+        Pumpkins, gift boxes, and everything in the Market are chosen in person — some things
+        shouldn’t be ordered from a screen.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container-narrow window-block">
+      <span class="eyebrow">Pick Your Window</span>
+      <h2>Fifteen-minute pickup windows.</h2>
+      <p>
+        Windows keep the kitchen honest and your donuts hot: we batch to your arrival, not to a
+        guess. On peak weekends, windows also spread arrivals so the grounds stay comfortable.
+      </p>
+      <div class="window-row" role="group" aria-label="Pickup window preview (not yet active)">
+        {windows.map((w) => (
+          <span class:list={['window-chip', w.state]}>
+            {w.time}
+            {w.state === 'full' && <small>Full</small>}
+          </span>
+        ))}
+      </div>
+      <p class="window-note">
+        A preview of the ordering experience — online ordering opens with our pilot season on a
+        managed platform (Square, Toast, or Lightspeed class).
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="order-head">
+        <span class="eyebrow">Three Ways to Buy the Same Few Things</span>
+        <h2>Every lane ends with a person.</h2>
+        <p class="lede">
+          No lockers, no kiosks, no shelf of cooling bags. However you order, your food is checked
+          and handed over by someone who can fix a problem on the spot.
+        </p>
+      </div>
+      <div class="lane-grid">
+        {lanes.map((l) => (
+          <div class="lane-card">
+            <h3>{l.name}</h3>
+            <p>{l.copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-pine">
+    <div class="container-narrow bulk-block">
+      <span class="eyebrow">Offices, Schools & Celebrations</span>
+      <h2>Bulk orders, planned properly.</h2>
+      <p>
+        Ten dozen for the office, cider and donuts for the classroom, or a team-morning delivery
+        pickup: bulk orders take a 48-hour lead time, sensible minimums, and volume pricing —
+        which is exactly what lets us promise they’re fresh.
+      </p>
+      <a class="btn btn-primary" href="mailto:hello@leafandlantern.com?subject=Bulk%20order%20inquiry">Start a Bulk Order</a>
+      <small>Bulk ordering opens with our pilot season. Join the email list to be first.</small>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .order-head {
+    max-width: 52em;
+    margin-bottom: 2.2rem;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.9rem;
+  }
+
+  .menu-btn {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--line);
+    padding: 1.1rem 1.15rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    transition: transform 150ms ease, border-color 150ms ease;
+  }
+
+  .menu-btn:hover {
+    transform: translateY(-2px);
+    border-color: var(--cider);
+  }
+
+  .menu-item {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--deep-pine);
+  }
+
+  .menu-detail {
+    font-size: 0.82rem;
+    opacity: 0.65;
+  }
+
+  .menu-price {
+    margin-top: 0.5rem;
+    font-weight: 700;
+    color: var(--cider);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .menu-rotating {
+    border-style: dashed;
+    border-color: var(--cider);
+    background: var(--cider-soft);
+  }
+
+  .menu-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cider);
+  }
+
+  .menu-note {
+    margin-top: 1.2rem;
+    font-size: 0.92rem;
+    opacity: 0.7;
+  }
+
+  .window-block h2 {
+    margin-bottom: 0.5em;
+  }
+
+  .window-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-block: 1.4rem 1rem;
+  }
+
+  .window-chip {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    border: 2px solid var(--line);
+    background: var(--white);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .window-chip.selected {
+    border-color: var(--deep-pine);
+    background: var(--deep-pine);
+    color: var(--parchment);
+  }
+
+  .window-chip.full {
+    opacity: 0.45;
+    text-decoration: line-through;
+  }
+
+  .window-chip.full small {
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+
+  .window-note {
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+
+  .lane-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+  }
+
+  .lane-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 1.7rem 1.6rem;
+    border-top: 3px solid var(--cider);
+  }
+
+  .lane-card h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .lane-card p {
+    margin: 0;
+    font-size: 0.96rem;
+  }
+
+  .bulk-block {
+    text-align: center;
+  }
+
+  .bulk-block .btn {
+    margin-top: 1.2rem;
+  }
+
+  .bulk-block small {
+    display: block;
+    margin-top: 0.8rem;
+    opacity: 0.75;
+  }
+
+  @media (max-width: 1020px) {
+    .menu-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .lane-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .menu-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
