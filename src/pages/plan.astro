@@ -148,7 +148,7 @@ const positioningPlots: PositioningPlot[] = [
     points: [
       { label: 'Roadside farm stand', x: 48, y: 20, pos: 'bottom' },
       { label: 'Conventional coffee shop', x: 70, y: 46, pos: 'top' },
-      { label: 'Chick-fil-A-style QSR', x: 90, y: 40, pos: 'left' },
+      { label: 'Chick-fil-A-style quick service', x: 90, y: 40, pos: 'left' },
       { label: 'Event / wedding venue', x: 14, y: 80, pos: 'bottom' },
       { label: 'Large attraction farm', x: 32, y: 72, pos: 'bottom' },
       { label: 'Traditional cider mill', x: 50, y: 84, pos: 'top' },
@@ -211,7 +211,7 @@ const positioningPlots: PositioningPlot[] = [
       'Leaf & Lantern remains seasonal — October still matters enormously. The distinction is that revenue also comes from hero food, take-home and bulk orders, retail, camps, education, workshops, and controlled seasonal programming rather than requiring giant attraction weekends or catered events.',
   },
   {
-    kicker: 'Map 4 · Autumn’s answer to modern QSR',
+    kicker: 'Map 4 · Autumn’s answer to modern quick service',
     title: 'Throughput × human warmth',
     xTitle: 'Throughput',
     xLow: 'Slow',
@@ -224,7 +224,7 @@ const positioningPlots: PositioningPlot[] = [
     alt:
       'Conceptual strategy map of service throughput against personal warmth. A self-service kiosk quick-service restaurant has high throughput with lower personal interaction, and an automated pickup operation has very high throughput with little personal warmth. A boutique cafe is warm but slower, and a crowded cider mill has high atmosphere with poor throughput. Leaf and Lantern targets high throughput and high warmth, achieved through order-ahead, a simple menu, visible fresh production, a dedicated pickup counter, a human handoff, and a short walk-up line.',
     points: [
-      { label: 'Self-service kiosk QSR', x: 80, y: 26, pos: 'top' },
+      { label: 'Self-service kiosk chain', x: 80, y: 26, pos: 'top' },
       { label: 'Boutique café', x: 28, y: 82, pos: 'top' },
       { label: 'Crowded cider mill', x: 14, y: 68, pos: 'bottom' },
       { label: 'Automated pickup operation', x: 88, y: 10, pos: 'top' },
@@ -339,8 +339,8 @@ const dashboard = [
     why: 'Integrates dwell, conversion, basket size, and site productivity in one number',
   },
   {
-    metric: 'NPS plus observed return behavior',
-    def: 'Standard NPS paired with actual ninety-day and same-season repeat rates',
+    metric: 'Net Promoter Score plus observed return behavior',
+    def: 'Standard Net Promoter Score paired with actual ninety-day and same-season repeat rates',
     why: 'Keeps customer sentiment from substituting for behavior',
   },
 ];
@@ -488,7 +488,7 @@ const risks = [
   { risk: 'Event-venue drift', mitigation: 'Weddings, showers, and receptions excluded by policy (the Cornman Farms lesson); no banquet kitchen, event-sales role, or turnover crew; retreats stay daytime and functional; reservations and capacity blocks reserved for special events and parties only.' },
   { risk: 'Brand dilution', mitigation: 'Every program must fit one seasonal signature; maximum visual and attendance density; formal experience review.' },
   { risk: 'Food bottlenecks', mitigation: 'Separate order and pickup; three ordering lanes with one consistent price list; dedicated order-ahead pickup path; preorder bundles; batch planning; throughput testing before opening.' },
-  { risk: 'Cider production compliance', mitigation: 'Open with partner-pressed private-label cider from a licensed regional presser; transparent sourcing story; onsite pressing deferred until volume and sanitation systems justify a regulated juice operation.' },
+  { risk: 'Cider production compliance', mitigation: 'Partner-pressed private-label cider from a licensed regional presser keeps regulated juice production off-site entirely; transparent sourcing story.' },
   { risk: 'Seasonal labor shortage', mitigation: 'Early recruiting of students, retirees, returners; competitive pay ($16–$18/hr, tracked against Detroit-area food-service wages); simplified roles and short training modules.' },
   { risk: 'Weather and grounds failure', mitigation: 'Drainage, all-weather paths, covered thresholds, indoor backup layouts, clear closure communication.' },
   { risk: 'Cash-flow shortfall', mitigation: '$300K opening reserve; deposits for camps and retreats; weekly thirteen-week cash-flow forecasting.' },
@@ -904,13 +904,20 @@ const risks = [
         <h3>Staffing</h3>
         <p>
           The permanent team is organized around six functions, not ten job titles — several
-          owner-led or combined in the early years: general and financial management;
-          food-production leadership (a donut and food-production manager, not a broad-menu
-          executive baker — secondary pastries come from approved partners); guest operations
-          (counter, pickup, parking, service training); education and programs; market and
-          merchandising; and facilities and grounds. There is deliberately no event-sales or
-          banquet role. A part-time café and market crew covers daily service across the
-          operating season, and peak autumn adds thirty-five to fifty-five seasonal employees.
+          owner-led or combined in the early years:
+        </p>
+        <ul class="target-list">
+          <li><strong>General and financial management</strong></li>
+          <li><strong>Food-production leadership</strong> — a donut and food-production manager, not a broad-menu executive baker; secondary pastries come from approved partners</li>
+          <li><strong>Guest operations</strong> — counter, pickup, parking, and service training</li>
+          <li><strong>Education and programs</strong></li>
+          <li><strong>Market and merchandising</strong></li>
+          <li><strong>Facilities and grounds</strong></li>
+        </ul>
+        <p>
+          There is deliberately no event-sales or banquet role. A part-time café and market
+          crew covers daily service across the operating season, and peak autumn adds
+          thirty-five to fifty-five seasonal employees.
         </p>
         <p>
           That structure — roughly $300–330K in salaried payroll, $110–130K in season-long
@@ -921,16 +928,14 @@ const risks = [
           hiring range is treated as market rate, not a premium.
         </p>
 
-        <h3>Cider without building a juice plant</h3>
+        <h3>Cider, sourced — not pressed</h3>
         <p>
-          Pressing cider commercially is a regulated production competency: Michigan licensing,
-          federal juice-processing (HACCP) compliance, trained safe-cider staff, and approved
-          treatment. The plan phases it. Opening cider is an exclusive private label pressed by a
-          licensed regional partner to Leaf & Lantern’s specification, with the orchard source,
-          apple blend, pressing schedule, and treatment publicly transparent. An onsite press is
-          added only when gallon volume, staffing, and sanitation systems justify the investment.
-          Franklin and Plymouth show that guests care about seeing where cider comes from — the
-          sourcing story must be exceptionally visible until pressing moves onsite.
+          Pressing cider commercially is a regulated production business — licensing, federal
+          juice-safety compliance, trained staff — and it is not this business. Cider is an
+          exclusive private label, pressed by a licensed regional partner to Leaf & Lantern’s
+          specification, with the orchard source and apple blend openly stated. The venture is
+          not pretending to heritage it doesn’t have; the competency is excellent sourcing,
+          efficient handling, and a great customer experience.
         </p>
       </section>
 
@@ -966,13 +971,15 @@ const risks = [
 
         <h3>The capacity equation</h3>
         <p>
-          Daily on-site volume follows one chain: <strong>parking spaces × (open hours ÷ average
-          dwell) × occupied utilization = arriving parties</strong>; parties × guests per vehicle
-          = guest visits; parties × food conversion (plus express orders that never consume a
-          normal parking stay) = food orders; orders × average order = food revenue. The
-          envelope below applies that chain at a lower, base, and upper operating case — it is a
-          <em>capacity range, not a demand forecast</em>.
+          Daily on-site volume follows one chain, applied below at a lower, base, and upper
+          operating case — a <em>capacity range, not a demand forecast</em>.
         </p>
+        <div class="eq-block" role="img" aria-label="Capacity chain: parking spaces times open hours divided by average dwell times occupied utilization equals arriving parties; arriving parties times guests per vehicle equals guest visits; arriving parties times food conversion, plus express orders, equals food orders; food orders times average order equals food revenue.">
+          <span>parking spaces × (open hours ÷ avg. dwell) × utilization = <strong>arriving parties</strong></span>
+          <span>arriving parties × guests per vehicle = <strong>guest visits</strong></span>
+          <span>arriving parties × food conversion + express orders = <strong>food orders</strong></span>
+          <span>food orders × average order = <strong>food revenue</strong></span>
+        </div>
         <div class="table-wrap">
           <table class="ll-table">
             <thead><tr><th>Capacity input</th><th class="num">Lower case</th><th class="num">Illustrative base</th><th class="num">Upper operating case</th></tr></thead>
@@ -1031,10 +1038,15 @@ const risks = [
 
         <h3>Why express channels matter more than preorders</h3>
         <p>
-          A 650-transaction peak day exposes the constraint. At 65% conversion, 650 on-site
-          orders imply ≈1,000 arriving parties; at a 1.75-hour dwell they consume ≈1,750 occupied
-          parking-space-hours — yet even 180 spaces over 8.5 hours at 85% utilization supply only
-          ≈1,300. Roughly a quarter of peak transactions must therefore arrive through genuinely
+          A 650-transaction peak day exposes the constraint:
+        </p>
+        <div class="eq-block" role="img" aria-label="650 orders at 65 percent conversion imply about 1,000 arriving parties; 1,000 parties at a 1.75-hour dwell demand about 1,750 occupied parking-space-hours; but 180 spaces over 8.5 hours at 85 percent utilization supply only about 1,300.">
+          <span>650 orders ÷ 65% conversion ≈ <strong>1,000 arriving parties</strong></span>
+          <span>1,000 parties × 1.75-hour dwell ≈ <strong>1,750 parking-space-hours demanded</strong></span>
+          <span>180 spaces × 8.5 hours × 85% utilization ≈ <strong>1,300 supplied</strong></span>
+        </div>
+        <p>
+          Roughly a quarter of peak transactions must therefore arrive through genuinely
           low-dwell channels: express drive-up collection, office and school bulk orders, and
           true grab-and-go. That is why the ordering-lane design treats express collection as a
           capacity tool, not a convenience feature.
@@ -1095,15 +1107,20 @@ const risks = [
           </table>
         </div>
         <p>
-          The dashboard is connected, not a list: repeat households × visits per household ×
-          conversion × average transaction = core food revenue; orders ÷ direct labor hours =
-          labor productivity; revenue ÷ occupied parking-space-hours = site productivity.
+          The dashboard is connected, not a list:
+        </p>
+        <div class="eq-block" role="img" aria-label="Repeat households times visits per household times conversion times average transaction equals core food revenue; orders divided by direct labor hours equals labor productivity; revenue divided by occupied parking-space-hours equals site productivity.">
+          <span>repeat households × visits per household × conversion × avg. transaction = <strong>core food revenue</strong></span>
+          <span>orders ÷ direct labor hours = <strong>labor productivity</strong></span>
+          <span>revenue ÷ occupied parking-space-hours = <strong>site productivity</strong></span>
+        </div>
+        <p>
           Underperformance can then be diagnosed — insufficient household reach, weak return
           frequency, low conversion, small baskets, excessive dwell, or labor inefficiency —
-          rather than debated. NPS is treated as a diagnostic alongside observed return
-          behavior, never as the primary proof of loyalty. This dashboard is the instrument
-          panel of the adaptive operating philosophy in Section 02: it is how each season’s
-          operating experience becomes the measurable input for the next.
+          rather than debated. Net Promoter Score is treated as a diagnostic alongside observed
+          return behavior, never as the primary proof of loyalty. This dashboard is the
+          instrument panel of the adaptive operating philosophy in Section 02: it is how each
+          season’s operating experience becomes the measurable input for the next.
         </p>
       </section>
 
@@ -1831,6 +1848,24 @@ const risks = [
     border-left: 4px solid var(--cider);
     margin: 2rem 0;
     padding: 0.4rem 0 0.4rem 1.5rem;
+  }
+
+  /* ---------- Isolated equations ---------- */
+  .eq-block {
+    display: grid;
+    gap: 0.45rem;
+    background: var(--parchment-deep);
+    border-left: 3px solid var(--cider);
+    border-radius: var(--radius);
+    padding: 0.9rem 1.1rem;
+    margin: 1.1rem 0 1.4rem;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    color: var(--deep-pine);
+  }
+
+  .eq-block strong {
+    color: inherit;
   }
 
   /* ---------- Metric cards ---------- */
@@ -2660,6 +2695,7 @@ const risks = [
     .be-chart,
     .pos-plot,
     .pull-quote,
+    .eq-block,
     .roadmap-phase {
       break-inside: avoid;
     }
