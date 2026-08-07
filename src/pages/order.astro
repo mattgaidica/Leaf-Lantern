@@ -29,11 +29,11 @@ const windows = [
 const lanes = [
   {
     name: 'Walk up',
-    copy: 'The counter is always staffed. Ask questions, watch the donuts made, order the ordinary way — no phone required.',
+    copy: 'The counter is always staffed. Ask questions, watch the donuts made, order the ordinary way — no phone and no reservation required. Same prices as every other lane.',
   },
   {
     name: 'Order ahead',
-    copy: 'Order from home or from the grounds, pick a fifteen-minute window, and skip the line. Your order is handed to you by a person at the pickup counter.',
+    copy: 'Order from home before you arrive, pick a fifteen-minute kitchen pickup window, and collect at the dedicated pickup counter — skip the order line on the same menu prices. Ordering ahead never reserves a place on the grounds.',
   },
   {
     name: 'Express drive-up',
@@ -43,7 +43,7 @@ const lanes = [
 ---
 <Base
   title="Order Ahead"
-  description="Order fresh donuts, cider, and coffee ahead of your visit to Leaf & Lantern — pick a pickup window and skip the line."
+  description="Order fresh donuts, cider, and coffee ahead of your visit to Leaf & Lantern — pick a kitchen pickup window and skip the order line."
 >
   <Hero
     compact
@@ -52,7 +52,7 @@ const lanes = [
     imageLabel="The Pickup Counter"
     eyebrow="Order Ahead · Autumn"
     title="Skip the line. Keep the warmth."
-    copy="Order donuts, cider, and coffee before you arrive, choose a pickup window, and collect it from a real person at the pickup counter."
+    copy="Order donuts, cider, and coffee before you arrive, choose a kitchen pickup window, and collect it from a real person at the pickup counter — same prices as walk-up."
   />
 
   <section class="section">
@@ -92,10 +92,12 @@ const lanes = [
   <section class="section section-alt">
     <div class="container-narrow window-block">
       <span class="eyebrow">Pick Your Window</span>
-      <h2>Fifteen-minute pickup windows.</h2>
+      <h2>Fifteen-minute kitchen pickup windows.</h2>
       <p>
-        Windows keep the kitchen honest and your donuts hot: we batch to your arrival, not to a
-        guess. On peak weekends, windows also spread arrivals so the grounds stay comfortable.
+        Windows keep the kitchen honest and your donuts hot: we batch to your pickup time, not to a
+        guess. They organize food handoff only — the grounds stay open walk-up, with no arrival
+        reservation on ordinary autumn days. Same prices as the counter; the benefit is a ready
+        order and a dedicated pickup path, not a different rate.
       </p>
       <div class="window-row" role="group" aria-label="Pickup window preview (not yet active)">
         {windows.map((w) => (
@@ -118,8 +120,10 @@ const lanes = [
         <span class="eyebrow">Three Ways to Buy the Same Few Things</span>
         <h2>Every lane ends with a person.</h2>
         <p class="lede">
-          No lockers, no kiosks, no shelf of cooling bags. However you order, your food is checked
-          and handed over by someone who can fix a problem on the spot.
+          One menu, one price list. No lockers, no kiosks, no shelf of cooling bags. Walk-up orders
+          at the counter; ahead-orders at a dedicated pickup counter so the two paths stay clear.
+          However you order, your food is checked and handed over by someone who can fix a problem
+          on the spot.
         </p>
       </div>
       <div class="lane-grid">
