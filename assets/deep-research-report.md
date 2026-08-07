@@ -173,7 +173,7 @@ Agricultural or farm-market status should not be presumed to eliminate local app
 
 ## Revenue Streams and Financial Plan
 
-Leaf & Lantern should use a **mixed-access model**. Ordinary café and market days can be free, while high-demand programmed periods use admission or timed tickets. This prevents the business from placing a paywall in front of every coffee or retail visit while preserving the ability to manage autumn capacity and monetize major experiences.
+Leaf & Lantern should use a **free-access base with ticketed special experiences**. Ordinary café, market, and autumn grounds days are free walk-up — no arrival reservation and no timed entry for normal operations. Ticketed evenings, workshops, camps, and private parties use reservations or capacity blocks when needed. Peak kitchen logistics are smoothed by order-ahead with kitchen pickup windows and a dedicated pickup counter — same menu prices as walk-up, never a promotional online rate that would pull guests onto their phones in the order line. This keeps a paywall off every coffee or retail visit while still monetizing bounded special experiences.
 
 **Recommended opening price architecture.** These are suggested initial prices in 2027 dollars and should be validated with local research, cost testing, and pilot events.
 
@@ -181,8 +181,6 @@ Leaf & Lantern should use a **mixed-access model**. Ordinary café and market da
 |---|---:|
 | Ordinary market and café access | Free |
 | Spring or summer discovery day | $8–$12 per guest |
-| Autumn weekday programmed admission | $8–$11 |
-| Autumn weekend programmed admission | $12–$16 |
 | Halloween costume party or lantern evening | $14–$20 |
 | Children under age two | Free |
 | School field trip | $12–$16 per student; minimum group charge |
@@ -200,9 +198,9 @@ Leaf & Lantern should use a **mixed-access model**. Ordinary café and market da
 | Family cider-and-donut bundle | $16–$24 |
 | Leaf & Lantern seasonal gift box | $35–$85 |
 
-The suggested admission band is intentionally below Wiard’s $27.50 weekend price and generally near or moderately above Blake’s $12–$14 festival pricing, reflecting a smaller attraction set but a more curated environment. citeturn2view0turn2view4turn2view5
+The suggested pricing keeps general autumn access free — a deliberate contrast with Wiard’s $27.50 weekend gate and Blake’s $12–$14 festival pricing — while ticketed evenings and programs monetize bounded special experiences. citeturn2view0turn2view4turn2view5
 
-**Revenue principles.** Food and beverage should be the largest recurring revenue center. Admission protects capacity and funds programming, but the brand should not become dependent on ticket increases. Retail should emphasize high-turn seasonal goods, Leaf & Lantern pantry products, and exclusive maker collaborations. Vendor fees should cover market production costs while remaining affordable enough to attract quality emerging makers. Rentals should primarily fill weekdays, evenings, and non-peak months rather than displace profitable autumn operations.
+**Revenue principles.** Food and beverage should be the largest recurring revenue center. Order-ahead clears kitchen production and staffing logistics through pickup windows and a dedicated handoff path — one consistent price list across walk-up and online, without arrival reservations on ordinary autumn days. Ticketed special events and private parties remain the only reserved or capacity-blocked experiences. Retail should emphasize high-turn seasonal goods, Leaf & Lantern pantry products, and exclusive maker collaborations. Vendor fees should cover market production costs while remaining affordable enough to attract quality emerging makers. Daytime retreats and seminars should fill weekdays and scheduled closed days rather than displace profitable autumn walk-up operations.
 
 **Three-year illustrative profit-and-loss projection.** Figures are in thousands of dollars and exclude income taxes, owner distributions, land cost, and extraordinary expenses.
 
@@ -282,9 +280,9 @@ The voice should be warm, plainspoken, observant, and confident. It should avoid
 | Validation | Prove interest before major capital deployment | Landing page, founding email list, maker interviews, school outreach, pop-up markets, mobile cider-and-donut events |
 | Pre-construction | Turn the concept into a visible future destination | Founder's journal, architectural previews, seasonal imagery, vendor and educator recruitment |
 | Nine to six months before opening | Build bookable demand | Open camp, field-trip, rental, and founding-member inquiries; begin regional PR and partnership outreach |
-| Final ninety days | Convert attention into reservations | Timed tickets, opening calendar, paid social, search advertising, local media previews, creator visits |
-| Opening season | Protect the experience | Soft-opening weekends, attendance caps, guest surveys, daily operations review, email capture |
-| Retention | Establish annual traditions | Early access, seasonal passes, birthday reminders, teacher rebooking, holiday preorder program |
+| Final ninety days | Convert attention into demand | Order-ahead awareness, ticketed special-event calendar, paid social, search advertising, local media previews, creator visits |
+| Opening season | Protect the experience | Soft-opening weekends, guest surveys, daily operations review, email capture — no timed arrival gate on ordinary autumn days |
+| Retention | Establish annual traditions | Early access to special events, birthday reminders, teacher rebooking, holiday preorder program |
 
 Priority channels are email, local search and map listings, Instagram, Facebook, school and homeschool outreach, community calendars, regional tourism partners, local media, maker cross-promotion, and carefully chosen paid social. Email should be the primary owned channel because the calendar naturally creates repeat announcements: camp registration, autumn ticket release, Halloween, gift-market applications, workshops, and holiday preorder deadlines.
 
@@ -494,9 +492,9 @@ Recommended pilot-stage targets include an email waitlist of at least 5,000 qual
 |---|---|---|
 | **Site or zoning incompatibility** | Camps, food service, retail, assembly, markets, music, and seasonal events may not all be permitted under one land-use classification. | Conduct municipal pre-application review before purchase; use entitlement contingencies; obtain written use interpretations; avoid assuming agricultural protection resolves local approvals. |
 | **Capital-cost escalation** | Utility extensions, drainage, parking, commercial kitchen requirements, and winterization can exceed visible building costs. | Complete civil and utility due diligence early; obtain contractor pricing at schematic design; retain at least a 12–15 percent construction contingency. |
-| **Autumn dependence** | Poor weather or a shortened peak season can impair the year. | Presell timed tickets; maintain indoor rain capacity; build camps, schools, rentals, gift markets, and workshops into the base model. |
+| **Autumn dependence** | Poor weather or a shortened peak season can impair the year. | Promote order-ahead with kitchen pickup windows and a dedicated pickup path; preorder food and pumpkin bundles; maintain indoor rain capacity; build camps, schools, retreats, gift markets, and workshops into the base model — without timed arrival reservations on ordinary autumn days. |
 | **Brand dilution** | Adding rides, inflatables, dense décor, or too many events may increase short-term attendance but erase differentiation. | Require every program to fit one seasonal signature; establish maximum visual and attendance density; create a formal experience-review process. |
-| **Food bottlenecks** | Long donut, coffee, and cider lines can dominate guest perception and reduce secondary spending. | Separate order and pickup; offer preorder bundles; use batch planning; provide multiple beverage pickup points during peaks; test service throughput before opening. |
+| **Food bottlenecks** | Long donut, coffee, and cider lines can dominate guest perception and reduce secondary spending. | Separate order and pickup; one consistent price list; dedicated order-ahead pickup counter; preorder bundles and batch planning; test service throughput before opening. |
 | **Seasonal labor shortage** | Autumn requires rapid hiring and consistent service from temporary staff. | Recruit schools, retirees, and returning seasonal workers early; pay above minimum wage; simplify roles; provide short training modules and clear supervisory ratios. |
 | **Weather and grounds failure** | Mud, heat, snow, wind, or poor drainage can close outdoor functions and damage the arrival experience. | Invest in drainage, all-weather paths, shade, covered thresholds, indoor backup layouts, and clear closure communication. |
 | **Safety and liability** | Children’s programs, food, events, parking, fire, weather, and temporary installations create multiple risk categories. | Use qualified counsel and insurance advisers; maintain incident protocols, background-check policies, occupancy controls, food-safety systems, and documented inspections. |

@@ -62,7 +62,6 @@ const seasonalRevenue = [
 
 const pricing = [
   { stream: 'General admission, every day — grounds, market, café, pumpkins', price: 'Free' },
-  { stream: 'Peak-weekend arrival reservation', price: 'Free' },
   { stream: 'Donut — single / half-dozen / dozen', price: '$2 / $7–$8 / $12–$14' },
   { stream: 'Cider — cup (hot or cold) / half-gallon / gallon', price: '$4–$5 / $9–$11 / $15–$18' },
   { stream: 'Small batch coffee or kids’ mini cider', price: '$2' },
@@ -139,8 +138,8 @@ const bridge = [
 ];
 
 const lanes = [
-  { lane: 'Staffed walk-up counter', use: 'First-time visitors, questions, allergies, and ordinary purchases — the default, fully human lane.' },
-  { lane: 'Mobile order-ahead with pickup windows', use: 'Skip the line: families reserving food before arrival and guests ordering from the grounds, collected at a staffed pickup counter.' },
+  { lane: 'Staffed walk-up counter', use: 'First-time visitors, questions, allergies, and ordinary purchases — the default, fully human lane. No reservation required; same menu prices as every other lane.' },
+  { lane: 'Mobile order-ahead with kitchen pickup windows', use: 'Same prices, clearer handoff: guests place food orders before arrival, choose a kitchen pickup window, and collect at a dedicated staffed pickup counter — skipping the order line without creating a second price path or phone-ordering while waiting.' },
   { lane: 'Express drive-up collection', use: 'Dozens, cider half-gallons and gallons, office and school orders, and prepaid bundles — revenue without a long parking stay.' },
 ];
 
@@ -150,7 +149,7 @@ const gates = [
   { gate: 'Conversion', evidence: 'At least 60% of visiting parties purchase food or drink on ordinary free-access days.' },
   { gate: 'Throughput', evidence: 'Core orders handed off reliably in under eight to ten minutes during peak periods.' },
   { gate: 'Peak capacity', evidence: 'At least 100 simple transactions per active service line per hour after warmup.' },
-  { gate: 'Preorder adoption', evidence: '15–25% of peak food sales placed before arrival or through bulk ordering.' },
+  { gate: 'Preorder adoption', evidence: '15–25% of peak food sales placed before arrival or through bulk ordering, driven by a dedicated pickup path — not a separate price.' },
   { gate: 'Repeat behavior', evidence: 'Meaningful same-season return visits and repeat dozen-and-cider purchases.' },
   { gate: 'Non-autumn contribution', evidence: 'Education, camps, holiday orders, retail, and limited programs generate $450–550K of annual gross contribution collectively.' },
   { gate: 'Capital discipline', evidence: 'Site and building deliverable within debt service supported by the base — not optimistic — transaction case.' },
@@ -201,10 +200,10 @@ const roadmapPhases = [
 const risks = [
   { risk: 'Site or zoning incompatibility', mitigation: 'Municipal pre-application review before purchase; entitlement contingencies; written use interpretations.' },
   { risk: 'Capital-cost escalation', mitigation: 'Civil and utility due diligence early; contractor pricing at schematic design; 12–15% construction contingency.' },
-  { risk: 'Autumn dependence', mitigation: 'Preorder food and pumpkin bundles; indoor rain capacity; camps, schools, retreats, and gift markets in the base model.' },
-  { risk: 'Event-venue drift', mitigation: 'Weddings, showers, and receptions excluded by policy (the Cornman Farms lesson); no banquet kitchen, event-sales role, or turnover crew; retreats stay daytime and functional.' },
+  { risk: 'Autumn dependence', mitigation: 'Order-ahead food and pumpkin preorders with kitchen pickup windows; indoor rain capacity; camps, schools, retreats, and gift markets in the base model — no timed arrival gate on ordinary autumn days.' },
+  { risk: 'Event-venue drift', mitigation: 'Weddings, showers, and receptions excluded by policy (the Cornman Farms lesson); no banquet kitchen, event-sales role, or turnover crew; retreats stay daytime and functional; reservations and capacity blocks reserved for special events and parties only.' },
   { risk: 'Brand dilution', mitigation: 'Every program must fit one seasonal signature; maximum visual and attendance density; formal experience review.' },
-  { risk: 'Food bottlenecks', mitigation: 'Separate order and pickup; three ordering lanes; preorder bundles; batch planning; throughput testing before opening.' },
+  { risk: 'Food bottlenecks', mitigation: 'Separate order and pickup; three ordering lanes with one consistent price list; dedicated order-ahead pickup path; preorder bundles; batch planning; throughput testing before opening.' },
   { risk: 'Cider production compliance', mitigation: 'Open with partner-pressed private-label cider from a licensed regional presser; transparent sourcing story; onsite pressing deferred until volume and sanitation systems justify a regulated juice operation.' },
   { risk: 'Seasonal labor shortage', mitigation: 'Early recruiting of students, retirees, returners; competitive pay ($16–$18/hr, tracked against Detroit-area food-service wages); simplified roles and short training modules.' },
   { risk: 'Weather and grounds failure', mitigation: 'Drainage, all-weather paths, covered thresholds, indoor backup layouts, clear closure communication.' },
@@ -410,7 +409,8 @@ const risks = [
           directly: praise concentrates on tradition, donuts, and atmosphere, while complaints
           concentrate on long waits, parking congestion, payment friction, and peak-weekend
           crowding. Those four complaints map to Leaf & Lantern’s throughput design, parking
-          sizing, modern payments, and free timed arrival reservations. Competitor profiles are
+          sizing, modern payments, and an incentivized order-ahead lane — not timed arrival
+          reservations that would block ordinary autumn visits. Competitor profiles are
           summarized from public listings and reviews; a formal audit is part of pilot-stage work.
         </p>
 
@@ -512,17 +512,25 @@ const risks = [
         <h2>Free to enter. Worth paying for.</h2>
         <p class="lede">
           Admission is always free — grounds, market, café, and pumpkin selection, every day,
-          including peak autumn weekends. There is no gate fee and no upsell ladder. Margin lives
-          in hero products bought many ways — cider, donuts, a short coffee menu, bundles, and
-          preorders — plus retail and genuinely bounded programs: ticketed evenings, workshops,
-          camps, field trips, and daytime retreats.
+          including peak autumn weekends. There is no gate fee, no arrival reservation, and no
+          upsell ladder. Ordinary autumn operations stay open walk-up: guests arrive when they
+          like. Margin lives in hero products bought many ways — cider, donuts, a short coffee
+          menu, bundles, and order-ahead — plus retail and genuinely bounded programs: ticketed
+          evenings, workshops, camps, field trips, daytime retreats, and private parties for
+          special events only.
         </p>
         <p>
-          Peak autumn capacity is managed with free timed arrival reservations rather than a
-          paywall, preserving the calm, intimate atmosphere that differentiates the brand. A $2
-          mini coffee and a bag of donuts is a complete, welcome visit — the model treats that
-          family as the beginning of a relationship that later books a camp, a field trip, or a
-          corporate retreat, not as a missed ticket sale.
+          Peak autumn logistics are smoothed by order-ahead, not by blocking the gate. Guests who
+          order food and drink before they arrive choose a kitchen pickup window and collect at a
+          dedicated pickup counter — skipping the order line on the same menu prices as walk-up.
+          There is no order-ahead discount: a second price invites phone-ordering in the walk-up
+          line and muddies a simple, consistent counter. The incentive is the workflow itself —
+          known pickup time, fresher batching for the kitchen, and a clear path to handoff —
+          while the grounds stay open without timed entry. Reservations and capacity blocks are
+          reserved for special events and parties only. A $2 mini coffee and a bag of donuts is a
+          complete, welcome visit — the model treats that family as the beginning of a
+          relationship that later books a camp, a field trip, or a corporate retreat, not as a
+          missed ticket sale.
         </p>
 
         <h3>Hero products, sold many ways</h3>
@@ -547,12 +555,18 @@ const risks = [
         </div>
         <p>
           Order-ahead runs on a managed commerce platform (Square, Toast, or Lightspeed class)
-          rather than custom software, and every order — including online — is handed over at a
-          staffed pickup counter. No lockers, no customer-facing kiosks: the handoff is the
-          hospitality touchpoint, and preorder volume (target 15–25% of peak sales) doubles as a
-          production-planning tool. Office and school bulk orders follow the Yates mechanic —
-          minimum quantities, 48-hour lead time, volume pricing — making large orders a
-          demand-smoothing channel instead of an afterthought.
+          rather than custom software. Pricing is one list everywhere — walk-up, mobile, and
+          drive-up — so guests never shop for a better online rate while standing in line. Every
+          order, including online, is handed over at a dedicated staffed pickup counter, physically
+          separate from the walk-up order queue: no lockers, no customer-facing kiosks, and a clear
+          path so ahead-orders do not collide with people still deciding at the counter. The
+          guest-facing incentive is that workflow — a kitchen pickup window, skip the order line,
+          food ready when they arrive — and the internal payoff is clearer production planning.
+          Preorder volume (target 15–25% of peak sales) lets the kitchen batch to known demand
+          instead of guessing the line. Pickup windows belong to the kitchen, not to admission:
+          they organize handoff timing without reserving a place on the grounds. Office and school
+          bulk orders follow the Yates mechanic — minimum quantities, 48-hour lead time, volume
+          pricing — making large orders a demand-smoothing channel instead of an afterthought.
         </p>
 
         <h3>Opening price architecture <small>(2030 dollars, to be validated in pilots)</small></h3>
@@ -570,7 +584,8 @@ const risks = [
           Free admission is a deliberate contrast with Wiard’s $27.50 weekend gate and Blake’s
           $12–$14 festival pricing. The most common criticism of established venues — pay at the
           door, then pay again for everything inside — becomes Leaf & Lantern’s clearest
-          differentiator.
+          differentiator. Ordering channels stay equally simple: one menu, one price list, three
+          ways to buy — never a promotional rate that pulls walk-up guests onto their phones.
         </p>
 
         <h3>Three-year illustrative P&L <small>(thousands of dollars)</small></h3>
@@ -652,10 +667,11 @@ const risks = [
           The model is transaction-driven, not attendance-driven: 55,000 food-and-beverage
           transactions in year one growing to 85,000 by year three, at a $17.50 average. That
           volume is the credible target — a picturesque low-volume cider mill producing
-          $800K–$1M of food revenue cannot carry a destination property. Preorder bundles
-          (family cider-and-donut packs, pumpkin reservations, office orders, holiday boxes)
-          smooth demand and hedge weather, and management resists adding low-margin attractions
-          simply to increase attendance.
+          $800K–$1M of food revenue cannot carry a destination property. Order-ahead and
+          preorder bundles (family cider-and-donut packs, pumpkin preorders, office orders,
+          holiday boxes) smooth kitchen demand and hedge weather — without timed arrival
+          reservations on ordinary autumn days — and management resists adding low-margin
+          attractions simply to increase attendance.
         </p>
 
         <h3>Bottom-up bridge to the year-one P&L <small>(illustrative unit assumptions)</small></h3>
