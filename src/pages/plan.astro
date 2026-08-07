@@ -63,11 +63,12 @@ const seasonalRevenue = [
 
 const pricing = [
   { stream: 'General admission, every day — grounds, market, café, pumpkins', price: 'Free' },
-  { stream: 'Donut — single / half-dozen / dozen', price: '$2 / $7–$8 / $12–$14' },
-  { stream: 'Cider — cup (hot or cold) / half-gallon / gallon', price: '$4–$5 / $9–$11 / $15–$18' },
-  { stream: 'Small batch coffee or kids’ mini cider', price: '$2' },
+  { stream: 'Fresh Donut — single / half-dozen / dozen', price: '$3 / $15 / $26' },
+  { stream: 'Cider — cup (hot or cold) / half-gallon / gallon', price: '$4 / $12 / $20' },
+  { stream: 'Morning Cup (locally roasted batch coffee) or kids’ mini cider', price: '$2' },
   { stream: 'Double espresso / Americano / hot chocolate', price: '$3.50–$4' },
-  { stream: 'Family bundle — half-dozen + two drinks, or dozen + half-gallon', price: '$14–$24' },
+  { stream: 'Dog donut — dog-safe, made from line trimmings', price: '$2' },
+  { stream: 'Family bundle — half-dozen + two drinks, or dozen + half-gallon', price: '$18–$35' },
   { stream: 'Spring or summer discovery day', price: '$8–$12 per guest' },
   { stream: 'Halloween costume party or lantern evening', price: '$14–$20' },
   { stream: 'School field trip', price: '$12–$16 per student' },
@@ -411,7 +412,7 @@ const nearbyMills = [
 ];
 
 const bridge = [
-  { line: 'Food and beverage — $963K', drivers: '55,000 food orders at a $17.50 average, built from three channels: ≈44,100 walk-up orders (≈70,000 ordinary on-site parties at a 63% food conversion), ≈6,400 mobile order-ahead pickups, and ≈4,500 express drive-up, office, and school bulk orders. An order is one transaction, not one visitor: a family’s dozen-and-half-gallon and a solo $2 batch coffee each count once.' },
+  { line: 'Food and beverage — $963K', drivers: '55,000 food orders at a $17.50 average, built from three channels: ≈44,100 walk-up orders (≈70,000 ordinary on-site parties at a 63% food conversion), ≈6,400 mobile order-ahead pickups, and ≈4,500 express drive-up, office, and school bulk orders. An order is one transaction, not one visitor: a family’s dozen-and-half-gallon and a solo $2 Morning Cup each count once.' },
   { line: 'Retail and pumpkins — $280K', drivers: '≈11% of the ~76,400 visiting parties add a curated-retail basket at a ~$26 average (≈ $216K), plus ~8,000 pumpkins at ~$8 average (≈ $64K).' },
   { line: 'Camps and education — $330K', drivers: '10 summer camp weeks averaging 40 children at ~$355 ($142K), ~8,500 field-trip students at ~$14 ($120K), and ~1,250 workshop seats at ~$55 average ($68K).' },
   { line: 'Programs, retreats, and vendor fees — $205K', drivers: '≈ 30 market dates averaging 20 booths at a ~$200 average fee ($120K), ~3,500 ticketed evening and discovery-day guests ($55K), and ~10 daytime corporate retreats or seminars ($30K).' },
@@ -1163,7 +1164,7 @@ const risks = [
         <p>
           Peak autumn logistics are smoothed by order-ahead and dedicated pickup — not by
           blocking the gate; reservations and capacity blocks exist only for ticketed special
-          events. A $2 mini coffee and a bag of donuts is a complete, welcome visit — the model
+          events. A $2 Morning Cup and a bag of donuts is a complete, welcome visit — the model
           treats that family as the beginning of a relationship that later books a camp, a field
           trip, or a corporate retreat, not as a missed ticket sale.
         </p>
@@ -1194,13 +1195,17 @@ const risks = [
 
         <h3>Hero products, sold many ways</h3>
         <p>
-          The autumn menu is a production system of roughly twelve purchase buttons: donuts
-          (single, half-dozen, dozen), cider (cup, half-gallon, gallon), a $2 small batch coffee,
-          a double espresso, an Americano, hot chocolate, two family bundles, and one rotating
-          item — no milk-steaming matrix, syrup ladder, or size tree. A staff-operated
-          superautomatic espresso machine keeps the coffee automated behind the counter while the
-          service stays human in front of it. This is not competing with bakeries: a few
-          singular products, made consistently, with secondary pastries curated from partners.
+          The autumn menu is a production system of roughly a dozen purchase buttons: donuts
+          (single, half-dozen, dozen), cider (cup, half-gallon, gallon), a $2 Morning Cup of
+          locally roasted batch coffee, a double espresso, an Americano, hot chocolate, a $2
+          dog donut, two family bundles, and one rotating item — no milk-steaming matrix, syrup
+          ladder, or size tree. A staff-operated superautomatic espresso machine keeps the
+          coffee automated behind the counter while the service stays human in front of it.
+          This is not competing with bakeries: a few singular products, made consistently, with
+          secondary pastries curated from partners. Item names carry the same discipline as the
+          item count: <strong>“Morning Cup — $2,”</strong> not “$2 coffee”; <strong>“Fresh
+          Donut,”</strong> not “Cinnamon Sugar Ring.” Plain, confident names remove decision
+          fatigue and read as intentional rather than cheap.
         </p>
         <div class="table-wrap">
           <table class="ll-table">
@@ -1225,6 +1230,42 @@ const risks = [
           mechanic — minimum quantities, 48-hour lead time, volume pricing.
         </p>
 
+        <h3>A gateway product, not a loss leader</h3>
+        <p>
+          The $2 Morning Cup is easy to misread as a loss leader, and the distinction matters.
+          A Costco hot dog exists to justify a membership; IKEA’s café exists to increase dwell
+          time; McDonald’s Dollar Menu historically filled slow periods. Leaf & Lantern’s
+          problem is different — not getting a guest to spend $2, but getting a parent on the
+          school run, a commuter, someone collecting a dozen for the office, or someone walking
+          the grounds to think, <em>“Sure, let’s stop at Leaf & Lantern.”</em> If the coffee is
+          locally roasted, simple, always good, and always hot, the Morning Cup is not
+          competing with Starbucks — Starbucks is five minutes away. It removes hesitation, and
+          it makes a statement not about margin but about the brand: <strong>we are not trying
+          to maximize every transaction.</strong>
+        </p>
+        <p>
+          The hero product gets the opposite treatment. Pricing a fresh cider-mill donut too
+          low sends the wrong signal: destination donut shops currently run roughly $2.40–$2.75
+          for a standard donut, with premium donuts substantially higher. The ladder is
+          therefore a single Fresh Donut at $3, a half-dozen at modest per-donut savings, and a
+          dozen at meaningful savings — so the arithmetic itself says <em>buy a box</em>. The
+          dog donut is carried for emotional value, not margin: near-zero food cost when made
+          intelligently from dog-safe trimmings, endlessly photographed, and a quiet signal
+          that the dog is part of the visit.
+        </p>
+        <blockquote class="pull-quote">
+          No complicated menu. Just the things we think should be done exceptionally well.
+        </blockquote>
+        <p>
+          The result is deliberately not a value brand — it is a brand where every purchase
+          feels easy to justify. A family that leaves having spent $28 on donuts (a dozen plus
+          one for the dog), $12 on a half-gallon of cider, and $4 on two Morning Cups should
+          think, <em>“That was absolutely worth it.”</em> The psychology being optimized is
+          obvious, fair choices — not the lowest prices — and it is the same philosophy that
+          runs through the rest of this plan: operational simplicity, high perceived value, and
+          products that invite repeat visits rather than maximize a single transaction.
+        </p>
+
         <h3>Opening price architecture <small>(2030 dollars, to be validated in pilots)</small></h3>
         <div class="table-wrap">
           <table class="ll-table">
@@ -1240,7 +1281,10 @@ const risks = [
           Free admission is a deliberate contrast with Wiard’s $27.50 weekend gate and Blake’s
           $12–$14 festival pricing. The most common criticism of established venues — pay at the
           door, then pay again for everything inside — becomes Leaf & Lantern’s clearest
-          differentiator.
+          differentiator. At these prices the flagship dozen-and-half-gallon basket is $38 ($35
+          as a bundle), which makes the modeled $17.50 average order conservative rather than
+          aspirational: the average is pulled down by exactly the $2 and $4 items the gateway
+          strategy wants in guests’ hands.
         </p>
 
         <h3>Three-year illustrative P&L <small>(thousands of dollars)</small></h3>
@@ -1422,7 +1466,9 @@ const risks = [
         <h2>“The season begins here.”</h2>
         <p>
           The voice is warm, plainspoken, observant, and confident — no amusement-park
-          superlatives, no luxury language. Typography pairs <strong>Fraunces</strong> display
+          superlatives, no luxury language. Menu naming carries the same voice: plain,
+          confident item names — “Morning Cup,” “Fresh Donut” — with the price after the name,
+          never “$2 coffee” or novelty names. Typography pairs <strong>Fraunces</strong> display
           serif with <strong>Source Sans 3</strong> for interface and operational text. The
           palette anchors on Lantern Black, Deep Pine, and Parchment with Cider, Cranberry, and
           Wheat accents. The site targets WCAG 2.2 AA conformance.
