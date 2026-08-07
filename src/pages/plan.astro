@@ -6,7 +6,7 @@ import { url } from '../lib/site';
 const toc = [
   { id: 'summary', label: 'Executive Summary' },
   { id: 'concept', label: 'Concept & Mission' },
-  { id: 'market', label: 'Market Analysis' },
+  { id: 'market', label: 'Market & Positioning' },
   { id: 'operations', label: 'Offerings & Operations' },
   { id: 'financials', label: 'Financial Plan' },
   { id: 'brand', label: 'Brand & Marketing' },
@@ -96,6 +96,157 @@ const competitors = [
     name: 'Zingerman’s Cornman Farms',
     model: 'Premium farm event venue in Dexter (~20 minutes from the target corridor): restored 1834 farmhouse and barn on 27 acres, backed by one of Michigan’s most sophisticated hospitality groups. Open since 2014; closing after October 2026 as revenue fell from a ~$2.7–3M peak to ~$1.4M in 2025 against a ~$2.2M break-even, citing fewer leads, higher costs, operational complexity, and a shift to smaller gatherings.',
     lesson: 'The region’s best-run farm-event operator could not sustain the venue model even with a powerful brand. Leaf & Lantern excludes weddings, showers, and banquet rentals by design — the hall is a program space, not an event business.',
+  },
+];
+
+type PlotPoint = {
+  label: string;
+  x: number; // 0–100, illustrative
+  y: number; // 0–100, illustrative
+  us?: boolean;
+  pos?: 'top' | 'bottom' | 'left' | 'right';
+};
+
+type PositioningPlot = {
+  kicker: string;
+  title: string;
+  xTitle: string;
+  xLow: string;
+  xHigh: string;
+  yTitle: string;
+  yLow: string;
+  yHigh: string;
+  axisNote: string;
+  alt: string;
+  points: PlotPoint[];
+  mechanisms?: string[];
+  takeaway: string;
+  note?: string;
+};
+
+const positioningPlots: PositioningPlot[] = [
+  {
+    kicker: 'Map 1 · The primary thesis map',
+    title: 'Emotional value × operational excellence',
+    xTitle: 'Operational excellence',
+    xLow: 'Low',
+    xHigh: 'High',
+    yTitle: 'Emotional & experiential value',
+    yLow: 'Low',
+    yHigh: 'High',
+    axisNote:
+      'Operational excellence here means disciplined, repeatable operation — throughput, consistency, service, queue management, menu simplicity, ordering convenience, and reliability. Emotional value spans atmosphere, tradition, seasonality, beauty, comfort, sense of place, and memorable family experience. The event venue sits leftward despite polished delivery because its operations are bespoke rather than repeatable.',
+    alt:
+      'Conceptual strategy map of operational excellence against emotional and experiential value. Event and wedding venues and large attraction farms sit high on emotion but low to moderate on disciplined operation. A traditional cider mill sits high on emotion with moderate operations. A conventional coffee shop and a Chick-fil-A-style quick-service restaurant sit high to very high on operations with moderate emotion. A roadside farm stand sits lower on both. Leaf and Lantern targets the upper right: very high on both axes.',
+    points: [
+      { label: 'Roadside farm stand', x: 48, y: 20, pos: 'bottom' },
+      { label: 'Conventional coffee shop', x: 70, y: 46, pos: 'top' },
+      { label: 'Chick-fil-A-style QSR', x: 90, y: 40, pos: 'left' },
+      { label: 'Event / wedding venue', x: 14, y: 80, pos: 'bottom' },
+      { label: 'Large attraction farm', x: 32, y: 72, pos: 'bottom' },
+      { label: 'Traditional cider mill', x: 50, y: 84, pos: 'top' },
+      { label: 'Leaf & Lantern', x: 88, y: 92, us: true, pos: 'bottom' },
+    ],
+    takeaway:
+      'Most seasonal destinations add attractions to create emotional value. Leaf & Lantern seeks to create it while retaining disciplined, repeatable operations.',
+  },
+  {
+    kicker: 'Map 2 · Customer economics',
+    title: 'Repeat visitation × destination appeal',
+    xTitle: 'Repeat visit frequency',
+    xLow: 'Annual / occasional',
+    xHigh: 'Habitual through the season',
+    yTitle: 'Destination appeal',
+    yLow: 'Functional errand',
+    yHigh: 'Worth a special trip',
+    axisNote:
+      'The horizontal axis runs from a once-a-year outing to a habit repeated throughout the season; the vertical axis runs from a functional errand to a place worth making a special trip for.',
+    alt:
+      'Conceptual strategy map of repeat visit frequency against destination appeal. A grocery store is visited frequently but has low destination appeal; a coffee shop is frequent with moderate appeal. A wedding venue is extremely infrequent with high appeal, and a large pumpkin attraction and a traditional cider mill draw roughly one annual or a few autumn visits at high appeal. A garden center sits in the middle on both. Leaf and Lantern targets high destination appeal with materially higher repeat frequency: the upper right.',
+    points: [
+      { label: 'Grocery store', x: 88, y: 12, pos: 'top' },
+      { label: 'Coffee shop', x: 80, y: 40, pos: 'bottom' },
+      { label: 'Wedding venue', x: 6, y: 80, pos: 'right' },
+      { label: 'Large pumpkin attraction', x: 20, y: 88, pos: 'bottom' },
+      { label: 'Traditional cider mill', x: 34, y: 74, pos: 'bottom' },
+      { label: 'Garden center', x: 55, y: 48, pos: 'top' },
+      { label: 'Leaf & Lantern', x: 78, y: 90, us: true, pos: 'bottom' },
+    ],
+    takeaway:
+      'The upper right describes a place worth driving to that does not exhaust its relevance after one annual visit.',
+    note:
+      'This is the customer-economics core of the thesis: repeat visits per household matter more than raw annual attendance.',
+  },
+  {
+    kicker: 'Map 3 · The risk-adjusted case',
+    title: 'Operating complexity × dependence on crowds',
+    xTitle: 'Operating complexity',
+    xLow: 'Low',
+    xHigh: 'High',
+    yTitle: 'Dependence on peak attendance',
+    yLow: 'Low',
+    yHigh: 'High',
+    axisNote:
+      'Complexity covers planning labor, customization, staffing depth, and capital intensity; peak dependence measures how much of the year’s revenue requires the biggest days to go perfectly.',
+    alt:
+      'Conceptual strategy map of operating complexity against dependence on peak attendance. An amusement or festival farm is high on both. A wedding or event venue is high complexity with moderate dependence on individual high-value events. A traditional seasonal cider mill is moderate complexity with high autumn-volume dependence. A coffee shop is low to moderate complexity with low peak dependence, and a farm stand is low complexity with moderate seasonality. Leaf and Lantern targets low-to-moderate complexity and moderate peak dependence.',
+    points: [
+      { label: 'Wedding / event venue', x: 85, y: 52, pos: 'top' },
+      { label: 'Amusement / festival farm', x: 78, y: 90, pos: 'bottom' },
+      { label: 'Traditional seasonal cider mill', x: 50, y: 76, pos: 'top' },
+      { label: 'Coffee shop', x: 25, y: 16, pos: 'top' },
+      { label: 'Farm stand', x: 10, y: 42, pos: 'right' },
+      { label: 'Leaf & Lantern', x: 32, y: 55, us: true, pos: 'bottom' },
+    ],
+    takeaway:
+      'Diversify use of the same infrastructure rather than diversify into unrelated businesses.',
+    note:
+      'Leaf & Lantern remains seasonal — October still matters enormously. The distinction is that revenue also comes from hero food, take-home and bulk orders, retail, camps, education, workshops, and controlled seasonal programming rather than requiring giant attraction weekends or catered events.',
+  },
+  {
+    kicker: 'Map 4 · Autumn’s answer to modern QSR',
+    title: 'Throughput × hospitality',
+    xTitle: 'Service throughput & convenience',
+    xLow: 'Slow',
+    xHigh: 'Fast and seamless',
+    yTitle: 'Personal hospitality & atmosphere',
+    yLow: 'Transactional',
+    yHigh: 'Warm and personal',
+    axisNote:
+      'The map communicates the operating ambition — Chick-fil-A-grade throughput without becoming fast food: speed and convenience on one axis, warmth and personal hospitality on the other.',
+    alt:
+      'Conceptual strategy map of service throughput against personal hospitality. A self-service kiosk quick-service restaurant has high throughput with lower personal interaction, and an automated pickup operation has very high throughput with low hospitality. A boutique cafe has high hospitality with lower throughput, and a crowded cider mill has high atmosphere with poor throughput. Leaf and Lantern targets high throughput and high hospitality, achieved through order-ahead, a simple menu, visible fresh production, a dedicated pickup counter, a human handoff, and a short walk-up line.',
+    points: [
+      { label: 'Self-service kiosk QSR', x: 80, y: 26, pos: 'top' },
+      { label: 'Boutique café', x: 28, y: 82, pos: 'top' },
+      { label: 'Crowded cider mill', x: 14, y: 68, pos: 'bottom' },
+      { label: 'Automated pickup operation', x: 88, y: 10, pos: 'top' },
+      { label: 'Leaf & Lantern', x: 86, y: 88, us: true, pos: 'bottom' },
+    ],
+    mechanisms: [
+      'Order ahead',
+      'Simple menu',
+      'Visible fresh production',
+      'Dedicated pickup',
+      'Human handoff',
+      'Short walk-up line',
+    ],
+    takeaway: 'Technology removes friction; it does not remove hospitality.',
+  },
+];
+
+const thesisMetrics = [
+  {
+    lens: 'Customer economics',
+    measures: 'Repeat visits per household · average transaction · food-and-beverage conversion · second-purchase rate',
+  },
+  {
+    lens: 'Operating discipline',
+    measures: 'Orders per labor hour · peak food wait time · order accuracy · preorder share of peak sales',
+  },
+  {
+    lens: 'Loyalty & asset productivity',
+    measures: 'Customer return intent (NPS) · revenue per occupied parking space-hour',
   },
 ];
 
@@ -222,8 +373,8 @@ const risks = [
       <h1>Leaf <em>&</em> Lantern</h1>
       <p class="plan-subtitle">An April-to-December Seasonal Gathering Place in Southeast Michigan</p>
       <p class="plan-thesis">
-        More intentional than a traditional cider mill, more intimate than a festival farm, and
-        warmer than a conventional event venue.
+        High emotional value. High operational discipline. Built for repeat visits rather than
+        maximum attendance.
       </p>
     </div>
   </header>
@@ -245,13 +396,28 @@ const risks = [
         <span class="eyebrow">01 · Executive Summary</span>
         <h2>A small-scale, seasonally defined Michigan gathering place.</h2>
         <p class="lede">
-          Leaf & Lantern is a cider mill and seasonal market built around exceptional service,
-          fast hero products, beautiful grounds, and a small number of purposeful programs. It is
-          not a bakery, a banquet hall, or an event-planning company. It does not compete with
-          large cider mills on attraction count, crowds, rides, or acreage. Its competitive
-          advantage is a more thoughtful experience: warm architecture, excellent cider and
-          donuts, a short coffee menu done well, a comfortable courtyard, one functional program
-          hall, and curated retail.
+          The investment thesis: Leaf & Lantern combines the emotional value and tradition of a
+          Michigan cider mill with the operating discipline of a high-performing hospitality
+          business. Rather than competing through acreage, attraction count, weddings, or large
+          festivals, it concentrates on a small number of hero products — great cider and hot
+          donuts — fast and personable service, comfortable grounds, curated seasonal retail, and
+          repeatable programming. The objective is to maximize repeat visits and spend per visit
+          while keeping capital intensity and operating complexity materially below attraction-
+          and event-driven competitors.
+        </p>
+        <p>
+          Stated plainly, Leaf & Lantern is not primarily an event venue, a bakery, an amusement
+          farm, or a traditional production farm. It is a modern cider-mill business built around
+          repeat visitation, operational excellence, and emotional, seasonal value — expressed
+          physically as warm architecture, excellent cider and donuts, a short coffee menu done
+          well, a comfortable courtyard, one functional program hall, and curated retail.
+        </p>
+        <p>
+          To customers, the same strategy reads as <strong>“More Than Great Cider and
+          Donuts.”</strong> Cider and donuts immediately explain the category; “more than” gives
+          the brand permission to extend into pumpkins, coffee, markets, education, workshops,
+          summer programming, lantern evenings, and the holidays — without ever becoming an
+          event company.
         </p>
 
         <div class="metric-grid">
@@ -360,8 +526,8 @@ const risks = [
 
       <!-- ============ Market ============ -->
       <section id="market" class="plan-section">
-        <span class="eyebrow">03 · Market Analysis</span>
-        <h2>A validated but crowded market — with clear whitespace.</h2>
+        <span class="eyebrow">03 · Market & Competitive Position</span>
+        <h2>Familiar territory. A different operating philosophy.</h2>
         <p class="lede">
           The primary market is defined by drive time, not county lines: 30-, 45-, and 60-minute
           bands centered on the eventual parcel in the Northville–South Lyon–Farmington corridor,
@@ -378,6 +544,61 @@ const risks = [
           precise serviceable market comes from the parcel-level drive-time analysis before any
           commitment.
         </p>
+
+        <h3>The strategy, mapped <small>(illustrative — conceptual positions, not measured data)</small></h3>
+        <p>
+          The four maps below are strategy maps, not empirical measurements. Positions are
+          illustrative, and the reference points are recognizable adjacent business types rather
+          than specific named competitors. Together they express the thesis: compete on
+          emotional value and operational discipline at once, and win on repeat visits rather
+          than maximum attendance.
+        </p>
+
+        {positioningPlots.map((plot) => (
+          <figure class="pos-plot">
+            <figcaption class="pos-head">
+              <span class="pos-kicker">{plot.kicker}</span>
+              <span class="pos-title">{plot.title}</span>
+              <span class="pos-flag">Illustrative</span>
+            </figcaption>
+            <div class="pos-frame">
+              <span class="pos-axis pos-axis-y" aria-hidden="true">
+                <span class="pos-end">{plot.yLow}</span>
+                <span class="pos-axis-title">{plot.yTitle} →</span>
+                <span class="pos-end">{plot.yHigh}</span>
+              </span>
+              <div class="pos-canvas" role="img" aria-label={plot.alt}>
+                {plot.points.map((pt) => (
+                  <div
+                    class:list={['pos-point', `pos-${pt.pos ?? 'top'}`, { 'pos-us': pt.us }]}
+                    style={`left: ${pt.x}%; bottom: ${pt.y}%;`}
+                  >
+                    <span>{pt.label}</span>
+                  </div>
+                ))}
+                {plot.mechanisms && (
+                  <div class="pos-mechanisms" aria-hidden="true">
+                    <span class="pos-mech-title">How the corner is held</span>
+                    {plot.mechanisms.map((m) => <span class="pos-mech">{m}</span>)}
+                  </div>
+                )}
+              </div>
+              <span class="pos-axis pos-axis-x" aria-hidden="true">
+                <span class="pos-end">{plot.xLow}</span>
+                <span class="pos-axis-title">{plot.xTitle} →</span>
+                <span class="pos-end">{plot.xHigh}</span>
+              </span>
+            </div>
+            <p class="pos-axis-note">{plot.axisNote}</p>
+            {plot.mechanisms && (
+              <p class="pos-mech-fallback">
+                Around the Leaf & Lantern position: {plot.mechanisms.join(' · ').toLowerCase()}.
+              </p>
+            )}
+            <p class="pos-takeaway">{plot.takeaway}</p>
+            {plot.note && <p class="pos-note">{plot.note}</p>}
+          </figure>
+        ))}
 
         <h3>Competitive landscape</h3>
         <div class="competitor-grid">
@@ -403,7 +624,7 @@ const risks = [
         </div>
         <p>
           Nearly every close competitor is autumn-only and free-entry — which validates Leaf &
-          Lantern’s free-admission posture while exposing the whitespace: none offers quality
+          Lantern’s free-admission posture while exposing the opening: none offers quality
           indoor space, curated retail, or school and camp programming across an April-to-December
           calendar. Recurring themes in public customer reviews of these venues shaped the concept
           directly: praise concentrates on tradition, donuts, and atmosphere, while complaints
@@ -414,16 +635,49 @@ const risks = [
           summarized from public listings and reviews; a formal audit is part of pilot-stage work.
         </p>
 
-        <blockquote class="pull-quote">
-          The competitive opening is not “another cider mill.” It is a smaller, more curated
-          seasonal institution with stronger architecture, better indoor flexibility, restrained
-          attendance, and clearer programming identities.
-        </blockquote>
         <p>
           The strongest defensible advantages are difficult-to-copy operating assets rather than
           novelty attractions: consistent hospitality, a recognizable visual environment, reliable
           food quality, relationships with schools and makers, a strong email audience, and a
           calendar customers learn to anticipate.
+        </p>
+
+        <h3>The metrics that follow from the thesis</h3>
+        <p>
+          Success is framed around repeatability and profitable spend rather than attendance
+          alone. Attendance is not irrelevant — the model does not work empty — but it is
+          treated as an input, not the objective:
+        </p>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>Lens</th><th>What gets measured</th></tr></thead>
+            <tbody>
+              {thesisMetrics.map((m) => (
+                <tr><td><strong>{m.lens}</strong></td><td>{m.measures}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <blockquote class="pull-quote">
+          Attendance is an input. Repeatability and profitable spend are the objective.
+        </blockquote>
+        <p>
+          The pilot-stage validation gates in the roadmap operationalize the first cut of these
+          measures — average transaction, conversion, throughput, preorder share, and repeat
+          behavior — and the same scorecard becomes the operating dashboard after opening.
+        </p>
+
+        <h3>The competitive conclusion</h3>
+        <p>
+          Leaf & Lantern does not seek whitespace by inventing a new category. It occupies
+          familiar territory — a Michigan cider mill — but applies a different operating
+          philosophy. The opportunity is to preserve the seasonal emotion customers already want
+          while systematically removing the friction, crowd dependence, complexity, and
+          inconsistent service that often accompany it.
+        </p>
+        <p>
+          Every subsequent section of this plan — building footprint, menu, technology, staffing,
+          programming, capital budget, and financial model — is tested against that thesis.
         </p>
       </section>
 
@@ -461,11 +715,17 @@ const risks = [
           Representative concept imagery; final architecture, signage, and branding may differ.
         </p>
 
-        <h3>A program space, not an event venue</h3>
+        <h3>Operator-controlled programming, not an event venue</h3>
         <p>
-          The hall hosts camps, school programs, seminars, corporate retreats, wreath and craft
-          workshops, and maker markets — functional, daytime, repeatable programming. Leaf &
-          Lantern does not host weddings, showers, or receptions, and carries no banquet kitchen,
+          Programming remains part of the model; the distinction that matters to the investment
+          case is who controls it. Camps, school field trips, yoga, seminars, corporate
+          retreats, wreath and craft workshops, maker markets, and ticketed lantern evenings are
+          operator-controlled programming: they reuse the same staff, hall, kitchen, and
+          grounds, run on Leaf & Lantern’s calendar, and can be standardized and repeated.
+          Weddings, showers, catered receptions, and highly customized private events are a
+          different business — planning labor, furniture and catering requirements, capital
+          intensity, and brand and operational complexity — and are excluded by policy rather
+          than carried anywhere as a revenue assumption. There is no banquet kitchen,
           event-sales staff, or turnover crew. Zingerman’s Cornman Farms is the reason stated
           plainly: even the region’s most sophisticated hospitality operator could not make the
           private-event model carry a premium farm property. Retreats and seminars book weekday
@@ -1444,6 +1704,226 @@ const risks = [
     color: var(--wheat);
   }
 
+  /* ---------- Positioning strategy maps ---------- */
+  .pos-plot {
+    margin: 1.8rem 0 2.4rem;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 1.5rem 1.5rem 1.4rem;
+  }
+
+  .pos-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem 0.9rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.2rem;
+  }
+
+  .pos-kicker {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cider);
+  }
+
+  .pos-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--deep-pine);
+  }
+
+  .pos-flag {
+    margin-left: auto;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--deep-pine);
+    opacity: 0.6;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.14rem 0.55rem;
+    white-space: nowrap;
+  }
+
+  .pos-frame {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.6rem;
+  }
+
+  .pos-canvas {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background:
+      linear-gradient(to right, transparent calc(50% - 0.5px), var(--line) calc(50% - 0.5px), var(--line) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+      linear-gradient(to bottom, transparent calc(50% - 0.5px), var(--line) calc(50% - 0.5px), var(--line) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+      #faf7f0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+  }
+
+  .pos-axis {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.72rem;
+  }
+
+  .pos-axis-x {
+    grid-column: 2;
+  }
+
+  .pos-axis-y {
+    grid-row: 1;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .pos-axis-title {
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--deep-pine);
+    text-align: center;
+  }
+
+  .pos-end {
+    font-style: italic;
+    opacity: 0.6;
+  }
+
+  .pos-point {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--deep-pine);
+    transform: translate(-50%, 50%);
+  }
+
+  .pos-point span {
+    position: absolute;
+    font-size: 0.74rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--lantern-black);
+    opacity: 0.85;
+    width: max-content;
+    max-width: 11em;
+    text-align: center;
+  }
+
+  .pos-top span {
+    bottom: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .pos-bottom span {
+    top: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .pos-left span {
+    right: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: right;
+  }
+
+  .pos-right span {
+    left: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left;
+  }
+
+  .pos-us {
+    width: 17px;
+    height: 17px;
+    background: var(--cider);
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--cider) 20%, transparent);
+    z-index: 2;
+  }
+
+  .pos-us span {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--cider);
+    opacity: 1;
+  }
+
+  .pos-mechanisms {
+    position: absolute;
+    left: 7%;
+    bottom: 20%;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    padding: 0.6rem 0.7rem;
+    border: 1px dashed color-mix(in srgb, var(--cider) 55%, transparent);
+    border-radius: var(--radius);
+    background: color-mix(in srgb, var(--white) 74%, transparent);
+  }
+
+  .pos-mech-title {
+    width: 100%;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cider);
+  }
+
+  .pos-mech {
+    font-size: 0.68rem;
+    font-weight: 600;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.1rem 0.5rem;
+    white-space: nowrap;
+  }
+
+  .pos-axis-note {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin: 0.9rem 0 0.6rem;
+  }
+
+  .pos-mech-fallback {
+    display: none;
+    font-size: 0.85rem;
+    opacity: 0.8;
+    margin: 0 0 0.6rem;
+  }
+
+  .pos-takeaway {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--deep-pine);
+    border-left: 3px solid var(--cider);
+    padding-left: 0.9rem;
+    margin: 0.6rem 0 0.4rem;
+  }
+
+  .pos-note {
+    font-size: 0.88rem;
+    opacity: 0.75;
+    margin: 0.5rem 0 0;
+  }
+
   /* ---------- Swatches ---------- */
   .swatch-row {
     display: grid;
@@ -1708,6 +2188,35 @@ const risks = [
       margin-inline: 0;
       max-width: 100%;
     }
+
+    .pos-plot {
+      padding: 1.1rem 0.9rem 1.1rem;
+    }
+
+    .pos-canvas {
+      aspect-ratio: 4 / 3.4;
+    }
+
+    .pos-point span {
+      font-size: 0.62rem;
+      max-width: 8.5em;
+    }
+
+    .pos-us span {
+      font-size: 0.78rem;
+    }
+
+    .pos-axis {
+      font-size: 0.62rem;
+    }
+
+    .pos-mechanisms {
+      display: none;
+    }
+
+    .pos-mech-fallback {
+      display: block;
+    }
   }
 
   /* ---------- Print ---------- */
@@ -1737,6 +2246,7 @@ const risks = [
     .competitor-card,
     .chart,
     .be-chart,
+    .pos-plot,
     .pull-quote,
     .roadmap-phase {
       break-inside: avoid;
@@ -1744,7 +2254,9 @@ const risks = [
 
     .be-seg,
     .be-band,
-    .be-key i {
+    .be-key i,
+    .pos-point,
+    .pos-canvas {
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
