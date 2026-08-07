@@ -56,6 +56,7 @@ src/
   data/events.ts            # mock event records
   styles/global.css         # brand design tokens and shared styles
 assets/
-  deep-research-report.md   # source business plan
-  image-prompts.md          # ChatGPT prompts for remaining imagery
+  deep-research-report.md                  # source business plan
+  deep-research-report-unit-economics.md   # thesis + unit-economics research (drives /plan §05)
+  image-prompts.md                         # ChatGPT prompts for remaining imagery
 ```
