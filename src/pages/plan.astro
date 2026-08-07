@@ -8,6 +8,7 @@ const toc = [
   { id: 'concept', label: 'Concept & Mission' },
   { id: 'market', label: 'Market & Positioning' },
   { id: 'operations', label: 'Offerings & Operations' },
+  { id: 'economics', label: 'Unit Economics & Capacity' },
   { id: 'financials', label: 'Financial Plan' },
   { id: 'brand', label: 'Brand & Marketing' },
   { id: 'roadmap', label: 'Roadmap & Milestones' },
@@ -16,7 +17,7 @@ const toc = [
 ];
 
 const metrics = [
-  { value: '$2.5–3.0M', label: 'Startup target, excluding land' },
+  { value: '$2.5–3.0M', label: 'Startup target excluding land (≈1.28× Year-Three revenue)' },
   { value: '$1.78M', label: 'First-year revenue (55,000 food transactions)' },
   { value: '$2.30M', label: 'Third-year revenue (85,000 food transactions)' },
   { value: '$373K', label: 'Third-year EBITDA' },
@@ -79,18 +80,23 @@ const pricing = [
 const competitors = [
   {
     name: 'Blake Farms',
-    model: 'Large multi-season destination: festivals, Funland, U-pick, classes, wellness, artisan markets. Festival admission $12–$14 with 100–200+ artisans.',
-    lesson: 'Confirms demand for markets, workshops, wellness, and food. Borrow the revenue diversity — not the attraction density or crowd scale.',
+    model: 'Large multi-season destination: festivals, Funland, U-pick, classes, wellness, artisan markets, a hard-cider arm, and a 30-plus-tap tasting room across four locations and roughly 900 acres. Festival admission $12–$14 with 100–200+ artisans. In 2022 Blake’s absorbed Erwin Orchards in South Lyon — inside Leaf & Lantern’s target corridor — with announced plans for a ~20,000 sq ft tasting room and full-service restaurant, a 400-person outdoor patio, and a ~12,500 sq ft cider-mill expansion.',
+    lesson: 'The region’s strongest operator is doubling down on scale, alcohol, and attraction density in this corridor — confirming destination demand while leaving the small-footprint, food-led, alcohol-free position open. Leaf & Lantern does not try to out-Blake Blake’s.',
   },
   {
     name: 'Wiard’s Orchards',
-    model: 'Fall-centered orchard and Country Fair: $18 weekday, $27.50 weekend, $46 season pass, plus a free-access Country Store.',
-    lesson: 'Demonstrates strong autumn willingness to pay for bounded experiences. Leaf & Lantern keeps entry free and monetizes food, retail, and ticketed evenings instead of the gate.',
+    model: 'Seventh-generation orchard (est. 1837) that layered on a country store and bakery in the 1960s, an “agri-entertainment” complex in the 1980s, and Night Terrors — among Michigan’s largest haunted attractions. Country Fair gate: $18 weekday, $27.50 weekend, $46 season pass, plus a free-access Country Store.',
+    lesson: 'Demonstrates strong autumn willingness to pay for bounded experiences — and how season extension can quietly become attraction accumulation. Leaf & Lantern keeps entry free and monetizes food, retail, and ticketed evenings instead of the gate.',
   },
   {
     name: 'Westview Orchards & Winery',
-    model: 'Farm market and bakery spring into winter: U-pick, summer farm fun, porch winery, fall activities, private rentals.',
+    model: 'Operating since 1813 on 188 acres. Farm market and bakery spring into winter: U-pick, summer farm fun, porch winery, fall activities, private rentals.',
     lesson: 'Shows the value of a steady market-and-food base underneath seasonal programming. Make the kitchen useful even with no event underway.',
+  },
+  {
+    name: 'Erwin Orchards (South Lyon)',
+    model: 'A 102-year, four-generation U-pick orchard — 200 acres, 54,000 trees, 25 apple varieties — beloved by generations and still sold in 2022 after a years-long search for a successor: roughly 30% of the land to a homebuilder for 161 homes, the remainder absorbed into Blake’s.',
+    lesson: 'Emotional attachment alone did not produce a durable independent business. Affection must convert into unit economics — repeat transactions, margin, and manageable labor — or the land eventually becomes worth more than the operation.',
   },
   {
     name: 'Zingerman’s Cornman Farms',
@@ -127,15 +133,15 @@ type PositioningPlot = {
 const positioningPlots: PositioningPlot[] = [
   {
     kicker: 'Map 1 · The primary thesis map',
-    title: 'Emotional value × operational excellence',
-    xTitle: 'Operational excellence',
+    title: 'Emotional value × operating repeatability',
+    xTitle: 'Operating repeatability',
     xLow: 'Low',
     xHigh: 'High',
     yTitle: 'Emotional & experiential value',
     yLow: 'Low',
     yHigh: 'High',
     axisNote:
-      'Operational excellence here means disciplined, repeatable operation — throughput, consistency, service, queue management, menu simplicity, ordering convenience, and reliability. Emotional value spans atmosphere, tradition, seasonality, beauty, comfort, sense of place, and memorable family experience. The event venue sits leftward despite polished delivery because its operations are bespoke rather than repeatable.',
+      'The horizontal axis is repeatability, not generic “operational excellence”: throughput, consistency, service, queue management, menu simplicity, ordering convenience, and reliability, delivered as standardized routines. A premium wedding venue may execute weddings excellently, but its output is bespoke — which is why it sits leftward despite polished delivery. Emotional value spans atmosphere, tradition, seasonality, beauty, comfort, sense of place, and memorable family experience.',
     alt:
       'Conceptual strategy map of operational excellence against emotional and experiential value. Event and wedding venues and large attraction farms sit high on emotion but low to moderate on disciplined operation. A traditional cider mill sits high on emotion with moderate operations. A conventional coffee shop and a Chick-fil-A-style quick-service restaurant sit high to very high on operations with moderate emotion. A roadside farm stand sits lower on both. Leaf and Lantern targets the upper right: very high on both axes.',
     points: [
@@ -145,22 +151,22 @@ const positioningPlots: PositioningPlot[] = [
       { label: 'Event / wedding venue', x: 14, y: 80, pos: 'bottom' },
       { label: 'Large attraction farm', x: 32, y: 72, pos: 'bottom' },
       { label: 'Traditional cider mill', x: 50, y: 84, pos: 'top' },
-      { label: 'Leaf & Lantern', x: 88, y: 92, us: true, pos: 'bottom' },
+      { label: 'Leaf & Lantern target', x: 88, y: 92, us: true, pos: 'bottom' },
     ],
     takeaway:
-      'Most seasonal destinations add attractions to create emotional value. Leaf & Lantern seeks to create it while retaining disciplined, repeatable operations.',
+      'Most seasonal destinations add emotional value by adding activities. Leaf & Lantern is designed to add emotional value while removing operational friction.',
   },
   {
     kicker: 'Map 2 · Customer economics',
     title: 'Repeat visitation × destination appeal',
     xTitle: 'Repeat visit frequency',
     xLow: 'Annual / occasional',
-    xHigh: 'Habitual through the season',
+    xHigh: 'Repeated through the season',
     yTitle: 'Destination appeal',
     yLow: 'Functional errand',
     yHigh: 'Worth a special trip',
     axisNote:
-      'The horizontal axis runs from a once-a-year outing to a habit repeated throughout the season; the vertical axis runs from a functional errand to a place worth making a special trip for.',
+      'The horizontal axis runs from a once-a-year outing to visits repeated through the season — deliberately not “habitual” in the coffee-shop sense; the vertical axis runs from a functional errand to a place worth making a special trip for.',
     alt:
       'Conceptual strategy map of repeat visit frequency against destination appeal. A grocery store is visited frequently but has low destination appeal; a coffee shop is frequent with moderate appeal. A wedding venue is extremely infrequent with high appeal, and a large pumpkin attraction and a traditional cider mill draw roughly one annual or a few autumn visits at high appeal. A garden center sits in the middle on both. Leaf and Lantern targets high destination appeal with materially higher repeat frequency: the upper right.',
     points: [
@@ -170,12 +176,12 @@ const positioningPlots: PositioningPlot[] = [
       { label: 'Large pumpkin attraction', x: 20, y: 88, pos: 'bottom' },
       { label: 'Traditional cider mill', x: 34, y: 74, pos: 'bottom' },
       { label: 'Garden center', x: 55, y: 48, pos: 'top' },
-      { label: 'Leaf & Lantern', x: 78, y: 90, us: true, pos: 'bottom' },
+      { label: 'Leaf & Lantern target', x: 78, y: 90, us: true, pos: 'bottom' },
     ],
     takeaway:
-      'The upper right describes a place worth driving to that does not exhaust its relevance after one annual visit.',
+      'The goal is not simply to become a place people will drive to. It is to become a place they remain willing to drive to several times in the same season.',
     note:
-      'This is the customer-economics core of the thesis: repeat visits per household matter more than raw annual attendance.',
+      'This is the customer-economics core of the thesis: repeat visits per household matter more than raw annual attendance. The pilot question is whether a meaningful share of households returns for a second and third food purchase without requiring a new paid event every time.',
   },
   {
     kicker: 'Map 3 · The risk-adjusted case',
@@ -196,7 +202,7 @@ const positioningPlots: PositioningPlot[] = [
       { label: 'Traditional seasonal cider mill', x: 50, y: 76, pos: 'top' },
       { label: 'Coffee shop', x: 25, y: 16, pos: 'top' },
       { label: 'Farm stand', x: 10, y: 42, pos: 'right' },
-      { label: 'Leaf & Lantern', x: 32, y: 55, us: true, pos: 'bottom' },
+      { label: 'Leaf & Lantern target', x: 32, y: 55, us: true, pos: 'bottom' },
     ],
     takeaway:
       'Diversify use of the same infrastructure rather than diversify into unrelated businesses.',
@@ -221,7 +227,7 @@ const positioningPlots: PositioningPlot[] = [
       { label: 'Boutique café', x: 28, y: 82, pos: 'top' },
       { label: 'Crowded cider mill', x: 14, y: 68, pos: 'bottom' },
       { label: 'Automated pickup operation', x: 88, y: 10, pos: 'top' },
-      { label: 'Leaf & Lantern', x: 86, y: 88, us: true, pos: 'bottom' },
+      { label: 'Leaf & Lantern target', x: 86, y: 88, us: true, pos: 'bottom' },
     ],
     mechanisms: [
       'Order ahead',
@@ -250,6 +256,144 @@ const thesisMetrics = [
   },
 ];
 
+const economicLayers = [
+  {
+    layer: 'Hero food and drink',
+    role: 'The recurring demand engine',
+    treatment: 'Must support the property under the base case',
+  },
+  {
+    layer: 'Curated retail and take-home products',
+    role: 'Basket expansion and seasonal relevance',
+    treatment: 'Should share the same traffic, staff, storage, and brand',
+  },
+  {
+    layer: 'Camps, education, workshops, and limited programs',
+    role: 'Off-peak utilization and reasons to return',
+    treatment: 'Should improve returns — never rescue an insufficient food business',
+  },
+];
+
+const unitTerms = [
+  { term: 'Guest visit', def: 'One person entering the public property.' },
+  { term: 'Arriving party', def: 'One household or group arriving together.' },
+  { term: 'Vehicle-party', def: 'One arriving party consuming a parking space.' },
+  { term: 'Food order', def: 'One completed food-and-beverage transaction — the unit behind the 55,000 figure.' },
+  { term: 'Retail basket', def: 'One separate or combined retail purchase.' },
+  { term: 'Program participant', def: 'One paid camp, school, workshop, or event attendee.' },
+  { term: 'Express order', def: 'A transaction with no normal-duration parking stay — drive-up, office, school, or bulk collection.' },
+  { term: 'Conversion', def: 'Buying parties divided by eligible arriving parties — parties, never individual guests.' },
+];
+
+const capacityInputs = [
+  { input: 'Parking spaces', low: '120', base: '150', high: '180' },
+  { input: 'Open hours', low: '8.0', base: '8.5', high: '9.0' },
+  { input: 'Average dwell', low: '2.25 hr', base: '1.75 hr', high: '1.50 hr' },
+  { input: 'Occupied utilization', low: '60%', base: '72%', high: '85%' },
+  { input: 'Guests per vehicle', low: '2.4', base: '2.7', high: '2.9' },
+  { input: 'Food conversion', low: '55%', base: '65%', high: '75%' },
+  { input: 'Average food order', low: '$16.00', base: '$17.50', high: '$20.00' },
+];
+
+const capacityOutputs = [
+  { output: 'Arriving parties / day', low: '256', base: '525', high: '918' },
+  { output: 'Guest visits / day', low: '614', base: '1,416', high: '2,662' },
+  { output: 'Food orders / day', low: '141', base: '341', high: '689' },
+  { output: 'Food revenue / day', low: '$2,253', base: '$5,967', high: '$13,770' },
+  { output: 'Food revenue per occupied space-hour', low: '$3.91', base: '$6.50', high: '$10.00' },
+];
+
+const dayTypes = [
+  { type: 'Peak autumn and holiday days', days: '30', avg: '650', annual: '19,500' },
+  { type: 'Shoulder weekends and strong program days', days: '45', avg: '350', annual: '15,750' },
+  { type: 'Ordinary weekdays and lower-volume days', days: '120', avg: '165', annual: '19,800' },
+];
+
+const capitalRatios = [
+  { ratio: 'Startup capital ÷ Year-Three revenue', value: '≈1.28×', note: '$2.95M ÷ $2.303M' },
+  { ratio: 'Startup capital per stabilized annual food transaction', value: '≈$35', note: '$2.95M ÷ 85,000 orders' },
+  { ratio: 'Annual debt service per stabilized food order', value: '≈$2.06', note: '$175K ÷ 85,000 orders' },
+  { ratio: 'Sitework, drainage, parking, and utilities per parking space', value: '≈$3,500', note: '$525K ÷ 150 spaces' },
+];
+
+const dashboard = [
+  {
+    metric: 'Same-season repeat visits per identified household',
+    def: 'Visits or purchases by loyalty-identified households, cohorted by one, two, three, and four-plus visits',
+    why: 'Directly tests the central investment thesis rather than relying on stated intent',
+  },
+  {
+    metric: 'Average food transaction',
+    def: 'Gross food and non-alcoholic beverage sales ÷ completed food orders, with median and distribution',
+    why: 'Tests the $16–$18 target and reveals whether the average is broad-based or carried by a few bulk orders',
+  },
+  {
+    metric: 'F&B share of revenue and gross profit',
+    def: 'F&B revenue and contribution margin ÷ total revenue and total contribution',
+    why: 'Shows whether hero food is actually the economic engine',
+  },
+  {
+    metric: 'Party food-conversion rate',
+    def: 'On-site parties purchasing food ÷ total eligible on-site parties',
+    why: 'Connects guest traffic to monetization and clarifies the free-admission model',
+  },
+  {
+    metric: 'Orders per direct labor hour',
+    def: 'Completed food orders ÷ kitchen, counter, pickup, and beverage labor hours',
+    why: 'Measures whether transaction growth creates operating leverage',
+  },
+  {
+    metric: 'Preorder and express mix',
+    def: 'Staffed-pickup preorders, short-dwell pickup, drive-up, office, and school bulk orders — reported separately',
+    why: 'Distinguishes kitchen smoothing from genuine parking-capacity relief',
+  },
+  {
+    metric: 'Revenue per occupied parking-space-hour',
+    def: 'On-site revenue ÷ measured occupied parking-space-hours; express revenue reported separately',
+    why: 'Integrates dwell, conversion, basket size, and site productivity in one number',
+  },
+  {
+    metric: 'NPS plus observed return behavior',
+    def: 'Standard NPS paired with actual ninety-day and same-season repeat rates',
+    why: 'Keeps customer sentiment from substituting for behavior',
+  },
+];
+
+const regionalBest = [
+  { rank: '1', venue: 'Blake’s', wins: 'Scale and accumulation: four locations, hard cider and a 30-plus-tap tasting room, Funland, haunted attractions, zombie paintball — now expanding into South Lyon at the former Erwin Orchards' },
+  { rank: '2', venue: 'Wiard’s', wins: 'Seventh-generation heritage (est. 1837) plus an agri-entertainment complex and Night Terrors, among Michigan’s largest haunted attractions' },
+  { rank: '3', venue: 'Yates', wins: 'Hero-product authenticity since 1863: a water-powered press, a ten-apple cider blend, structured bulk ordering, and an ice-cream line' },
+  { rank: '4', venue: 'Franklin', wins: 'Heritage (est. 1837) and product purity: unpasteurized 100% cider, donuts made nearly to order, an open-air market, car shows, and weekend jazz' },
+  { rank: '5', venue: 'Parmenter’s', wins: 'An “urban” mill (est. 1873) walkable from downtown Northville, with an adjacent winery taproom, live music, and food trucks extending the visit' },
+];
+
+const exclusions = [
+  {
+    not: 'No haunted parks, amusement zones, or paintball',
+    because: 'Attraction density is Blake’s and Wiard’s game. It buys emotional value with operating complexity, seasonal staffing depth, and peak-day dependence — the exact fragilities this model avoids.',
+  },
+  {
+    not: 'No gate fee or season pass',
+    because: 'The pay-at-the-door-then-pay-again mechanic is the most-complained-about pattern in the category. Free admission stays the clearest differentiator.',
+  },
+  {
+    not: 'No alcohol production, taproom, or winery',
+    because: 'Hard cider, wine, and beer are how Blake’s, Parmenter’s neighbor, and Westview extend their seasons — and each is a licensed production-and-service business of its own. Leaf & Lantern serves partner-pressed sweet cider and a short coffee menu.',
+  },
+  {
+    not: 'No U-pick orchard or production farming',
+    because: 'Acreage, crop risk, and agricultural labor are a different business with different economics. Erwin’s 54,000 trees did not save it.',
+  },
+  {
+    not: 'No heritage claim',
+    because: 'Leaf & Lantern cannot out-1837 Franklin or run a water turbine like Yates — the century-old founding story is the one asset that cannot be built. Product quality, handoff speed, comfort, and calendar reliability can be.',
+  },
+  {
+    not: 'No full-service restaurant or broad menu',
+    because: 'Blake’s is adding a restaurant; Yates runs ice cream. Leaf & Lantern holds at roughly twelve purchase buttons so throughput and consistency stay provable.',
+  },
+];
+
 const revChart = {
   scaleMax: 2500,
   breakEven: { low: 1950, high: 2100 },
@@ -273,17 +417,17 @@ const revChart = {
 };
 
 const nearbyMills = [
-  { venue: 'Franklin Cider Mill', location: 'Bloomfield Twp', model: 'Historic autumn-only cider mill; cider, donuts, farm goods; famous peak-weekend lines', entry: 'Free entry' },
-  { venue: 'Parmenter’s Northville Cider Mill', location: 'Northville', model: 'Autumn-only cider mill with walk-up counter service', entry: 'Free entry' },
+  { venue: 'Franklin Cider Mill', location: 'Bloomfield Twp', model: 'Historic autumn-only mill (est. 1837, originally a grist mill): unpasteurized 100% cider, donuts made nearly to order, open-air market, car shows and weekend jazz; famous peak-weekend lines', entry: 'Free entry' },
+  { venue: 'Parmenter’s Northville Cider Mill', location: 'Northville', model: 'Autumn-only “urban” mill (est. 1873), walkable from downtown, with visible pressing on set days; the adjacent winery taproom, bands, and food trucks extend the visit', entry: 'Free entry' },
   { venue: 'Three Cedars Farm', location: 'South Lyon', model: 'Autumn farm destination: shops, donuts, children’s activities', entry: 'Free entry; paid activities' },
-  { venue: 'Plymouth Orchards & Cider Mill', location: 'Plymouth', model: 'Family farm: hayrides, animals, school tours, cider and donuts', entry: 'Free entry; paid rides and tours' },
-  { venue: 'Long Family Orchard & Cider Mill', location: 'Commerce Twp', model: 'U-pick orchard and weekend cider mill', entry: 'Free entry; pay per activity' },
+  { venue: 'Plymouth Orchards & Cider Mill', location: 'Plymouth', model: 'Organic, pesticide-free working mill: hayrides, animals, school tours, award-winning cider visitors can watch being made', entry: 'Free entry; paid rides and tours' },
+  { venue: 'Long Family Orchard & Cider Mill', location: 'Commerce Twp', model: 'U-pick orchard and weekend cider mill: corn maze, petting zoo, jumping pillow — an attraction-led family farm', entry: 'Free entry; pay per activity' },
   { venue: 'Obstbaum Orchards', location: 'Salem Twp', model: 'Small orchard cider mill and bakery', entry: 'Free entry' },
 ];
 
 const bridge = [
-  { line: 'Food and beverage — $963K', drivers: '55,000 food transactions at a $17.50 average. A transaction is one order, not one visitor: a family’s dozen-and-half-gallon and a solo $2 batch coffee each count once. Walk-up, mobile preorder, and express drive-up lanes all feed the same count.' },
-  { line: 'Retail and pumpkins — $280K', drivers: '~22% of visiting parties add retail at a ~$50 average basket (≈ $216K), plus ~8,000 pumpkins at ~$8 average (≈ $64K).' },
+  { line: 'Food and beverage — $963K', drivers: '55,000 food orders at a $17.50 average, built from three channels: ≈44,100 walk-up orders (≈70,000 ordinary on-site parties at a 63% food conversion), ≈6,400 mobile order-ahead pickups, and ≈4,500 express drive-up, office, and school bulk orders. An order is one transaction, not one visitor: a family’s dozen-and-half-gallon and a solo $2 batch coffee each count once.' },
+  { line: 'Retail and pumpkins — $280K', drivers: '≈11% of the ~76,400 visiting parties add a curated-retail basket at a ~$26 average (≈ $216K), plus ~8,000 pumpkins at ~$8 average (≈ $64K).' },
   { line: 'Camps and education — $330K', drivers: '10 summer camp weeks averaging 40 children at ~$355 ($142K), ~8,500 field-trip students at ~$14 ($120K), and ~1,250 workshop seats at ~$55 average ($68K).' },
   { line: 'Programs, retreats, and vendor fees — $205K', drivers: '≈ 30 market dates averaging 20 booths at a ~$200 average fee ($120K), ~3,500 ticketed evening and discovery-day guests ($55K), and ~10 daytime corporate retreats or seminars ($30K).' },
 ];
@@ -302,6 +446,7 @@ const gates = [
   { gate: 'Peak capacity', evidence: 'At least 100 simple transactions per active service line per hour after warmup.' },
   { gate: 'Preorder adoption', evidence: '15–25% of peak food sales placed before arrival or through bulk ordering, driven by a dedicated pickup path — not a separate price.' },
   { gate: 'Repeat behavior', evidence: 'Meaningful same-season return visits and repeat dozen-and-cider purchases.' },
+  { gate: 'Labor productivity', evidence: 'Orders per direct labor hour measured in every pilot; the flat $650K payroll assumption survives only if Year-One capacity is demonstrably under-used.' },
   { gate: 'Non-autumn contribution', evidence: 'Education, camps, holiday orders, retail, and limited programs generate $450–550K of annual gross contribution collectively.' },
   { gate: 'Capital discipline', evidence: 'Site and building deliverable within debt service supported by the base — not optimistic — transaction case.' },
   { gate: 'Weather resilience', evidence: 'A poor weekend reduces revenue without unsafe crowding, stranded inventory, or a cash crisis.' },
@@ -312,6 +457,8 @@ const sources = [
   'Household income: U.S. Census Bureau American Community Survey, median household income for Oakland and Livingston counties.',
   'Visitor economy: Michigan Economic Development Corporation / Tourism Economics annual visitor-economy report, 2024 calendar year.',
   'Competitor pricing and models: published venue websites and listings for the 2025 operating season (Blake’s, Wiard’s, Westview) and public listings and customer reviews for nearby cider mills. All figures to be re-verified in a formal pilot-stage competitive audit.',
+  'Regional competitive detail: a transcribed 2022 Metro Detroit “best cider mills” video survey by a local real-estate media channel — including Michigan’s ≈87 registered cider mills (second only to New York, roughly 10% of the ≈900 nationwide), Blake’s acquisition of Erwin Orchards, and venue histories — treated as directional context and cross-checked against venue websites during the pilot-stage audit.',
+  'Capacity model: parking, dwell, utilization, party-size, and conversion figures are illustrative planning parameters, not observed data; the pilot field program (parking counts, dwell studies, queue and transaction counts) replaces them with measurements.',
   'Construction allowances: regional cost-per-square-foot benchmarks for hospitality and agritourism construction; superseded by a contractor-led estimate before any financing commitment.',
   'Minimum wage: Michigan Improved Workforce Opportunity Wage Act schedule ($15.00 effective 2027); U.S. Bureau of Labor Statistics Detroit-area mean wage for food-preparation and serving occupations (~$18.06, May 2025).',
   'Cornman Farms: Zingerman’s public closure announcement and regional reporting (2026) — revenue decline from a ~$2.7–3M peak to ~$1.4M in 2025 against a ~$2.2M break-even.',
@@ -373,8 +520,7 @@ const risks = [
       <h1>Leaf <em>&</em> Lantern</h1>
       <p class="plan-subtitle">An April-to-December Seasonal Gathering Place in Southeast Michigan</p>
       <p class="plan-thesis">
-        High emotional value. High operational discipline. Built for repeat visits rather than
-        maximum attendance.
+        Destination emotion. Everyday operating discipline. Built for return visits.
       </p>
     </div>
   </header>
@@ -396,14 +542,12 @@ const risks = [
         <span class="eyebrow">01 · Executive Summary</span>
         <h2>A small-scale, seasonally defined Michigan gathering place.</h2>
         <p class="lede">
-          The investment thesis: Leaf & Lantern combines the emotional value and tradition of a
-          Michigan cider mill with the operating discipline of a high-performing hospitality
-          business. Rather than competing through acreage, attraction count, weddings, or large
-          festivals, it concentrates on a small number of hero products — great cider and hot
-          donuts — fast and personable service, comfortable grounds, curated seasonal retail, and
-          repeatable programming. The objective is to maximize repeat visits and spend per visit
-          while keeping capital intensity and operating complexity materially below attraction-
-          and event-driven competitors.
+          The investment thesis: Leaf & Lantern is a capital-disciplined seasonal hospitality
+          concept that converts the emotional pull of a Michigan cider mill into repeat
+          visitation through exceptional hero products, fast human service, and one flexible
+          operating footprint. Unlike attraction farms and event venues, it is designed to earn
+          through frequent food-led visits and standardized, operator-controlled programming —
+          not acreage, gate fees, bespoke events, or a few crowd-dependent peak days.
         </p>
         <p>
           Stated plainly, Leaf & Lantern is not primarily an event venue, a bakery, an amusement
@@ -411,6 +555,18 @@ const risks = [
           repeat visitation, operational excellence, and emotional, seasonal value — expressed
           physically as warm architecture, excellent cider and donuts, a short coffee menu done
           well, a comfortable courtyard, one functional program hall, and curated retail.
+        </p>
+        <p>
+          Two honest qualifications frame everything that follows. First, the claim is not
+          “simple” or “low capital” in absolute terms — it is <em>simpler, more standardized,
+          and less capital-intensive than attraction farms and bespoke event venues at
+          equivalent destination value</em>, a comparison the plan defines with ratios
+          (startup capital at ≈1.28× stabilized revenue and ≈$35 per stabilized annual food
+          transaction) rather than adjectives. Second, food and beverage is 54% of Year-One
+          revenue, rising to 65% by Year Three; education and programming contribute roughly
+          30% in Year One. The model treats those layers differently — the food business must
+          justify the destination, and programming improves utilization rather than
+          compensating for weak core demand.
         </p>
         <p>
           To customers, the same strategy reads as <strong>“More Than Great Cider and
@@ -539,19 +695,24 @@ const risks = [
           3.94 million residents in 2025, with median household incomes of $97,760 in Oakland
           County and $103,039 in Livingston County. Michigan recorded 131.2 million visitors and
           $30.7 billion in direct visitor spending in 2024. The year-one plan assumes
-          approximately 55,000 food transactions plus camp, workshop, retreat, and program
-          participants — a low single-digit share of households within the 45-minute band. The
-          precise serviceable market comes from the parcel-level drive-time analysis before any
-          commitment.
+          approximately 55,000 food transactions — implying roughly 76,000 visiting parties and
+          on the order of 206,000 guest visits, terms the unit-economics section defines
+          precisely — plus camp, workshop, retreat, and program participants: a low single-digit
+          share of households within the 45-minute band. The precise serviceable market comes
+          from the parcel-level drive-time analysis before any commitment.
         </p>
 
         <h3>The strategy, mapped <small>(illustrative — conceptual positions, not measured data)</small></h3>
         <p>
           The four maps below are strategy maps, not empirical measurements. Positions are
           illustrative, and the reference points are recognizable adjacent business types rather
-          than specific named competitors. Together they express the thesis: compete on
-          emotional value and operational discipline at once, and win on repeat visits rather
-          than maximum attendance.
+          than specific named competitors. On every map, the Leaf & Lantern point is a
+          <strong>target position — pilot validation required</strong>: repeat visitation,
+          eight-to-ten-minute handoffs, 100 transactions per line per hour, and a sustained
+          $16–$18 transaction are pilot-stage hypotheses the venture must earn, not attributes it
+          holds today. Together the maps express the thesis: compete on emotional value and
+          operating repeatability at once, and win on repeat visits rather than maximum
+          attendance.
         </p>
 
         {positioningPlots.map((plot) => (
@@ -635,6 +796,51 @@ const risks = [
           summarized from public listings and reviews; a formal audit is part of pilot-stage work.
         </p>
 
+        <h3>What the region rewards — and what Leaf & Lantern deliberately leaves out</h3>
+        <p>
+          The category is dense and the emotion is proven: Michigan holds roughly 87 registered
+          cider mills — second only to New York, and nearly 10% of the ≈900 operating nationwide.
+          A widely shared 2022 regional “best cider mills” ranking is a useful read on what the
+          local market celebrates, because the winners fall into exactly two camps: scale-and-
+          attractions, and hero-product heritage. Neither is Leaf & Lantern’s game — and that is
+          the point. This landscape does not change the position; it clarifies it.
+        </p>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>2022 rank</th><th>Venue</th><th>What earns the spot</th></tr></thead>
+            <tbody>
+              {regionalBest.map((r) => (
+                <tr><td class="num"><strong>{r.rank}</strong></td><td><strong>{r.venue}</strong></td><td>{r.wins}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          The honorable mentions tell the same story from below: Plymouth wins on organic
+          authenticity, Alber’s on 150-plus heirloom apple varieties and an 1890 press, Westview
+          on two centuries of operation, Goodison on a signature pistachio bread. Two entries in
+          that ranking matter most to this plan. First, Erwin Orchards — beloved for 102 years —
+          fell off the list entirely because it was sold: part to a homebuilder, part to Blake’s.
+          Affection did not underwrite succession. Second, the buyer: Blake’s is building a
+          tasting room, restaurant, and expanded mill on that South Lyon site, inside Leaf &
+          Lantern’s own corridor. The strongest regional operator arriving nearby raises the bar
+          on quality and awareness — and simultaneously makes the contrast sharper, because
+          everything Blake’s adds is on the list below.
+        </p>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>What Leaf & Lantern does not do</th><th>Why the exclusion is deliberate</th></tr></thead>
+            <tbody>
+              {exclusions.map((e) => (
+                <tr><td><strong>{e.not}</strong></td><td>{e.because}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <blockquote class="pull-quote">
+          Identifying what we don’t do is as clarifying as what we do.
+        </blockquote>
+
         <p>
           The strongest defensible advantages are difficult-to-copy operating assets rather than
           novelty attractions: consistent hospitality, a recognizable visual environment, reliable
@@ -664,7 +870,8 @@ const risks = [
         <p>
           The pilot-stage validation gates in the roadmap operationalize the first cut of these
           measures — average transaction, conversion, throughput, preorder share, and repeat
-          behavior — and the same scorecard becomes the operating dashboard after opening.
+          behavior — and the unit-economics section defines the full eight-metric dashboard,
+          with denominators, that becomes the operating scorecard after opening.
         </p>
 
         <h3>The competitive conclusion</h3>
@@ -766,9 +973,181 @@ const risks = [
         </p>
       </section>
 
+      <!-- ============ Unit Economics & Capacity ============ -->
+      <section id="economics" class="plan-section">
+        <span class="eyebrow">05 · Unit Economics & Capacity</span>
+        <h2>Transactions cannot replace physical capacity.</h2>
+        <p class="lede">
+          The model is deliberately transaction-driven rather than attendance-driven — but
+          parking, dwell time, party size, conversion, production, checkout, restrooms, and
+          circulation collectively determine how many transactions the property can physically
+          support. This section states the capacity math in one consistent vocabulary, shows the
+          daily bridge behind the 55,000-transaction year, and defines the dashboard that will
+          replace every assumption with pilot measurements.
+        </p>
+
+        <h3>One vocabulary, used everywhere</h3>
+        <p>
+          Every volume figure in this plan uses the following definitions. Conversion is always
+          measured on parties — a family of five that buys one dozen is one converted party, one
+          food order, and five guest visits.
+        </p>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+            <tbody>
+              {unitTerms.map((t) => (
+                <tr><td><strong>{t.term}</strong></td><td>{t.def}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h3>The capacity equation</h3>
+        <p>
+          Daily on-site volume follows one chain: <strong>parking spaces × (open hours ÷ average
+          dwell) × occupied utilization = arriving parties</strong>; parties × guests per vehicle
+          = guest visits; parties × food conversion (plus express orders that never consume a
+          normal parking stay) = food orders; orders × average order = food revenue. The
+          envelope below applies that chain at a lower, base, and upper operating case — it is a
+          <em>capacity range, not a demand forecast</em>.
+        </p>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>Capacity input</th><th class="num">Lower case</th><th class="num">Illustrative base</th><th class="num">Upper operating case</th></tr></thead>
+            <tbody>
+              {capacityInputs.map((r) => (
+                <tr><td>{r.input}</td><td class="num">{r.low}</td><td class="num">{r.base}</td><td class="num">{r.high}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>Resulting daily capacity</th><th class="num">Lower case</th><th class="num">Illustrative base</th><th class="num">Upper operating case</th></tr></thead>
+            <tbody>
+              {capacityOutputs.map((r) => (
+                <tr><td><strong>{r.output}</strong></td><td class="num">{r.low}</td><td class="num">{r.base}</td><td class="num">{r.high}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          The base case works through as ≈525 arriving parties, ≈1,416 guest visits, ≈341 food
+          orders, and ≈$5,967 of food revenue — about <strong>$6.50 of food revenue per occupied
+          parking-space-hour</strong>, the single number that integrates dwell, conversion, and
+          basket size. The upper case is a very busy day: at more than 2,600 guest visits,
+          ingress, restrooms, order capture, and circulation must all still function, and the
+          property would not feel “small-scale” even though the building is modest.
+        </p>
+
+        <h3>The daily bridge behind 55,000 transactions</h3>
+        <p>
+          The Year-One food line is not one number; it is a day-type model across roughly 195
+          public operating days (April–December, with reduced early-week schedules outside
+          peak). Stating it this way lets management — and investors — ask the right question:
+          are 650 peak-day, 350 shoulder-day, and 165 ordinary-day transactions physically and
+          commercially defensible?
+        </p>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>Operating-day type</th><th class="num">Days</th><th class="num">Avg. food transactions</th><th class="num">Annual transactions</th></tr></thead>
+            <tbody>
+              {dayTypes.map((d) => (
+                <tr><td>{d.type}</td><td class="num">{d.days}</td><td class="num">{d.avg}</td><td class="num">{d.annual}</td></tr>
+              ))}
+              <tr class="total"><td>Total</td><td class="num">195</td><td class="num"></td><td class="num">≈55,050</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          At the $17.50 average, that produces the ≈$963K Year-One food-and-beverage line. The
+          implied physical load is disclosed rather than hidden: ≈76,400 visiting parties and on
+          the order of 206,000 annual guest visits at 2.7 guests per vehicle — materially more
+          activity than “55,000 transactions” sounds like, and the reason parking and dwell get
+          their own analysis below.
+        </p>
+
+        <h3>Why express channels matter more than preorders</h3>
+        <p>
+          A 650-transaction peak day exposes the constraint. At 65% conversion, 650 on-site
+          orders imply ≈1,000 arriving parties; at a 1.75-hour dwell they consume ≈1,750 occupied
+          parking-space-hours — yet even 180 spaces over 8.5 hours at 85% utilization supply only
+          ≈1,300. Roughly a quarter of peak transactions must therefore arrive through genuinely
+          low-dwell channels: express drive-up collection, office and school bulk orders, and
+          true grab-and-go. That is why the ordering-lane design treats express collection as a
+          capacity tool, not a convenience feature.
+        </p>
+        <blockquote class="pull-quote">
+          Order-ahead smooths kitchen demand. It does not create parking capacity when preorder
+          guests park and stay as long as everyone else. Express and bulk channels do.
+        </blockquote>
+
+        <h3>Labor productivity: the hidden underwriting assumption</h3>
+        <p>
+          The P&L holds payroll flat at $650K while annual food transactions rise 54.5%, from
+          55,000 to 85,000 — payroll falls from 36.6% to 28.2% of revenue with no absolute
+          increase. That is plausible only if Year One carries substantial unused capacity, and
+          it is the plan’s single largest operating-leverage assumption. For scale, National
+          Restaurant Association 2024 medians put limited-service labor and benefits at 31.7% of
+          sales (30.0% among profitable operators) — a few payroll points decide the bottom
+          line. The assumption is therefore gated, not assumed: <strong>orders per direct labor
+          hour</strong> is measured in every pilot, and a payroll-scales-with-orders downside
+          case accompanies any financing model.
+        </p>
+
+        <h3>Capital intensity, defined with denominators</h3>
+        <p>
+          “Lower capital than attraction and event competitors” is a claim that needs a
+          denominator. A $2.95M startup budget excluding land is smaller than the earlier ~$4M
+          campus concept, but it is not automatically “low capital” — at the Year-Three forecast
+          it equals roughly 1.28× annual revenue. These are the ratios the plan tracks, to be
+          replaced with contractor- and equipment-supported figures before financing:
+        </p>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>Ratio</th><th class="num">Current plan</th><th class="num">Arithmetic</th></tr></thead>
+            <tbody>
+              {capitalRatios.map((r) => (
+                <tr><td>{r.ratio}</td><td class="num"><strong>{r.value}</strong></td><td class="num">{r.note}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h3>The eight-metric operating dashboard</h3>
+        <p>
+          Each metric carries a precise denominator, gets a baseline from the pilot seasons, and
+          is reported separately for autumn peaks, ordinary public days, and programs. Peak
+          handoff time, order accuracy, abandonment, stockouts, and parking queue time remain
+          service-level measures beneath these — with handoff and throughput judged at the
+          ninetieth percentile, not the average, because averages conceal exactly the periods
+          when crowding damages the brand.
+        </p>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>Metric</th><th>Definition</th><th>Why it matters</th></tr></thead>
+            <tbody>
+              {dashboard.map((m) => (
+                <tr><td><strong>{m.metric}</strong></td><td>{m.def}</td><td>{m.why}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          The dashboard is connected, not a list: repeat households × visits per household ×
+          conversion × average transaction = core food revenue; orders ÷ direct labor hours =
+          labor productivity; revenue ÷ occupied parking-space-hours = site productivity.
+          Underperformance can then be diagnosed — insufficient household reach, weak return
+          frequency, low conversion, small baskets, excessive dwell, or labor inefficiency —
+          rather than debated. NPS is treated as a diagnostic alongside observed return
+          behavior, never as the primary proof of loyalty.
+        </p>
+      </section>
+
       <!-- ============ Financials ============ -->
       <section id="financials" class="plan-section">
-        <span class="eyebrow">05 · Revenue Streams & Financial Plan</span>
+        <span class="eyebrow">06 · Revenue Streams & Financial Plan</span>
         <h2>Free to enter. Worth paying for.</h2>
         <p class="lede">
           Admission is always free — grounds, market, café, and pumpkin selection, every day,
@@ -792,6 +1171,30 @@ const risks = [
           relationship that later books a camp, a field trip, or a corporate retreat, not as a
           missed ticket sale.
         </p>
+
+        <h3>Three economic layers, underwritten differently</h3>
+        <p>
+          Food and beverage is 54% of Year-One revenue and 65% by Year Three; camps, education,
+          programs, retreats, and vendor fees contribute roughly 30% in Year One. The plan does
+          not pretend otherwise — it assigns each layer a distinct underwriting role, and the
+          downside case reduces camp, education, market, and retreat revenue by 50% to test
+          whether the permanent-site model still covers property-level operating costs and a
+          meaningful portion of debt service without them.
+        </p>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>Economic layer</th><th>Strategic role</th><th>Underwriting treatment</th></tr></thead>
+            <tbody>
+              {economicLayers.map((l) => (
+                <tr><td><strong>{l.layer}</strong></td><td>{l.role}</td><td>{l.treatment}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <blockquote class="pull-quote">
+          The food business must justify the destination. Programming improves utilization — it
+          does not rescue weak core demand.
+        </blockquote>
 
         <h3>Hero products, sold many ways</h3>
         <p>
@@ -869,6 +1272,20 @@ const risks = [
             </tbody>
           </table>
         </div>
+        <p>
+          Two comparisons keep the Year-Three result honest. The $373K EBITDA headline is 16.2%
+          of revenue, but after depreciation and illustrative interest the pre-tax profit is
+          $103K — about 4.5% of revenue, close to the National Restaurant Association’s 4.0%
+          median pre-tax margin for limited-service restaurants in 2024. The eventual net
+          economics are not unusually rich; the aggressive assumptions are the transaction ramp
+          and the flat payroll line, both of which are gated in the pilot program (see Unit
+          Economics & Capacity). Before any financing, the model is stress-tested on four axes:
+          food transactions at 40,000 / 55,000 / 70,000 / 85,000; average ticket at $15 / $17.50
+          / $20; programs and education at 50% / 75% / 100% of plan; and payroll scaling with
+          orders rather than remaining flat. The thesis must survive a weak-program case and a
+          poor-autumn-weather case without adding weddings, a gate fee, or a larger attraction
+          package.
+        </p>
 
         <h3>Revenue build vs. cash break-even</h3>
         <div class="be-chart" id="be-chart">
@@ -1013,7 +1430,7 @@ const risks = [
 
       <!-- ============ Brand ============ -->
       <section id="brand" class="plan-section">
-        <span class="eyebrow">06 · Brand & Marketing</span>
+        <span class="eyebrow">07 · Brand & Marketing</span>
         <h2>“A welcoming place for every season.”</h2>
         <p>
           The voice is warm, plainspoken, observant, and confident — no amusement-park
@@ -1070,7 +1487,7 @@ const risks = [
 
       <!-- ============ Roadmap ============ -->
       <section id="roadmap" class="plan-section">
-        <span class="eyebrow">07 · Roadmap & Milestones</span>
+        <span class="eyebrow">08 · Roadmap & Milestones</span>
         <h2>Validate first. Build second.</h2>
         <p class="lede">
           The lowest-risk path validates the concept through two full seasons of temporary
@@ -1126,7 +1543,7 @@ const risks = [
 
       <!-- ============ Risks ============ -->
       <section id="risks" class="plan-section">
-        <span class="eyebrow">08 · Risks & Mitigations</span>
+        <span class="eyebrow">09 · Risks & Mitigations</span>
         <h2>Known risks, managed deliberately.</h2>
         <div class="table-wrap">
           <table class="ll-table">
@@ -1161,7 +1578,7 @@ const risks = [
 
       <!-- ============ Sources ============ -->
       <section id="sources" class="plan-section">
-        <span class="eyebrow">09 · Sources & Notes</span>
+        <span class="eyebrow">10 · Sources & Notes</span>
         <h2>Where the numbers come from.</h2>
         <ol class="source-list">
           {sources.map((s) => <li>{s}</li>)}
