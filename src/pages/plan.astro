@@ -302,6 +302,34 @@ const capitalRatios = [
   { ratio: 'Sitework, drainage, parking, and utilities per parking space', value: '≈$3,500', note: '$525K ÷ 150 spaces' },
 ];
 
+const capitalStructure = [
+  { item: 'Illustrative senior debt — 65% of the $2.95M project, 7%, 20-year amortization', amt: '≈$1.92M' },
+  { item: 'Founder and investor equity — converted mostly into building, sitework, and kitchen', amt: '≈$1.03M' },
+  { item: 'Annual debt service (interest plus principal)', amt: '≈$175K' },
+];
+
+// Cumulative distributable cash = EBITDA − debt service, pre-tax; Year-Three
+// performance held flat from Year Four onward (no growth assumed).
+const payback = {
+  scaleMin: -250,
+  scaleMax: 1250,
+  equity: 1033,
+  equityLabel: 'Equity invested · ≈$1.03M',
+  years: [
+    { label: 'Y1', cum: -157 },
+    { label: 'Y2', cum: -137 },
+    { label: 'Y3', cum: 61 },
+    { label: 'Y4', cum: 259 },
+    { label: 'Y5', cum: 457 },
+    { label: 'Y6', cum: 655 },
+    { label: 'Y7', cum: 853 },
+    { label: 'Y8', cum: 1051 },
+  ],
+};
+
+const pbSpan = payback.scaleMax - payback.scaleMin;
+const pbPct = (v: number) => ((v - payback.scaleMin) / pbSpan) * 100;
+
 const dashboard = [
   {
     metric: 'Same-season repeat visits per identified household',
@@ -519,7 +547,7 @@ const risks = [
           <li><a href={`#${t.id}`} data-toc={t.id}>{t.label}</a></li>
         ))}
       </ol>
-      <a class="btn btn-primary toc-cta" href={url('/')}>See the Concept Site</a>
+      <a class="btn btn-primary toc-cta" href={url('/')}>View the Concept Site</a>
     </nav>
 
     <article class="plan-body">
@@ -591,7 +619,8 @@ const risks = [
         <p class="scope-note">
           This document is a concept and feasibility plan. A subsequent investment memorandum —
           prepared after the pilot seasons — will add team biographies, ownership structure,
-          capital sought, use of proceeds, investor terms, and the expected return pathway.
+          capital sought, use of proceeds, and investor terms, formalizing the illustrative
+          return pathway sketched in the Financial Plan.
         </p>
       </section>
 
@@ -646,7 +675,7 @@ const risks = [
 
       <!-- ============ Market ============ -->
       <section id="market" class="plan-section">
-        <span class="eyebrow">03 · Market & Competitive Position</span>
+        <span class="eyebrow">03 · Market & Positioning</span>
         <h2>Familiar territory. A different operating philosophy.</h2>
         <p class="lede">
           The primary market is defined by drive time, not county lines: 30-, 45-, and 60-minute
@@ -659,11 +688,11 @@ const risks = [
           3.94 million residents in 2025, with median household incomes of $97,760 in Oakland
           County and $103,039 in Livingston County. Michigan recorded 131.2 million visitors and
           $30.7 billion in direct visitor spending in 2024. The year-one plan assumes
-          approximately 55,000 food transactions — implying roughly 76,000 visiting parties and
-          on the order of 206,000 guest visits, terms the unit-economics section defines
-          precisely — plus camp, workshop, retreat, and program participants: a low single-digit
-          share of households within the 45-minute band. The precise serviceable market comes
-          from the parcel-level drive-time analysis before any commitment.
+          approximately 55,000 food transactions plus camp, workshop, retreat, and program
+          participants — a low single-digit share of households within the 45-minute band. The
+          unit-economics section translates those transactions into visiting parties, guest
+          visits, and parking load; the precise serviceable market comes from the parcel-level
+          drive-time analysis before any commitment.
         </p>
         <p>
           The different operating philosophy is an internal discipline, never a customer-facing
@@ -790,14 +819,11 @@ const risks = [
               The honorable mentions tell the same story from below: Plymouth wins on organic
               authenticity, Alber’s on 150-plus heirloom apple varieties and an 1890 press,
               Westview on two centuries of operation, Goodison on a signature pistachio bread.
-              Two entries in that ranking matter most to this plan. First, Erwin Orchards —
-              beloved for 102 years — fell off the list entirely because it was sold: part to a
-              homebuilder, part to Blake’s. Affection did not underwrite succession. Second, the
-              buyer: Blake’s is building a tasting room, restaurant, and expanded mill on that
-              South Lyon site, inside Leaf & Lantern’s own corridor. The strongest regional
-              operator arriving nearby raises the bar on quality and awareness — and
-              simultaneously makes the contrast sharper, because everything Blake’s adds is on
-              the list below.
+              Two entries matter most to this plan — Erwin Orchards’ sale and Blake’s arrival
+              on that South Lyon site, both profiled in the competitive landscape above. The
+              strongest regional operator arriving nearby raises the bar on quality and
+              awareness, and simultaneously sharpens the contrast: everything Blake’s adds is
+              on the list below.
             </p>
             <div class="table-wrap">
               <table class="ll-table">
@@ -1129,18 +1155,14 @@ const risks = [
         <p class="lede">
           Admission is always free — grounds, market, café, and pumpkin selection, every day,
           including peak autumn weekends. There is no gate fee, no arrival reservation, and no
-          upsell ladder. Ordinary autumn operations stay open walk-up: guests arrive when they
-          like. Margin lives in hero products bought many ways — cider, donuts, a short coffee
-          menu, bundles, and order-ahead — plus retail and genuinely bounded programs: ticketed
-          evenings, workshops, camps, field trips, daytime retreats, and private parties for
-          special events only.
+          upsell ladder. Margin lives in hero products bought many ways — cider, donuts, a
+          short coffee menu, bundles, and order-ahead — plus retail and genuinely bounded
+          programs: ticketed evenings, workshops, camps, field trips, and daytime retreats.
         </p>
         <p>
-          Peak autumn logistics are smoothed by order-ahead and dedicated pickup — not by
-          blocking the gate; reservations and capacity blocks exist only for ticketed special
-          events. A $2 Morning Cup and a bag of donuts is a complete, welcome visit — the model
-          treats that family as the beginning of a relationship that later books a camp, a field
-          trip, or a corporate retreat, not as a missed ticket sale.
+          A $2 Morning Cup and a bag of donuts is a complete, welcome visit — the model treats
+          that family as the beginning of a relationship that later books a camp, a field trip,
+          or a corporate retreat, not as a missed ticket sale.
         </p>
 
         <h3>Three economic layers, underwritten differently</h3>
@@ -1235,9 +1257,7 @@ const risks = [
           feels easy to justify. A family that leaves having spent $28 on donuts (a dozen plus
           one for the dog), $12 on a half-gallon of cider, and $4 on two Morning Cups should
           think, <em>“That was absolutely worth it.”</em> The psychology being optimized is
-          obvious, fair choices — not the lowest prices — and it is the same philosophy that
-          runs through the rest of this plan: operational simplicity, high perceived value, and
-          products that invite repeat visits rather than maximize a single transaction.
+          obvious, fair choices — not the lowest prices.
         </p>
 
         <h3>Opening price architecture <small>(2030 dollars, to be validated in pilots)</small></h3>
@@ -1432,6 +1452,67 @@ const risks = [
           scenarios will be modeled with real numbers at site selection, and the financing
           structure will not be fixed before then.
         </p>
+
+        <h3>How investors are paid back <small>(illustrative — terms set in the investment memorandum)</small></h3>
+        <p>
+          Break-even answers an operating question; payback is a cash question — cumulative
+          dollars returned against dollars invested. Under the same illustrative financing as
+          the break-even definition, the capital stack is:
+        </p>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>Capital structure</th><th class="num">Amount</th></tr></thead>
+            <tbody>
+              {capitalStructure.map((c) => (
+                <tr><td>{c.item}</td><td class="num"><strong>{c.amt}</strong></td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div
+          class="pb-chart"
+          role="img"
+          aria-label="Cumulative distributable cash — EBITDA minus debt service, pre-tax — by year. Years one and two are negative, drawing about 157 thousand dollars from the working-capital reserve. The cumulative line turns positive in year three and, holding year-three performance flat with no growth assumed, crosses the roughly 1.03 million dollars of equity invested in about year eight."
+        >
+          <div class="pb-plot">
+            <div class="pb-line pb-zero" style={`bottom: ${pbPct(0)}%;`}><span>$0</span></div>
+            <div class="pb-line pb-equity" style={`bottom: ${pbPct(payback.equity)}%;`}><span>{payback.equityLabel}</span></div>
+            <div class="pb-cols">
+              {payback.years.map((y) => (
+                <div class="pb-col">
+                  <div
+                    class:list={['pb-bar', { 'pb-neg': y.cum < 0 }]}
+                    style={
+                      y.cum >= 0
+                        ? `bottom: ${pbPct(0)}%; height: ${pbPct(y.cum) - pbPct(0)}%;`
+                        : `bottom: ${pbPct(y.cum)}%; height: ${pbPct(0) - pbPct(y.cum)}%;`
+                    }
+                  >
+                    <span class="pb-val">{y.cum < 0 ? `−$${Math.abs(y.cum).toLocaleString()}K` : `$${y.cum.toLocaleString()}K`}</span>
+                  </div>
+                  <span class="pb-year">{y.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <p class="figure-note">
+          Cumulative distributable cash: EBITDA minus ≈$175K debt service, pre-tax, with
+          Year-Three performance simply held flat from Year Four on — no growth assumed. The
+          first two years draw ≈$157K, which is what the $300K working-capital reserve exists
+          to fund.
+        </p>
+        <p>
+          On that deliberately flat base, distributions begin in Year Three at roughly $200K per
+          year against ≈$1.03M of total equity, returning the equity in about eight operating
+          seasons. Three things can shorten that: continued transaction growth beyond 85,000
+          (the chart assumes none), a refinance after stabilization that returns a portion of
+          equity early, or an eventual sale of the operating business and property. The equity
+          is asset-backed throughout — it sits in a building, sitework, and kitchen rather than
+          consumed operating spend — so the downside of a failed thesis is a property sale, not
+          a write-off. Ownership split, distribution policy, and investor preferences are set in
+          the post-pilot investment memorandum.
+        </p>
       </section>
 
       <!-- ============ Brand ============ -->
@@ -1440,9 +1521,8 @@ const risks = [
         <h2>“The season begins here.”</h2>
         <p>
           The voice is warm, plainspoken, observant, and confident — no amusement-park
-          superlatives, no luxury language. Menu naming carries the same voice: plain,
-          confident item names — “Morning Cup,” “Fresh Donut” — with the price after the name,
-          never “$2 coffee” or novelty names. Typography pairs <strong>Fraunces</strong> display
+          superlatives, no luxury language. Menu naming carries the same voice (see the naming
+          discipline in the Financial Plan). Typography pairs <strong>Fraunces</strong> display
           serif with <strong>Source Sans 3</strong> for interface and operational text. The
           palette anchors on Lantern Black, Deep Pine, and Parchment with Cider, Cranberry, and
           Wheat accents. The site targets WCAG 2.2 AA conformance.
@@ -2149,6 +2229,121 @@ const risks = [
     color: var(--wheat);
   }
 
+  /* ---------- Investor payback chart ---------- */
+  .pb-chart {
+    position: relative;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 1.6rem 1.5rem 1.3rem;
+    margin-block: 1.4rem 0.6rem;
+  }
+
+  .pb-plot {
+    position: relative;
+    height: 280px;
+    margin: 2.2rem 0.5rem 2.2rem 0.5rem;
+  }
+
+  .pb-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  .pb-zero {
+    border-top: 1px solid var(--line);
+  }
+
+  .pb-zero span {
+    position: absolute;
+    left: 0;
+    top: -0.6em;
+    transform: translateX(-0.1rem);
+    font-size: 0.72rem;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.6;
+    background: var(--white);
+    padding-right: 0.3rem;
+  }
+
+  .pb-equity {
+    border-top: 2px dashed var(--cider);
+    z-index: 3;
+  }
+
+  .pb-equity span {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--parchment);
+    border: 1px solid color-mix(in srgb, var(--cider) 45%, transparent);
+    border-radius: 999px;
+    padding: 0.18rem 0.6rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cider);
+    white-space: nowrap;
+  }
+
+  .pb-cols {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: clamp(0.5rem, 2.5vw, 1.4rem);
+    padding-inline: clamp(0.25rem, 2vw, 1.25rem);
+  }
+
+  .pb-col {
+    position: relative;
+    height: 100%;
+  }
+
+  .pb-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: var(--deep-pine);
+    border-radius: 4px 4px 0 0;
+    min-height: 2px;
+  }
+
+  .pb-bar.pb-neg {
+    background: var(--cranberry);
+    border-radius: 0 0 4px 4px;
+  }
+
+  .pb-val {
+    position: absolute;
+    left: 50%;
+    top: -1.25rem;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--deep-pine);
+    white-space: nowrap;
+  }
+
+  .pb-bar.pb-neg .pb-val {
+    top: auto;
+    bottom: -1.25rem;
+    color: var(--cranberry);
+  }
+
+  .pb-year {
+    position: absolute;
+    left: 50%;
+    bottom: -2rem;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
   /* ---------- Positioning strategy maps ---------- */
   .pos-plot {
     margin: 1.8rem 0 2.4rem;
@@ -2728,6 +2923,34 @@ const risks = [
       font-size: 0.75rem;
     }
 
+    .pb-chart {
+      padding: 1.2rem 0.9rem 1.1rem;
+      overflow: hidden;
+    }
+
+    .pb-plot {
+      height: 220px;
+      margin-inline: 0.25rem;
+    }
+
+    .pb-cols {
+      gap: 0.35rem;
+      padding-inline: 0.15rem;
+    }
+
+    .pb-val {
+      font-size: 0.55rem;
+    }
+
+    .pb-year {
+      font-size: 0.68rem;
+    }
+
+    .pb-equity span {
+      font-size: 0.58rem;
+      padding: 0.15rem 0.45rem;
+    }
+
     .swatch-row {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
@@ -2787,6 +3010,7 @@ const risks = [
     .competitor-card,
     .chart,
     .be-chart,
+    .pb-chart,
     .pos-plot,
     .pull-quote,
     .eq-block,
@@ -2797,6 +3021,8 @@ const risks = [
     .be-seg,
     .be-band,
     .be-key i,
+    .pb-bar,
+    .pb-equity,
     .pos-point,
     .pos-canvas {
       -webkit-print-color-adjust: exact;
