@@ -62,25 +62,25 @@ const pnlConservativeCosts = [
 ];
 
 const underwritingSheet = [
-  { variable: 'Y1 food transactions', current: '55k as base', underwrite: '40–45k downside / 55k target' },
-  { variable: 'Mature food transactions', current: '85k stretch / comfort', underwrite: '85–90k required stabilization target' },
-  { variable: 'Food ticket', current: '$17.50', underwrite: '$17.50 — keep; premium vs traditional mills' },
-  { variable: 'Field-trip price', current: '$14', underwrite: '$14 — well supported locally' },
-  { variable: 'Camp price', current: '~$355', underwrite: '$325–375 — supported' },
-  { variable: 'Field-trip attendance', current: '8,500 booked in base', underwrite: 'Needs school presales; do not bank yet' },
-  { variable: 'Maker booth average', current: '~$200', underwrite: '~$100–120/day until demonstrated' },
-  { variable: 'Payroll', current: '$650k flat', underwrite: '$725–750k at 2030 launch + volume scaling' },
-  { variable: 'Land', current: 'Excluded', underwrite: '$0.6–1.2M planning placeholder' },
-  { variable: 'Working liquidity', current: '$300k', underwrite: '$450–500k accessible opening liquidity' },
-  { variable: 'Project cost', current: '$2.95M ex-land', underwrite: '~$4.0–4.6M new-build planning case' },
-  { variable: 'Cash break-even', current: '~70k tx', underwrite: '~80–85k; potentially ~90k downside' },
+  { variable: 'Y1 food transactions', target: '55k management case', underwrite: '40–45k lender / downside case' },
+  { variable: 'Mature food transactions', target: '85k operating goal', underwrite: '85–90k cash break-even requirement' },
+  { variable: 'Food ticket', target: '$17.50', underwrite: '$17.50 — keep; premium vs traditional mills' },
+  { variable: 'Field-trip price', target: '$14', underwrite: '$14 — well supported locally' },
+  { variable: 'Camp price', target: '~$355', underwrite: '$325–375 supported range' },
+  { variable: 'Field-trip attendance', target: '8,500 students', underwrite: 'Bank only with school presales' },
+  { variable: 'Maker booth average', target: 'Curation premium as upside', underwrite: '~$100–120/day until demonstrated' },
+  { variable: 'Payroll at 2030 launch', target: 'Bottom-up by hour and day type', underwrite: '$725–750k base + volume scaling' },
+  { variable: 'Land', target: 'Adaptive reuse preferred', underwrite: '$0.6–1.2M new-build placeholder' },
+  { variable: 'Working liquidity', target: '$450–500k accessible at opening', underwrite: 'Sized for weather and volume stress' },
+  { variable: 'All-in project cost', target: 'Capital-gated ≤ ≈$4.0M', underwrite: '~$4.0–4.6M new-build planning case' },
+  { variable: 'Cash break-even', target: '~85k food transactions', underwrite: '~80–85k; ~90k if costs run hot' },
 ];
 
 const txScenarios = [
   { tx: '40,000', label: 'Downside underwriting', fnb: '$700K', note: 'Defensible Year-1 lender case floor' },
   { tx: '45,000', label: 'Conservative Year 1', fnb: '$788K', note: 'Grounded opening case' },
   { tx: '55,000', label: 'Management target', fnb: '$963K', note: 'Successful Year-1 operating case — not the bank case' },
-  { tx: '70,000', label: 'Strong operation', fnb: '$1.23M', note: 'Former break-even; now early-scale, not comfort' },
+  { tx: '70,000', label: 'Strong operation', fnb: '$1.23M', note: 'Early-scale year — still below cash break-even' },
   { tx: '85,000', label: 'Mature / break-even zone', fnb: '$1.49M', note: 'Practical steady-state cash break-even' },
   { tx: '90,000', label: 'Downside break-even', fnb: '$1.58M', note: 'If land, escalation, or labor run hot' },
 ];
@@ -346,13 +346,11 @@ const capitalStructure = [
   { item: 'Reject gate — site/building combinations above all-in', amt: '≈$4.0M' },
 ];
 
-// Cumulative distributable cash under capital-gated financing. Y1–Y2 draw reserves;
-// Y3 (~85k transactions) is approximately cash break-even. Modest positive years after
-// that assume the operation holds the mature band — not a promise of eight-season equity recovery.
-// Cumulative operating cash (EBITDA − ≈$235K debt service) under the corrected
-// management-target case and a capital-gated ~$4.0M all-in stack. The chart shows
-// reserve draw through stabilization — not equity payback. Levered IRR, terminal
-// value, replacement-capex reserves, and a downside sale case belong in the IM.
+// Cumulative operating cash (EBITDA − ≈$235K debt service) under the
+// management-target case and a capital-gated ~$4.0M all-in stack. Y1–Y2 draw
+// reserves; Y3 (~85k transactions) is approximately cash break-even. The chart
+// shows reserve draw through stabilization — not equity payback. Levered IRR,
+// terminal value, replacement-capex reserves, and a downside sale case belong in the IM.
 const payback = {
   scaleMin: -650,
   scaleMax: 50,
@@ -530,9 +528,9 @@ const gates = [
   { gate: 'Throughput', evidence: 'Core orders handed off reliably in under eight to ten minutes during peak periods.' },
   { gate: 'Peak capacity', evidence: 'At least 100 simple transactions per active service line per hour after warmup; preorder+leave share measured separately from preorder+stay.' },
   { gate: 'Repeat behavior', evidence: 'Meaningful same-season return visits and repeat dozen-and-cider purchases — the path from 55k toward 85–90k.' },
-  { gate: 'Labor productivity', evidence: 'Orders per direct labor hour measured every pilot; 2030 base payroll underwritten at $725–750K with a bottom-up hour/day schedule, not a flat $650K carryforward.' },
+  { gate: 'Labor productivity', evidence: 'Orders per direct labor hour measured every pilot; 2030 base payroll underwritten at $725–750K with a bottom-up hour/day schedule that scales with volume.' },
   { gate: 'School and camp presales', evidence: 'Signed field-trip commitments and camp deposits before treating education revenue as base case.' },
-  { gate: 'Maker-fee reality', evidence: 'Booth-day pricing demonstrated in the $100–120 underwriting band (or higher with proof); not assumed at $200.' },
+  { gate: 'Maker-fee reality', evidence: 'Booth-day pricing demonstrated in the $100–120 underwriting band (or higher with proof).' },
   { gate: 'Second-engine contribution', evidence: 'Retail, education, and programs collectively clear a necessary share of calendar utilization — acknowledged as a second engine, not ancillary upside.' },
   { gate: 'Capital discipline', evidence: 'Site/building combination keeps all-in permanent-project cost around or below ~$4M; above that, reject.' },
   { gate: 'Weather resilience', evidence: 'Stress case: five lost 650-order peak days (~$57K F&B sales / ~$38K F&B gross margin) does not create a cash crisis against opening liquidity.' },
@@ -591,7 +589,7 @@ const risks = [
   { risk: 'Site or zoning incompatibility', mitigation: 'Municipal pre-application review before purchase; entitlement contingencies; written use interpretations.' },
   { risk: 'Capital-cost escalation / overbuilding', mitigation: 'Escalate allowances to 2030 dollars; prefer adaptive reuse; hard ~$4M all-in reject gate; contractor pricing at schematic design; 12–15% construction contingency.' },
   { risk: 'Year-1 volume miss', mitigation: 'Underwrite 40–45k food transactions; treat 55k as management target; size liquidity for a 20% food-volume miss before programs slip.' },
-  { risk: 'Peak-weather concentration', mitigation: 'Explicit stress: five lost 650-order peak days ≈ $57K F&B sales / ≈ $38K F&B GM — more than modeled Year-1 EBITDA under optimistic labor; hold $450–500K accessible opening liquidity.' },
+  { risk: 'Peak-weather concentration', mitigation: 'Explicit stress: five lost 650-order peak days ≈ $57K F&B sales / ≈ $38K F&B GM against a thin Year-1 EBITDA path; hold $450–500K accessible opening liquidity.' },
   { risk: 'Autumn dependence', mitigation: 'Order-ahead food and pumpkin preorders with kitchen pickup windows; indoor rain capacity; camps, schools, retreats, and gift markets as the second engine — no timed arrival gate on ordinary autumn days.' },
   { risk: 'Event-venue drift', mitigation: 'Weddings, showers, and receptions excluded by policy (the Cornman Farms lesson); no banquet kitchen, event-sales role, or turnover crew; retreats stay daytime and functional.' },
   { risk: 'School-revenue concentration', mitigation: 'Do not bank 8,500 field-trip students without signed commitments; build a regional school-sales pipeline across multiple districts.' },
@@ -1082,13 +1080,14 @@ const risks = [
         <p>
           That structure — roughly $300–330K in salaried payroll, $110–130K in season-long
           part-time wages, and $120–140K in peak seasonal wages, plus employer taxes and
-          benefits — was a 2026-dollar sketch. Inflated into a 2030 opening, the plan now
-          underwrites <strong>$725–750K of launch payroll</strong>, then builds a bottom-up
-          hour/day schedule as volume ramps. Detroit-area food-preparation wages already
-          averaged ~$18.06/hour in 2025 and Michigan’s minimum reaches $15 in 2027; carrying
-          a $16–$18 hiring band unchanged into 2030 is not conservative. National Restaurant
-          Association limited-service medians (~30–32% of sales) reinforce that $650K flat
-          through an 55k→85k ramp was an efficiency assumption, not a base case.
+          benefits — is a present-dollar sketch. For a 2030 opening the plan underwrites
+          <strong>$725–750K of launch payroll</strong>, then builds a bottom-up hour/day
+          schedule as volume ramps. Detroit-area food-preparation wages already averaged
+          ~$18.06/hour in 2025 and Michigan’s minimum reaches $15 in 2027; carrying a
+          $16–$18 hiring band unchanged into 2030 is not conservative. National Restaurant
+          Association limited-service medians (~30–32% of sales) put Year-3 labor near
+          $690–730K at ~$2.3M revenue — so payroll must scale with orders, not sit flat
+          through the 55k→85k ramp.
         </p>
 
         <h3>Cider, sourced — not pressed</h3>
@@ -1195,8 +1194,8 @@ const risks = [
           </table>
         </div>
         <p>
-          The goal does not change; the financial plan no longer depends on hitting 55k
-          immediately. The right question remains: are 650 peak-day, 350 shoulder-day, and 165
+          Fifty-five thousand remains the operating goal; financing does not require hitting
+          it in Year 1. The right question remains: are 650 peak-day, 350 shoulder-day, and 165
           ordinary-day transactions physically and commercially defensible?
         </p>
         <div class="table-wrap">
@@ -1236,10 +1235,10 @@ const risks = [
               <span>× ≈67.6% F&amp;B gross margin ≈ <strong>$38,400 F&amp;B GM</strong> before retail and other spend</span>
             </div>
             <p>
-              Under optimistic prior labor assumptions, Year-1 EBITDA was only about $18K — so
-              five bad peak days could erase more than two years of that modeled result. The
-              corrected plan answers with larger accessible opening liquidity ($450–500K), not by
-              pretending October never rains.
+              On the management path, Year-1 EBITDA is already thin — a loss under the current
+              stack — so ~$38K of lost F&amp;B gross margin is material, not a rounding error.
+              The plan answers with accessible opening liquidity of $450–500K, not by pretending
+              October never rains.
             </p>
           </div>
         </details>
@@ -1278,29 +1277,27 @@ const risks = [
 
         <h3>Labor productivity: underwrite 2030 dollars, then scale</h3>
         <p>
-          Two labor problems stacked in the prior model. First, a flat $650K payroll through a
-          55k→85k transaction ramp implied unused Year-1 capacity and was the largest operating
-          leverage assumption. Second — and prior to that — $650K itself reads like a 2026
-          staffing sketch carried into a 2030 opening. Inflating that base at 3–4% annually
-          yields roughly $732–760K before any volume-driven hours. The plan therefore models
+          Labor is underwritten in 2030 dollars and then scaled with volume. Inflating a
+          present-dollar staffing sketch at 3–4% annually into a 2030 opening yields roughly
+          $725–760K before any volume-driven hours — so the plan models
           <strong>$725–750K as the initial 2030 payroll</strong>, then builds labor bottom-up by
-          hour and day type. NRA limited-service medians (31.7% of sales; 30.0% among profitable
-          operators) put Year-3 labor near $690–730K at ~$2.3M revenue — reinforcing that $650K
-          flat was a strong efficiency case, not a base case. Pilots measure <strong>orders per
-          direct labor hour</strong>; financing models include a payroll-scales-with-orders path.
+          hour and day type. Holding payroll flat through a 55k→85k transaction ramp would
+          imply unused Year-1 capacity and overstate operating leverage. NRA limited-service
+          medians (31.7% of sales; 30.0% among profitable operators) put Year-3 labor near
+          $690–730K at ~$2.3M revenue. Pilots measure <strong>orders per direct labor hour</strong>;
+          financing models include a payroll-scales-with-orders path.
         </p>
 
         <h3>Capital intensity, defined with denominators</h3>
         <p>
           “Lower capital than attraction and event competitors” needs a denominator — and it
-          must include land and escalation. A $2.95M allowance excluding land is not the
-          investment decision; the planning case is roughly <strong>$4.0–4.6M all-in</strong>
-          for a new-build path. These are the ratios the plan tracks, to be replaced with
-          contractor- and site-supported figures before financing:
+          must include land and escalation. The planning case is roughly
+          <strong>$4.0–4.6M all-in</strong> for a new-build path. These are the ratios the plan
+          tracks, to be replaced with contractor- and site-supported figures before financing:
         </p>
         <div class="table-wrap">
           <table class="ll-table">
-            <thead><tr><th>Ratio</th><th class="num">Current plan</th><th class="num">Arithmetic</th></tr></thead>
+            <thead><tr><th>Ratio</th><th class="num">Plan</th><th class="num">Arithmetic</th></tr></thead>
             <tbody>
               {capitalRatios.map((r) => (
                 <tr><td>{r.ratio}</td><td class="num"><strong>{r.value}</strong></td><td class="num">{r.note}</td></tr>
@@ -1369,7 +1366,7 @@ const risks = [
           ~$1.72M); retail, camps, education, programs, retreats, and vendor fees supply the
           rest. More important than the revenue split: Year-1 F&amp;B gross profit
           (~$651K) sits well below the operating-cost block of payroll, occupancy, marketing,
-          and admin (~$1.24M at corrected 2030 labor) before debt service. Even at Year-3 food
+          and admin (~$1.24M at 2030 labor) before debt service. Even at Year-3 food
           volume, F&amp;B gross profit alone does not carry the property. That is not a flaw to
           hide — it is the model:
         </p>
@@ -1547,10 +1544,10 @@ const risks = [
         <h3>Underwriting sheet <small>(what the plan banks vs. what it targets)</small></h3>
         <div class="table-wrap">
           <table class="ll-table">
-            <thead><tr><th>Variable</th><th>Prior polished plan</th><th>Underwriting number now</th></tr></thead>
+            <thead><tr><th>Variable</th><th>Management target</th><th>Underwriting case</th></tr></thead>
             <tbody>
               {underwritingSheet.map((r) => (
-                <tr><td><strong>{r.variable}</strong></td><td>{r.current}</td><td>{r.underwrite}</td></tr>
+                <tr><td><strong>{r.variable}</strong></td><td>{r.target}</td><td>{r.underwrite}</td></tr>
               ))}
             </tbody>
           </table>
@@ -1570,8 +1567,8 @@ const risks = [
 
         <h3>Three-year management-target P&L <small>(thousands; 55k → 85k food tx)</small></h3>
         <p>
-          This is the operating goal if pilots and ramp succeed — with maker fees normalized and
-          2030 labor corrected. It is <em>not</em> the lender case.
+          This is the operating goal if pilots and ramp succeed — with maker fees at
+          demonstrated ranges and 2030 labor. It is <em>not</em> the lender case.
         </p>
         <div class="table-wrap">
           <table class="ll-table">
@@ -1597,8 +1594,8 @@ const risks = [
           Year Three at 85,000 food transactions is the stabilization zone: about $191K EBITDA
           versus ~$235K illustrative debt service. Cash break-even lands here only with
           capital discipline (adaptive reuse / lower land) or volume toward 90k — not as a
-          comfortably profitable year. That is the most consequential reframe: design and capitalize the
-          business to reach 85–90k, rather than treating 70k as success.
+          comfortably profitable year. Design and capitalize the business to reach 85–90k;
+          70k is a strong early-scale year, not success.
         </p>
 
         <h3>Conservative underwriting P&L <small>(thousands; lender / investor lens)</small></h3>
@@ -1679,7 +1676,7 @@ const risks = [
           <div class="be-tooltip" id="be-tooltip" hidden></div>
         </div>
         <p class="figure-note">
-          Hover or tap a segment for its value and share. With corrected 2030 labor, normalized
+          Hover or tap a segment for its value and share. With 2030 labor, demonstrated-range
           maker fees, and land in the debt stack, year one and year two sit below cash
           break-even; year three at ~85k food transactions reaches the zone — about $191K EBITDA against
           ~$235K debt service on a mid capital-gated stack — cash-flat only if land/build
@@ -1687,11 +1684,11 @@ const risks = [
         </p>
 
         <p>
-          The 55,000-to-85,000 transaction ramp at a $17.50 average remains the credible
-          management path. A picturesque low-volume mill producing $800K–$1M of food revenue
-          cannot carry this property. What changed is the definition of success: <strong>85k is
-          the practical steady-state break-even</strong>, not a stretch year after an easy 70k
-          win. Management still resists adding low-margin attractions solely to buy attendance.
+          The 55,000-to-85,000 transaction ramp at a $17.50 average is the credible management
+          path. A picturesque low-volume mill producing $800K–$1M of food revenue cannot carry
+          this property. <strong>85k is the practical steady-state break-even</strong> — not a
+          stretch year after an easy 70k win. Management resists adding low-margin attractions
+          solely to buy attendance.
         </p>
 
         <h3>Bottom-up bridge to the year-one P&L <small>(illustrative unit assumptions)</small></h3>
@@ -1793,8 +1790,8 @@ const risks = [
               through 2030 on the ~$2.65M non-working-capital project portion adds about $450K.
               Stacked with land and liquidity, the illustrative new-build planning range becomes
               roughly <strong>$4.0–4.6M all-in</strong> before unusual off-site work or financing
-              costs — which is why adaptive reuse and the ~$4M reject gate matter more than the
-              old ex-land $2.95M headline.
+              costs — which is why adaptive reuse and the ~$4M reject gate are central to the
+              capital case.
             </p>
           </div>
         </details>
@@ -1803,14 +1800,14 @@ const risks = [
         <p>
           Cash break-even is the level at which operating cash flow covers all operating
           expenses — including market-rate owner-manager compensation within payroll — plus
-          interest and scheduled principal repayment. Under the corrected stack
-          (2030 labor, land, escalation, normalized maker fees), that level moves from the
-          prior ≈70,000 food transactions to roughly <strong>80–85,000</strong>, and potentially
-          ≈90,000 if land or construction run hot. Illustratively, financing 65% of a
-          capital-gated ≈$4.0M all-in project at 7% over twenty years requires roughly $235K of
-          annual debt service. Income taxes apply only above break-even; depreciation is
-          excluded as a non-cash item. Ground-lease alternatives replace land debt with
-          occupancy cost and will be modeled at site selection.
+          interest and scheduled principal repayment. Under this stack (2030 labor, land,
+          escalation, demonstrated-range maker fees), that level is roughly
+          <strong>80–85,000</strong> food transactions, and potentially ≈90,000 if land or
+          construction run hot. Illustratively, financing 65% of a capital-gated ≈$4.0M all-in
+          project at 7% over twenty years requires roughly $235K of annual debt service. Income
+          taxes apply only above break-even; depreciation is excluded as a non-cash item.
+          Ground-lease alternatives replace land debt with occupancy cost and will be modeled
+          at site selection.
         </p>
 
         <h3>Investor returns <small>(illustrative path — formal returns in the investment memorandum)</small></h3>
@@ -1831,7 +1828,7 @@ const risks = [
         <div
           class="pb-chart"
           role="img"
-          aria-label="Cumulative operating cash — EBITDA minus about 235 thousand dollars of debt service — by year under the corrected management-target case. Years one and two draw several hundred thousand dollars from opening liquidity. Year three is approximately cash break-even. Later years improve only modestly if the mature transaction band holds. This chart does not show equity payback."
+          aria-label="Cumulative operating cash — EBITDA minus about 235 thousand dollars of debt service — by year under the management-target case. Years one and two draw several hundred thousand dollars from opening liquidity. Year three is approximately cash break-even. Later years improve only modestly if the mature transaction band holds. This chart does not show equity payback."
         >
           <div class="pb-plot">
             <div class="pb-line pb-zero" style={`bottom: ${pbPct(0)}%;`}><span>$0</span></div>
@@ -1856,18 +1853,18 @@ const risks = [
           </div>
         </div>
         <p class="figure-note">
-          Cumulative operating cash (EBITDA − ≈$235K debt service), pre-tax, under the corrected
+          Cumulative operating cash (EBITDA − ≈$235K debt service), pre-tax, under the
           management-target case. Early years draw opening liquidity; Year Three is roughly
           cash break-even at ~85k food transactions. This is a reserve-draw chart, not an equity
           payback claim.
         </p>
         <p>
-          The prior “equity paid back in eight seasons” framing is retired. Soft costs alone —
-          due diligence/design, POS/technology, pre-opening, and working capital — are more than
-          $700K of the current budget and are not dollar-for-dollar recoverable real-estate
-          assets. Specialized kitchen, landscaping, and site improvements may also return far
-          less than cost on liquidation. <strong>There can be a substantial equity write-off if
-          the operating thesis fails</strong>; the downside is not simply a clean property sale.
+          Soft costs alone — due diligence/design, POS/technology, pre-opening, and working
+          capital — are more than $700K of the budget and are not dollar-for-dollar recoverable
+          real-estate assets. Specialized kitchen, landscaping, and site improvements may also
+          return far less than cost on liquidation. <strong>There can be a substantial equity
+          write-off if the operating thesis fails</strong>; the downside is not simply a clean
+          property sale.
         </p>
         <p>
           The post-pilot investment memorandum will include what this feasibility plan does not
