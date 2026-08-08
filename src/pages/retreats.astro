@@ -2,24 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import BrandImage from '../components/BrandImage.astro';
-
-const programs = [
-  {
-    name: 'Half-Day Retreat',
-    price: 'Meeting room · morning food',
-    copy: 'Meeting space, coffee, donuts or pastries, cider or seasonal beverages, and basic audiovisual. Optional boxed lunch through an approved partner.',
-  },
-  {
-    name: 'Full-Day Retreat',
-    price: 'Exclusive or semi-exclusive use',
-    copy: 'Morning food and beverages, Leaf & Lantern snacks and drinks through the day, optional external lunch, afternoon service, and optional outdoor breakout or seasonal activity.',
-  },
-  {
-    name: 'Private Gathering',
-    price: 'Fixed time block · fixed package',
-    copy: 'Birthdays, showers, family celebrations, club meetings, and small professional receptions — predetermined layouts, attendance limits, food packages, and a fixed closing time.',
-  },
-];
+import { retreatPackages } from '../data/menu';
 
 const includes = [
   'Corporate retreats and leadership meetings',
@@ -61,10 +44,11 @@ const avoids = [
         </p>
       </div>
       <div class="pkg-grid">
-        {programs.map((p) => (
+        {retreatPackages.map((p) => (
           <div class="pkg-card">
             <h3>{p.name}</h3>
             <p class="pkg-price">{p.price}</p>
+            <p class="pkg-detail">{p.detail}</p>
             <p>{p.copy}</p>
           </div>
         ))}
@@ -200,7 +184,16 @@ const avoids = [
     font-size: 1.35rem;
     font-weight: 600;
     color: var(--cider);
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .pkg-detail {
+    color: var(--deep-pine);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.65rem;
+    text-transform: uppercase;
   }
 
   .pkg-card p:last-child {

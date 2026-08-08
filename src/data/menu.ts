@@ -28,3 +28,25 @@ export const programPricing = [
   { stream: 'Half-day or full-day corporate retreat package', price: '$70–$140 per attendee' },
   { stream: 'Standardized private gathering (fixed block & food package)', price: 'Package pricing; attendance-capped' },
 ] as const;
+
+/** Fixed booking architecture shared by the plan and retreat page. */
+export const retreatPackages = [
+  {
+    name: 'Half-Day Retreat',
+    price: '$2,500–$3,500',
+    detail: 'Up to four hours',
+    copy: 'Meeting room, coffee, donuts or pastries, cider or seasonal beverages, and basic audiovisual. Optional boxed lunch through an approved partner.',
+  },
+  {
+    name: 'Full-Day Retreat',
+    price: '$3,500–$5,500',
+    detail: 'Up to eight hours',
+    copy: 'Exclusive or semi-exclusive meeting space, morning food, snacks and drinks through the day, basic audiovisual, and optional outdoor breakout. Lunch may come from an approved partner.',
+  },
+  {
+    name: 'Private Gathering',
+    price: '$1,500–$3,000',
+    detail: 'Fixed time block',
+    copy: 'Birthdays, showers, family celebrations, club meetings, and small professional receptions with predetermined layouts, attendance limits, food packages, and closing time.',
+  },
+] as const;

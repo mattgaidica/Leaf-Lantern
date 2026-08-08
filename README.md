@@ -17,7 +17,7 @@ Southeast Michigan. It has two faces:
    footer.
 
 Built with [Astro](https://astro.build). Brand identity (Fraunces + Source Sans 3, the
-Parchment/Deep Pine/Cider palette, "modern heritage" tone) follows the design contract in
+Parchment/Deep Pine/Cider palette, warm and plainspoken tone) follows the design contract in
 [`assets/deep-research-report.md`](assets/deep-research-report.md).
 
 ## Local development

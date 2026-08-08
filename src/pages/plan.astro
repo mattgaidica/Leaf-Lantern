@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import BrandImage from '../components/BrandImage.astro';
-import { programPricing } from '../data/menu';
+import { programPricing, retreatPackages } from '../data/menu';
 import { url } from '../lib/site';
 
 const toc = [
@@ -18,24 +18,22 @@ const toc = [
 ];
 
 const metrics = [
-  { value: '≈$2.5–3.0M', label: 'All-in capital target — acquisition + renovation' },
-  { value: '$20–21', label: 'Target average F&B transaction (basket composition)' },
-  { value: '~85,000', label: 'Mature annual food transactions' },
+  { value: 'Adaptive reuse', label: 'Preferred property strategy' },
+  { value: '≈$2.5–3.0M', label: 'All-in capital target' },
+  { value: '≈$2.5–2.8M', label: 'Mature annual revenue target' },
   { value: '$550–650k+', label: 'Mature EBITDA target' },
-  { value: '$525–575k', label: 'Year-1 lean payroll target' },
-  { value: '2030', label: 'Permanent-site autumn launch — pilots first' },
 ];
 
 const pnl = [
   { item: 'Food and beverage (transactions × ≈$20.50)', y1: '$1,128', y2: '$1,435', y3: '$1,743' },
   { item: 'Retail and seasonal merchandise (opportunistic)', y1: '100', y2: '110', y3: '120' },
   { item: 'Camps and education', y1: '280', y2: '310', y3: '330' },
-  { item: 'Corporate retreats, private bookings, and programs', y1: '200', y2: '280', y3: '350' },
+  { item: 'Corporate retreats, standardized bookings, and programs', y1: '200', y2: '300', y3: '400' },
 ];
 
 const pnlCosts = [
   { item: 'Food-and-beverage cost of goods (32.4%)', y1: '(365)', y2: '(465)', y3: '(565)' },
-  { item: 'Direct costs of retail, education, and programs', y1: '(250)', y2: '(270)', y3: '(285)' },
+  { item: 'Direct costs of retail, education, and programs', y1: '(250)', y2: '(275)', y3: '(300)' },
   { item: 'Payroll, taxes, and benefits (lean → mature ramp)', y1: '(550)', y2: '(625)', y3: '(710)' },
   { item: 'Occupancy, utilities, repairs, and grounds', y1: '(155)', y2: '(155)', y3: '(160)' },
   { item: 'Marketing and sales', y1: '(100)', y2: '(100)', y3: '(105)' },
@@ -49,7 +47,7 @@ const pnlConservative = [
   { item: 'Food and beverage', y1: '$850', y2: '$1,128', y3: '$1,435', note: '42.5k @ $20 / 55k / 70k food transactions' },
   { item: 'Retail and seasonal merchandise', y1: '80', y2: '100', y3: '110', note: 'Opportunistic; not a free-standing engine' },
   { item: 'Camps and education', y1: '220', y2: '270', y3: '310', note: 'Field trips ramped on booked school days' },
-  { item: 'Corporate retreats, private bookings, and programs', y1: '140', y2: '200', y3: '280', note: 'Bank only with demonstrated booking demand' },
+  { item: 'Corporate retreats, standardized bookings, and programs', y1: '140', y2: '220', y3: '300', note: 'Bank only with demonstrated booking demand' },
 ];
 
 const pnlConservativeCosts = [
@@ -68,7 +66,7 @@ const underwritingSheet = [
   { variable: 'Bulk / off-site share of F&B', target: '10–15% of food revenue at maturity', underwrite: 'Demonstrated institutional and preorder demand' },
   { variable: 'Field-trip price', target: '$14', underwrite: '$14 — well supported locally' },
   { variable: 'Camp price', target: '~$355', underwrite: '$325–375 supported range' },
-  { variable: 'Retreats / private bookings / programs', target: '$300–400k mature', underwrite: 'Credible path to ~$300k+ before site commitment' },
+  { variable: 'Retreats / standardized bookings / programs', target: '~90 corporate bookings and ~$400k mature revenue', underwrite: 'Demonstrated pricing and a credible sales pipeline toward at least 50 annual bookings' },
   { variable: 'Maker booth average', target: 'Select markets for useful traffic', underwrite: '~$100–120/day until demonstrated' },
   { variable: 'Payroll', target: 'Y1 $525–575k → mature $700–725k', underwrite: 'Delay fixed overhead until demand is proven' },
   { variable: 'Property strategy', target: 'Adaptive reuse preferred', underwrite: 'Acquisition + renovation near $2.5–3.0M all-in' },
@@ -86,23 +84,23 @@ const txScenarios = [
 ];
 
 const startup = [
-  { item: 'Due diligence, architecture, engineering, permits', amt: '$120,000' },
-  { item: 'Selective renovation, mechanical, electrical, plumbing', amt: '650,000' },
-  { item: 'Sitework, drainage, right-sized parking, and utilities', amt: '200,000' },
-  { item: 'Kitchen, donut line, cider handling, coffee, and refrigeration', amt: '260,000' },
-  { item: 'Market and program furniture, fixtures, and storage', amt: '100,000' },
-  { item: 'Landscape, courtyard, lighting, and arrival signage', amt: '80,000' },
-  { item: 'POS, online ordering, Wi-Fi, security, and website', amt: '95,000' },
-  { item: 'Pre-opening hiring, training, inventory, and launch', amt: '140,000' },
-  { item: 'Renovation and startup contingency', amt: '200,000' },
+  { item: 'Due diligence, architecture, engineering, permits', amt: '$90,000' },
+  { item: 'Selective renovation, mechanical, electrical, plumbing', amt: '500,000' },
+  { item: 'Sitework, drainage, right-sized parking, and utilities', amt: '125,000' },
+  { item: 'Kitchen, donut line, cider handling, coffee, and refrigeration', amt: '220,000' },
+  { item: 'Market and program furniture, fixtures, and storage', amt: '70,000' },
+  { item: 'Landscape, courtyard, lighting, and arrival signage', amt: '50,000' },
+  { item: 'POS, online ordering, Wi-Fi, security, and website', amt: '45,000' },
+  { item: 'Pre-opening hiring, training, inventory, and launch', amt: '110,000' },
+  { item: 'Renovation and startup contingency', amt: '140,000' },
   { item: 'Opening working-capital reserve (formal line)', amt: '300,000' },
 ];
 
 const capitalStack = [
-  { item: 'Adaptive-reuse property acquisition (corridor range)', amt: '$0.8–1.4M' },
-  { item: 'Selective renovation, FF&E, soft costs, contingency', amt: '≈$1.2–1.4M' },
-  { item: 'Opening working capital (formal) + accessible liquidity buffer', amt: '$300K + $150–200K' },
-  { item: 'All-in capital target (acquisition + renovation)', amt: '≈$2.5–3.0M' },
+  { item: 'Adaptive-reuse property acquisition budget', amt: '$0.7–1.1M' },
+  { item: 'Selective renovation, FF&E, soft costs, and contingency', amt: '≈$1.35M' },
+  { item: 'Opening working capital + additional accessible liquidity', amt: '$300K + $150–200K' },
+  { item: 'All-in capital target (acquisition, renovation, and opening liquidity)', amt: '≈$2.5–3.0M' },
   { item: 'Reject gate — projects substantially above this range', amt: 'Much greater scrutiny / likely reject' },
 ];
 
@@ -245,36 +243,6 @@ const positioningPlots: PositioningPlot[] = [
     note:
       'Leaf & Lantern remains seasonal — October still matters enormously. On the 55k management path, 30 peak days still carry ~35% of annual food transactions. The distinction is that revenue also comes from hero food, bulk and off-site orders, camps, education, corporate retreats, standardized private bookings, and controlled seasonal programming rather than requiring giant attraction weekends or full-service catering — and that weather loss on those peak days is an explicit stress case.',
   },
-  {
-    kicker: 'Map 4 · Autumn’s answer to modern quick service',
-    title: 'Throughput × human warmth',
-    xTitle: 'Throughput',
-    xLow: 'Slow',
-    xHigh: 'Fast & seamless',
-    yTitle: 'Human warmth',
-    yLow: 'Transactional',
-    yHigh: 'Personal',
-    axisNote:
-      'The map communicates the operating ambition — Chick-fil-A-grade throughput without becoming fast food: speed and convenience on one axis, warmth and personal attention on the other.',
-    alt:
-      'Conceptual strategy map of service throughput against personal warmth. A self-service kiosk quick-service restaurant has high throughput with lower personal interaction, and an automated pickup operation has very high throughput with little personal warmth. A boutique cafe is warm but slower, and a crowded cider mill has high atmosphere with poor throughput. Leaf and Lantern targets high throughput and high warmth, achieved through order-ahead, a simple menu, visible fresh production, a dedicated pickup counter, a human handoff, and a short walk-up line.',
-    points: [
-      { label: 'Self-service kiosk chain', x: 80, y: 26, pos: 'top' },
-      { label: 'Boutique café', x: 28, y: 82, pos: 'top' },
-      { label: 'Crowded cider mill', x: 14, y: 68, pos: 'bottom' },
-      { label: 'Automated pickup operation', x: 88, y: 10, pos: 'top' },
-      { label: 'Leaf & Lantern target', x: 86, y: 88, us: true, pos: 'bottom' },
-    ],
-    mechanisms: [
-      'Order ahead',
-      'Simple menu',
-      'Visible fresh production',
-      'Dedicated pickup',
-      'Human handoff',
-      'Short walk-up line',
-    ],
-    takeaway: 'Technology removes friction; it never removes the human handoff.',
-  },
 ];
 
 const economicLayers = [
@@ -284,7 +252,7 @@ const economicLayers = [
     treatment: 'Must clear pilot gates on ≈$20+ ticket, conversion, repeat, and growing bulk share (10–15% of mature F&B)',
   },
   {
-    layer: 'Corporate retreats, private bookings, camps, and programs',
+    layer: 'Corporate retreats, standardized bookings, camps, and programs',
     role: 'Monetizes the same hall, kitchen, and grounds outside peak autumn',
     treatment: 'Necessary calendar utilization. Underwrite with demonstrated bookings; standardized packages only — never bespoke event production',
   },
@@ -332,8 +300,24 @@ const dayTypes = [
   { type: 'Ordinary weekdays and lower-volume days', days: '120', avg: '165', annual: '19,800' },
 ];
 
+const retreatBuild = [
+  { year: 'Year 1', bookings: '40', average: '$3,500', retreatRevenue: '$140K', other: '$60K', total: '$200K' },
+  { year: 'Year 2', bookings: '65', average: '$4,000', retreatRevenue: '$260K', other: '$40K', total: '$300K' },
+  { year: 'Year 3 / mature', bookings: '90', average: '≈$4,250', retreatRevenue: '≈$383K', other: '≈$17K', total: '≈$400K' },
+];
+
+const laborBuild = [
+  { use: 'Ordinary public / café day', occurrences: '120', hours: '36 base', annual: '4,320', productivity: '≈$94 F&B revenue / labor hour' },
+  { use: 'Shoulder weekend / strong public day', occurrences: '45', hours: '70 base', annual: '3,150', productivity: '≈$103 F&B revenue / labor hour' },
+  { use: '650-order peak day', occurrences: '30', hours: '160 base', annual: '4,800', productivity: '≈$83 F&B revenue / labor hour' },
+  { use: 'Weekday corporate retreat', occurrences: '40', hours: '16 incremental', annual: '640', productivity: '≈$219 booking revenue / labor hour' },
+  { use: 'School day', occurrences: '50', hours: '24 incremental', annual: '1,200', productivity: '≈$99 program revenue / labor hour' },
+  { use: 'Camp day', occurrences: '25', hours: '32 incremental', annual: '800', productivity: '≈$89 program revenue / labor hour' },
+  { use: 'Private booking / bounded program', occurrences: '15', hours: '18 incremental', annual: '270', productivity: 'Package-dependent' },
+];
+
 const capitalRatios = [
-  { ratio: 'All-in capital ÷ Year-Three management revenue', value: '≈1.0–1.2×', note: '$2.5–3.0M ÷ ≈$2.54M' },
+  { ratio: 'All-in capital ÷ Year-Three management revenue', value: '≈1.0–1.2×', note: '$2.5–3.0M ÷ ≈$2.59M' },
   { ratio: 'All-in capital per stabilized food transaction', value: '≈$29–35', note: '$2.5–3.0M ÷ 85,000 orders' },
   { ratio: 'Annual debt service per stabilized food order', value: '≈$1.80–2.10', note: '≈$155–180K ÷ 85,000 orders' },
   { ratio: 'Sitework / parking allowance vs. peak-only paving', value: 'Right-sized', note: 'Gravel overflow, reinforced turf, shared parking preferred over full permanent peak lots' },
@@ -352,18 +336,18 @@ const capitalStructure = [
 // replacement-capex reserves, and a downside sale case belong in the IM.
 const payback = {
   scaleMin: -100,
-  scaleMax: 2800,
+  scaleMax: 3000,
   equity: 0,
   equityLabel: 'Cash break-even · $0 cumulative',
   years: [
     { label: 'Y1', cum: -17 },
-    { label: 'Y2', cum: 193 },
-    { label: 'Y3', cum: 596 },
-    { label: 'Y4', cum: 1011 },
-    { label: 'Y5', cum: 1426 },
-    { label: 'Y6', cum: 1841 },
-    { label: 'Y7', cum: 2256 },
-    { label: 'Y8', cum: 2671 },
+    { label: 'Y2', cum: 208 },
+    { label: 'Y3', cum: 646 },
+    { label: 'Y4', cum: 1084 },
+    { label: 'Y5', cum: 1522 },
+    { label: 'Y6', cum: 1960 },
+    { label: 'Y7', cum: 2398 },
+    { label: 'Y8', cum: 2836 },
   ],
 };
 
@@ -439,8 +423,8 @@ const exclusions = [
     because: 'Acreage, crop risk, and agricultural labor are a different business with different economics. Erwin’s 54,000 trees did not save it.',
   },
   {
-    not: 'No heritage claim',
-    because: 'Leaf & Lantern cannot out-1837 Franklin or run a water turbine like Yates — the century-old founding story is the one asset that cannot be built. Product quality, handoff speed, comfort, and calendar reliability can be.',
+    not: 'No manufactured heritage',
+    because: 'Leaf & Lantern does not invent a century-old cider-making story. An adapted church, school, lodge, or farm building may bring real history of its own; that history is preserved and told honestly while the Leaf & Lantern tradition begins now.',
   },
   {
     not: 'No full-service restaurant, catering kitchen, or broad menu',
@@ -474,8 +458,8 @@ const revChart = {
   ],
   years: [
     { label: 'Year One', sub: '55,000 tx · management', total: 1708, totalLabel: '$1.71M', values: { fnb: 1128, retail: 100, camps: 280, programs: 200 } as Record<string, number> },
-    { label: 'Year Two', sub: '70,000 tx · early scale', total: 2135, totalLabel: '$2.14M', values: { fnb: 1435, retail: 110, camps: 310, programs: 280 } as Record<string, number> },
-    { label: 'Year Three', sub: '85,000 tx · mature', total: 2543, totalLabel: '$2.54M', values: { fnb: 1743, retail: 120, camps: 330, programs: 350 } as Record<string, number> },
+    { label: 'Year Two', sub: '70,000 tx · early scale', total: 2155, totalLabel: '$2.16M', values: { fnb: 1435, retail: 110, camps: 310, programs: 300 } as Record<string, number> },
+    { label: 'Year Three', sub: '85,000 tx · mature', total: 2593, totalLabel: '$2.59M', values: { fnb: 1743, retail: 120, camps: 330, programs: 400 } as Record<string, number> },
   ],
 };
 
@@ -520,7 +504,7 @@ const bridge = [
   { line: 'Food and beverage — $1,128K', drivers: 'Management-target Year 1: 55,000 food orders at a ≈$20.50 average — walk-up, order-ahead, and express lanes, with bulk/off-site (office, school, institutional) growing toward 10–15% of mature food revenue. Ticket lift comes from basket composition: bundles, beverage attachment, larger-format cider, and take-home — not menu-price aggression. Underwriting case banks 40–45k transactions, not this figure.' },
   { line: 'Retail and seasonal merchandise — $100K', drivers: 'Opportunistic rather than a major revenue pillar: pumpkins in autumn, select curated goods, and seasonal merchandise tied to traffic. Not a garden center, nursery, or broad lifestyle store.' },
   { line: 'Camps and education — $280K', drivers: 'Summer camp weeks, field-trip students at ~$14, and workshop seats. Camp and field-trip prices are locally supported; volume requires a serious regional school-sales operation and should not be treated as base revenue without presales.' },
-  { line: 'Corporate retreats, private bookings, and programs — $200K', drivers: 'Standardized half-day and full-day retreat packages, limited private gatherings with fixed layouts and food packages, select maker-market booth fees (~$100–120/booth-day), and ticketed seasonal evenings. Mature target $300–400k; Year-1 banks a ramp, not full maturity.' },
+  { line: 'Corporate retreats, standardized bookings, and programs — $200K', drivers: 'Forty Year-1 corporate bookings at an illustrative $3,500 average produce ~$140K; fixed-package private gatherings and bounded programs contribute the remaining ~$60K. Maker-market booth fees are incidental, not a required P&L support.' },
 ];
 
 const lanes = [
@@ -533,7 +517,7 @@ const gates = [
   { gate: 'Average food transaction ≈$20+', evidence: 'Observed average food transaction of at least ~$20 via basket composition — bundles, beverage attachment, take-home — not menu-price aggression alone.' },
   { gate: 'Mature food demand path', evidence: 'Evidence that mature annual food demand can approach ~85,000 transactions.' },
   { gate: 'Bulk / institutional demand', evidence: 'Demonstrated office, school, university, and gifting preorder volume as a distinct channel.' },
-  { gate: 'Retreat & private-booking willingness to pay', evidence: 'Demonstrated demand for corporate retreats and standardized private gatherings with a credible path to ~$300k+ annual revenue.' },
+  { gate: 'Retreat & private-booking willingness to pay', evidence: 'Demonstrated $3–5K corporate bookings and a credible sales pipeline toward at least 50 annual bookings; mature target is ~90.' },
   { gate: 'Conversion', evidence: 'At least 60% of visiting parties purchase food or drink on ordinary free-access days.' },
   { gate: 'Throughput', evidence: 'Core orders handed off reliably in under eight to ten minutes during peak periods.' },
   { gate: 'Repeat behavior', evidence: 'Meaningful same-season return visits and repeat dozen-and-cider purchases — the path from 55k toward 85k.' },
@@ -560,17 +544,17 @@ const sources = [
   'Local program pricing benchmarks (2026): Blake’s school programs ≈$12–16/person; Bowers Farm ≈$12/student field trips and full spring 2026 schedule; Shine Day Camp (Northville) ≈$325/week; Bowers 2026 summer camp reported full.',
   'Maker booth benchmarks (2026): Northville Chamber holiday market $100 one-day / $175 two-day 10×10; Northville Township Handmade Market $135–194 for a two-day juried show.',
   'Traditional mill food pricing (current → inflate to 2030): Yates large-order ≈$11.95/dozen and ≈$9.95/half-gallon; Blake’s dozen + half-gallon voucher ≈$25 and 2026 banquet ≈$13.95/dozen — Leaf & Lantern’s $26/$12/$35 architecture is intentionally premium.',
-  'Adaptive-reuse capital envelope: all-in target ≈$2.5–3.0M including property acquisition and selective renovation; new-build paths near $4.0–4.6M all-in are treated as capital-gate failures rather than the planning base case.',
+  'Adaptive-reuse capital envelope: all-in target ≈$2.5–3.0M including a $0.7–1.1M property acquisition budget, ≈$1.35M selective renovation/startup allowance, and $450–500K opening liquidity; new-build paths near $4.0–4.6M all-in are treated as capital-gate failures rather than the planning base case.',
   'Construction escalation: Turner nonresidential building-cost index +5.15% YoY in Q2 2026 (Midwest labor pressure noted) — relevant to renovation allowances and a reason adaptive reuse is preferred over multi-year ground-up exposure.',
   'Michigan agritourism scale context: Erie Orchards described as 100,000+ visitors/year on a mature 62-acre multi-attraction site; Blake’s broader business cites 1M+ annual visitors — evidence of regional demand, not a Year-1 Leaf & Lantern attendance claim.',
-  'Mature economics (planning targets): ~85k food transactions × $20–21 average ≈ $1.7–1.8M F&B; camps/education ≈$300–350k; retreats/private bookings/programs ≈$300–400k; total mature revenue ≈$2.5–2.8M; mature payroll ≈$700–725k; EBITDA target $550–650k+.',
+  'Mature economics (planning targets): ~85k food transactions × $20–21 average ≈ $1.7–1.8M F&B; camps/education ≈$300–350k; ~90 corporate retreats plus limited standardized bookings/programs ≈$400k; total mature revenue ≈$2.5–2.8M; mature payroll ≈$700–725k; EBITDA target $550–650k+.',
 ];
 
 const roadmapPhases = [
   {
     phase: 'Validation',
     window: 'Sep 2026 – Dec 2027',
-    items: ['Brand and demand landing page', 'Corporate, school, institutional, and customer interviews', 'Autumn and holiday pilot events across two seasons', 'Measure $20+ ticket, conversion, repeat, bulk/off-site share, retreat willingness to pay, and weather-loss sensitivity', 'Pilot review — rebuild lender case before site commitment'],
+    items: ['Brand and demand landing page', 'Corporate, school, institutional, and customer interviews', 'Autumn and holiday pilot events across two seasons', 'Pilot fixed retreat packages and measure willingness to pay, staff-hours, and repeat bookings', 'Measure $20+ food ticket, conversion, repeat, bulk/off-site share, and weather-loss sensitivity', 'Pilot review — rebuild lender case before site commitment'],
   },
   {
     phase: 'Site & Design',
@@ -580,7 +564,7 @@ const roadmapPhases = [
   {
     phase: 'Programming & Sales',
     window: 'Jan 2029 – Jun 2030',
-    items: ['School-program development with signed field-trip commitments', 'Corporate retreat and standardized private-booking pipeline', 'Bulk and institutional food-sales channel', 'Camp and workshop presales', 'Order-ahead platform — report preorder+stay vs preorder+leave', 'Lean opening labor schedule (Y1 $525–575k)'],
+    items: ['School-program development with signed field-trip commitments', 'Corporate retreat pipeline building toward at least 50 annual bookings', 'Standardized private-booking pipeline', 'Bulk and institutional food-sales channel', 'Camp and workshop presales', 'Order-ahead platform — report preorder+stay vs preorder+leave', 'Utilization-built opening labor schedule (Y1 $525–575k)'],
   },
   {
     phase: 'Renovate',
@@ -643,34 +627,25 @@ const risks = [
       <!-- ============ Executive Summary ============ -->
       <section id="summary" class="plan-section">
         <span class="eyebrow">01 · Executive Summary</span>
-        <h2>Same place. Considerably more productive.</h2>
+        <h2>A place people return to, season after season.</h2>
         <p class="lede">
-          Leaf & Lantern is a capital-disciplined seasonal gathering business built around
-          unusually productive use of a relatively small property. Autumn consumer demand
-          provides the highest-volume season; corporate retreats, education, standardized
-          private bookings, bulk food sales, and programming monetize the same infrastructure
-          throughout the remainder of the year. The plan prioritizes
-          <strong>adaptive reuse</strong>, a <strong>≈$2.5–3.0M all-in</strong> capital
-          envelope, a <strong>$20–21 average F&B ticket</strong>, and mature
-          <strong>EBITDA of $550–650k+</strong>. New-build permanent-site paths near
-          $2.5–3.0M in project costs <em>excluding</em> land — or ≈$4M+ all-in — do not
-          produce an attractive investor return quickly enough.
+          Leaf & Lantern is a seasonal gathering place built around rituals people already
+          love: warm donuts, sweet cider, good coffee, changing landscapes, and time together.
+          Autumn is the heart of the experience. Spring discovery, summer gathering, and
+          holiday celebration give people reasons to come back.
         </p>
         <p>
-          To customers, the strategy reads as <strong>“More Than Great Cider and
-          Donuts.”</strong> Economically the model is focused:
-          <strong>hero food drives visitation; the same assets earn year-round through
-          retreats, camps, bulk orders, and standardized gatherings.</strong> The business
-          deliberately avoids becoming a restaurant, wedding venue, garden center, large
-          attraction farm, or full-service caterer. What remains excluded is bespoke event
-          production — not every private gathering.
+          The business is deliberately focused. A short menu of excellent products drives
+          everyday visits; the same hall, kitchen, and grounds support corporate retreats,
+          school programs, camps, bulk orders, and standardized private gatherings across the
+          calendar. No gate fee. No amusement sprawl. No bespoke event business.
         </p>
         <p>
-          The investment posture is <strong>pilots first</strong>. Fifty-five thousand Year-1
-          food transactions remains the management target; the underwriting case banks
-          40–45k. A permanent-site commitment waits on a sustained ≈$20+ food ticket, evidence
-          of bulk and retreat demand, lean opening payroll, a mature EBITDA model above
-          ≈$550–650k, and an adaptive-reuse property inside the capital envelope.
+          Leaf & Lantern begins by giving an existing place a new chapter. The preferred path
+          is to acquire a character-rich church, lodge, school, farm structure, or similar
+          property and adapt it within a <strong>≈$2.5–3.0M all-in capital envelope</strong>.
+          Pilots come first; a permanent home follows only when food demand, retreat bookings,
+          labor productivity, and the property economics have been proven.
         </p>
 
         <div class="metric-grid">
@@ -683,43 +658,6 @@ const risks = [
         </div>
 
         <blockquote class="pull-quote">Autumn is our heart, not our entire calendar.</blockquote>
-
-        <p>
-          The property operates <strong>April through December</strong> in four seasonal chapters —
-          Discovery, Gathering, Tradition, and Celebration. January through March, it closes to
-          the public for maintenance, planning, and hiring.
-        </p>
-
-        <div class="table-wrap">
-          <table class="ll-table">
-            <thead>
-              <tr><th>Season</th><th>Signature experience</th><th>Primary promise</th></tr>
-            </thead>
-            <tbody>
-              <tr><td><strong>Spring</strong></td><td>Discovery</td><td>Nature, schools, gardens, and hands-on learning</td></tr>
-              <tr><td><strong>Summer</strong></td><td>Gathering</td><td>Camps, markets, music, wellness, and long evenings</td></tr>
-              <tr><td><strong>Autumn</strong></td><td>Tradition</td><td>Cider, donuts, coffee, pumpkins, and Halloween</td></tr>
-              <tr><td><strong>Holiday</strong></td><td>Celebration</td><td>Gift markets, lights, workshops, and warm drinks</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <p>
-          The preferred permanent site is an <strong>adaptive-reuse acquisition</strong> —
-          roughly 4,000–7,000 square feet of usable interior in a former church, lodge, school,
-          banquet facility, or similar assembly property — selectively renovated rather than
-          built from scratch. Existing parking, utilities, bathrooms, and architectural character
-          reduce capital and strengthen the brand. Peak autumn parking should not automatically
-          dictate expensive permanently improved lots. The plan proceeds only after the go/no-go
-          criteria in the Roadmap are cleared — not by increasing leverage to force the concept
-          forward.
-        </p>
-        <p class="scope-note">
-          This document is a concept and feasibility plan with a conservative underwriting lens.
-          A subsequent investment memorandum — prepared after the pilot seasons — will add team
-          biographies, ownership structure, capital sought, use of proceeds, levered IRR,
-          terminal-value assumptions, replacement-capex reserves, and a downside sale scenario.
-        </p>
       </section>
 
       <!-- ============ Concept & Mission ============ -->
@@ -765,6 +703,10 @@ const risks = [
             </tbody>
           </table>
         </div>
+        <blockquote class="pull-quote">
+          The investment thesis is a seasonal business made resilient through repeat visitation,
+          disciplined operations, and productive reuse of the same property across the calendar.
+        </blockquote>
         <p>
           The recommended structure is a for-profit operating company with the option of a
           separate property-holding entity. Educational partnerships may later justify a nonprofit
@@ -885,8 +827,9 @@ const risks = [
         <h3>Competitive landscape</h3>
         <p>
           The corridor confirms destination demand and sharpens the open position: Blake’s is
-          doubling down on scale and attractions; Cornman Farms shows the private-event model
-          can fail even with a powerful brand; nearby mills are mostly autumn-only and
+          doubling down on scale and attractions; Cornman Farms shows the danger of bespoke,
+          labor-intensive event production carrying expensive real estate — not that renting an
+          attractive room is inherently uneconomic. Nearby mills are mostly autumn-only and
           free-entry. Leaf &amp; Lantern does not try to out-Blake Blake’s.
         </p>
 
@@ -1090,35 +1033,52 @@ const risks = [
           </div>
         </div>
 
-        <details class="case-study">
-          <summary>
-            <span class="case-flag">Operating detail · Optional reading</span>
-            <span class="case-title">Retreat packages and food policy for corporate &amp; private bookings</span>
-          </summary>
-          <div class="case-body">
-            <p>
-              Example structure — highly standardized so the venue never requires a dedicated
-              event planner:
-            </p>
-            <div class="table-wrap">
-              <table class="ll-table">
-                <thead><tr><th>Package</th><th>Includes</th></tr></thead>
-                <tbody>
-                  <tr><td><strong>Half-day retreat</strong></td><td>Meeting room, coffee, donuts/pastries, cider or seasonal beverages, basic AV; optional boxed lunch via approved partner</td></tr>
-                  <tr><td><strong>Full-day retreat</strong></td><td>Exclusive or semi-exclusive meeting space, morning F&B, snacks and drinks throughout, optional external lunch, afternoon service, optional outdoor breakout</td></tr>
-                  <tr><td><strong>Evening / private gathering</strong></td><td>Fixed-duration rental, predetermined layout, Leaf & Lantern food packages, limited attendance, fixed closing time</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <p>
-              Leaf & Lantern retains control over donuts, cider, coffee, seasonal baked goods,
-              and simple snacks. For meals outside that competence: approved catering partners,
-              an outside-food facility fee, or direct client-coordinated delivery. The operating
-              principle: supply what Leaf & Lantern does exceptionally well; do not build an
-              unrelated catering operation merely to capture every dollar of customer spending.
-            </p>
-          </div>
-        </details>
+        <h3>Retreats — a principal off-season business</h3>
+        <p>
+          A retreat is intentionally simple: a beautiful room, good coffee, a Leaf &amp; Lantern
+          breakfast and snacks, basic audiovisual, outdoor breakout space, and an approved
+          outside lunch when needed. Three fixed packages keep selling, setup, service, and
+          cleanup repeatable:
+        </p>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>Package</th><th class="num">Planning price</th><th>Includes</th></tr></thead>
+            <tbody>
+              {retreatPackages.map((p) => (
+                <tr>
+                  <td><strong>{p.name}</strong><br /><span class="figure-note">{p.detail}</span></td>
+                  <td class="num">{p.price}</td>
+                  <td>{p.copy}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Leaf &amp; Lantern retains control over donuts, cider, coffee, seasonal baked goods,
+          and simple snacks. Meals outside that competence come through approved partners, an
+          outside-food facility fee, or client-coordinated delivery. There is no custom menu,
+          room transformation, late-night service, or dedicated planner.
+        </p>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead>
+              <tr><th>Ramp</th><th class="num">Corporate bookings</th><th class="num">Average booking</th><th class="num">Retreat revenue</th><th class="num">Other fixed bookings / programs</th><th class="num">Total line</th></tr>
+            </thead>
+            <tbody>
+              {retreatBuild.map((r) => (
+                <tr>
+                  <td><strong>{r.year}</strong></td><td class="num">{r.bookings}</td><td class="num">{r.average}</td><td class="num">{r.retreatRevenue}</td><td class="num">{r.other}</td><td class="num"><strong>{r.total}</strong></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="figure-note">
+          This is a booking model, not a venue wish list. The permanent-site gate requires a
+          credible sales pipeline toward at least 50 annual corporate bookings; maturity targets
+          roughly 90, within the 50–100+ range the property and sales pipeline must validate.
+        </p>
 
         <h3>Bulk and off-site food sales</h3>
         <p>
@@ -1353,13 +1313,34 @@ const risks = [
 
         <h3>Labor productivity: lean opening, then scale</h3>
         <p>
-          Labor opens lean and scales with proven demand:
-          <strong>Year 1 $525–575k → Year 2 $600–650k → mature $700–725k</strong>.
-          Holding a mature payroll in Year 1 would recreate the fixed-cost problem the model
-          is designed to avoid. NRA limited-service medians (~30–32% of sales) put mature labor
-          near $700–725k at ~$2.5M revenue — consistent with the mature target, not the opening
-          year. Pilots measure <strong>orders per direct labor hour</strong>; financing models
-          include a payroll-scales-with-orders path.
+          Payroll is built from the operating calendar, not held flat or selected as a target
+          percentage. Public days carry a base schedule; retreats, school days, camps, and
+          private programs add only the hours they require. The illustrative Year-1 build is:
+        </p>
+        <div class="table-wrap">
+          <table class="ll-table">
+            <thead><tr><th>Day / use</th><th class="num">Occurrences</th><th class="num">Staff-hours each</th><th class="num">Annual hours</th><th>Productivity check</th></tr></thead>
+            <tbody>
+              {laborBuild.map((r) => (
+                <tr><td><strong>{r.use}</strong></td><td class="num">{r.occurrences}</td><td class="num">{r.hours}</td><td class="num">{r.annual}</td><td>{r.productivity}</td></tr>
+              ))}
+              <tr class="total"><td>Total scheduled hourly labor</td><td></td><td></td><td class="num">15,180</td><td>Before contingency</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Approximately 15,180 scheduled hourly staff-hours at an illustrative fully loaded
+          ~$20–21 per hour produce about $304–319K of hourly labor. Approximately $240K for three
+          core salaried/regular leadership roles brings Year-1 payroll to about
+          <strong>$544–559K</strong>, inside the $525–575K planning range. Retreats are attractive
+          in this model because a typical $3–5K booking adds roughly 16 staff-hours, not a
+          parallel event-production team.
+        </p>
+        <p>
+          Pilots replace every schedule and productivity assumption with observed staff-hours.
+          Year 2 and mature payroll then scale from the measured calendar toward
+          <strong>$600–650K and $700–725K</strong>, respectively; those later figures are
+          ceilings to rebuild, not automatic annual budgets.
         </p>
 
         <h3>Capital intensity, defined with denominators</h3>
@@ -1441,7 +1422,7 @@ const risks = [
         <h3>Multiple engines on the same assets</h3>
         <p>
           Food and beverage is about two-thirds of Year-One management-target revenue
-          (~$1.13M of ~$1.71M); camps, education, retreats, private bookings, and opportunistic
+          (~$1.13M of ~$1.71M); camps, education, retreats, standardized bookings, and opportunistic
           retail supply the rest. Year-1 F&amp;B gross profit (~$763K) still sits below the full
           operating-cost block — food alone does not carry the year. Mature economics depend
           on the same physical plant earning across seasons:
@@ -1498,38 +1479,17 @@ const risks = [
           mechanic — minimum quantities, 48-hour lead time, volume pricing.
         </p>
 
-        <h3>A gateway product, not a loss leader</h3>
+        <h3>Clear, confident pricing</h3>
         <p>
-          The $2 Morning Cup is easy to misread as a loss leader, and the distinction matters.
-          A Costco hot dog exists to justify a membership; IKEA’s café exists to increase dwell
-          time; McDonald’s Dollar Menu historically filled slow periods. Leaf & Lantern’s
-          problem is different — not getting a guest to spend $2, but getting a parent on the
-          school run, a commuter, someone collecting a dozen for the office, or someone walking
-          the grounds to think, <em>“Sure, let’s stop at Leaf & Lantern.”</em> If the coffee is
-          locally roasted, simple, always good, and always hot, the Morning Cup is not
-          competing with Starbucks — Starbucks is five minutes away. It removes hesitation, and
-          it makes a statement not about margin but about the brand: <strong>we are not trying
-          to maximize every transaction.</strong>
+          <strong>Morning Cup — $2</strong> is a simple, welcoming reason to stop, not a
+          cornerstone of the underwriting. The pilots will determine whether its 2030 price
+          should be $2, $2.50, or $3.
         </p>
         <p>
-          The hero product gets the opposite treatment. Pricing a fresh cider-mill donut too
-          low sends the wrong signal: destination donut shops currently run roughly $2.40–$2.75
-          for a standard donut, with premium donuts substantially higher. The ladder is
-          therefore a single Fresh Donut at $3, a half-dozen at modest per-donut savings, and a
-          dozen at meaningful savings — so the arithmetic itself says <em>buy a box</em>. The
-          dog donut is carried for emotional value, not margin: near-zero food cost when made
-          intelligently from dog-safe trimmings, endlessly photographed, and a quiet signal
-          that the dog is part of the visit.
-        </p>
-        <blockquote class="pull-quote">
-          No complicated menu. Just the things we think should be done exceptionally well.
-        </blockquote>
-        <p>
-          The result is deliberately not a value brand — it is a brand where every purchase
-          feels easy to justify. A family that leaves having spent $28 on donuts (a dozen plus
-          one for the dog), $12 on a half-gallon of cider, and $4 on two Morning Cups should
-          think, <em>“That was absolutely worth it.”</em> The psychology being optimized is
-          obvious, fair choices — not the lowest prices.
+          The hero-product ladder does more work: a $3 Fresh Donut, modest half-dozen savings,
+          and meaningful dozen savings encourage a box without complicated choices. Leaf &amp;
+          Lantern is not a value brand; it is a place where the menu is short, prices are clear,
+          and every purchase should feel easy to justify.
         </p>
 
         <h3>Opening price architecture <small>(2030 dollars, to be validated in pilots)</small></h3>
@@ -1656,20 +1616,20 @@ const risks = [
               {pnl.map((row) => (
                 <tr><td>{row.item}</td><td class="num">{row.y1}</td><td class="num">{row.y2}</td><td class="num">{row.y3}</td></tr>
               ))}
-              <tr class="total"><td>Total revenue</td><td class="num">$1,708</td><td class="num">$2,135</td><td class="num">$2,543</td></tr>
+              <tr class="total"><td>Total revenue</td><td class="num">$1,708</td><td class="num">$2,155</td><td class="num">$2,593</td></tr>
               {pnlCosts.map((row) => (
                 <tr><td>{row.item}</td><td class="num">{row.y1}</td><td class="num">{row.y2}</td><td class="num">{row.y3}</td></tr>
               ))}
-              <tr class="total"><td>EBITDA</td><td class="num">$148</td><td class="num">$375</td><td class="num">$568</td></tr>
+              <tr class="total"><td>EBITDA</td><td class="num">$148</td><td class="num">$390</td><td class="num">$603</td></tr>
               <tr><td>Depreciation</td><td class="num">(100)</td><td class="num">(100)</td><td class="num">(100)</td></tr>
               <tr><td>Illustrative interest expense (capital-gated stack)</td><td class="num">(120)</td><td class="num">(115)</td><td class="num">(110)</td></tr>
-              <tr class="total"><td>Pre-tax profit / (loss)</td><td class="num">($72)</td><td class="num">$160</td><td class="num">$358</td></tr>
+              <tr class="total"><td>Pre-tax profit / (loss)</td><td class="num">($72)</td><td class="num">$175</td><td class="num">$393</td></tr>
             </tbody>
           </table>
         </div>
         <p>
           Year Three at ~85,000 food transactions and a $20–21 average ticket is the mature
-          zone: about <strong>$568K EBITDA</strong> versus ~$165K illustrative debt service on a
+          zone: about <strong>$603K EBITDA</strong> versus ~$165K illustrative debt service on a
           ≈$2.75M adaptive-reuse stack — inside the $550–650k+ target and providing debt
           coverage, reinvestment capacity, and a credible investor return. A permanent site
           should not proceed merely because the business can break even.
@@ -1690,11 +1650,11 @@ const risks = [
               {pnlConservative.map((row) => (
                 <tr><td>{row.item}<br /><span class="figure-note">{row.note}</span></td><td class="num">{row.y1}</td><td class="num">{row.y2}</td><td class="num">{row.y3}</td></tr>
               ))}
-              <tr class="total"><td>Total revenue</td><td class="num">$1,290</td><td class="num">$1,698</td><td class="num">$2,135</td></tr>
+              <tr class="total"><td>Total revenue</td><td class="num">$1,290</td><td class="num">$1,718</td><td class="num">$2,155</td></tr>
               {pnlConservativeCosts.map((row) => (
                 <tr><td>{row.item}</td><td class="num">{row.y1}</td><td class="num">{row.y2}</td><td class="num">{row.y3}</td></tr>
               ))}
-              <tr class="total"><td>EBITDA</td><td class="num">($150)</td><td class="num">$63</td><td class="num">$305</td></tr>
+              <tr class="total"><td>EBITDA</td><td class="num">($150)</td><td class="num">$83</td><td class="num">$325</td></tr>
             </tbody>
           </table>
         </div>
@@ -1711,7 +1671,7 @@ const risks = [
           <div
             class="be-plot"
             role="img"
-            aria-label="Stacked revenue by stream for years one through three under the management-target case. Year one totals about 1.71 million dollars at 55,000 food transactions. Year two totals about 2.14 million at 70,000 transactions. Year three totals about 2.54 million at 85,000 transactions, inside the mature EBITDA target zone."
+            aria-label="Stacked revenue by stream for years one through three under the management-target case. Year one totals about 1.71 million dollars at 55,000 food transactions. Year two totals about 2.16 million at 70,000 transactions. Year three totals about 2.59 million at 85,000 transactions, inside the mature EBITDA target zone."
           >
             {revChart.gridlines.map((g) => (
               <div class="be-grid" style={`bottom: ${(g.v / revChart.scaleMax) * 100}%;`}>
@@ -1756,7 +1716,7 @@ const risks = [
           Hover or tap a segment for its value and share. Under the capital stack —
           adaptive-reuse capital, $20–21 ticket, lean payroll, and rising retreat/program
           contribution — year one approaches cash break-even; year two clears it; year three
-          at ~85k food transactions produces about $568K EBITDA against ~$165K debt service,
+          at ~85k food transactions produces about $603K EBITDA against ~$165K debt service,
           inside the mature $550–650k+ target.
         </p>
 
@@ -1803,7 +1763,7 @@ const risks = [
           January and February still incur payroll, insurance, utilities, debt service, and
           planning costs. The formal $300,000 working-capital line remains; accessible opening
           liquidity should be closer to <strong>$450–500K</strong>, independent of real-estate
-          financing. A ordinary startup miss — 20% fewer food transactions (44k vs 55k) — costs
+          financing. An ordinary startup miss — 20% fewer food transactions (44k vs 55k) — costs
           roughly ~$150K of F&amp;B contribution at the higher ticket and must be absorbed without
           forcing permanent-site leverage.
         </p>
@@ -1816,7 +1776,7 @@ const risks = [
               {startup.map((row) => (
                 <tr><td>{row.item}</td><td class="num">{row.amt}</td></tr>
               ))}
-              <tr class="total"><td>Subtotal, renovation path excluding property acquisition</td><td class="num">$2,145,000</td></tr>
+              <tr class="total"><td>Subtotal, renovation/startup path excluding property acquisition</td><td class="num">$1,650,000</td></tr>
             </tbody>
           </table>
         </div>
@@ -1831,6 +1791,12 @@ const risks = [
             </tbody>
           </table>
         </div>
+        <p>
+          The stack now reconciles directly: a $0.7–1.1M acquisition + $1.35M renovation and
+          startup allowance + $300K formal working capital + $150–200K additional accessible
+          liquidity = approximately <strong>$2.5–2.95M all-in</strong>. A property that cannot
+          support this arithmetic does not fit the base case.
+        </p>
         <p>
           The preferred strategy shifts from acquire land → design → build to
           <strong>identify an existing property → selectively renovate → establish Leaf &amp;
@@ -1944,6 +1910,12 @@ const risks = [
           thesis fails</strong>; the downside is not simply a clean property sale. The thesis
           does not depend on aggressive attendance growth or appreciation of a newly
           constructed property.
+        </p>
+        <p>
+          Acquiring an adaptable existing property may preserve more downside value than
+          ground-up development by placing a larger share of project capital into an
+          established, independently useful real-estate asset. That is a relative advantage,
+          not a guarantee of equity recovery.
         </p>
         <p>
           The post-pilot investment memorandum will include what this feasibility plan does not
