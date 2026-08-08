@@ -482,6 +482,34 @@ const nearbyMills = [
   { venue: 'Obstbaum Orchards', location: 'Salem Twp', model: 'Small orchard cider mill and bakery', entry: 'Free entry' },
 ];
 
+const scaleComps = [
+  { venue: 'Erie Orchards', scale: '100,000+ visitors/year', context: 'Mature 62-acre cider-mill operation with U-pick, corn maze, petting farm, school tours, and related attractions' },
+  { venue: 'Blake’s (broader business)', scale: '1M+ annual visitors cited', context: 'Multi-location, multi-attraction enterprise — not a single compact food-led site' },
+  { venue: 'Leaf & Lantern · Y1 management target', scale: '~206k guest visits implied', context: 'From 55k food transactions / ~76k parties at 2.7 guests — roughly twice Erie’s visitor count on a deliberately compact footprint' },
+  { venue: 'Leaf & Lantern · Y1 underwriting', scale: '40–45k food transactions', context: 'Defensible opening case; still requires strong execution without attraction acreage' },
+];
+
+const pricingEvidence = [
+  { line: 'School field trips', evidence: 'Blake’s school programs ≈$12–16/person; Bowers Farm ≈$168 for up to 14 students (≈$12/student) with spring 2026 field-trip dates reported full', implication: '≈$14/student is grounded; 8,500 students (~50 school days at 170/day) needs regional school sales and presales before it is base revenue' },
+  { line: 'Summer camp', evidence: 'Shine Day Camp (Northville) ≈$325/week in 2026; Bowers reports 2026 summer camp completely full', implication: '~$355 average tuition (plan band $285–425) is reasonable; volume still requires proof' },
+  { line: 'Maker booth fees', evidence: 'Northville Chamber 2026 holiday market $100 one-day / $175 two-day 10×10; Township Handmade Market $135–194 for an entire two-day juried show', implication: 'Underwrite ≈$100–120/booth-day initially; curation premium is upside, not Year-1 base' },
+  { line: 'Hero food ticket', evidence: 'Yates large-order ≈$11.95/dozen and ≈$9.95/half-gallon; Blake’s dozen + half-gallon voucher ≈$25; Blake’s 2026 banquet ≈$13.95/dozen', implication: 'Leaf & Lantern’s $26/$12/$35 architecture is premium; $17.50 average is conservative vs our menu, not vs traditional mills' },
+];
+
+const landExamples = [
+  { parcel: '~3 acres · Farmington Hills', ask: '≈$595K', note: 'Already-commercial corridor example' },
+  { parcel: '~3.65 acres · Farmington Hills', ask: '≈$995K', note: 'Higher-ask developed-corridor example' },
+  { parcel: '~5.04 acres · Novi', ask: '≈$1.2M', note: 'Larger parcel; bus access and 120–180 spaces still required' },
+  { parcel: 'Planning placeholder', ask: '$0.6–1.2M', note: 'Cheaper toward South Lyon; dearer in premium pockets — not a site commitment' },
+];
+
+const districtCatchment = [
+  { district: 'Northville', students: '~7,000 K–12' },
+  { district: 'Novi', students: '>6,500 K–12' },
+  { district: 'Plymouth-Canton', students: '~17,000 K–12' },
+  { district: 'Three-district total', students: '~30,500 K–12' },
+];
+
 const bridge = [
   { line: 'Food and beverage — $963K', drivers: 'Management-target Year 1: 55,000 food orders at a $17.50 average — ≈44,100 walk-up orders (≈70,000 ordinary on-site parties at a 63% food conversion), ≈6,400 mobile order-ahead pickups (split in the capacity model into preorder+stay vs preorder+leave), and ≈4,500 express drive-up, office, and school bulk orders. Underwriting case banks 40–45k transactions, not this figure.' },
   { line: 'Retail and pumpkins — $280K', drivers: '≈11% of the ~76,400 visiting parties add a curated-retail basket at a ~$26 average (≈ $216K), plus ~8,000 pumpkins at ~$8 average (≈ $64K). Scales with traffic; the conservative case haircuts this with lower Year-1 volume.' },
@@ -745,14 +773,42 @@ const risks = [
           For context, the broader tri-county region (Wayne, Oakland, Macomb) held approximately
           3.94 million residents in 2025, with median household incomes of $97,760 in Oakland
           County and $103,039 in Livingston County. Michigan recorded 131.2 million visitors and
-          $30.7 billion in direct visitor spending in 2024. Regional agritourism proves the
-          demand thesis — Erie Orchards is described at 100,000+ visitors/year; Blake’s cites
-          1M+ across its broader business — but those are mature, multi-attraction operations.
-          Leaf & Lantern’s management target is 55,000 Year-1 food transactions on a compact
-          site; the underwriting case is 40–45k. The unit-economics section translates the
-          target into visiting parties, guest visits, and parking load; the precise serviceable
-          market comes from parcel-level drive-time analysis before any commitment.
+          $30.7 billion in direct visitor spending in 2024. The demand thesis is credible; the
+          Year-1 management target is 55,000 food transactions on a compact site, and the
+          underwriting case is 40–45k. The unit-economics section translates the target into
+          visiting parties, guest visits, and parking load; the precise serviceable market comes
+          from parcel-level drive-time analysis before any commitment.
         </p>
+
+        <details class="case-study">
+          <summary>
+            <span class="case-flag">Market vignette · Optional reading</span>
+            <span class="case-title">Regional scale exists — but not as a Year-1 compact-site claim</span>
+          </summary>
+          <div class="case-body">
+            <p>
+              Michigan agritourism can support large visitor counts. That evidence supports the
+              market, not an assumption that Leaf &amp; Lantern matches mature attraction farms
+              in opening year on a deliberately small footprint.
+            </p>
+            <div class="table-wrap">
+              <table class="ll-table">
+                <thead><tr><th>Operator / case</th><th>Published scale</th><th>What it actually is</th></tr></thead>
+                <tbody>
+                  {scaleComps.map((r) => (
+                    <tr><td><strong>{r.venue}</strong></td><td>{r.scale}</td><td>{r.context}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p>
+              So 55k food transactions remains a worthwhile operating goal. It is a successful
+              Year-1 management case, not a conservative underwriting floor — and the guest-visit
+              implication (~1,050 people per operating day at the management target) should stay
+              visible whenever that number is used.
+            </p>
+          </div>
+        </details>
         <p>
           The different operating philosophy is an internal discipline, never a customer-facing
           message: preserve the seasonal emotion guests already want while systematically
@@ -814,39 +870,65 @@ const risks = [
         ))}
 
         <h3>Competitive landscape</h3>
-        <div class="competitor-grid">
-          {competitors.map((c) => (
-            <div class="competitor-card">
-              <h4>{c.name}</h4>
-              <p>{c.model}</p>
-              <p class="competitor-lesson"><strong>Lesson:</strong> {c.lesson}</p>
-            </div>
-          ))}
-        </div>
-
-        <h3>Nearby cider mills</h3>
-        <div class="table-wrap">
-          <table class="ll-table">
-            <thead><tr><th>Venue</th><th>Location</th><th>Core model</th><th>Entry</th></tr></thead>
-            <tbody>
-              {nearbyMills.map((m) => (
-                <tr><td><strong>{m.venue}</strong></td><td>{m.location}</td><td>{m.model}</td><td>{m.entry}</td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
         <p>
-          Nearly every close competitor is autumn-only and free-entry — which validates Leaf &
-          Lantern’s free-admission posture while exposing the opening: none offers quality
-          indoor space, curated retail, or school and camp programming across an April-to-December
-          calendar. Recurring themes in public customer reviews of these venues shaped the concept
-          directly: praise concentrates on tradition, donuts, and atmosphere, while complaints
-          concentrate on long waits, parking congestion, payment friction, and peak-weekend
-          crowding. Those four complaints map to Leaf & Lantern’s throughput design, parking
-          sizing, modern payments, and an incentivized order-ahead lane — not timed arrival
-          reservations that would block ordinary autumn visits. Competitor profiles are
-          summarized from public listings and reviews; a formal audit is part of pilot-stage work.
+          The corridor confirms destination demand and sharpens the open position: Blake’s is
+          doubling down on scale and attractions; Cornman Farms shows the private-event model
+          can fail even with a powerful brand; nearby mills are mostly autumn-only and
+          free-entry. Leaf &amp; Lantern does not try to out-Blake Blake’s.
         </p>
+
+        <details class="case-study">
+          <summary>
+            <span class="case-flag">Market vignette · Optional reading</span>
+            <span class="case-title">Competitor dossiers — Blake’s, Wiard’s, Westview, Erwin, Cornman</span>
+          </summary>
+          <div class="case-body">
+            <div class="competitor-grid">
+              {competitors.map((c) => (
+                <div class="competitor-card">
+                  <h4>{c.name}</h4>
+                  <p>{c.model}</p>
+                  <p class="competitor-lesson"><strong>Lesson:</strong> {c.lesson}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </details>
+
+        <p>
+          Nearly every close competitor is autumn-only and free-entry — which validates Leaf &amp;
+          Lantern’s free-admission posture while exposing the opening: none offers quality indoor
+          space, curated retail, or school and camp programming across an April-to-December
+          calendar. Peak-weekend complaints (waits, parking, payment friction, crowding) map
+          directly to throughput, parking, payments, and order-ahead design.
+        </p>
+
+        <details class="case-study">
+          <summary>
+            <span class="case-flag">Market vignette · Optional reading</span>
+            <span class="case-title">Nearby cider mills — autumn-only, free entry, familiar friction</span>
+          </summary>
+          <div class="case-body">
+            <div class="table-wrap">
+              <table class="ll-table">
+                <thead><tr><th>Venue</th><th>Location</th><th>Core model</th><th>Entry</th></tr></thead>
+                <tbody>
+                  {nearbyMills.map((m) => (
+                    <tr><td><strong>{m.venue}</strong></td><td>{m.location}</td><td>{m.model}</td><td>{m.entry}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Public reviews concentrate praise on tradition, donuts, and atmosphere, and
+              complaints on long waits, parking congestion, payment friction, and peak-weekend
+              crowding. Leaf &amp; Lantern answers those with throughput design, parking sizing,
+              modern payments, and an incentivized order-ahead lane — not timed arrival
+              reservations that would block ordinary autumn visits. Profiles are from public
+              listings and reviews; a formal audit is part of pilot-stage work.
+            </p>
+          </div>
+        </details>
 
         <details class="case-study">
           <summary>
@@ -1132,18 +1214,35 @@ const risks = [
           At the $17.50 average, the management target produces the ≈$963K Year-One
           food-and-beverage line. The implied physical load is disclosed rather than hidden:
           ≈76,400 visiting parties and on the order of 206,000 annual guest visits at 2.7 guests
-          per vehicle — roughly 1,050 people per operating day, and materially more activity than
-          “55,000 transactions” sounds like. Peak dependence is also explicit: the 30 peak days
-          produce 19,500 of the 55,000 orders — <strong>35% of annual food transactions on 15%
-          of operating days</strong>.
+          per vehicle — roughly 1,050 people per operating day. Peak dependence is also explicit:
+          the 30 peak days produce 19,500 of the 55,000 orders — <strong>35% of annual food
+          transactions on 15% of operating days</strong>. Opening liquidity is sized for ordinary
+          weather loss on those days.
         </p>
-        <p>
-          Weather stress belongs in the model, not the footnotes. Five lost 650-order peak days
-          cost about 3,250 × $17.50 ≈ <strong>$57K of F&amp;B sales</strong>, or roughly
-          <strong>$38K of F&amp;B gross margin</strong> before lost retail and other spending —
-          enough to erase more than a full year of thin Year-1 EBITDA under optimistic labor.
-          That is seasonal-business reality; opening liquidity is sized for it.
-        </p>
+
+        <details class="case-study">
+          <summary>
+            <span class="case-flag">Stress vignette · Optional reading</span>
+            <span class="case-title">Five bad peak days can erase thin Year-1 EBITDA</span>
+          </summary>
+          <div class="case-body">
+            <p>
+              Seasonal businesses live with peak concentration. On the 55k management path, five
+              lost 650-order days are not an exotic tail risk — they are a plausible bad autumn.
+            </p>
+            <div class="eq-block" role="img" aria-label="3,250 lost transactions times 17.50 dollars equals about 57,000 dollars of food and beverage sales; at 67.6 percent gross margin that is about 38,400 dollars of food and beverage gross margin.">
+              <span>5 days × 650 orders = <strong>3,250 lost transactions</strong></span>
+              <span>3,250 × $17.50 ≈ <strong>$56,875 F&amp;B sales</strong></span>
+              <span>× ≈67.6% F&amp;B gross margin ≈ <strong>$38,400 F&amp;B GM</strong> before retail and other spend</span>
+            </div>
+            <p>
+              Under optimistic prior labor assumptions, Year-1 EBITDA was only about $18K — so
+              five bad peak days could erase more than two years of that modeled result. The
+              corrected plan answers with larger accessible opening liquidity ($450–500K), not by
+              pretending October never rains.
+            </p>
+          </div>
+        </details>
 
         <h3>Why express channels matter more than preorders</h3>
         <p>
@@ -1383,15 +1482,67 @@ const risks = [
         <h3>Key differentiators</h3>
         <p>
           Free admission is a deliberate contrast with Wiard’s $27.50 weekend gate and Blake’s
-          $12–$14 festival pricing. Program prices are well supported locally: Blake’s and
-          Bowers school programs run about $12–16/student; Shine Day Camp in Northville charges
-          about $325/week for 2026 — inside Leaf & Lantern’s camp band. Food pricing is a
-          different story. The $26/dozen, $12/half-gallon, and $35 bundle architecture is
-          intentionally premium versus today’s Yates and Blake’s large-order lists; inflate those
-          benchmarks to 2030 and the gap narrows but does not disappear. The modeled
-          <strong>$17.50 average order is conservative relative to Leaf & Lantern’s own menu</strong>,
-          not relative to traditional mills. That needs pilot evidence.
+          $12–$14 festival pricing. Local evidence supports program pricing more strongly than
+          food-ticket “conservatism”: school and camp prices are grounded; hero-food pricing is
+          intentionally premium; maker booth fees should be underwritten to nearby chamber and
+          township ranges until a curation premium is proven.
         </p>
+
+        <details class="case-study">
+          <summary>
+            <span class="case-flag">Pricing vignette · Optional reading</span>
+            <span class="case-title">What local benchmarks do — and do not — support</span>
+          </summary>
+          <div class="case-body">
+            <div class="table-wrap">
+              <table class="ll-table">
+                <thead><tr><th>Line</th><th>Local evidence (2025–26)</th><th>Underwriting implication</th></tr></thead>
+                <tbody>
+                  {pricingEvidence.map((r) => (
+                    <tr><td><strong>{r.line}</strong></td><td>{r.evidence}</td><td>{r.implication}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Comfortable conclusions today: ~$355 camp tuition, ~$14 field trips, $35–85
+              workshops, and $8–20 bounded events. Less comfortable without pilots: treating
+              8,500 field-trip students or $200 booth-days as base revenue, or calling $17.50
+              inherently conservative versus traditional mills rather than versus Leaf &amp;
+              Lantern’s own menu architecture.
+            </p>
+          </div>
+        </details>
+
+        <details class="case-study">
+          <summary>
+            <span class="case-flag">Market vignette · Optional reading</span>
+            <span class="case-title">Field-trip volume is a regional sales problem, not a price problem</span>
+          </summary>
+          <div class="case-body">
+            <p>
+              At ~$14/student, field-trip pricing matches what nearby operators already charge.
+              The hard part is enrollment. 8,500 Year-1 students is about 28% of the combined
+              K–12 enrollment of just three nearby districts — before restricting to age-appropriate
+              grades — so the catchment must be regional and the sales motion serious.
+            </p>
+            <div class="table-wrap">
+              <table class="ll-table">
+                <thead><tr><th>District (illustrative)</th><th class="num">Approx. K–12 enrollment</th></tr></thead>
+                <tbody>
+                  {districtCatchment.map((d) => (
+                    <tr><td>{d.district}</td><td class="num">{d.students}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p>
+              At 170 kids/day, 8,500 attendees is about 50 booked school days — feasible with a
+              real pipeline, not with hope. Signed commitments and deposits are required before
+              the ~$120K field-trip line is treated as base case.
+            </p>
+          </div>
+        </details>
 
         <h3>Underwriting sheet <small>(what the plan banks vs. what it targets)</small></h3>
         <div class="table-wrap">
@@ -1607,16 +1758,46 @@ const risks = [
           </table>
         </div>
         <p>
-          Customer prices in this plan are stated in 2030 dollars; construction allowances must
-          be treated the same way. Corridor commercial land examples currently run roughly
-          $0.6–1.2M for 3–5 acres in the more developed Northville–Farmington–Novi band — cheaper
-          toward South Lyon, dearer in premium pockets. Adaptive reuse is therefore an
-          <strong>investment gate</strong>, not a nice-to-have: a site/building combination that
-          cannot keep all-in permanent-project cost around or below ~$4M should probably be
-          rejected. The plan still agrees with its own earlier warning — a project approaching
-          $4M recreates the fixed-cost fragility the model is trying to avoid — and now treats
-          that sentence as a hard screen rather than a soft preference.
+          Customer prices are stated in 2030 dollars; construction allowances must be treated the
+          same way. Adaptive reuse is an <strong>investment gate</strong>: a site/building
+          combination that cannot keep all-in permanent-project cost around or below ~$4M should
+          probably be rejected. A project that recreates $4M+ fixed-cost fragility fails its own
+          thesis.
         </p>
+
+        <details class="case-study">
+          <summary>
+            <span class="case-flag">Capital vignette · Optional reading</span>
+            <span class="case-title">Corridor land asks and why new-build planning lands near $4M+</span>
+          </summary>
+          <div class="case-body">
+            <p>
+              For a property needing 120–180 spaces, bus access, express pickup, building,
+              courtyard, stormwater, and grounds, already-commercial 3–5 acre land in the more
+              developed part of the corridor is a real cost — not a rounding error to exclude
+              from the investment decision.
+            </p>
+            <div class="table-wrap">
+              <table class="ll-table">
+                <thead><tr><th>Example / placeholder</th><th class="num">Ask / band</th><th>Note</th></tr></thead>
+                <tbody>
+                  {landExamples.map((r) => (
+                    <tr><td>{r.parcel}</td><td class="num"><strong>{r.ask}</strong></td><td>{r.note}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p>
+              Turner’s national nonresidential building-cost index was up 5.15% year-over-year
+              in Q2 2026, with Midwest labor pressure noted. Even a simpler ~4% annual escalation
+              through 2030 on the ~$2.65M non-working-capital project portion adds about $450K.
+              Stacked with land and liquidity, the illustrative new-build planning range becomes
+              roughly <strong>$4.0–4.6M all-in</strong> before unusual off-site work or financing
+              costs — which is why adaptive reuse and the ~$4M reject gate matter more than the
+              old ex-land $2.95M headline.
+            </p>
+          </div>
+        </details>
 
         <h3>Break-even definition</h3>
         <p>
@@ -2703,12 +2884,16 @@ const risks = [
     margin: 0.5rem 0 0;
   }
 
-  /* ---------- Case study ---------- */
+  /* ---------- Case studies & market vignettes ---------- */
   .case-study {
-    margin: 2rem 0;
+    margin: 1.4rem 0;
     border: 1px dashed color-mix(in srgb, var(--cider) 55%, transparent);
     border-radius: var(--radius-lg);
     background: color-mix(in srgb, var(--cider) 6%, var(--parchment));
+  }
+
+  .case-study + .case-study {
+    margin-top: 0.9rem;
   }
 
   .case-study summary {
@@ -2762,11 +2947,18 @@ const risks = [
     border-top: 1px dashed color-mix(in srgb, var(--cider) 35%, transparent);
   }
 
-  .case-body > p:first-child {
+  .case-body > p:first-child,
+  .case-body > .table-wrap:first-child,
+  .case-body > .competitor-grid:first-child,
+  .case-body > .eq-block:first-child {
     margin-top: 1.1rem;
   }
 
   .case-body .pull-quote {
+    margin-bottom: 0.4rem;
+  }
+
+  .case-body .competitor-grid {
     margin-bottom: 0.4rem;
   }
 
