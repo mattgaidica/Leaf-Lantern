@@ -13,6 +13,7 @@ export const counterMenu = [
   { item: 'Dog donut', detail: 'Dog-safe, made for the good ones', price: '$2' },
   { item: 'Bundle · half-dozen + two drinks', detail: 'The courtyard visit', price: '$18' },
   { item: 'Bundle · dozen + half-gallon', detail: 'The fifteen-minute stop', price: '$35' },
+  { item: 'Family package · dozen + gallon + coffee', detail: 'The table for four', price: '$48' },
 ] as const;
 
 /** Program and experience pricing — lives in the business plan only. */
@@ -24,5 +25,6 @@ export const programPricing = [
   { stream: 'Summer science camp', price: '$285–$425 per child/week' },
   { stream: 'Adult or family workshop (wreath building, garden, craft)', price: '$35–$85' },
   { stream: 'Maker market booth', price: '$90–$350 (underwrite ~$100–120/day initially)' },
-  { stream: 'Daytime retreat or seminar package', price: '$70–$140 per attendee' },
+  { stream: 'Half-day or full-day corporate retreat package', price: '$70–$140 per attendee' },
+  { stream: 'Standardized private gathering (fixed block & food package)', price: 'Package pricing; attendance-capped' },
 ] as const;
