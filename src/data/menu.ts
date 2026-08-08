@@ -23,6 +23,6 @@ export const programPricing = [
   { stream: 'School field trip', price: '$12–$16 per student' },
   { stream: 'Summer science camp', price: '$285–$425 per child/week' },
   { stream: 'Adult or family workshop (wreath building, garden, craft)', price: '$35–$85' },
-  { stream: 'Maker market booth', price: '$85–$550' },
+  { stream: 'Maker market booth', price: '$90–$350 (underwrite ~$100–120/day initially)' },
   { stream: 'Daytime retreat or seminar package', price: '$70–$140 per attendee' },
 ] as const;
