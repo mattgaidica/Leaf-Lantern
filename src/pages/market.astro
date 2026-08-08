@@ -2,19 +2,14 @@
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import BrandImage from '../components/BrandImage.astro';
+import { counterMenu } from '../data/menu';
 import { url } from '../lib/site';
 
 const menu = [
-  { item: 'Fresh Donut — warm from the line', price: '$3' },
-  { item: 'Donuts — half-dozen / dozen', price: '$15 / $26' },
-  { item: 'Cider — cup, hot or cold', price: '$4' },
-  { item: 'Cider — half-gallon / gallon', price: '$12 / $20' },
-  { item: 'Morning Cup — locally roasted, or kids’ mini cider', price: '$2' },
-  { item: 'Double espresso / Americano', price: '$3.75 / $3.50' },
-  { item: 'Hot chocolate', price: '$4' },
-  { item: 'Dog donut — dog-safe, for the good ones', price: '$2' },
-  { item: 'Bundle — half-dozen + two drinks', price: '$18' },
-  { item: 'Bundle — dozen + half-gallon', price: '$35' },
+  ...counterMenu.map((row) => ({
+    item: `${row.item} — ${row.detail}`,
+    price: row.price,
+  })),
   { item: 'One rotating item at a time', price: 'Ask at the counter' },
   { item: 'Leaf & Lantern seasonal gift box', price: '$35 – $85' },
 ];

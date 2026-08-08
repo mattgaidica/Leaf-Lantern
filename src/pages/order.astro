@@ -1,22 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
+import { counterMenu } from '../data/menu';
 
-const menu = [
-  { item: 'Fresh Donut', detail: 'Single, warm from the line', price: '$3' },
-  { item: 'Donuts · half-dozen', detail: 'Plain or cinnamon sugar', price: '$15' },
-  { item: 'Donuts · dozen', detail: 'Plain, cinnamon, or mixed', price: '$26' },
-  { item: 'Cider · cup', detail: 'Hot or cold', price: '$4' },
-  { item: 'Cider · half-gallon', detail: 'The take-home favorite', price: '$12' },
-  { item: 'Cider · gallon', detail: 'For the whole table', price: '$20' },
-  { item: 'Morning Cup', detail: 'Locally roasted. Simple, hot, honest', price: '$2' },
-  { item: 'Double espresso', detail: 'Pulled behind the counter', price: '$3.75' },
-  { item: 'Americano', detail: 'No size ladder, no syrup matrix', price: '$3.50' },
-  { item: 'Hot chocolate', detail: 'One size, made properly', price: '$4' },
-  { item: 'Dog donut', detail: 'Dog-safe, made for the good ones', price: '$2' },
-  { item: 'Bundle · half-dozen + two drinks', detail: 'The courtyard visit', price: '$18' },
-  { item: 'Bundle · dozen + half-gallon', detail: 'The fifteen-minute stop', price: '$35' },
-];
+const menu = counterMenu;
 
 const windows = [
   { time: '9:15', state: 'open' },

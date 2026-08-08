@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import BrandImage from '../components/BrandImage.astro';
+import { programPricing } from '../data/menu';
 import { url } from '../lib/site';
 
 const toc = [
@@ -59,23 +60,6 @@ const seasonalRevenue = [
   { season: 'Summer', share: 21, revenue: '$373,000', color: 'var(--season-summer)' },
   { season: 'Autumn', share: 45, revenue: '$800,000', color: 'var(--season-autumn)' },
   { season: 'Holiday', share: 22, revenue: '$392,000', color: 'var(--season-holiday)' },
-];
-
-const pricing = [
-  { stream: 'General admission, every day — grounds, market, café, pumpkins', price: 'Free' },
-  { stream: 'Fresh Donut — single / half-dozen / dozen', price: '$3 / $15 / $26' },
-  { stream: 'Cider — cup (hot or cold) / half-gallon / gallon', price: '$4 / $12 / $20' },
-  { stream: 'Morning Cup (locally roasted batch coffee) or kids’ mini cider', price: '$2' },
-  { stream: 'Double espresso / Americano / hot chocolate', price: '$3.50–$4' },
-  { stream: 'Dog donut — dog-safe, made from line trimmings', price: '$2' },
-  { stream: 'Family bundle — half-dozen + two drinks, or dozen + half-gallon', price: '$18–$35' },
-  { stream: 'Spring or summer discovery day', price: '$8–$12 per guest' },
-  { stream: 'Halloween costume party or lantern evening', price: '$14–$20' },
-  { stream: 'School field trip', price: '$12–$16 per student' },
-  { stream: 'Summer science camp', price: '$285–$425 per child/week' },
-  { stream: 'Adult or family workshop (wreath building, garden, craft)', price: '$35–$85' },
-  { stream: 'Maker market booth', price: '$85–$550' },
-  { stream: 'Daytime retreat or seminar package', price: '$70–$140 per attendee' },
 ];
 
 const competitors = [
@@ -1261,24 +1245,34 @@ const risks = [
         </p>
 
         <h3>Opening price architecture <small>(2030 dollars, to be validated in pilots)</small></h3>
+        <p>
+          Hero-product prices are maintained on the concept site — one list for the Market
+          counter, Order Ahead, and this plan — so a price change never has to be synchronized
+          by hand.
+        </p>
+        <p>
+          <a class="btn btn-secondary" href={url('/market/')}>View Counter Prices on the Concept Site</a>
+        </p>
         <div class="table-wrap">
           <table class="ll-table">
-            <thead><tr><th>Revenue stream</th><th class="num">Suggested pricing</th></tr></thead>
+            <thead><tr><th>Programs &amp; experiences</th><th class="num">Suggested pricing</th></tr></thead>
             <tbody>
-              {pricing.map((p) => (
+              {programPricing.map((p) => (
                 <tr><td>{p.stream}</td><td class="num">{p.price}</td></tr>
               ))}
             </tbody>
           </table>
         </div>
+
+        <h3>Key differentiators</h3>
         <p>
           Free admission is a deliberate contrast with Wiard’s $27.50 weekend gate and Blake’s
           $12–$14 festival pricing. The most common criticism of established venues — pay at the
           door, then pay again for everything inside — becomes Leaf & Lantern’s clearest
-          differentiator. At these prices the flagship dozen-and-half-gallon basket is $38 ($35
-          as a bundle), which makes the modeled $17.50 average order conservative rather than
-          aspirational: the average is pulled down by exactly the $2 and $4 items the gateway
-          strategy wants in guests’ hands.
+          differentiator. At the concept-site counter prices, the flagship dozen-and-half-gallon
+          basket is $38 ($35 as a bundle), which makes the modeled $17.50 average order
+          conservative rather than aspirational: the average is pulled down by exactly the $2
+          and $4 items the gateway strategy wants in guests’ hands.
         </p>
 
         <h3>Three-year illustrative P&L <small>(thousands of dollars)</small></h3>
