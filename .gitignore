@@ -8,3 +8,4 @@ npm-debug.log*
 # Source ChatGPT dumps — site uses public/images/ instead
 assets/*
 !assets/*.md
+__pycache__/
