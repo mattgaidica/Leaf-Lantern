@@ -53,6 +53,11 @@ let selectedCellId: string | null = null;
 let metadata: Record<string, any> | null = null;
 const loadedReferences = new Set<string>();
 
+// The worker file is staged into public/vendor/maplibre by the prebuild
+// script; without this override the bundled library 404s on its worker and
+// the map silently never renders.
+maplibregl.setWorkerUrl(`${app.dataset.base ?? '/'}vendor/maplibre/maplibre-gl-worker.mjs`);
+
 const map = new maplibregl.Map({
   container: 'map',
   style: 'https://tiles.openfreemap.org/styles/positron',
