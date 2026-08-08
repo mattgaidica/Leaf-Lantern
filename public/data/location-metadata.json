@@ -1,0 +1,42 @@
+{
+  "generated_at": "2026-08-08T20:33:26Z",
+  "study_bbox": [
+    -84.3,
+    41.7,
+    -82.65,
+    43.05
+  ],
+  "display_bbox": [
+    -84.18,
+    41.8,
+    -82.78,
+    42.88
+  ],
+  "acs_vintage": "2024 ACS 5-year",
+  "tract_count": 1581,
+  "grid_count": 2771,
+  "grid_system": "H3 resolution 7 (~5.2 km\u00b2 cells)",
+  "growth_note": "Household growth is not scored. Comparable tract-level annual ACS estimates overlap heavily, and boundary changes can create false growth.",
+  "default_weights": {
+    "drive_demand": 30,
+    "competitive_whitespace": 20,
+    "destination_character": 15,
+    "affluence": 15,
+    "road_access": 10,
+    "schools": 5,
+    "development": 5
+  },
+  "drive_time_weights": {
+    "0_15": 1.0,
+    "15_30": 0.7,
+    "30_45": 0.35
+  },
+  "travel_time_model": "Approximation: great-circle distance \u00d7 1.25 circuity, effective speed 38\u201372 km/h rising with trip length, +3 min access overhead. Not a road router; adequate for regional screening, not for site-level claims.",
+  "limitations": [
+    "Travel times are calibrated approximations, not routed drives; verify specific drives before shortlisting.",
+    "Tract totals are assigned by representative point for drive-time aggregation.",
+    "Scores compare cells inside this study area; they are not absolute feasibility ratings.",
+    "Environmental overlays are screening indicators, never parcel due diligence.",
+    "Generalized GIS cannot establish zoning, utility capacity, access permits, or buildability."
+  ]
+}
