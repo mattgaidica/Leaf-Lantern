@@ -1,0 +1,757 @@
+---
+import 'maplibre-gl/dist/maplibre-gl.css';
+import Base from '../layouts/Base.astro';
+
+const base = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+---
+
+<Base
+  title="Strategic Location Map"
+  description="A data-led site-selection model for Leaf & Lantern across southeast Michigan."
+>
+  <div class="strategy-shell" id="strategy-app" data-base={base}>
+    <header class="strategy-header">
+      <div>
+        <span class="eyebrow">Site-selection model · August 2026</span>
+        <h1>Where should Leaf & Lantern exist?</h1>
+        <p>
+          A regional screening model for family access, competitive whitespace, destination
+          character, and operating viability. It identifies search zones—not parcels.
+        </p>
+      </div>
+      <div class="header-actions">
+        <button class="help-button" id="method-button" type="button">Method & sources</button>
+        <span class="model-status" id="model-status">Loading model…</span>
+      </div>
+    </header>
+
+    <div class="strategy-workspace">
+      <aside class="control-panel" aria-label="Map controls">
+        <div class="control-tabs" role="tablist" aria-label="Control sections">
+          <button class="control-tab active" type="button" role="tab" data-tab="layers">Layers</button>
+          <button class="control-tab" type="button" role="tab" data-tab="weights">Weights</button>
+          <button class="control-tab" type="button" role="tab" data-tab="model">Model</button>
+        </div>
+
+        <section class="control-section active" data-panel="layers">
+          <div class="panel-intro">
+            <h2>Map view</h2>
+            <p>Choose the score surface, then add reference layers.</p>
+          </div>
+
+          <label class="field-label" for="surface-select">Score surface</label>
+          <select id="surface-select">
+            <option value="opportunity_score">Overall opportunity</option>
+            <option value="drive_demand_score">Drive-time family demand</option>
+            <option value="competitive_whitespace_score">Competitive whitespace</option>
+            <option value="destination_character_score">Destination character</option>
+            <option value="affluence_score">Affluence</option>
+            <option value="road_access_score">Road accessibility</option>
+            <option value="school_score">School / education demand</option>
+            <option value="development_score">Development favorability</option>
+          </select>
+
+          <div class="legend" aria-label="Map score legend">
+            <div class="legend-ramp"></div>
+            <div><span>Lower fit</span><span>Higher fit</span></div>
+          </div>
+
+          <fieldset class="layer-list">
+            <legend>Reference layers</legend>
+            <label><input type="checkbox" data-layer="competitors" checked /> Competitors</label>
+            <label><input type="checkbox" data-layer="pressure" /> Competitor pressure</label>
+            <label><input type="checkbox" data-layer="demographics" /> Population density</label>
+            <label><input type="checkbox" data-layer="family" /> Family Demand Index</label>
+            <label><input type="checkbox" data-layer="income" /> Median household income</label>
+            <label><input type="checkbox" data-layer="schools" /> Schools</label>
+            <label><input type="checkbox" data-layer="traffic" /> Traffic / AADT</label>
+            <label><input type="checkbox" data-layer="wetlands" /> Wetlands</label>
+            <label><input type="checkbox" data-layer="flood" /> FEMA flood zones</label>
+            <label><input type="checkbox" data-layer="protected" /> Protected / park land</label>
+            <label><input type="checkbox" data-layer="municipalities" /> Municipal boundaries</label>
+          </fieldset>
+
+          <div class="competitor-key">
+            <h3>Direct competition</h3>
+            <div><i class="dot score-5"></i> 5 · substantial overlap</div>
+            <div><i class="dot score-4"></i> 4 · meaningful overlap</div>
+            <div><i class="dot score-3"></i> 2–3 · adjacent context</div>
+          </div>
+        </section>
+
+        <section class="control-section" data-panel="weights">
+          <div class="panel-intro">
+            <h2>Opportunity weights</h2>
+            <p>Weights are normalized automatically. Defaults total 100%.</p>
+          </div>
+          <div id="component-weights" class="slider-list"></div>
+          <button class="text-button" id="reset-weights" type="button">Reset defaults</button>
+
+          <div class="subsection">
+            <h3>Drive-time market</h3>
+            <p>Incremental household reach by travel-time band.</p>
+            <div id="drive-weights" class="slider-list compact"></div>
+          </div>
+        </section>
+
+        <section class="control-section" data-panel="model">
+          <div class="panel-intro">
+            <h2>Competition pressure</h2>
+            <p>Road travel time—not radius—is used in the pressure field.</p>
+          </div>
+          <div class="slider-list compact">
+            <label>
+              <span><b>Score 5 reach</b><output id="competition-5-output">32 min</output></span>
+              <input id="competition-5" type="range" min="20" max="50" value="32" step="1" />
+            </label>
+            <label>
+              <span><b>Score 4 reach</b><output id="competition-4-output">26 min</output></span>
+              <input id="competition-4" type="range" min="15" max="40" value="26" step="1" />
+            </label>
+          </div>
+          <div class="subsection">
+            <h3>Interpretation</h3>
+            <p>
+              A score ranks one cell against the other cells in this study area. It is not a
+              probability of success or a substitute for site due diligence.
+            </p>
+            <p>
+              Growth is intentionally excluded: overlapping ACS five-year estimates and tract
+              boundary changes can produce misleading local trends.
+            </p>
+          </div>
+        </section>
+      </aside>
+
+      <main class="map-stage">
+        <div id="map" aria-label="Interactive strategic location map of southeast Michigan"></div>
+        <div class="map-toolbar">
+          <button id="reset-view" type="button">Reset region</button>
+          <button id="locate-top" type="button">Show strongest zones</button>
+        </div>
+        <div class="map-instruction">Select a cell to inspect why it scores well—or poorly.</div>
+      </main>
+
+      <aside class="insight-panel" aria-live="polite">
+        <div id="empty-insight" class="empty-insight">
+          <span class="insight-kicker">Location inspector</span>
+          <h2>Choose a point on the map</h2>
+          <p>
+            You’ll see its component scores, drive-time family reach, nearby competitors, and
+            access to major customer basins.
+          </p>
+        </div>
+        <div id="cell-insight" hidden></div>
+      </aside>
+    </div>
+  </div>
+
+  <dialog id="method-dialog">
+    <form method="dialog">
+      <button class="dialog-close" aria-label="Close method dialog">×</button>
+      <span class="eyebrow">Transparent by design</span>
+      <h2>Method, sources & limits</h2>
+      <div id="method-content">
+        <p>Loading source notes…</p>
+      </div>
+    </form>
+  </dialog>
+</Base>
+
+<script src="../scripts/location-map.ts"></script>
+
+<style>
+  :global(body) {
+    background: #e8e2d5;
+  }
+
+  :global(.site-footer) {
+    display: none;
+  }
+
+  .strategy-shell {
+    min-height: calc(100vh - 130px);
+    background: #e8e2d5;
+  }
+
+  .strategy-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1.25rem clamp(1.1rem, 2.7vw, 2.4rem);
+    background: var(--parchment);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .strategy-header h1 {
+    font-size: clamp(1.8rem, 3vw, 2.65rem);
+    margin-bottom: 0.2rem;
+  }
+
+  .strategy-header p {
+    max-width: 760px;
+    margin: 0;
+    color: #596057;
+    line-height: 1.45;
+  }
+
+  .strategy-header .eyebrow {
+    margin-bottom: 0.35rem;
+  }
+
+  .header-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.55rem;
+    white-space: nowrap;
+  }
+
+  .help-button,
+  .map-toolbar button {
+    border: 1px solid #b9ad98;
+    border-radius: 999px;
+    background: var(--parchment);
+    color: var(--deep-pine);
+    padding: 0.45rem 0.85rem;
+    font: 700 0.82rem var(--font-body);
+    cursor: pointer;
+  }
+
+  .model-status {
+    color: #6d756b;
+    font-size: 0.76rem;
+  }
+
+  .strategy-workspace {
+    display: grid;
+    grid-template-columns: 278px minmax(420px, 1fr) 326px;
+    height: calc(100vh - 272px);
+    min-height: 610px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .control-panel,
+  .insight-panel {
+    background: var(--parchment);
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+
+  .control-panel {
+    border-right: 1px solid var(--line);
+  }
+
+  .insight-panel {
+    border-left: 1px solid var(--line);
+    padding: 1.3rem;
+  }
+
+  .control-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    background: var(--parchment);
+    z-index: 2;
+  }
+
+  .control-tab {
+    border: 0;
+    border-bottom: 3px solid transparent;
+    padding: 0.8rem 0.2rem 0.65rem;
+    background: transparent;
+    color: #697067;
+    font: 700 0.78rem var(--font-body);
+    cursor: pointer;
+  }
+
+  .control-tab.active {
+    color: var(--deep-pine);
+    border-bottom-color: var(--cider);
+  }
+
+  .control-section {
+    display: none;
+    padding: 1.1rem;
+  }
+
+  .control-section.active {
+    display: block;
+  }
+
+  .panel-intro h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .panel-intro p,
+  .subsection p {
+    color: #687066;
+    font-size: 0.86rem;
+    line-height: 1.45;
+    margin-bottom: 1rem;
+  }
+
+  .field-label,
+  fieldset legend {
+    display: block;
+    color: #525950;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  select {
+    width: 100%;
+    border: 1px solid #cfc4b0;
+    border-radius: 7px;
+    background: #fffdf8;
+    color: var(--lantern-black);
+    padding: 0.65rem;
+    font: 600 0.9rem var(--font-body);
+  }
+
+  .legend {
+    margin: 0.9rem 0 1.2rem;
+  }
+
+  .legend-ramp {
+    height: 8px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #7a3432, #d59d52, #ede0a0, #88a679, #2f5a43);
+  }
+
+  .legend > div:last-child {
+    display: flex;
+    justify-content: space-between;
+    color: #737970;
+    font-size: 0.7rem;
+    margin-top: 0.25rem;
+  }
+
+  fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .layer-list {
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  .layer-list label {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.34rem 0;
+    font-size: 0.87rem;
+    cursor: pointer;
+  }
+
+  input[type='checkbox'] {
+    accent-color: var(--cider);
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .competitor-key,
+  .subsection {
+    border-top: 1px solid var(--line);
+    margin-top: 1.1rem;
+    padding-top: 1rem;
+  }
+
+  .competitor-key h3,
+  .subsection h3 {
+    font: 700 0.78rem var(--font-body);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .competitor-key div {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: #646b62;
+    font-size: 0.76rem;
+    margin-top: 0.35rem;
+  }
+
+  .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+  }
+
+  .score-5 { background: #7a3432; }
+  .score-4 { background: #a8652a; }
+  .score-3 { background: #d8c39b; border: 1px solid #756c5d; }
+
+  .slider-list {
+    display: grid;
+    gap: 0.95rem;
+  }
+
+  .slider-list label > span {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .slider-list output {
+    color: var(--cider);
+    font-weight: 700;
+  }
+
+  input[type='range'] {
+    accent-color: var(--cider);
+    width: 100%;
+  }
+
+  .text-button {
+    border: 0;
+    background: transparent;
+    color: var(--cider);
+    padding: 0.8rem 0 0;
+    font: 700 0.78rem var(--font-body);
+    cursor: pointer;
+  }
+
+  .map-stage {
+    position: relative;
+    min-width: 0;
+  }
+
+  #map {
+    position: absolute;
+    inset: 0;
+  }
+
+  .map-toolbar {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 3;
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .map-toolbar button {
+    background: rgba(244, 239, 229, 0.94);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .map-instruction {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    z-index: 3;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: rgba(36, 60, 52, 0.92);
+    color: var(--parchment);
+    padding: 0.45rem 0.9rem;
+    font-size: 0.74rem;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .empty-insight {
+    padding-top: 25%;
+  }
+
+  .insight-kicker {
+    display: block;
+    color: var(--cider);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.45rem;
+  }
+
+  .empty-insight h2 {
+    font-size: 1.45rem;
+  }
+
+  .empty-insight p {
+    color: #697067;
+    font-size: 0.92rem;
+  }
+
+  dialog {
+    width: min(720px, calc(100vw - 2rem));
+    max-height: min(760px, calc(100vh - 2rem));
+    border: 0;
+    border-radius: 14px;
+    background: var(--parchment);
+    color: var(--lantern-black);
+    padding: 0;
+    box-shadow: 0 24px 90px rgba(31, 36, 30, 0.35);
+  }
+
+  dialog::backdrop {
+    background: rgba(24, 31, 26, 0.62);
+  }
+
+  dialog form {
+    position: relative;
+    padding: clamp(1.4rem, 4vw, 2.5rem);
+  }
+
+  .dialog-close {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.9rem;
+    border: 0;
+    background: transparent;
+    color: var(--deep-pine);
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+
+  :global(.overall-score) {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem;
+    border-radius: 10px;
+    background: var(--pine-soft);
+  }
+
+  :global(.overall-score > div:first-child) {
+    display: flex;
+    align-items: baseline;
+  }
+
+  :global(.overall-score strong) {
+    color: var(--deep-pine);
+    font: 700 2.5rem var(--font-display);
+    line-height: 1;
+  }
+
+  :global(.overall-score span) {
+    display: block;
+    color: #6c746a;
+    font-size: 0.72rem;
+  }
+
+  :global(.reason) {
+    margin: 0.9rem 0;
+    color: #565e54;
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  :global(.insight-section) {
+    border-top: 1px solid var(--line);
+    padding-top: 0.9rem;
+    margin-top: 0.9rem;
+  }
+
+  :global(.insight-section h3) {
+    font: 700 0.72rem var(--font-body);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.65rem;
+  }
+
+  :global(.score-row) {
+    margin-bottom: 0.55rem;
+  }
+
+  :global(.score-row > div:first-child) {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  :global(.score-track) {
+    height: 4px;
+    margin-top: 0.18rem;
+    overflow: hidden;
+    border-radius: 99px;
+    background: #ded7c9;
+  }
+
+  :global(.score-track i) {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--cider);
+  }
+
+  :global(.market-bands) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.35rem;
+  }
+
+  :global(.market-bands div) {
+    border-radius: 7px;
+    background: #eee6d7;
+    padding: 0.5rem;
+  }
+
+  :global(.market-bands b),
+  :global(.market-bands span) {
+    display: block;
+  }
+
+  :global(.market-bands b) {
+    color: var(--deep-pine);
+    font-size: 0.88rem;
+  }
+
+  :global(.market-bands span) {
+    color: #747a72;
+    font-size: 0.62rem;
+    line-height: 1.2;
+  }
+
+  :global(.detail-list) {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.32rem;
+  }
+
+  :global(.detail-list li) {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.7rem;
+    font-size: 0.75rem;
+  }
+
+  :global(.detail-list b) {
+    white-space: nowrap;
+  }
+
+  :global(.screening-note) {
+    margin: 1rem 0 0;
+    padding: 0.65rem;
+    border-left: 3px solid var(--cider);
+    background: var(--cider-soft);
+    color: #6a5d4d;
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+
+  :global(.maplibregl-popup-content) {
+    border-radius: 9px;
+    background: var(--parchment);
+    font-family: var(--font-body);
+    box-shadow: var(--shadow-lift);
+  }
+
+  :global(.competitor-popup span) {
+    color: var(--cider);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  :global(.competitor-popup h3) {
+    margin: 0.25rem 0;
+    font-size: 1.15rem;
+  }
+
+  :global(.competitor-popup p) {
+    margin: 0.35rem 0;
+    font-size: 0.78rem;
+    line-height: 1.35;
+  }
+
+  :global(#method-content) {
+    max-height: 560px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+  }
+
+  :global(#method-content h3) {
+    margin-top: 1.1rem;
+    font-size: 1.05rem;
+  }
+
+  :global(#method-content li),
+  :global(#method-content p) {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  :global(.source-date) {
+    color: #737970;
+    font-size: 0.75rem !important;
+  }
+
+  @media (max-width: 1120px) {
+    .strategy-workspace {
+      grid-template-columns: 260px 1fr;
+    }
+
+    .insight-panel {
+      position: absolute;
+      z-index: 5;
+      right: 0;
+      bottom: 0;
+      width: min(360px, calc(100vw - 280px));
+      max-height: 52%;
+      border-top: 1px solid var(--line);
+      box-shadow: var(--shadow-lift);
+    }
+  }
+
+  @media (max-width: 760px) {
+    .strategy-header {
+      display: block;
+    }
+
+    .header-actions {
+      align-items: flex-start;
+      margin-top: 0.8rem;
+    }
+
+    .strategy-workspace {
+      display: block;
+      height: auto;
+      min-height: 0;
+    }
+
+    .control-panel {
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+      max-height: 360px;
+    }
+
+    .map-stage {
+      height: 62vh;
+      min-height: 460px;
+    }
+
+    .insight-panel {
+      position: static;
+      width: auto;
+      max-height: none;
+      border-left: 0;
+      box-shadow: none;
+    }
+
+    .empty-insight {
+      padding-top: 0;
+    }
+  }
+</style>
