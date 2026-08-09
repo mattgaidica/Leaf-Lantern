@@ -2,17 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import BrandImage from '../components/BrandImage.astro';
-import { counterMenu } from '../data/menu';
 import { url } from '../lib/site';
-
-const menu = [
-  ...counterMenu.map((row) => ({
-    item: `${row.item} — ${row.detail}`,
-    price: row.price,
-  })),
-  { item: 'One rotating item at a time', price: 'Ask at the counter' },
-  { item: 'Leaf & Lantern seasonal gift box', price: '$35 – $85' },
-];
 
 const categories = [
   { name: 'Ceramics & Tableware', copy: 'Mugs, serving pieces, and everyday tableware from Michigan potters.' },
@@ -50,21 +40,6 @@ const categories = [
           counter on the same prices as walk-up. Ordering ahead helps the kitchen; it never
           reserves a spot on the grounds and never creates a second price path.
         </p>
-        <div class="table-wrap menu-table">
-          <table class="ll-table">
-            <thead>
-              <tr><th>From the counter</th><th class="num">Price</th></tr>
-            </thead>
-            <tbody>
-              {menu.map((row) => (
-                <tr>
-                  <td>{row.item}</td>
-                  <td class="num">{row.price}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
         <a class="btn btn-primary" href={url('/order/')}>Order Ahead & Skip the Line</a>
       </div>
       <BrandImage
@@ -129,10 +104,6 @@ const categories = [
   .split-reverse {
     grid-template-columns: 1fr 1.15fr;
     align-items: center;
-  }
-
-  .menu-table {
-    margin-top: 1.4rem;
   }
 
   .section-head {
