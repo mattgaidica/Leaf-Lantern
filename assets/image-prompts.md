@@ -110,6 +110,25 @@ in ChatGPT, then save to the exact path listed.
 > The handoff is clearly person-to-person. No self-service lockers, no customer-facing screens
 > or kiosks, no long frustrated queue, no cash registers facing the viewer.
 
+## 7. Signature sweatshirt line
+
+- **Save as:** `public/images/signature-sweatshirts.png`
+- **Used on:** The Market page (Signature Goods section)
+
+**Prompt:**
+
+> Three folded heavyweight crewneck sweatshirts displayed side by side on a dark rustic wood
+> table inside the warm Leaf & Lantern market shop. Left: deep forest green with cream
+> collegiate serif type — "AUTUMN" arched, "IS CALLING" beneath, "MICHIGAN" in small
+> burnt-orange capitals. Middle: warm camel brown with cream serif "CIDER / WEATHER" and a
+> small dark-green leaf-sprig divider. Right: oatmeal heather with deep-green serif "GOOD
+> THINGS / COME IN / DOZENS" flanked by thin rust rules, above a small rust line illustration
+> of a bakery bag of donuts. Each has a tiny "LEAF & LANTERN" woven neck label. Background,
+> softly blurred: a cream-painted "LEAF & LANTERN" sign, canvas tote bags, and dark shelves
+> with jars under warm amber light. Sparse props: stoneware jug with maple branches, plaid
+> wool blanket, scattered maple leaves, crate of red apples, stamped ceramic mug,
+> cinnamon-sugar donut, olive knit beanie. No people, no clutter, no neon.
+
 ---
 
 ## In place
@@ -131,3 +150,4 @@ in ChatGPT, then save to the exact path listed.
 | `public/images/learning-hall.jpg` | Main hall: learning + market configurations |
 | `public/images/yoga-morning.jpg` | Summer morning yoga in the hall |
 | `public/images/brand-board.jpg` | Brand identity board |
+| `public/images/signature-sweatshirts.png` | Signature sweatshirt line in the Market |
