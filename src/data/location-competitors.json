@@ -1,0 +1,1279 @@
+[
+ {
+  "name": "Apple Charlie's South Huron Orchards",
+  "latitude": 42.1364497,
+  "longitude": -83.408787,
+  "address": "38035 S Huron Rd, New Boston, MI 48164",
+  "category": "destination orchard and cider mill",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": true,
+  "school_programs": true,
+  "food_service": true,
+  "retail": true,
+  "admission_model": "Free general entry; U-pick, hayrides, food, and products priced separately.",
+  "estimated_scale": "large local destination",
+  "direct_competition_score": 5,
+  "notes": "Full traditional fall offer with U-pick apples and pumpkins, cider mill and bakery, animal area, pavilion, hayrides, gift retail, hot food, weekend entertainment, and tours. The business's legacy website is intermittent, so current operating details should be reconfirmed before field use.",
+  "source": [
+   "http://www.applecharlie.com/",
+   "https://heymichigan.com/places/apple-charlies-south-huron-orchards-cider-mill/",
+   "https://nominatim.openstreetmap.org/"
+  ],
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Blake's Big Apple",
+  "latitude": 42.8522593,
+  "longitude": -82.884952,
+  "address": "71485 North Ave, Armada, MI 48005",
+  "category": "destination orchard and fall attraction",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": true,
+  "school_programs": true,
+  "food_service": true,
+  "retail": true,
+  "admission_model": "Market access is free; paid Funland and haunted attractions, with U-pick, food, and products priced separately.",
+  "estimated_scale": "major regional destination",
+  "direct_competition_score": 5,
+  "notes": "Distinct current Blake Farms location with U-pick, a 25-plus-activity Funland, school trips, pumpkins, food, bakery and market, plus major nighttime haunted attractions.",
+  "source": [
+   "https://blakefarms.com/big-apple/",
+   "https://blakefarms.com/big-apple-funland/",
+   "https://blakefarms.com/fall-school-trips/",
+   "https://nominatim.openstreetmap.org/"
+  ],
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Blake's Orchard & Cider Mill",
+  "latitude": 42.8505648,
+  "longitude": -82.872918,
+  "address": "17985 Armada Center Rd, Armada, MI 48005",
+  "category": "destination orchard and cider mill",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": true,
+  "school_programs": true,
+  "food_service": true,
+  "retail": true,
+  "admission_model": "Farm market is free to enter; paid Funland and separately priced U-pick, food, beverages, and events.",
+  "estimated_scale": "major regional destination",
+  "direct_competition_score": 5,
+  "notes": "Blake Farms' flagship 120-acre destination combines U-pick, pumpkins, extensive family attractions, school trips, bakery and farm market, grill, hard cider, events, and year-round programming.",
+  "source": [
+   "https://blakefarms.com/orchard-cider-mill/",
+   "https://blakefarms.com/contact/",
+   "https://blakefarms.com/fall-school-trips/",
+   "https://nominatim.openstreetmap.org/"
+  ],
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Blake's South Lyon",
+  "latitude": 42.503806,
+  "longitude": -83.65881,
+  "address": "61475 Silver Lake Rd, South Lyon, MI 48178",
+  "category": "large orchard, cider mill, farm park and cidery",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": [
+   "25+ Funland activities",
+   "wagon and train rides",
+   "corn maze",
+   "petting farm",
+   "jumping pillows",
+   "play structures",
+   "seasonal events"
+  ],
+  "school_programs": "Educational programming, camps and group/fall-party packages available.",
+  "food_service": [
+   "bakery",
+   "cider garden",
+   "hard cider",
+   "food trucks"
+  ],
+  "retail": [
+   "produce",
+   "apples",
+   "pumpkins",
+   "pies",
+   "jarred goods",
+   "hard cider"
+  ],
+  "admission_model": "Farm store access is free; Funland is ticketed. 2026 standard Funland price published as $9.95.",
+  "estimated_scale": "very large",
+  "direct_competition_score": 5,
+  "notes": "Former Erwin Orchards property. Operated by Blake Farms and now branded Blake's South Lyon; some pages still use 'Blake's Lyon Township.'",
+  "source": "https://blakefarms.com/blakes-south-lyon/",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Erie Orchards & Cider Mill",
+  "latitude": 41.7936271,
+  "longitude": -83.5194888,
+  "address": "1235 E Erie Rd, Erie, MI 48133",
+  "category": "destination orchard and cider mill",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": true,
+  "school_programs": true,
+  "food_service": true,
+  "retail": true,
+  "admission_model": "Free market entry; U-pick, attractions, tours, food, and products priced separately.",
+  "estimated_scale": "major regional destination",
+  "direct_competition_score": 5,
+  "notes": "Approximately 70 production acres and a reported 100,000-plus annual visitors, with U-pick fruit and pumpkins, bakery and cider press, large store, corn maze, play and animal areas, wagon rides, festivals, food, and tours serving more than 10,000 participants annually.",
+  "source": [
+   "https://erieorchards.com/",
+   "https://erieorchards.com/contact-us",
+   "https://erieorchards.com/pumpkin-festival",
+   "https://michiganfarmfun.com/erie-orchards-and-cider-mill/",
+   "https://nominatim.openstreetmap.org/"
+  ],
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Plymouth Orchards & Cider Mill",
+  "latitude": 42.334851,
+  "longitude": -83.554285,
+  "address": "10685 Warren Rd, Plymouth, MI 48170",
+  "category": "orchard, cider mill and fall agritourism",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": [
+   "wagon rides",
+   "farm animals",
+   "pumpkin patch",
+   "hay-bale climb",
+   "weekend music",
+   "cider-press viewing"
+  ],
+  "school_programs": "Guided weekday school/group tours with apple education, wagon ride, cider and donut; pumpkin option after October 1.",
+  "food_service": [
+   "cider",
+   "donuts",
+   "pies",
+   "caramel apples",
+   "hot drinks"
+  ],
+  "retail": [
+   "apples",
+   "organic produce",
+   "preserves",
+   "honey",
+   "maple syrup",
+   "pumpkins"
+  ],
+  "admission_model": "Free admission and parking; selected rides and products priced separately.",
+  "estimated_scale": "large",
+  "direct_competition_score": 5,
+  "notes": "Core local benchmark near Plymouth/Northville. Main mill is distinct from its Red Shed Market satellite at 10260 Ann Arbor Rd.",
+  "source": "https://www.plymouthorchards.com/visit/",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Three Cedars Farm",
+  "latitude": 42.403693,
+  "longitude": -83.608328,
+  "address": "7897 Six Mile Rd, Northville, MI 48168",
+  "category": "pumpkin farm and fall entertainment destination",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": [
+   "5-acre pumpkin patch",
+   "7-acre corn maze",
+   "hayrides",
+   "train rides",
+   "merry-go-round",
+   "barnyard playland",
+   "animals"
+  ],
+  "school_programs": "Field trips available by reservation.",
+  "food_service": [
+   "cider",
+   "donuts",
+   "cider slushes",
+   "caramel apples"
+  ],
+  "retail": [
+   "farm-market products",
+   "pumpkins"
+  ],
+  "admission_model": "Free general admission and parking; activities individually ticketed.",
+  "estimated_scale": "large",
+  "direct_competition_score": 5,
+  "notes": "One of the closest full fall-experience competitors. Official site lists September 4, 2026 opening.",
+  "source": "https://threecedarsfarm.org/",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Westview Orchards & Winery",
+  "latitude": 42.7733157,
+  "longitude": -83.0191873,
+  "address": "65075 Van Dyke Rd, Washington, MI 48095",
+  "category": "destination orchard and winery",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": true,
+  "school_programs": true,
+  "food_service": true,
+  "retail": true,
+  "admission_model": "Market and winery access is generally free; paid seasonal farm admission, U-pick, food, and products.",
+  "estimated_scale": "major regional destination",
+  "direct_competition_score": 5,
+  "notes": "Long-running multi-season agritourism destination with U-pick fruit and pumpkins, cider and bakery, farm market, family play and wagon activities, school tours, winery, food, events, and rentals.",
+  "source": [
+   "https://westvieworchards.com/",
+   "https://westvieworchards.com/pages/farm-market-bakery",
+   "https://westvieworchards.com/pages/u-pick",
+   "https://nominatim.openstreetmap.org/"
+  ],
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Wiard's Orchards & Country Fair",
+  "latitude": 42.187314,
+  "longitude": -83.647844,
+  "address": "5565 Merritt Rd, Ypsilanti, MI 48197",
+  "category": "large orchard, cider mill and ticketed farm amusement destination",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": [
+   "corn maze",
+   "wagon rides",
+   "petting farm",
+   "mini-golf",
+   "playgrounds",
+   "rides",
+   "apple cannon",
+   "haunted attractions"
+  ],
+  "school_programs": "School field trips for groups of 20+ include educational activities, picking, wagon ride, cider and donut.",
+  "food_service": [
+   "country-store bakery",
+   "cider",
+   "donuts",
+   "pies",
+   "grill and snack concessions"
+  ],
+  "retail": [
+   "apples",
+   "pumpkins",
+   "bakery goods",
+   "gifts",
+   "preserves"
+  ],
+  "admission_model": "Country Store is free; Country Fair and U-pick areas require online ticket admission, with some add-ons.",
+  "estimated_scale": "very large",
+  "direct_competition_score": 5,
+  "notes": "Major destination competitor with broad activity inventory, school business and nighttime haunted programming.",
+  "source": "https://www.wiards.com/country-fair/attractions",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "DeBuck's Family Farm",
+  "latitude": 42.181918,
+  "longitude": -83.532149,
+  "address": "50240 Martz Rd, Belleville, MI 48111",
+  "category": "large ticketed seasonal farm amusement destination",
+  "cider": null,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": [
+   "15-acre corn maze",
+   "20-acre pumpkin area",
+   "25+ attractions",
+   "mega slide",
+   "train",
+   "jump pad",
+   "pedal cars",
+   "apple cannons"
+  ],
+  "school_programs": null,
+  "food_service": [
+   "donuts",
+   "festival food",
+   "seasonal drinks"
+  ],
+  "retail": [
+   "pumpkins",
+   "flowers",
+   "festival merchandise"
+  ],
+  "admission_model": "Ticketed, cashless festival operation; 2026 sunflower admission published at $16.95, age 23 months and under free.",
+  "estimated_scale": "very large",
+  "direct_competition_score": 4,
+  "notes": "Major experiential competitor south/east of the core; official 2026 Fall Festival runs September 12-October 31.",
+  "source": "https://www.debucksfamilyfarm.com/fall-festival",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Dexter Cider Mill",
+  "latitude": 42.340901,
+  "longitude": -83.880238,
+  "address": "3685 Central St, Dexter, MI 48130",
+  "category": "historic cider mill and bakery",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": false,
+  "u_pick": false,
+  "family_activities": [
+   "historic mill viewing",
+   "riverside seating",
+   "cider-press viewing"
+  ],
+  "school_programs": null,
+  "food_service": [
+   "cider",
+   "hard-cider tasting room",
+   "donuts",
+   "fritters",
+   "strudel",
+   "turnovers",
+   "caramel apples"
+  ],
+  "retail": [
+   "apples",
+   "honey",
+   "butters",
+   "preserves",
+   "merchandise"
+  ],
+  "admission_model": "Free entry; purchases à la carte. Cash or check only, with onsite ATM.",
+  "estimated_scale": "medium",
+  "direct_competition_score": 4,
+  "notes": "Michigan's oldest continuously operating cider mill; powerful heritage competitor but limited farm activities.",
+  "source": "https://dextercidermill.com/",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Jenny's Farm Market & Cider Mill",
+  "latitude": 42.343159,
+  "longitude": -83.899103,
+  "address": "8366 Island Lake Rd, Dexter, MI 48130",
+  "category": "farm market, cider mill and family farm attraction",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": false,
+  "family_activities": [
+   "hayrides",
+   "pony rides",
+   "petting farm",
+   "straw maze"
+  ],
+  "school_programs": "Group/field-trip package advertised with hayride, pumpkin, donut and cider.",
+  "food_service": [
+   "cider",
+   "cinnamon and pumpkin donuts"
+  ],
+  "retail": [
+   "produce",
+   "flowers",
+   "pumpkins",
+   "honey",
+   "canned goods"
+  ],
+  "admission_model": "General market access appears free; rides and group packages separately priced.",
+  "estimated_scale": "medium",
+  "direct_competition_score": 4,
+  "notes": "Close Dexter-area competitor. No reliable standalone official website located; reputable local directory used.",
+  "source": "https://annarborobserver.com/guide/jennys-farm-market-and-cider-mill/",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Long Family Orchard, Farm & Cider Mill",
+  "latitude": 42.598212,
+  "longitude": -83.498035,
+  "address": "1540 E Commerce Rd, Commerce Township, MI 48382",
+  "category": "orchard, cider mill and ticketed fun farm",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": [
+   "corn maze",
+   "hayride",
+   "jumping pillows",
+   "slides",
+   "pedal karts",
+   "petting farm",
+   "play structures",
+   "apple cannon"
+  ],
+  "school_programs": null,
+  "food_service": [
+   "cider",
+   "donuts",
+   "kettle corn",
+   "lemonade"
+  ],
+  "retail": [
+   "apples",
+   "produce",
+   "pumpkins",
+   "farm-market goods"
+  ],
+  "admission_model": "Free parking and market access; Fun Farm is ticketed, with selected add-ons.",
+  "estimated_scale": "large",
+  "direct_competition_score": 4,
+  "notes": "Strong northwest Oakland County destination; official site lists September 6 opening for cider mill and Fun Farm.",
+  "source": "https://www.longsorchard.com/",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Obstbaum Orchards & Cider Mill",
+  "latitude": 42.42287,
+  "longitude": -83.5896,
+  "address": "9252 Currie Rd, Northville, MI 48167",
+  "category": "orchard, cider mill and country store",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": [
+   "weekend hayrides",
+   "picnic lawn",
+   "walking areas",
+   "cider and donut production viewing"
+  ],
+  "school_programs": null,
+  "food_service": [
+   "cider",
+   "donuts",
+   "caramel apples"
+  ],
+  "retail": [
+   "apples",
+   "hard cider",
+   "wine",
+   "pumpkins",
+   "honey",
+   "preserves"
+  ],
+  "admission_model": "No general admission identified; products and selected activities priced separately.",
+  "estimated_scale": "medium",
+  "direct_competition_score": 4,
+  "notes": "27-acre orchard in Salem Township; U-pick and hayrides are crop/weather dependent.",
+  "source": "http://www.obstbaum.com/home",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Parmenter's Northville Cider Mill",
+  "latitude": 42.437118,
+  "longitude": -83.474168,
+  "address": "714 Baseline Rd, Northville, MI 48167",
+  "category": "urban cider mill and bakery",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": false,
+  "u_pick": false,
+  "family_activities": [
+   "play equipment",
+   "river and duck viewing",
+   "cider-press viewing",
+   "live music next door"
+  ],
+  "school_programs": null,
+  "food_service": [
+   "donuts",
+   "cider",
+   "pies",
+   "fudge",
+   "caramel apples",
+   "weekend hot dogs and kielbasa",
+   "food trucks next door"
+  ],
+  "retail": [
+   "jams",
+   "honey",
+   "maple syrup",
+   "apple and pumpkin butter"
+  ],
+  "admission_model": "Free admission and parking; purchases à la carte.",
+  "estimated_scale": "medium",
+  "direct_competition_score": 4,
+  "notes": "Highly proximate historic urban mill. Adjacent Northville Winery & Brewing adds hard cider, beer and wine.",
+  "source": "https://www.northvillecider.com/",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Porter's Orchard Farm Market & Cider Mill",
+  "latitude": 42.9190016,
+  "longitude": -83.4734197,
+  "address": "12060 Hegel Rd, Goodrich, MI 48438",
+  "category": "orchard, cider mill, and farm market",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": true,
+  "school_programs": true,
+  "food_service": false,
+  "retail": true,
+  "admission_model": "Free admission; U-pick, corn maze, hayrides, events, and products priced separately.",
+  "estimated_scale": "medium destination",
+  "direct_competition_score": 4,
+  "notes": "Third-generation orchard with U-pick apples and pumpkins, cider and donuts, market, play area, petting farm, hayrides, corn maze, rentals, and educational orchard and mill tours.",
+  "source": [
+   "https://portersorchard.com/",
+   "https://portersorchard.com/orchard-rentals",
+   "https://michiganfarmfun.com/porters-orchard/",
+   "https://nominatim.openstreetmap.org/"
+  ],
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Wasem Fruit Farm",
+  "latitude": 42.14209,
+  "longitude": -83.628096,
+  "address": "6580 Judd Rd, Milan, MI 48160",
+  "category": "working fruit farm, U-pick orchard and cider mill",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": [
+   "apple picking",
+   "pumpkin picking",
+   "cherry and berry picking"
+  ],
+  "school_programs": "Pre-arranged school tours offered mid-September through October.",
+  "food_service": [
+   "cider",
+   "multiple donut flavors"
+  ],
+  "retail": [
+   "apples",
+   "pumpkins",
+   "berries",
+   "pears",
+   "plums",
+   "jams",
+   "honey"
+  ],
+  "admission_model": "No general admission identified; pay for picked produce and purchases.",
+  "estimated_scale": "medium",
+  "direct_competition_score": 4,
+  "notes": "Authentic U-pick competitor south of Ann Arbor. Availability and opening days change with crops.",
+  "source": "https://www.wasemfruitfarm.com/fall-season",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Alber Orchard & Cider Mill / Freedom Winery",
+  "latitude": 42.180066,
+  "longitude": -83.982071,
+  "address": "13011 Bethel Church Rd, Manchester, MI 48158",
+  "category": "historic orchard, cider mill and winery",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": [
+   "hayrides",
+   "pumpkin patch",
+   "play area",
+   "farm animals",
+   "historic cider-press viewing",
+   "orchard walks"
+  ],
+  "school_programs": null,
+  "food_service": [
+   "cider",
+   "donuts",
+   "caramel apples",
+   "pretzels",
+   "hard-cider and wine tasting"
+  ],
+  "retail": [
+   "100+ apple varieties",
+   "pumpkins",
+   "apple products",
+   "wine",
+   "hard cider"
+  ],
+  "admission_model": "General farm access appears purchase-based; winery reservations and selected activities may be separately priced.",
+  "estimated_scale": "medium",
+  "direct_competition_score": 3,
+  "notes": "Official site says cider mill is closed for the season, not permanently closed; spring/summer 2026 winery visits are reservation-based.",
+  "source": "https://www.alberorchard.com/",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Franklin Cider Mill",
+  "latitude": 42.530347,
+  "longitude": -83.305359,
+  "address": "7450 Franklin Rd, Bloomfield Hills, MI 48301",
+  "category": "historic cider mill, bakery and market",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": false,
+  "u_pick": false,
+  "family_activities": [
+   "cider pressing and bottling viewing",
+   "donut-baking viewing",
+   "river seating",
+   "weekend music"
+  ],
+  "school_programs": null,
+  "food_service": [
+   "cider",
+   "donuts",
+   "pies",
+   "baked goods",
+   "caramel apples",
+   "cider dogs"
+  ],
+  "retail": [
+   "apples",
+   "nuts",
+   "bakery products"
+  ],
+  "admission_model": "Free entry; purchases à la carte.",
+  "estimated_scale": "large",
+  "direct_competition_score": 3,
+  "notes": "High-brand-recognition mill on Detroit-side edge of study area; experience is food/heritage-led rather than farm-activity-led.",
+  "source": "https://www.franklincidermill.com/",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Goodison Cider Mill",
+  "latitude": 42.7133181,
+  "longitude": -83.1497192,
+  "address": "4295 Orion Rd, Rochester, MI 48306",
+  "category": "cider mill and bakery market",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": false,
+  "u_pick": false,
+  "family_activities": false,
+  "school_programs": false,
+  "food_service": false,
+  "retail": true,
+  "admission_model": "Free entry; products priced individually.",
+  "estimated_scale": "small destination",
+  "direct_competition_score": 3,
+  "notes": "Compact seasonal mill known for cider, donuts, pistachio and pumpkin breads, pies, candy, preserves, apples, and caramel apples. Official materials show a retail-led visit without a farm-activity or school-program component.",
+  "source": [
+   "https://goodisoncidermill.com/",
+   "https://nominatim.openstreetmap.org/"
+  ],
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Grainger's Orchard & Cider Mill",
+  "latitude": 42.561178,
+  "longitude": -83.932283,
+  "address": "2588 Pinckney Rd, Howell, MI 48843",
+  "category": "orchard, cider mill and fall farm",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": null,
+  "family_activities": [
+   "corn maze",
+   "hayrides",
+   "farm animals",
+   "pumpkin patch"
+  ],
+  "school_programs": null,
+  "food_service": [
+   "cider",
+   "donuts",
+   "cider slushes",
+   "wine"
+  ],
+  "retail": [
+   "apples",
+   "pumpkins",
+   "hard cider and wine"
+  ],
+  "admission_model": "No general-admission model verified; activities and products may be separately priced.",
+  "estimated_scale": "medium",
+  "direct_competition_score": 3,
+  "notes": "Meaningful Howell-side competitor; official operational detail was limited, so uncertain fields remain null.",
+  "source": "https://www.facebook.com/GraingersOrchardandCiderMill/",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Hy's Cider Mill",
+  "latitude": 42.8740078,
+  "longitude": -83.0567942,
+  "address": "6350 37 Mile Rd, Romeo, MI 48065",
+  "category": "small orchard and cider mill",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": true,
+  "school_programs": false,
+  "food_service": false,
+  "retail": true,
+  "admission_model": "Free general entry; U-pick and store products priced separately.",
+  "estimated_scale": "small destination",
+  "direct_competition_score": 3,
+  "notes": "Weekend-only traditional mill and apple U-pick with cider, donuts, pumpkins, and a modest family-oriented orchard visit. No current structured school program or substantial food service was verified.",
+  "source": [
+   "https://hyscidermill.com/",
+   "https://hyscidermill.com/upick",
+   "https://hyscidermill.com/cider-mill-store",
+   "https://geocoding.geo.census.gov/geocoder/"
+  ],
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Parshallville Cider Mill",
+  "latitude": 42.6911403,
+  "longitude": -83.7809077,
+  "address": "8507 Parshallville Rd, Fenton, MI 48430",
+  "category": "historic cider mill",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": false,
+  "u_pick": false,
+  "family_activities": true,
+  "school_programs": false,
+  "food_service": false,
+  "retail": true,
+  "admission_model": "Free entry; mill products priced individually.",
+  "estimated_scale": "small destination",
+  "direct_competition_score": 3,
+  "notes": "Historic seasonal grist mill, also known as Tom Walker's Grist Mill, centered on cider, donuts, baked goods, and a scenic mill visit. It does not present a broad farm-activity or school-tour offer.",
+  "source": [
+   "https://www.parshallvillecidergristmill.com/",
+   "https://nominatim.openstreetmap.org/"
+  ],
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Rochester Cider Mill",
+  "latitude": 42.7233611,
+  "longitude": -83.1346031,
+  "address": "5125 N Rochester Rd, Rochester, MI 48306",
+  "category": "cider mill and farm market",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": false,
+  "family_activities": true,
+  "school_programs": false,
+  "food_service": false,
+  "retail": true,
+  "admission_model": "Free entry; products priced individually.",
+  "estimated_scale": "medium local destination",
+  "direct_competition_score": 3,
+  "notes": "Seasonal mill with cider, daily donuts, pies and farm-market goods, plus pumpkins, a straw pyramid, and a petting farm. No U-pick or current school-tour program is advertised.",
+  "source": [
+   "https://www.rochestercidermill.com/",
+   "https://nominatim.openstreetmap.org/"
+  ],
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Spicer Orchards Farm Market & Winery",
+  "latitude": 42.677001,
+  "longitude": -83.75208,
+  "address": "10411 Clyde Rd, Fenton, MI 48430",
+  "category": "large orchard, U-pick farm, cider mill and winery",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": [
+   "wagon rides",
+   "playground",
+   "animals",
+   "corn maze",
+   "train rides",
+   "hayrides",
+   "fruit picking"
+  ],
+  "school_programs": "Weekday appointment tours include education, wagon ride, picking, cider, donut and play area.",
+  "food_service": [
+   "bakery",
+   "cider",
+   "donuts",
+   "winery",
+   "ice cream"
+  ],
+  "retail": [
+   "fruit",
+   "pumpkins",
+   "bakery goods",
+   "wine",
+   "farm-market products"
+  ],
+  "admission_model": "$5 wristband for orchard/playground/wagon access; picking containers, maze and special rides extra.",
+  "estimated_scale": "very large",
+  "direct_competition_score": 3,
+  "notes": "Major north-side destination and school-tour competitor, but near the outer drive-time limit.",
+  "source": "https://www.spicerorchards.com/",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "The Blast Corn Maze at Nixon Farms",
+  "latitude": 42.354872,
+  "longitude": -83.856158,
+  "address": "6175 Daly Rd, Dexter, MI 48130",
+  "category": "corn maze and pumpkin attraction",
+  "cider": null,
+  "donuts": null,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": [
+   "14-acre corn maze",
+   "short and medium maze exits",
+   "family flashlight maze"
+  ],
+  "school_programs": null,
+  "food_service": null,
+  "retail": [
+   "pumpkins"
+  ],
+  "admission_model": "Ticketed corn-maze attraction; pumpkins purchased separately.",
+  "estimated_scale": "medium",
+  "direct_competition_score": 3,
+  "notes": "Close Dexter competitor for fall entertainment and pumpkins, but not verified as a cider/donut destination.",
+  "source": "https://nixonfarmsdexter.com/blast-corn-maze/",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Yates Cider Mill",
+  "latitude": 42.673574,
+  "longitude": -83.094008,
+  "address": "1990 E Avon Rd, Rochester Hills, MI 48307",
+  "category": "historic water-powered cider mill and bakery",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": false,
+  "u_pick": false,
+  "family_activities": [
+   "river trails",
+   "picnic areas",
+   "weekend pony rides",
+   "seasonal petting zoo"
+  ],
+  "school_programs": "Weekday tours available by appointment through October.",
+  "food_service": [
+   "cider",
+   "donuts",
+   "fritters",
+   "pies",
+   "hot dogs",
+   "roasted corn",
+   "fudge",
+   "ice cream"
+  ],
+  "retail": [
+   "apples",
+   "preserves",
+   "honey",
+   "maple syrup",
+   "gifts"
+  ],
+  "admission_model": "Free entry; food, tours and selected activities separately priced.",
+  "estimated_scale": "large",
+  "direct_competition_score": 3,
+  "notes": "Iconic regional destination but northeast of the core trade area.",
+  "source": "https://yatescidermill.com/plan-your-fall-visit/",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Bennett's Orchard & Broken Barrel Hard Cider",
+  "latitude": 41.769579,
+  "longitude": -83.679651,
+  "address": "5647 Consear Rd, Ottawa Lake, MI 49267",
+  "category": "orchard market, cider mill and hard-cider tasting room",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": false,
+  "family_activities": [
+   "giant straw pile"
+  ],
+  "school_programs": null,
+  "food_service": [
+   "weekend donuts",
+   "sweet cider",
+   "hard-cider tasting",
+   "food trucks"
+  ],
+  "retail": [
+   "home-grown apples",
+   "pumpkins",
+   "produce",
+   "honey",
+   "eggs",
+   "preserves"
+  ],
+  "admission_model": "Free market/tasting-area access; purchases à la carte.",
+  "estimated_scale": "medium",
+  "direct_competition_score": 2,
+  "notes": "Official site states no U-pick apples for 2026 while replacement trees mature; not a closure.",
+  "source": "http://www.bennettsorchard.com/home.html",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Coleman's Farm Market",
+  "latitude": 42.20888,
+  "longitude": -83.677701,
+  "address": "5415 W Michigan Ave, Ypsilanti, MI 48197",
+  "category": "seasonal produce and fall-decoration market",
+  "cider": true,
+  "donuts": false,
+  "pumpkins": true,
+  "u_pick": false,
+  "family_activities": [],
+  "school_programs": null,
+  "food_service": [
+   "caramel apples"
+  ],
+  "retail": [
+   "cider",
+   "pumpkins",
+   "mums",
+   "gourds",
+   "corn stalks",
+   "produce"
+  ],
+  "admission_model": "Free retail-market access.",
+  "estimated_scale": "small",
+  "direct_competition_score": 2,
+  "notes": "Retail-only fall competitor. Distinct from Coleman's Farm Markets at 910 Ridge Rd.",
+  "source": "https://colemansproduce.com/",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Diehl's Orchard & Cider Mill",
+  "latitude": 42.720076,
+  "longitude": -83.590989,
+  "address": "1479 Ranch Rd, Holly, MI 48442",
+  "category": "orchard, cider mill and family fall farm",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": false,
+  "family_activities": [
+   "free corn maze",
+   "playground",
+   "hay maze",
+   "orchard hike",
+   "hayrides",
+   "pony rides",
+   "pumpkin patch"
+  ],
+  "school_programs": "Weekday tours for groups of 15+, with basic, hayride and pumpkin packages.",
+  "food_service": [
+   "cider",
+   "donuts",
+   "seasonal food trucks"
+  ],
+  "retail": [
+   "pre-picked apples",
+   "pumpkins",
+   "cider",
+   "bakery products"
+  ],
+  "admission_model": "Free admission and many free activities; hayrides, pumpkins, pony rides and tours separately priced.",
+  "estimated_scale": "medium",
+  "direct_competition_score": 2,
+  "notes": "Officially confirms no U-pick apples. 2026 season runs August 15-November 22 on varying schedules.",
+  "source": "https://www.diehlsorchard.com/everyday",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Gust Brother's Pumpkin Farm",
+  "latitude": 41.74528,
+  "longitude": -83.789802,
+  "address": "13639 Mulberry Rd, Ottawa Lake, MI 49267",
+  "category": "pumpkin farm and free-admission fall destination",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": [
+   "petting farm",
+   "corn maze",
+   "weekend hayrides",
+   "flower picking"
+  ],
+  "school_programs": "Weekday school tours with farm education, hayride and pumpkin; cider/donut option available.",
+  "food_service": [
+   "cider",
+   "warm donuts",
+   "cookies",
+   "slushes",
+   "snacks"
+  ],
+  "retail": [
+   "pumpkins",
+   "fall decor",
+   "flowers",
+   "produce",
+   "jams",
+   "honey"
+  ],
+  "admission_model": "Free admission and parking; hayrides, products and food separately priced.",
+  "estimated_scale": "large",
+  "direct_competition_score": 2,
+  "notes": "Well-developed free-admission model, but oriented toward Toledo and southern Lenawee/Monroe markets.",
+  "source": "https://www.gustbrothers.com/",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Kackleberry Farms",
+  "latitude": 41.972328,
+  "longitude": -83.348821,
+  "address": "6421 N Stoney Creek Rd, Monroe, MI 48162",
+  "category": "large ticketed fall festival and farm amusement attraction",
+  "cider": null,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": false,
+  "family_activities": [
+   "30+ attractions",
+   "corn maze",
+   "super-mega slide",
+   "hayride",
+   "jumping pillow",
+   "farm animals",
+   "pig races",
+   "apple blasters"
+  ],
+  "school_programs": null,
+  "food_service": [
+   "cider donuts",
+   "specialty drinks",
+   "festival food"
+  ],
+  "retail": [
+   "pumpkins",
+   "seasonal merchandise"
+  ],
+  "admission_model": "Ticketed and cashless; 2026 weekend admission $21.99 online/$25 gate, weekday specials $16.99, ages 2 and under free.",
+  "estimated_scale": "very large",
+  "direct_competition_score": 2,
+  "notes": "Strong entertainment-format comparator in Monroe, but outside the primary target drive shed.",
+  "source": "https://www.kackleberryfarms.com/fallfestival",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Kapnick Orchards",
+  "latitude": 41.952232,
+  "longitude": -83.925982,
+  "address": "4245 Rogers Hwy, Britton, MI 49229",
+  "category": "year-round orchard market, bakery and cider mill",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": [
+   "wagon rides",
+   "Enchanted Forest",
+   "farm animals",
+   "annual Apple Festival"
+  ],
+  "school_programs": "School tours offered; tour cider is UV treated.",
+  "food_service": [
+   "year-round donuts",
+   "cider",
+   "bakery",
+   "fudge"
+  ],
+  "retail": [
+   "fruit",
+   "vegetables",
+   "pumpkins",
+   "preserves",
+   "bakery goods"
+  ],
+  "admission_model": "Free market access; picking, tours and events separately priced.",
+  "estimated_scale": "large",
+  "direct_competition_score": 2,
+  "notes": "Year-round retail strength and broad product line, but outside the core west/southwest catchment.",
+  "source": "https://kapnickorchards.com/",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Kreps Apple Barn & Cider Mill",
+  "latitude": 41.845605,
+  "longitude": -83.532233,
+  "address": "12500 Minx Rd, La Salle, MI 48145",
+  "category": "orchard, cider mill and farm market",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": [
+   "corn maze",
+   "farm animals",
+   "flower field",
+   "sunflower field"
+  ],
+  "school_programs": null,
+  "food_service": [
+   "cider",
+   "donuts",
+   "ice cream"
+  ],
+  "retail": [
+   "apples",
+   "pumpkins",
+   "flowers",
+   "honey",
+   "jams",
+   "peaches"
+  ],
+  "admission_model": "No general admission identified; purchases and picking priced separately.",
+  "estimated_scale": "medium",
+  "direct_competition_score": 2,
+  "notes": "Strong traditional orchard offer but south of the primary catchment.",
+  "source": "https://www.krepsapplebarn.com/",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Lesser Farms & Orchard",
+  "latitude": 42.35943,
+  "longitude": -83.981917,
+  "address": "12651 Island Lake Rd, Dexter, MI 48130",
+  "category": "working orchard and farm store",
+  "cider": true,
+  "donuts": false,
+  "pumpkins": true,
+  "u_pick": false,
+  "family_activities": [
+   "pumpkin photo area"
+  ],
+  "school_programs": null,
+  "food_service": null,
+  "retail": [
+   "pre-picked apples",
+   "cider",
+   "pumpkins",
+   "gourds",
+   "farm-raised beef"
+  ],
+  "admission_model": "Free farm-store access; purchases à la carte.",
+  "estimated_scale": "small",
+  "direct_competition_score": 2,
+  "notes": "Officially states no U-pick, hayrides, corn maze or petting zoo; useful retail-price and local-product competitor.",
+  "source": "https://www.lesserfarmsdexter.com/faqs",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Mueller's Orchard and Cider Mill",
+  "latitude": 42.784878,
+  "longitude": -83.787748,
+  "address": "6036 Lobdell Rd, Linden, MI 48451",
+  "category": "orchard, cider mill and event farm",
+  "cider": true,
+  "donuts": true,
+  "pumpkins": true,
+  "u_pick": false,
+  "family_activities": [
+   "children's play area",
+   "goat pen",
+   "wagon rides",
+   "corn maze"
+  ],
+  "school_programs": "School tours listed.",
+  "food_service": [
+   "cider",
+   "donuts"
+  ],
+  "retail": [
+   "apples",
+   "pumpkins",
+   "jams",
+   "honey",
+   "cherry products"
+  ],
+  "admission_model": "No general-admission model verified; products and activities separately priced.",
+  "estimated_scale": "medium",
+  "direct_competition_score": 2,
+  "notes": "Outer Flint/Linden competitor with full traditional cider-mill offer.",
+  "source": "https://michiganfarmfun.com/muellers-orchard-and-cider-mill/",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "The Frosty Apple / Frosty Apple Orchard",
+  "latitude": 42.412953,
+  "longitude": -83.8721,
+  "address": "6884 Walsh Rd, Dexter, MI 48130",
+  "category": "small orchard, bakery and farm stand",
+  "cider": false,
+  "donuts": false,
+  "pumpkins": false,
+  "u_pick": null,
+  "family_activities": [],
+  "school_programs": null,
+  "food_service": [
+   "apple pies",
+   "cookies"
+  ],
+  "retail": [
+   "20+ apple varieties",
+   "dried apples",
+   "maple syrup",
+   "baked goods"
+  ],
+  "admission_model": "Free farm-stand access; purchases à la carte.",
+  "estimated_scale": "small",
+  "direct_competition_score": 2,
+  "notes": "Approximately five acres and 1,600 trees. Primarily an apple and pie competitor; current sources do not substantiate cider or donuts.",
+  "source": "https://www.frostyappleorchard.com/",
+  "researched_at": "2026-08-08"
+ },
+ {
+  "name": "Wing Farms",
+  "latitude": 42.304994,
+  "longitude": -83.836054,
+  "address": "5335 Dexter Ann Arbor Rd, Ann Arbor, MI 48103",
+  "category": "working farm and pumpkin destination",
+  "cider": false,
+  "donuts": false,
+  "pumpkins": true,
+  "u_pick": true,
+  "family_activities": [
+   "free weekend hayrides",
+   "farm-animal viewing"
+  ],
+  "school_programs": null,
+  "food_service": null,
+  "retail": [
+   "pumpkins",
+   "gourds",
+   "fall decor",
+   "turkeys",
+   "beef",
+   "Christmas trees"
+  ],
+  "admission_model": "Free admission, parking and weekend hayrides; products purchased separately.",
+  "estimated_scale": "medium",
+  "direct_competition_score": 2,
+  "notes": "Close adjacent pumpkin competitor rather than a cider-mill competitor. Official 2026 pumpkin dates are September 26-October 26.",
+  "source": "https://wingfarms.com/pumpkins/",
+  "researched_at": "2026-08-08"
+ }
+]

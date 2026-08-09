@@ -2,63 +2,85 @@
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import BrandImage from '../components/BrandImage.astro';
+import { retreatPackages } from '../data/menu';
 
-const programs = [
-  {
-    name: 'Corporate Retreats & Seminars',
-    price: '$70 – $140 per attendee',
-    copy: 'Weekday, daytime offsites that actually feel different: workshops, planning days, and team mornings with coffee, cider, and donuts from our own counter.',
-  },
-  {
-    name: 'Team Workshops',
-    price: '$35 – $85 per person',
-    copy: 'Guided wreath building, garden sessions, and craft workshops led by our instructors — a working activity, not a party package.',
-  },
-  {
-    name: 'School & Scout Groups',
-    price: '$12 – $16 per student',
-    copy: 'Curriculum-mapped field trips and badge-friendly programs in the hall and gardens, with structured activities and real learning outcomes.',
-  },
+const includes = [
+  'Corporate retreats and leadership meetings',
+  'Department, faculty, and nonprofit gatherings',
+  'Strategic planning sessions and workshops',
+  'Board meetings and professional development days',
+  'Standardized private celebrations within set packages',
+];
+
+const avoids = [
+  'Weddings and large receptions',
+  'Late-night events',
+  'Custom event production or room transformations',
+  'Dedicated event-planning staff',
+  'Full-service catering operations',
 ];
 ---
-<Base title="Retreats & Programs" description="Daytime corporate retreats, seminars, team workshops, and school programs in the functional program hall at Leaf & Lantern.">
+<Base title="Retreats & Gatherings" description="Corporate retreats, meetings, and standardized private gatherings at Leaf & Lantern — daytime, purposeful, and built around our own food.">
   <Hero
     compact
     image="/images/courtyard-summer.png"
     imageAlt="Guests gathered at wood tables in the courtyard beside the main hall"
     imageLabel="The Courtyard"
-    eyebrow="Retreats & Programs"
+    eyebrow="Retreats & Gatherings"
     title="A working space that happens to be beautiful."
-    copy="One functional hall for retreats, seminars, workshops, and school programs — daytime, purposeful, and catered by our own counter."
+    copy="Corporate retreats, meetings, and standardized private gatherings — daytime, purposeful, and centered on coffee, cider, and donuts from our own counter."
   />
 
   <section class="section">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">Purposeful Programs</span>
+        <span class="eyebrow">Purposeful Bookings</span>
         <h2>What the hall is for</h2>
         <p class="lede">
-          Programs book weekday daytime blocks and scheduled closed days, so public hours are
-          never displaced — and your group gets the place at its calmest.
+          The property is a high-quality setting for retreats, meetings, and private gatherings
+          that fit predefined packages — not a traditional event venue. Bookings stay
+          standardized so the same hall, kitchen, and staff can serve many uses without becoming
+          a second business.
         </p>
       </div>
       <div class="pkg-grid">
-        {programs.map((p) => (
+        {retreatPackages.map((p) => (
           <div class="pkg-card">
             <h3>{p.name}</h3>
             <p class="pkg-price">{p.price}</p>
+            <p class="pkg-detail">{p.detail}</p>
             <p>{p.copy}</p>
           </div>
         ))}
       </div>
-      <p class="no-events-note">
-        One thing we don’t do: weddings, showers, or receptions. The hall is a program space, not
-        an event venue — that focus is what keeps it available, affordable, and calm.
-      </p>
     </div>
   </section>
 
   <section class="section section-alt">
+    <div class="container split-lists">
+      <div>
+        <span class="eyebrow">We Welcome</span>
+        <h2>Standardized bookings.</h2>
+        <ul class="amenities">
+          {includes.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <div>
+        <span class="eyebrow">We Don’t Build</span>
+        <h2>Bespoke event production.</h2>
+        <ul class="amenities amenities-muted">
+          {avoids.map((item) => <li>{item}</li>)}
+        </ul>
+        <p class="policy-note">
+          The distinction is not “private events vs. no private events.” It is standardized
+          packages vs. custom production. If a booking needs a dedicated planner or a custom menu,
+          it is not a Leaf & Lantern booking.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container split">
       <BrandImage
         src="/images/yoga-morning.jpg"
@@ -66,20 +88,35 @@ const programs = [
         ratio="4 / 3"
       />
       <div>
-        <span class="eyebrow">The Space</span>
-        <h2>One hall, many configurations.</h2>
+        <span class="eyebrow">Food Policy</span>
+        <h2>What we make. What we don’t.</h2>
         <p>
-          The hall converts between workshop, classroom, presentation, and long-table layouts.
-          Timber structure, natural light, a visible donut line, and a protected courtyard — with
-          coffee, cider, and donuts from our own counter all day.
+          Leaf & Lantern supplies the products central to its identity — donuts, cider, coffee,
+          seasonal baked goods, and simple snacks. We do not operate as a full-service caterer.
+        </p>
+        <p>
+          For meals outside our kitchen, groups may use an approved catering partner, bring
+          outside prepared food with a facility fee, or arrange their own delivery while we
+          handle the venue, beverages, snacks, setup, and cleanup.
         </p>
         <ul class="amenities">
           <li>Workshop and classroom seating for up to 80</li>
           <li>Coffee, cider, and donut service from our counter</li>
-          <li>Audio for presentations and acoustic music</li>
+          <li>Basic audiovisual for presentations</li>
           <li>Accessible route throughout; free parking</li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <section class="section section-pine">
+    <div class="container-narrow" style="text-align: center;">
+      <span class="eyebrow">One Hall, Many Uses</span>
+      <h2>Weekday retreats. Weekend workshops. Peak-season seating.</h2>
+      <p class="lede" style="margin-inline: auto;">
+        The same flexible hall supports corporate days, school groups, camps, markets, private
+        gatherings, and autumn customer seating — so every square foot earns its keep.
+      </p>
     </div>
   </section>
 
@@ -100,11 +137,12 @@ const programs = [
         </div>
         <div class="form-row">
           <div>
-            <label for="rp-type">Program type</label>
+            <label for="rp-type">Booking type</label>
             <select id="rp-type" name="type">
-              <option>Corporate retreat or seminar</option>
-              <option>Team workshop</option>
-              <option>School or scout group</option>
+              <option>Corporate retreat or meeting</option>
+              <option>Half-day or full-day workshop</option>
+              <option>Private gathering (birthday, shower, celebration)</option>
+              <option>School, nonprofit, or club meeting</option>
               <option>Other</option>
             </select>
           </div>
@@ -146,7 +184,16 @@ const programs = [
     font-size: 1.35rem;
     font-weight: 600;
     color: var(--cider);
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .pkg-detail {
+    color: var(--deep-pine);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.65rem;
+    text-transform: uppercase;
   }
 
   .pkg-card p:last-child {
@@ -154,13 +201,17 @@ const programs = [
     font-size: 0.96rem;
   }
 
-  .no-events-note {
-    margin-top: 1.6rem;
-    padding: 1rem 1.2rem;
-    background: var(--cider-soft);
-    border-radius: var(--radius);
+  .split-lists {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .policy-note {
+    margin-top: 1.2rem;
     font-size: 0.95rem;
-    max-width: 52em;
+    opacity: 0.9;
   }
 
   .split {
@@ -194,6 +245,10 @@ const programs = [
     background: var(--cider);
   }
 
+  .amenities-muted li::before {
+    background: var(--line);
+  }
+
   .inquiry-form {
     margin-top: 1.4rem;
     display: grid;
@@ -217,6 +272,7 @@ const programs = [
   @media (max-width: 900px) {
     .pkg-grid,
     .split,
+    .split-lists,
     .form-row {
       grid-template-columns: 1fr;
     }
