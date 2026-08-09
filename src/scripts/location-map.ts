@@ -58,9 +58,34 @@ const loadedReferences = new Set<string>();
 // the map silently never renders.
 maplibregl.setWorkerUrl(`${app.dataset.base ?? '/'}vendor/maplibre/maplibre-gl-worker.mjs`);
 
+const POSITRON_STYLE_URL = 'https://tiles.openfreemap.org/styles/positron';
+
+/** OpenFreeMap Positron compares admin_level with >=/<=; null features spam the console. */
+function sanitizeBasemapStyle(style: maplibregl.StyleSpecification): maplibregl.StyleSpecification {
+  for (const layer of style.layers ?? []) {
+    if (layer.id !== 'boundary_3' || !('filter' in layer)) continue;
+    layer.filter = [
+      'all',
+      ['match', ['get', 'admin_level'], [3, 4, 5, 6], true, false],
+      ['!=', ['get', 'maritime'], 1],
+      ['!=', ['get', 'disputed'], 1],
+      ['!', ['has', 'claimed_by']],
+    ];
+  }
+  return style;
+}
+
 const map = new maplibregl.Map({
   container: 'map',
-  style: 'https://tiles.openfreemap.org/styles/positron',
+  style: {
+    version: 8,
+    sources: {},
+    layers: [{
+      id: 'background',
+      type: 'background',
+      paint: { 'background-color': '#e8e2d5' },
+    }],
+  },
   center: [-83.55, 42.35],
   zoom: 8.35,
   minZoom: 6.5,
@@ -76,18 +101,20 @@ map.addControl(
   'bottom-right',
 );
 
-/** OpenFreeMap Positron compares admin_level without a type guard; null features log console errors. */
-function patchBasemapBoundaryFilters(): void {
-  if (!map.getLayer('boundary_3')) return;
-  map.setFilter('boundary_3', [
-    'all',
-    ['==', ['typeof', ['get', 'admin_level']], 'number'],
-    ['>=', ['get', 'admin_level'], 3],
-    ['<=', ['get', 'admin_level'], 6],
-    ['!=', ['get', 'maritime'], 1],
-    ['!=', ['get', 'disputed'], 1],
-    ['!', ['has', 'claimed_by']],
-  ]);
+async function loadBasemapStyle(): Promise<void> {
+  const applyStyle = (style: string | maplibregl.StyleSpecification) => new Promise<void>((resolve) => {
+    map.once('style.load', () => resolve());
+    map.setStyle(style);
+  });
+
+  try {
+    const response = await fetch(POSITRON_STYLE_URL);
+    if (!response.ok) throw new Error(`Basemap style HTTP ${response.status}`);
+    await applyStyle(sanitizeBasemapStyle(await response.json()));
+  } catch (error) {
+    console.warn('Falling back to remote Positron style URL', error);
+    await applyStyle(POSITRON_STYLE_URL);
+  }
 }
 
 function escapeHtml(value: unknown): string {
@@ -639,15 +666,14 @@ dataReady.catch((error) => {
   status.textContent = 'Model data failed to load';
 });
 
-map.on('load', () => {
-  patchBasemapBoundaryFilters();
+void (async () => {
+  await loadBasemapStyle();
   map.fitBounds(STUDY_BOUNDS, { padding: 25, duration: 0 });
-  dataReady
-    .then((competitors) => {
-      addGridLayer();
-      addCompetitors(competitors);
-    })
-    .catch(() => {
-      /* already reported above */
-    });
-});
+  try {
+    const competitors = await dataReady;
+    addGridLayer();
+    addCompetitors(competitors);
+  } catch {
+    /* already reported above */
+  }
+})();
