@@ -1,8 +1,28 @@
 ---
 import Base from '../layouts/Base.astro';
 import BrandImage from '../components/BrandImage.astro';
-import { programPricing } from '../data/menu';
+import { counterMenu, programPricing } from '../data/menu';
 import { url } from '../lib/site';
+
+const priceOf = (item: string) => {
+  const row = counterMenu.find((m) => m.item === item);
+  if (!row) throw new Error(`Missing counter menu item: ${item}`);
+  return row.price;
+};
+
+/** Compact hero snapshot for the plan — prices still come from counterMenu. */
+const heroPrices = [
+  {
+    stream: 'Fresh Donut — single / half-dozen / dozen',
+    price: `${priceOf('Fresh Donut')} / ${priceOf('Donuts · half-dozen')} / ${priceOf('Donuts · dozen')}`,
+  },
+  {
+    stream: 'Cider — cup / half-gallon / gallon',
+    price: `${priceOf('Cider · cup')} / ${priceOf('Cider · half-gallon')} / ${priceOf('Cider · gallon')}`,
+  },
+  { stream: 'Morning Cup', price: priceOf('Morning Cup') },
+  { stream: 'Bundle · dozen + half-gallon', price: priceOf('Bundle · dozen + half-gallon') },
+];
 
 const toc = [
   { id: 'summary', label: 'Executive Summary' },
@@ -1246,16 +1266,32 @@ const risks = [
 
         <h3>Opening price architecture <small>(2030 dollars, to be validated in pilots)</small></h3>
         <p>
-          Hero-product prices are maintained on the concept site — one list for the Market
-          counter, Order Ahead, and this plan — so a price change never has to be synchronized
-          by hand.
+          The counter is the economic core. A few hero prices sit here for the investment
+          read; the full list lives on the concept site — one source for the Market, Order
+          Ahead, and this plan.
         </p>
+        <div class="price-card">
+          <span class="price-card-kicker">Hero products · from the counter</span>
+          <ul class="price-card-list">
+            {heroPrices.map((p) => (
+              <li>
+                <span class="price-card-item">{p.stream}</span>
+                <span class="price-card-amt">{p.price}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="price-card-cta">
+            <a class="btn btn-secondary" href={url('/market/')}>View Full Counter Prices on the Concept Site</a>
+          </div>
+        </div>
+        <h4 class="price-subhead">Programs &amp; experiences</h4>
         <p>
-          <a class="btn btn-secondary" href={url('/market/')}>View Counter Prices on the Concept Site</a>
+          Admission stays free every day. Bounded programs — ticketed evenings, education,
+          camps, workshops, and daytime retreats — carry their own price bands:
         </p>
         <div class="table-wrap">
           <table class="ll-table">
-            <thead><tr><th>Programs &amp; experiences</th><th class="num">Suggested pricing</th></tr></thead>
+            <thead><tr><th>Program</th><th class="num">Suggested pricing</th></tr></thead>
             <tbody>
               {programPricing.map((p) => (
                 <tr><td>{p.stream}</td><td class="num">{p.price}</td></tr>
@@ -2782,6 +2818,70 @@ const risks = [
     opacity: 0.85;
   }
 
+  /* ---------- Opening price card ---------- */
+  .price-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    border-top: 3px solid var(--cider);
+    padding: 1.5rem 1.6rem 1.4rem;
+    margin-block: 1.2rem 2rem;
+  }
+
+  .price-card-kicker {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cider);
+    margin-bottom: 1rem;
+  }
+
+  .price-card-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .price-card-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1.25rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .price-card-list li:last-child {
+    border-bottom: none;
+  }
+
+  .price-card-item {
+    font-size: 0.98rem;
+  }
+
+  .price-card-amt {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--deep-pine);
+    white-space: nowrap;
+  }
+
+  .price-card-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.25rem;
+    padding-top: 1.15rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .price-subhead {
+    margin: 0 0 0.55rem;
+    font-size: 1.2rem;
+  }
+
   /* ---------- Closing CTA ---------- */
   .plan-cta {
     margin-top: 2.5rem;
@@ -3006,6 +3106,7 @@ const risks = [
     .be-chart,
     .pb-chart,
     .pos-plot,
+    .price-card,
     .pull-quote,
     .eq-block,
     .roadmap-phase {
