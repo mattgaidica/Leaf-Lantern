@@ -88,7 +88,7 @@ WETLANDS_URL = (
     "FeatureServer/0/query"
 )
 FEMA_URL = (
-    "https://hazards.fema.gov/gis/nfhl/rest/services/public/NFHL/"
+    "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/"
     "MapServer/28/query"
 )
 DNR_PARKS_URL = (

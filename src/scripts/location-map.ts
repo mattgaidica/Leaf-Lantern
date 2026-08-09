@@ -76,6 +76,20 @@ map.addControl(
   'bottom-right',
 );
 
+/** OpenFreeMap Positron compares admin_level without a type guard; null features log console errors. */
+function patchBasemapBoundaryFilters(): void {
+  if (!map.getLayer('boundary_3')) return;
+  map.setFilter('boundary_3', [
+    'all',
+    ['==', ['typeof', ['get', 'admin_level']], 'number'],
+    ['>=', ['get', 'admin_level'], 3],
+    ['<=', ['get', 'admin_level'], 6],
+    ['!=', ['get', 'maritime'], 1],
+    ['!=', ['get', 'disputed'], 1],
+    ['!', ['has', 'claimed_by']],
+  ]);
+}
+
 function escapeHtml(value: unknown): string {
   return String(value ?? '')
     .replaceAll('&', '&amp;')
@@ -169,7 +183,7 @@ function sliderMarkup(
 ): string {
   return Object.entries(values).map(([key, value]) => `
     <label>
-      <span><b>${escapeHtml(labels[key])}</b><output data-output="${key}">${kind === 'component' ? value : value.toFixed(2)}${kind === 'component' ? '%' : '×'}</output></span>
+      <span><b>${escapeHtml(labels[key])}</b> <output data-output="${key}">${kind === 'component' ? value : value.toFixed(2)}${kind === 'component' ? '%' : '×'}</output></span>
       <input type="range" data-${kind}="${key}" min="0" max="${kind === 'component' ? 50 : 1.5}" value="${value}" step="${kind === 'component' ? 1 : 0.05}" />
     </label>
   `).join('');
@@ -411,24 +425,47 @@ const referenceConfig: Record<string, {
     file: 'municipalities.geojson', source: 'municipalities',
     layers: [{ id: 'municipalities', type: 'line', source: 'municipalities', paint: { 'line-color': '#353936', 'line-width': 1, 'line-dasharray': [3, 2], 'line-opacity': 0.7 } }],
   },
+  protected: {
+    file: 'protected.geojson', source: 'protected',
+    layers: [
+      {
+        id: 'protected',
+        type: 'fill',
+        source: 'protected',
+        paint: { 'fill-color': '#2f5a43', 'fill-opacity': 0.38, 'fill-outline-color': '#243c34' },
+      },
+      {
+        id: 'protected-outline',
+        type: 'line',
+        source: 'protected',
+        paint: { 'line-color': '#243c34', 'line-width': 1.2, 'line-opacity': 0.85 },
+      },
+    ],
+  },
 };
 
-const rasterReferenceConfig: Record<string, { url: string; opacity: number }> = {
+/** Study-area image for wetlands — EGLE export tiles are too slow for XYZ and time out in the browser. */
+const WETLANDS_OVERLAY = {
+  west: -84.18,
+  south: 41.8,
+  east: -82.78,
+  north: 42.88,
+  file: 'wetlands-overlay.png',
+  opacity: 0.58,
+};
+
+const rasterReferenceConfig: Record<string, { url: string; opacity: number; minzoom?: number; attribution: string }> = {
   traffic: {
     url: 'https://mdotgis.state.mi.us/arcgis/rest/services/DataAccess/MdotAadtCaadt/MapServer/export?bbox={bbox-epsg-3857}&bboxSR=3857&imageSR=3857&size=256,256&dpi=96&format=png32&transparent=true&layers=show:0,1,12&f=image',
     opacity: 0.82,
-  },
-  wetlands: {
-    url: 'https://gisagoegle.state.mi.us/arcgis/rest/services/EGLE/WetlandsMapViewer/MapServer/export?bbox={bbox-epsg-3857}&bboxSR=3857&imageSR=3857&size=256,256&dpi=96&format=png32&transparent=true&layers=show:0&f=image',
-    opacity: 0.58,
+    attribution: 'MDOT',
   },
   flood: {
-    url: 'https://hazards.fema.gov/gis/nfhl/rest/services/public/NFHL/MapServer/export?bbox={bbox-epsg-3857}&bboxSR=3857&imageSR=3857&size=256,256&dpi=96&format=png32&transparent=true&layers=show:28&f=image',
+    // FEMA moved NFHL from /gis/nfhl/ to /arcgis/; SFHA polygons draw only when zoomed in.
+    url: 'https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/export?bbox={bbox-epsg-3857}&bboxSR=3857&imageSR=3857&size=256,256&dpi=96&format=png32&transparent=true&layers=show:28&f=image',
     opacity: 0.55,
-  },
-  protected: {
-    url: 'https://services3.arcgis.com/Jdnp1TjADvSDxMAX/arcgis/rest/services/DNRManagementBoundariesOPENDATA/MapServer/export?bbox={bbox-epsg-3857}&bboxSR=3857&imageSR=3857&size=256,256&dpi=96&format=png32&transparent=true&layers=show:8&f=image',
-    opacity: 0.5,
+    minzoom: 11,
+    attribution: 'FEMA NFHL',
   },
 };
 
@@ -442,6 +479,37 @@ async function toggleReference(key: string, visible: boolean): Promise<void> {
     if (visible) updateSurface();
     return;
   }
+  if (key === 'wetlands') {
+    if (!map.getSource('wetlands')) {
+      try {
+        map.addSource('wetlands', {
+          type: 'image',
+          url: `${dataBase}${WETLANDS_OVERLAY.file}`,
+          coordinates: [
+            [WETLANDS_OVERLAY.west, WETLANDS_OVERLAY.north],
+            [WETLANDS_OVERLAY.east, WETLANDS_OVERLAY.north],
+            [WETLANDS_OVERLAY.east, WETLANDS_OVERLAY.south],
+            [WETLANDS_OVERLAY.west, WETLANDS_OVERLAY.south],
+          ],
+        });
+        map.addLayer({
+          id: 'wetlands',
+          type: 'raster',
+          source: 'wetlands',
+          paint: { 'raster-opacity': WETLANDS_OVERLAY.opacity },
+        });
+      } catch {
+        status.textContent = 'Wetlands layer unavailable';
+        const input = document.querySelector<HTMLInputElement>('[data-layer="wetlands"]');
+        if (input) input.checked = false;
+        return;
+      }
+    }
+    if (map.getLayer('wetlands')) {
+      map.setLayoutProperty('wetlands', 'visibility', visible ? 'visible' : 'none');
+    }
+    return;
+  }
   const raster = rasterReferenceConfig[key];
   if (raster) {
     if (!map.getSource(key)) {
@@ -449,16 +517,20 @@ async function toggleReference(key: string, visible: boolean): Promise<void> {
         type: 'raster',
         tiles: [raster.url],
         tileSize: 256,
-        attribution: key === 'flood' ? 'FEMA NFHL' : key === 'traffic' ? 'MDOT' : 'State of Michigan',
+        attribution: raster.attribution,
       });
       map.addLayer({
         id: key,
         type: 'raster',
         source: key,
+        ...(raster.minzoom != null ? { minzoom: raster.minzoom } : {}),
         paint: { 'raster-opacity': raster.opacity },
       });
     }
     map.setLayoutProperty(key, 'visibility', visible ? 'visible' : 'none');
+    if (key === 'flood' && visible && map.getZoom() < 11) {
+      status.textContent = 'Zoom in to see FEMA flood zones';
+    }
     return;
   }
   const config = referenceConfig[key];
@@ -494,7 +566,7 @@ function renderMethod(): void {
       <li>2024 American Community Survey five-year estimates and Census cartographic tract boundaries.</li>
       <li>Travel times are calibrated approximations (distance × regional circuity, speed rising with trip length), not routed drives; market totals use tract representative points.</li>
       <li>NCES EDGE 2024–25 public school locations.</li>
-      <li>MDOT 2025 AADT traffic counts, EGLE wetlands, FEMA flood zones, and Michigan DNR park boundaries (live state/federal map services).</li>
+      <li>MDOT 2025 AADT traffic counts (live), EGLE wetlands screening overlay, FEMA NFHL flood zones (live; closer zoom), and Michigan DNR park boundaries.</li>
       <li>SEMCOG community boundaries.</li>
       <li>Competitor attributes verified against linked official or primary sources.</li>
     </ul>
@@ -568,6 +640,7 @@ dataReady.catch((error) => {
 });
 
 map.on('load', () => {
+  patchBasemapBoundaryFilters();
   map.fitBounds(STUDY_BOUNDS, { padding: 25, duration: 0 });
   dataReady
     .then((competitors) => {

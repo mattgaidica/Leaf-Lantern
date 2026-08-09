@@ -67,8 +67,8 @@ const base = import.meta.env.BASE_URL.endsWith('/')
             <label><input type="checkbox" data-layer="income" /> Median household income</label>
             <label><input type="checkbox" data-layer="schools" /> Schools</label>
             <label><input type="checkbox" data-layer="traffic" /> Traffic / AADT</label>
-            <label><input type="checkbox" data-layer="wetlands" /> Wetlands</label>
-            <label><input type="checkbox" data-layer="flood" /> FEMA flood zones</label>
+            <label><input type="checkbox" data-layer="wetlands" /> Wetlands (study overlay)</label>
+            <label><input type="checkbox" data-layer="flood" /> FEMA flood zones (zoom in)</label>
             <label><input type="checkbox" data-layer="protected" /> Protected / park land</label>
             <label><input type="checkbox" data-layer="municipalities" /> Municipal boundaries</label>
           </fieldset>
@@ -103,11 +103,11 @@ const base = import.meta.env.BASE_URL.endsWith('/')
           </div>
           <div class="slider-list compact">
             <label>
-              <span><b>Score 5 reach</b><output id="competition-5-output">32 min</output></span>
+              <span><b>Score 5 reach</b> <output id="competition-5-output">32 min</output></span>
               <input id="competition-5" type="range" min="20" max="50" value="32" step="1" />
             </label>
             <label>
-              <span><b>Score 4 reach</b><output id="competition-4-output">26 min</output></span>
+              <span><b>Score 4 reach</b> <output id="competition-4-output">26 min</output></span>
               <input id="competition-4" type="range" min="15" max="40" value="26" step="1" />
             </label>
           </div>
@@ -396,27 +396,36 @@ const base = import.meta.env.BASE_URL.endsWith('/')
   .score-4 { background: #a8652a; }
   .score-3 { background: #d8c39b; border: 1px solid #756c5d; }
 
-  .slider-list {
+  /* :global — weight sliders are injected by location-map.ts */
+  :global(.slider-list) {
     display: grid;
     gap: 0.95rem;
   }
 
-  .slider-list label > span {
+  :global(.slider-list label) {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  :global(.slider-list label > span) {
     display: flex;
     justify-content: space-between;
-    gap: 0.5rem;
+    align-items: baseline;
+    gap: 0.75rem;
     font-size: 0.78rem;
-    margin-bottom: 0.25rem;
   }
 
-  .slider-list output {
+  :global(.slider-list output) {
     color: var(--cider);
     font-weight: 700;
+    flex-shrink: 0;
   }
 
-  input[type='range'] {
+  :global(.slider-list input[type='range']) {
     accent-color: var(--cider);
     width: 100%;
+    min-width: 0;
+    grid-column: 1 / -1;
   }
 
   .text-button {
