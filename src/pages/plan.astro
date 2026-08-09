@@ -747,10 +747,16 @@ const risks = [
           adaptive reuse instead of ground-up construction, and a lean staffing model sized for
           proven demand rather than occasional peaks.
         </p>
-        <p class="plan-tool-cta">
-          <a class="btn btn-secondary" href={url('/location-strategy/')}>Open the Strategic Location Map</a>
-          <span>Interactive screening of family demand, competition, and site fit across southeast Michigan.</span>
-        </p>
+        <div class="price-card">
+          <span class="price-card-kicker">Site selection · screening tool</span>
+          <p class="plan-tool-copy">
+            Interactive screening of family demand, competition, and site fit across southeast
+            Michigan.
+          </p>
+          <div class="price-card-cta">
+            <a class="btn btn-secondary" href={url('/location-strategy/')}>Open the Strategic Location Map</a>
+          </div>
+        </div>
         <p>
           The primary market is defined by drive time, not county lines: 30-, 45-, and 60-minute
           bands centered on the eventual parcel in the Northville–South Lyon–Farmington corridor,
@@ -3317,27 +3323,10 @@ const risks = [
     font-size: 1.2rem;
   }
 
-  .plan-tool-cta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.85rem 1.25rem;
-    margin: 1.6rem 0 1.8rem;
-    padding: 1.15rem 1.35rem;
-    background: color-mix(in srgb, var(--pine-soft) 55%, var(--parchment));
-    border-left: 3px solid var(--cider);
-  }
-
-  .plan-tool-cta .btn {
-    flex-shrink: 0;
-  }
-
-  .plan-tool-cta span {
-    flex: 1 1 14rem;
+  .plan-tool-copy {
     margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.45;
-    color: color-mix(in srgb, var(--lantern-black) 78%, transparent);
+    font-size: 0.98rem;
+    line-height: 1.5;
   }
 
   /* ---------- Closing CTA ---------- */
